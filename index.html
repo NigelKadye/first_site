@@ -27,30 +27,14 @@
             line-height: 1.6;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(147, 112, 219, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 30%, rgba(147, 112, 219, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 50% 80%, rgba(147, 112, 219, 0.1) 0%, transparent 20%);
-            background-size: 200% 200%;
-            animation: bgFloat 15s infinite alternate;
-        }
-        
-        @keyframes bgFloat {
-            0% { background-position: 0% 0%; }
-            25% { background-position: 100% 0%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
-            100% { background-position: 0% 0%; }
-        }
-        
-        .container {
-            width: 95%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 10px;
+                radial-gradient(circle at 10% 20%, rgba(147, 112, 219, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(147, 112, 219, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 30% 50%, rgba(147, 112, 219, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 70% 30%, rgba(147, 112, 219, 0.05) 0%, transparent 20%);
         }
         
         /* Loading Animation */
-        .loading-screen {
+        .loader {
             position: fixed;
             top: 0;
             left: 0;
@@ -61,116 +45,67 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
-            color: white;
-            transition: opacity 1s, visibility 1s;
+            z-index: 9999;
+            transition: opacity 1s ease-out;
         }
         
-        .loading-screen h1 {
-            font-size: 2em;
+        .loader h1 {
+            color: white;
+            font-size: 2.5em;
             margin-bottom: 30px;
             text-align: center;
-            animation: pulse 2s infinite;
+            text-shadow: 0 0 10px var(--secondary-color);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
         }
         
-        .loading-counter {
-            font-size: 3em;
+        .counter {
+            font-size: 4em;
             font-weight: bold;
             color: var(--secondary-color);
+            text-shadow: 0 0 15px rgba(50, 205, 50, 0.7);
             margin-bottom: 30px;
-            text-shadow: 0 0 10px rgba(50, 205, 50, 0.5);
-        }
-        
-        .loading-message {
-            font-size: 1.2em;
-            opacity: 0.8;
-            text-align: center;
-        }
-        
-        /* Menu */
-        .menu-btn {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            z-index: 101;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.5em;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .menu-btn:hover {
-            background-color: var(--secondary-color);
-            color: var(--dark-color);
-            transform: scale(1.1);
-        }
-        
-        .menu {
-            position: fixed;
-            top: 0;
-            left: -300px;
-            width: 250px;
-            height: 100%;
-            background-color: var(--primary-color);
-            z-index: 100;
-            transition: all 0.3s ease;
-            padding-top: 80px;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-        }
-        
-        .menu.open {
-            left: 0;
-        }
-        
-        .menu ul {
-            list-style: none;
-        }
-        
-        .menu li {
-            margin-bottom: 15px;
-        }
-        
-        .menu a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1em;
-            padding: 10px 20px;
-            display: block;
-            transition: all 0.3s ease;
-            border-radius: 5px;
-            margin: 0 10px;
-        }
-        
-        .menu a:hover, .menu a:focus {
-            background-color: var(--secondary-color);
-            color: var(--dark-color);
-        }
-        
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 99;
             opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+            animation: fadeIn 1s ease-out 1s forwards;
         }
         
-        .menu-overlay.open {
+        .progress-bar {
+            width: 80%;
+            max-width: 400px;
+            height: 10px;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s forwards;
+        }
+        
+        .progress {
+            height: 100%;
+            width: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.1s linear;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Main Content */
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
+        }
+        
+        .loaded .container {
             opacity: 1;
-            visibility: visible;
+            transform: translateY(0);
         }
         
         header {
@@ -181,13 +116,14 @@
             border-bottom: 5px solid var(--secondary-color);
             position: relative;
             overflow: hidden;
-            margin-top: 80px;
+            margin-bottom: 20px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         header h1 {
             font-size: 2em;
             margin: 0 0 10px 0;
-            animation: fadeIn 2s;
             text-shadow: 0 0 10px var(--secondary-color);
             position: relative;
             z-index: 1;
@@ -220,23 +156,79 @@
         .number-8:nth-child(6) { top: 70%; left: 15%; animation-delay: 5s; }
         .number-8:nth-child(7) { bottom: 60%; right: 25%; animation-delay: 6s; }
         
+        /* Navigation Menu */
+        .menu-toggle {
+            display: none;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            margin: 10px auto;
+            cursor: pointer;
+        }
+        
+        nav {
+            background-color: var(--primary-color);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border-radius: 0 0 15px 15px;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 5px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9em;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            background-color: rgba(0,0,0,0.2);
+        }
+        
+        nav a:hover, nav a:focus {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px var(--secondary-color);
+        }
+        
+        /* Page Content */
         .page {
-            min-height: calc(100vh - 150px);
+            min-height: calc(100vh - 200px);
             padding: 20px 0;
             display: none;
-            animation: fadeIn 0.5s;
         }
         
         .page.active {
             display: block;
+            animation: fadeIn 0.5s ease-out;
         }
         
         h2 {
             color: var(--primary-color);
-            font-size: 1.5em;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 8px;
-            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
             position: relative;
         }
         
@@ -252,10 +244,10 @@
         
         .card {
             background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            padding: 20px;
-            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 25px;
+            margin-bottom: 30px;
             transition: all 0.3s ease;
             border-left: 8px solid var(--highlight-color);
             position: relative;
@@ -267,14 +259,15 @@
             position: absolute;
             bottom: -20px;
             right: -10px;
-            font-size: 6em;
+            font-size: 8em;
             color: rgba(75, 0, 130, 0.05);
             z-index: 0;
+            font-weight: bold;
         }
         
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
         
         .card-content {
@@ -286,31 +279,31 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            margin-top: 20px;
+            margin-top: 25px;
         }
         
         .memory {
             width: 100%;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             background-color: var(--accent-color);
-            height: 150px;
+            height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1.2em;
             text-align: center;
         }
         
         .memory:hover, .memory:focus {
             transform: scale(1.03);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
         
         .memory-caption {
@@ -320,10 +313,9 @@
             right: 0;
             background: rgba(0,0,0,0.7);
             color: white;
-            padding: 10px;
+            padding: 15px;
             transform: translateY(100%);
             transition: transform 0.3s ease;
-            font-size: 0.9em;
         }
         
         .memory:hover .memory-caption, .memory:focus .memory-caption {
@@ -333,7 +325,7 @@
         .timeline {
             position: relative;
             max-width: 800px;
-            margin: 20px auto;
+            margin: 25px auto;
         }
         
         .timeline:before {
@@ -348,59 +340,222 @@
         }
         
         .timeline-item {
-            padding: 10px 0 10px 40px;
+            padding: 15px 0 15px 40px;
             position: relative;
             width: 100%;
             box-sizing: border-box;
+            margin-bottom: 20px;
         }
         
         .timeline-content {
-            padding: 15px;
+            padding: 20px;
             background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             position: relative;
         }
         
         .timeline-content:after {
             content: '';
             position: absolute;
-            width: 15px;
-            height: 15px;
+            width: 20px;
+            height: 20px;
             background-color: var(--secondary-color);
             border-radius: 50%;
-            top: 15px;
-            left: -7px;
+            top: 20px;
+            left: -10px;
+            box-shadow: 0 0 10px var(--secondary-color);
         }
         
+        .quote {
+            font-style: italic;
+            font-size: 1.1em;
+            padding: 20px;
+            background-color: rgba(50, 205, 50, 0.1);
+            border-left: 5px solid var(--secondary-color);
+            margin: 25px 0;
+            position: relative;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .quote:before, .quote:after {
+            content: '"';
+            font-size: 2em;
+            color: var(--secondary-color);
+            opacity: 0.5;
+        }
+        
+        .quote:before {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+        }
+        
+        .quote:after {
+            position: absolute;
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .eight-facts {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 25px 0;
+        }
+        
+        .eight-fact {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .eight-fact:hover, .eight-fact:focus {
+            transform: scale(1.05);
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .counter-container {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .counter-container:before {
+            content: "8";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 15em;
+            opacity: 0.1;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .counter-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            position: relative;
+            text-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        
+        .counter {
+            font-size: 3.5em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            text-shadow: 0 0 15px rgba(50, 205, 50, 0.7);
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .counter-subtitle {
+            font-size: 1em;
+            opacity: 0.9;
+            margin-top: 15px;
+            position: relative;
+        }
+        
+        /* Happy Father's Day Button */
+        .happy-button {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .happy-button:hover, .happy-button:focus {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+        }
+        
+        .happy-button:active {
+            transform: translateY(0);
+        }
+        
+        /* Final Message */
+        .final-message {
+            display: none;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 40px 0;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .final-message h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .final-message p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+        
+        /* Footer */
         footer {
             background-color: var(--dark-color);
             color: white;
             text-align: center;
-            padding: 20px 0;
-            margin-top: 30px;
+            padding: 30px 0;
+            margin-top: 50px;
             font-size: 0.9em;
             position: relative;
+            border-radius: 15px 15px 0 0;
         }
         
         footer:before {
             content: "8";
             position: absolute;
-            top: -30px;
+            top: -40px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 3em;
+            font-size: 4em;
             color: var(--secondary-color);
-            opacity: 0.2;
+            opacity: 0.1;
+            font-weight: bold;
         }
         
         .heart {
             color: var(--secondary-color);
-            font-size: 1.2em;
+            font-size: 1.5em;
             animation: pulse 1.5s infinite;
             display: inline-block;
         }
         
+        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -408,13 +563,13 @@
         
         @keyframes float {
             0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(8deg); }
+            50% { transform: translateY(-20px) rotate(8deg); }
             100% { transform: translateY(0px) rotate(0deg); }
         }
         
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.2); }
             100% { transform: scale(1); }
         }
         
@@ -424,6 +579,7 @@
             100% { text-shadow: 0 0 5px var(--secondary-color); }
         }
         
+        /* Interactive Elements */
         .interactive-element {
             cursor: pointer;
             position: relative;
@@ -439,25 +595,25 @@
             position: absolute;
             background-color: var(--secondary-color);
             color: var(--dark-color);
-            padding: 10px;
-            border-radius: 5px;
+            padding: 15px;
+            border-radius: 10px;
             z-index: 10;
-            width: 180px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 200px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             font-weight: bold;
-            font-size: 0.9em;
+            font-size: 1em;
             bottom: 100%;
             left: 50%;
             transform: translateX(-50%);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             animation: glow 2s infinite;
         }
         
         .photo-collage {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin: 20px 0;
+            gap: 10px;
+            margin: 25px 0;
         }
         
         .photo-collage div {
@@ -467,160 +623,63 @@
             align-items: center;
             justify-content: center;
             aspect-ratio: 1/1;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: bold;
             transition: all 0.3s ease;
-            padding: 10px;
+            padding: 15px;
             text-align: center;
-            font-size: 0.9em;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 1em;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .photo-collage div:hover, .photo-collage div:focus {
             transform: scale(1.05);
             background-color: var(--secondary-color);
             color: var(--dark-color);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
         
-        .quote {
-            font-style: italic;
-            font-size: 1em;
-            padding: 15px;
-            background-color: rgba(50, 205, 50, 0.2);
-            border-left: 5px solid var(--secondary-color);
-            margin: 20px 0;
-            position: relative;
-            border-radius: 0 8px 8px 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav li {
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav a {
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .counter {
+                font-size: 2.5em;
+            }
+            
+            .counter-container:before {
+                font-size: 10em;
+            }
+            
+            .happy-button {
+                font-size: 1.2em;
+                padding: 15px;
+            }
         }
         
-        .quote:before, .quote:after {
-            content: '"';
-            font-size: 1.5em;
-            color: var(--secondary-color);
-            opacity: 0.5;
-        }
-        
-        .quote:before {
-            position: absolute;
-            top: 0;
-            left: 5px;
-        }
-        
-        .quote:after {
-            position: absolute;
-            bottom: -15px;
-            right: 5px;
-        }
-        
-        .eight-facts {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin: 20px 0;
-        }
-        
-        .eight-fact {
-            background: var(--primary-color);
-            color: white;
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-            transition: all 0.3s ease;
-            font-size: 0.9em;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        
-        .eight-fact:hover, .eight-fact:focus {
-            transform: scale(1.05);
-            background: var(--secondary-color);
-            color: var(--dark-color);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        
-        .counter-container {
-            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            margin: 30px 0;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .counter-container:before {
-            content: "8";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 10em;
-            opacity: 0.1;
-            color: white;
-        }
-        
-        .counter-title {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-            position: relative;
-        }
-        
-        .counter {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: var(--secondary-color);
-            text-shadow: 0 0 10px rgba(50, 205, 50, 0.5);
-            position: relative;
-        }
-        
-        .counter-subtitle {
-            font-size: 0.9em;
-            opacity: 0.9;
-            margin-top: 10px;
-            position: relative;
-        }
-        
-        .happy-btn {
-            display: block;
-            width: 100%;
-            max-width: 300px;
-            margin: 30px auto;
-            padding: 15px;
-            background: linear-gradient(135deg, var(--secondary-color), #2e8b57);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.2em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-        
-        .happy-btn:hover, .happy-btn:focus {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            background: linear-gradient(135deg, #2e8b57, var(--secondary-color));
-        }
-        
-        .final-message {
-            display: none;
-            padding: 30px;
-            text-align: center;
-            animation: fadeIn 1s;
-        }
-        
-        .final-message p {
-            margin-bottom: 20px;
-            font-size: 1.1em;
-            line-height: 1.8;
-        }
-        
-        /* Larger screens */
         @media (min-width: 768px) {
             .container {
                 width: 85%;
@@ -628,8 +687,7 @@
             }
             
             header {
-                padding: 50px 0;
-                margin-top: 0;
+                padding: 60px 0;
             }
             
             header h1 {
@@ -638,33 +696,26 @@
             }
             
             header p {
-                font-size: 1.3em;
+                font-size: 1.5em;
             }
             
             .number-8 {
                 font-size: 6em;
             }
             
-            .loading-screen h1 {
-                font-size: 3em;
-            }
-            
-            .loading-counter {
-                font-size: 5em;
-            }
-            
-            .loading-message {
-                font-size: 1.5em;
+            nav a {
+                font-size: 1.1em;
+                padding: 12px 25px;
             }
             
             h2 {
-                font-size: 2em;
+                font-size: 2.2em;
             }
             
             .memory {
-                width: calc(50% - 10px);
-                height: 180px;
-                font-size: 1.2em;
+                width: calc(50% - 15px);
+                height: 200px;
+                font-size: 1.3em;
             }
             
             .photo-collage, .eight-facts {
@@ -673,56 +724,35 @@
             
             .quote {
                 font-size: 1.2em;
-                padding: 20px;
+                padding: 25px;
             }
             
             .counter-title {
-                font-size: 1.5em;
+                font-size: 1.8em;
             }
             
             .counter {
-                font-size: 4em;
+                font-size: 4.5em;
             }
             
             .counter-subtitle {
-                font-size: 1.1em;
-            }
-            
-            .final-message p {
                 font-size: 1.2em;
-                max-width: 800px;
-                margin-left: auto;
-                margin-right: auto;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <h1>Celebrating 25 Years</h1>
-        <div class="loading-counter" id="loadingCounter">0</div>
-        <div class="loading-message">of your incredible fatherhood</div>
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <h1>Celebrating 25 Years of Your Love</h1>
+        <div class="counter" id="loader-counter">0</div>
+        <div class="progress-bar">
+            <div class="progress" id="loader-progress"></div>
+        </div>
     </div>
-    
-    <!-- Menu Button -->
-    <button class="menu-btn" id="menuBtn">☰</button>
-    
-    <!-- Menu -->
-    <div class="menu" id="menu">
-        <ul>
-            <li><a href="#" onclick="showPage('home')">Home</a></li>
-            <li><a href="#" onclick="showPage('special')">Why You're Special</a></li>
-            <li><a href="#" onclick="showPage('done-for-me')">All You've Done</a></li>
-            <li><a href="#" onclick="showPage('shaped-life')">How You Shaped Me</a></li>
-        </ul>
-    </div>
-    
-    <!-- Menu Overlay -->
-    <div class="menu-overlay" id="menuOverlay"></div>
-    
-    <!-- Home Page -->
-    <section id="home" class="page active">
+
+    <!-- Main Content -->
+    <div class="container" id="main-content">
         <header>
             <div class="number-8">8</div>
             <div class="number-8">8</div>
@@ -731,22 +761,34 @@
             <div class="number-8">8</div>
             <div class="number-8">8</div>
             <div class="number-8">8</div>
-            <div class="container">
-                <h1>Happy Father's Day!</h1>
-                <p>Celebrating 25 years of your love and guidance</p>
-            </div>
+            <h1>Happy Father's Day!</h1>
+            <p>A tribute to the world's greatest dad</p>
         </header>
         
-        <div class="container">
+        <button class="menu-toggle" id="menu-toggle">☰ Menu</button>
+        
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('special')">Why You're Special</a></li>
+                <li><a href="#" onclick="showPage('done-for-me')">All You've Done</a></li>
+                <li><a href="#" onclick="showPage('shaped-life')">How You Shaped Me</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Home Page -->
+        <section id="home" class="page active">
             <div class="counter-container">
-                <div class="counter-title">Years of Positive Influence</div>
+                <div class="counter-title">Years of Your Positive Influence</div>
                 <div class="counter" id="years-counter">0</div>
-                <div class="counter-subtitle">...and counting every second</div>
+                <div class="counter-subtitle">...and counting every moment</div>
             </div>
             
             <div class="card">
                 <div class="card-content">
+                    <h2>To My Amazing Father</h2>
                     <p>Dad, I want to take a moment to express my heartfelt gratitude for the invaluable lessons you've taught me throughout my life. Your wisdom has been the foundation of my growth, helping me become the person I am today.</p>
+                    <p>From childhood, you've shown me the importance of hard work, integrity, and perseverance. These principles have guided my decisions and shaped my character. Your nurturing love created the perfect environment for me to flourish.</p>
                 </div>
             </div>
             
@@ -756,22 +798,19 @@
                 <div tabindex="0">Your<br>Strength</div>
                 <div tabindex="0">Your<br>Guidance</div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Why You're Special Page -->
-    <section id="special" class="page">
-        <header>
-            <div class="container">
-                <h1>Why You're So Special</h1>
-                <p>The countless ways you've made my life better</p>
+            
+            <div class="quote">
+                "A father's love is the foundation upon which a child builds their world. You've given me the strongest foundation imaginable."
             </div>
-        </header>
+        </section>
         
-        <div class="container">
+        <!-- Why You're Special Page -->
+        <section id="special" class="page">
+            <h2>Why You're So Incredibly Special</h2>
+            
             <div class="card">
                 <div class="card-content">
-                    <p>From childhood, you've shown me the importance of hard work, integrity, and perseverance. These principles have guided my decisions and shaped my character. Your nurturing love created the perfect environment for me to flourish.</p>
+                    <p>I often find myself following your thoughtful approach to decision-making. Your ability to carefully consider options and choose the best path is something I deeply admire. Your attention to detail in everything you do has taught me to strive for excellence.</p>
                 </div>
             </div>
             
@@ -786,25 +825,28 @@
                 <div class="eight-fact" tabindex="0">Unshakable Integrity</div>
             </div>
             
+            <div class="card interactive-element" tabindex="0">
+                <div class="card-content">
+                    <h3>Your Unconditional Love</h3>
+                    <p>Every moment with you is precious. You're my safe haven - a constant source of comfort and strength. Whether we're having deep conversations or enjoying quiet moments together, these experiences have left a permanent mark on my heart.</p>
+                    <div class="hidden-message">
+                        Like the number 8 that has no beginning or end, your love is infinite and eternal.
+                    </div>
+                </div>
+            </div>
+            
             <div class="quote">
-                "A father's love is the foundation upon which a child builds their world. You've given me the strongest foundation imaginable, and for that, I am eternally grateful."
+                "You've taught me how to face challenges with grace and determination. Your resilience during difficult times has shown me what true strength looks like."
             </div>
-        </div>
-    </section>
-    
-    <!-- All You've Done For Me Page -->
-    <section id="done-for-me" class="page">
-        <header>
-            <div class="container">
-                <h1>All You've Done For Me</h1>
-                <p>The sacrifices and gifts that shaped my life</p>
-            </div>
-        </header>
+        </section>
         
-        <div class="container">
+        <!-- All You've Done For Me Page -->
+        <section id="done-for-me" class="page">
+            <h2>All You've Sacrificed and Given</h2>
+            
             <div class="card">
                 <div class="card-content">
-                    <p>I often find myself following your thoughtful approach to decision-making. Your ability to carefully consider options and choose the best path is something I deeply admire. Your attention to detail in everything you do has taught me to strive for excellence.</p>
+                    <p>Your kindness and dedication to our family are qualities I strive to emulate. Thank you for knowing exactly what I needed - whether it was being playful like a child, supportive like a friend, or guiding like a parent. You've mastered all these roles perfectly.</p>
                 </div>
             </div>
             
@@ -837,22 +879,19 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- How You've Shaped My Life Page -->
-    <section id="shaped-life" class="page">
-        <header>
-            <div class="container">
-                <h1>How You've Shaped My Life</h1>
-                <p>The lasting imprint of your love and lessons</p>
+            
+            <div class="quote">
+                "Dad, you inspire me in ways you might not realize. Your belief in me, especially during moments of self-doubt, has given me strength to pursue my dreams."
             </div>
-        </header>
+        </section>
         
-        <div class="container">
+        <!-- How You've Shaped My Life Page -->
+        <section id="shaped-life" class="page">
+            <h2>Your Lasting Imprint on My Soul</h2>
+            
             <div class="card">
                 <div class="card-content">
-                    <p>Every moment with you is precious. You're my safe haven - a constant source of comfort and strength. Whether we're having deep conversations or enjoying quiet moments together, these experiences have left a permanent mark on my heart.</p>
+                    <p>You've shown me that with dedication, anything is possible. I treasure all the memories we've created - the laughter we've shared, the lessons you've taught (including those colorful words for special situations!), and the love we've cultivated. These are treasures I'll always cherish.</p>
                 </div>
             </div>
             
@@ -872,84 +911,99 @@
                 </div>
             </div>
             
-            <button class="happy-btn" id="happyBtn">Happy Father's Day!</button>
+            <div class="quote">
+                "Your achievements and the example you've set remind me that I too can make a difference. You've taught me the value of kindness, compassion, and hard work - lessons I carry with me every day."
+            </div>
             
-            <div class="final-message" id="finalMessage">
-                <p>You've taught me how to face challenges with grace and determination. Your resilience during difficult times has shown me what true strength looks like. Your kindness and dedication to our family are qualities I strive to emulate.</p>
+            <div class="memory-box">
+                <div class="memory" tabindex="0">
+                    Leading by Example
+                    <div class="memory-caption">
+                        <h4>Your Actions Spoke Loudest</h4>
+                        <p>You never just told me how to live - you showed me through your actions.</p>
+                    </div>
+                </div>
                 
-                <p>Thank you for knowing exactly what I needed - whether it was being playful like a child, supportive like a friend, or guiding like a parent. You've mastered all these roles perfectly.</p>
+                <div class="memory" tabindex="0">
+                    Unwavering Support
+                    <div class="memory-caption">
+                        <h4>My Greatest Cheerleader</h4>
+                        <p>Your belief in me gave me the courage to believe in myself.</p>
+                    </div>
+                </div>
                 
-                <p>Dad, you inspire me in ways you might not realize. Your belief in me, especially during moments of self-doubt, has given me strength to pursue my dreams. You've shown me that with dedication, anything is possible.</p>
-                
-                <p>I treasure all the memories we've created - the laughter we've shared, the lessons you've taught (including those colorful words for special situations!), and the love we've cultivated. These are treasures I'll always cherish.</p>
-                
-                <p>Your achievements and the example you've set remind me that I too can make a difference. You've taught me the value of kindness, compassion, and hard work - lessons I carry with me every day.</p>
-                
+                <div class="memory" tabindex="0">
+                    Shared Laughter
+                    <div class="memory-caption">
+                        <h4>Joy in the Journey</h4>
+                        <p>You taught me that life's greatest treasures are simple moments shared.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="happy-button" id="happy-button">Happy Father's Day!</button>
+            
+            <div class="final-message" id="final-message">
+                <h2>Happy Father's Day, Dad!</h2>
                 <p>Today, I celebrate you - not just as my father, but as my confidant, hero, and best friend. Your influence is woven into every part of who I am, and for that, I'm eternally grateful.</p>
-                
                 <p>You're the best man I know. Hopefully one day I'll make you as proud of me as I am of you. Thank you for being my guiding light and role model.</p>
-                
                 <p>Happy Father's Day, Dad! May your day be filled with joy, love, and the knowledge that you're cherished beyond measure. My life is infinitely better because you're in it.</p>
             </div>
-        </div>
-    </section>
-    
-    <footer>
-        <div class="container">
-            <p>Created with <span class="heart">♥</span> for the world's greatest dad | Your favorite number: <span style="font-size: 1.5em;">8</span></p>
-            <p>© <span id="year"></span> | Made with love by your child</p>
-            <p style="font-size:0.8em; opacity:0.7;">Enhanced by DeepSeek Chat</p>
-        </div>
-    </footer>
+        </section>
+        
+        <footer>
+            <div class="container">
+                <p>Created with <span class="heart">♥</span> for the world's greatest dad | Your favorite number: <span style="font-size: 1.5em;">8</span></p>
+                <p>© <span id="year"></span> | Made with love by your child</p>
+                <p style="font-size:0.8em; opacity:0.7;">Enhanced by DeepSeek Chat</p>
+            </div>
+        </footer>
+    </div>
     
     <script>
         // Loading Animation
-        const loadingScreen = document.getElementById('loadingScreen');
-        const loadingCounter = document.getElementById('loadingCounter');
+        let counter = 0;
+        const loaderCounter = document.getElementById('loader-counter');
+        const loaderProgress = document.getElementById('loader-progress');
+        const loader = document.getElementById('loader');
+        const mainContent = document.getElementById('main-content');
         
-        let count = 0;
-        const target = 25;
-        const duration = 5000; // 5 seconds
-        const increment = target / (duration / 16);
-        
-        const loadingTimer = setInterval(() => {
-            count += increment;
-            if (count >= target) {
-                clearInterval(loadingTimer);
-                count = target;
+        const loadingInterval = setInterval(() => {
+            counter++;
+            loaderCounter.textContent = counter;
+            loaderProgress.style.width = `${(counter / 25) * 100}%`;
+            
+            if (counter >= 25) {
+                clearInterval(loadingInterval);
                 setTimeout(() => {
-                    loadingScreen.style.opacity = '0';
-                    loadingScreen.style.visibility = 'hidden';
-                }, 1000);
+                    loader.style.opacity = '0';
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                        mainContent.classList.add('loaded');
+                    }, 1000);
+                }, 500);
             }
-            loadingCounter.textContent = Math.floor(count);
-        }, 16);
+        }, 100); // Slowed down the counter
         
         // Menu Toggle
-        const menuBtn = document.getElementById('menuBtn');
-        const menu = document.getElementById('menu');
-        const menuOverlay = document.getElementById('menuOverlay');
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
         
-        menuBtn.addEventListener('click', function() {
-            menu.classList.toggle('open');
-            menuOverlay.classList.toggle('open');
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('show');
         });
         
-        menuOverlay.addEventListener('click', function() {
-            menu.classList.remove('open');
-            menuOverlay.classList.remove('open');
-        });
-        
-        // Show the selected page and hide others
+        // Show Page Function
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
             document.getElementById(pageId).classList.add('active');
             
-            // Close menu
-            menu.classList.remove('open');
-            menuOverlay.classList.remove('open');
+            // Close menu on mobile after selection
+            if (window.innerWidth <= 768) {
+                navMenu.classList.remove('show');
+            }
             
             // Create 8 pieces of confetti
             for (let i = 0; i < 8; i++) {
@@ -958,117 +1012,12 @@
             
             // Scroll to top of page
             window.scrollTo({top: 0, behavior: 'smooth'});
-            
-            // Trigger haptic feedback on mobile
-            if ('vibrate' in navigator) {
-                navigator.vibrate(50);
-            }
         }
         
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
         
-        // Add interactive elements
-        document.querySelectorAll('.interactive-element').forEach(element => {
-            element.addEventListener('click', function() {
-                toggleHiddenMessage(this);
-            });
-            element.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    toggleHiddenMessage(this);
-                }
-            });
-        });
-        
-        function toggleHiddenMessage(element) {
-            const message = element.querySelector('.hidden-message');
-            message.style.display = message.style.display === 'block' ? 'none' : 'block';
-            
-            // Create 8 pieces of confetti for this interaction
-            for (let i = 0; i < 8; i++) {
-                setTimeout(createConfetti, i * 150);
-            }
-            
-            // Trigger haptic feedback on mobile
-            if ('vibrate' in navigator) {
-                navigator.vibrate(30);
-            }
-        }
-        
-        // Confetti effect
-        function createConfetti() {
-            const confetti = document.createElement('div');
-            confetti.innerHTML = '8';
-            confetti.style.position = 'fixed';
-            confetti.style.fontSize = `${Math.random() * 16 + 12}px`;
-            confetti.style.color = `hsl(${Math.random() * 60 + 270}, 100%, ${Math.random() * 30 + 50}%)`;
-            confetti.style.left = `${Math.random() * 100}vw`;
-            confetti.style.top = '-20px';
-            confetti.style.zIndex = '1000';
-            confetti.style.fontWeight = 'bold';
-            confetti.style.pointerEvents = 'none';
-            confetti.style.opacity = '0.8';
-            document.body.appendChild(confetti);
-            
-            const animation = confetti.animate([
-                { top: '-20px', opacity: 0.8, transform: 'rotate(0deg)' },
-                { top: `${Math.random() * 100 + 50}vh`, opacity: 0, transform: 'rotate(360deg)' }
-            ], {
-                duration: Math.random() * 2000 + 1000,
-                easing: 'cubic-bezier(0.1, 0.8, 0.9, 1)'
-            });
-            
-            animation.onfinish = () => confetti.remove();
-        }
-        
-        // Add confetti when clicking on memories and facts
-        document.querySelectorAll('.memory, .eight-fact, .photo-collage div').forEach(element => {
-            element.addEventListener('click', function() {
-                createConfettiForElement(this);
-            });
-            element.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    createConfettiForElement(this);
-                }
-            });
-        });
-        
-        function createConfettiForElement(element) {
-            const rect = element.getBoundingClientRect();
-            for (let i = 0; i < 8; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.innerHTML = '8';
-                    confetti.style.position = 'fixed';
-                    confetti.style.fontSize = `${Math.random() * 16 + 12}px`;
-                    confetti.style.color = `hsl(${Math.random() * 60 + 270}, 100%, ${Math.random() * 30 + 50}%)`;
-                    confetti.style.left = `${rect.left + Math.random() * rect.width}px`;
-                    confetti.style.top = `${rect.top}px`;
-                    confetti.style.zIndex = '1000';
-                    confetti.style.fontWeight = 'bold';
-                    confetti.style.pointerEvents = 'none';
-                    confetti.style.opacity = '0.8';
-                    document.body.appendChild(confetti);
-                    
-                    const animation = confetti.animate([
-                        { top: `${rect.top}px`, opacity: 0.8, transform: 'rotate(0deg)' },
-                        { top: `${rect.top + rect.height + Math.random() * 200}px`, opacity: 0, transform: 'rotate(360deg)' }
-                    ], {
-                        duration: Math.random() * 2000 + 1000,
-                        easing: 'cubic-bezier(0.1, 0.8, 0.9, 1)'
-                    });
-                    
-                    animation.onfinish = () => confetti.remove();
-                }, i * 200);
-            }
-            
-            // Trigger haptic feedback on mobile
-            if ('vibrate' in navigator) {
-                navigator.vibrate(30);
-            }
-        }
-        
-        // Year counter animation
+        // Counter Animation
         function animateCounter(elementId, target, duration) {
             const element = document.getElementById(elementId);
             const start = 0;
@@ -1087,36 +1036,125 @@
         
         // Start counters when page is loaded
         window.addEventListener('load', function() {
-            animateCounter('years-counter', 25, 5000);
+            animateCounter('years-counter', 25, 3000); // Slowed down the counter
+            animateCounter('years-counter-2', 25, 3000);
+            animateCounter('years-counter-3', 25, 3000);
         });
         
-        // Happy Father's Day button
-        const happyBtn = document.getElementById('happyBtn');
-        const finalMessage = document.getElementById('finalMessage');
+        // Confetti effect
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.innerHTML = '8';
+            confetti.style.position = 'fixed';
+            confetti.style.fontSize = `${Math.random() * 20 + 15}px`;
+            confetti.style.color = `hsl(${Math.random() * 60 + 270}, 100%, ${Math.random() * 30 + 50}%)`;
+            confetti.style.left = `${Math.random() * 100}vw`;
+            confetti.style.top = '-30px';
+            confetti.style.zIndex = '1000';
+            confetti.style.fontWeight = 'bold';
+            confetti.style.pointerEvents = 'none';
+            confetti.style.opacity = '0.9';
+            confetti.style.userSelect = 'none';
+            document.body.appendChild(confetti);
+            
+            const animationDuration = Math.random() * 3000 + 2000;
+            
+            const animation = confetti.animate([
+                { top: '-30px', opacity: 0.9, transform: 'rotate(0deg) scale(1)' },
+                { top: `${Math.random() * 100 + 80}vh`, opacity: 0, transform: `rotate(${Math.random() * 360}deg) scale(0.5)` }
+            ], {
+                duration: animationDuration,
+                easing: 'cubic-bezier(0.1, 0.8, 0.9, 1)'
+            });
+            
+            animation.onfinish = () => confetti.remove();
+        }
         
-        happyBtn.addEventListener('click', function() {
-            // Create 25 bursts of confetti (25 years)
+        // Add confetti when clicking on interactive elements
+        document.querySelectorAll('.memory, .eight-fact, .photo-collage div, .interactive-element').forEach(element => {
+            element.addEventListener('click', function() {
+                createConfettiForElement(this);
+                
+                // Haptic feedback for mobile devices
+                if ('vibrate' in navigator) {
+                    navigator.vibrate(50);
+                }
+            });
+            
+            element.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    createConfettiForElement(this);
+                    
+                    // Haptic feedback for mobile devices
+                    if ('vibrate' in navigator) {
+                        navigator.vibrate(50);
+                    }
+                }
+            });
+        });
+        
+        function createConfettiForElement(element) {
+            const rect = element.getBoundingClientRect();
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.innerHTML = '8';
+                    confetti.style.position = 'fixed';
+                    confetti.style.fontSize = `${Math.random() * 20 + 15}px`;
+                    confetti.style.color = `hsl(${Math.random() * 60 + 270}, 100%, ${Math.random() * 30 + 50}%)`;
+                    confetti.style.left = `${rect.left + Math.random() * rect.width}px`;
+                    confetti.style.top = `${rect.top}px`;
+                    confetti.style.zIndex = '1000';
+                    confetti.style.fontWeight = 'bold';
+                    confetti.style.pointerEvents = 'none';
+                    confetti.style.opacity = '0.9';
+                    confetti.style.userSelect = 'none';
+                    document.body.appendChild(confetti);
+                    
+                    const animationDuration = Math.random() * 3000 + 2000;
+                    
+                    const animation = confetti.animate([
+                        { top: `${rect.top}px`, opacity: 0.9, transform: 'rotate(0deg) scale(1)' },
+                        { top: `${rect.top + rect.height + Math.random() * 300}px`, opacity: 0, transform: `rotate(${Math.random() * 360}deg) scale(0.5)` }
+                    ], {
+                        duration: animationDuration,
+                        easing: 'cubic-bezier(0.1, 0.8, 0.9, 1)'
+                    });
+                    
+                    animation.onfinish = () => confetti.remove();
+                }, i * 200);
+            }
+        }
+        
+        // Happy Father's Day Button
+        const happyButton = document.getElementById('happy-button');
+        const finalMessage = document.getElementById('final-message');
+        
+        happyButton.addEventListener('click', function() {
+            // Create 25 bursts of confetti
             for (let i = 0; i < 25; i++) {
                 setTimeout(() => {
-                    for (let j = 0; j < 8; j++) { // 8 pieces per burst
-                        setTimeout(createConfetti, j * 100);
+                    for (let j = 0; j < 8; j++) {
+                        setTimeout(() => {
+                            createConfetti();
+                        }, j * 100);
                     }
                 }, i * 300);
             }
             
-            // Show final message
+            // Haptic feedback for mobile devices
+            if ('vibrate' in navigator) {
+                navigator.vibrate([50, 50, 50]);
+            }
+            
+            // Hide button and show final message
+            happyButton.style.display = 'none';
             finalMessage.style.display = 'block';
-            happyBtn.style.display = 'none';
             
             // Scroll to final message
             setTimeout(() => {
                 finalMessage.scrollIntoView({ behavior: 'smooth' });
             }, 500);
-            
-            // Trigger haptic feedback on mobile
-            if ('vibrate' in navigator) {
-                navigator.vibrate([100, 50, 100]);
-            }
         });
     </script>
 </body>
