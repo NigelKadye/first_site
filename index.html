@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To the World's Greatest Dad</title>
+    <title>To My Amazing Father</title>
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #e74c3c;
-            --accent-color: #f1c40f;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-            --highlight-color: #8e44ad;
+            --primary-color: #4b0082; /* Deep purple */
+            --secondary-color: #32CD32; /* Lime green */
+            --accent-color: #9370DB; /* Light purple */
+            --light-color: #f5f5f5;
+            --dark-color: #2d0042;
+            --highlight-color: #800080;
         }
         
         body {
@@ -34,7 +34,7 @@
             color: white;
             padding: 40px 0;
             text-align: center;
-            border-bottom: 8px solid var(--accent-color);
+            border-bottom: 8px solid var(--secondary-color);
             position: relative;
             overflow: hidden;
         }
@@ -43,6 +43,7 @@
             font-size: 3.5em;
             margin: 0;
             animation: fadeIn 2s;
+            text-shadow: 0 0 8px var(--secondary-color);
         }
         
         header p {
@@ -53,17 +54,20 @@
         .number-8 {
             position: absolute;
             font-size: 8em;
-            opacity: 0.1;
+            opacity: 0.15;
             z-index: 0;
             animation: float 8s infinite ease-in-out;
+            color: var(--secondary-color);
         }
         
         .number-8:nth-child(1) { top: 20%; left: 10%; }
         .number-8:nth-child(2) { top: 60%; right: 15%; }
         .number-8:nth-child(3) { bottom: 10%; left: 45%; }
+        .number-8:nth-child(4) { top: 30%; right: 25%; }
+        .number-8:nth-child(5) { bottom: 30%; left: 25%; }
         
         nav {
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color);
             padding: 15px 0;
             position: sticky;
             top: 0;
@@ -94,7 +98,7 @@
         }
         
         nav a:hover {
-            background-color: var(--accent-color);
+            background-color: var(--secondary-color);
             color: var(--dark-color);
             transform: scale(1.1);
         }
@@ -111,9 +115,9 @@
         }
         
         h2 {
-            color: var(--secondary-color);
+            color: var(--primary-color);
             font-size: 2.5em;
-            border-bottom: 3px solid var(--accent-color);
+            border-bottom: 3px solid var(--secondary-color);
             padding-bottom: 10px;
             margin-bottom: 30px;
             position: relative;
@@ -125,7 +129,7 @@
             right: 0;
             bottom: -15px;
             font-size: 1.5em;
-            color: var(--highlight-color);
+            color: var(--secondary-color);
         }
         
         .card {
@@ -158,17 +162,20 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+            background-color: var(--accent-color);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: center;
         }
         
         .memory:hover {
             transform: scale(1.05);
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        }
-        
-        .memory img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
         }
         
         .memory-caption {
@@ -197,7 +204,7 @@
             content: '';
             position: absolute;
             width: 8px;
-            background-color: var(--highlight-color);
+            background-color: var(--secondary-color);
             top: 0;
             bottom: 0;
             left: 50%;
@@ -233,7 +240,7 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background-color: var(--accent-color);
+            background-color: var(--secondary-color);
             border-radius: 50%;
             top: 15px;
         }
@@ -267,9 +274,9 @@
         }
         
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(8deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
         
         @keyframes pulse {
@@ -290,13 +297,14 @@
         .hidden-message {
             display: none;
             position: absolute;
-            background-color: var(--accent-color);
+            background-color: var(--secondary-color);
             color: var(--dark-color);
             padding: 10px;
             border-radius: 8px;
             z-index: 10;
             width: 200px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-weight: bold;
         }
         
         .photo-collage {
@@ -306,27 +314,34 @@
             margin: 40px 0;
         }
         
-        .photo-collage img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .photo-collage div {
+            background-color: var(--accent-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1/1;
             border-radius: 8px;
+            font-weight: bold;
             transition: transform 0.3s ease;
         }
         
-        .photo-collage img:hover {
+        .photo-collage div:hover {
             transform: scale(1.1);
             z-index: 5;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
         }
         
         .quote {
             font-style: italic;
             font-size: 1.2em;
             padding: 20px;
-            background-color: rgba(241, 196, 15, 0.2);
-            border-left: 8px solid var(--accent-color);
+            background-color: rgba(50, 205, 50, 0.2);
+            border-left: 8px solid var(--secondary-color);
             margin: 30px 0;
             position: relative;
+            border-radius: 0 8px 8px 0;
         }
         
         .quote:before, .quote:after {
@@ -346,6 +361,28 @@
             position: absolute;
             bottom: -20px;
             right: 8px;
+        }
+        
+        .eight-facts {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+            margin: 40px 0;
+        }
+        
+        .eight-fact {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .eight-fact:hover {
+            transform: scale(1.05);
+            background: var(--secondary-color);
+            color: var(--dark-color);
         }
         
         @media (max-width: 768px) {
@@ -371,7 +408,7 @@
                 left: 18px !important;
             }
             
-            .photo-collage {
+            .photo-collage, .eight-facts {
                 grid-template-columns: repeat(4, 1fr);
             }
         }
@@ -381,7 +418,7 @@
                 width: 100%;
             }
             
-            .photo-collage {
+            .photo-collage, .eight-facts {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -389,6 +426,8 @@
 </head>
 <body>
     <header>
+        <div class="number-8">8</div>
+        <div class="number-8">8</div>
         <div class="number-8">8</div>
         <div class="number-8">8</div>
         <div class="number-8">8</div>
@@ -415,6 +454,17 @@
                 <p>Dad, you're not just my father - you're my hero, my safe harbor, and my greatest role model. There are countless reasons why you're so special to me, but these are the ones that shine brightest in my heart:</p>
             </div>
             
+            <div class="eight-facts">
+                <div class="eight-fact">Unconditional Love</div>
+                <div class="eight-fact">Endless Patience</div>
+                <div class="eight-fact">Quiet Strength</div>
+                <div class="eight-fact">Wise Guidance</div>
+                <div class="eight-fact">Generous Spirit</div>
+                <div class="eight-fact">Infectious Laugh</div>
+                <div class="eight-fact">Steadfast Support</div>
+                <div class="eight-fact">Unshakable Integrity</div>
+            </div>
+            
             <div class="card interactive-element">
                 <h3>Your Unconditional Love</h3>
                 <p>From my first breath to this very moment, you've loved me without limits or conditions. Your love has been my constant, a steady flame that's warmed me through every season of life.</p>
@@ -423,28 +473,19 @@
                 </div>
             </div>
             
-            <div class="card interactive-element">
-                <h3>Your Wisdom</h3>
-                <p>You've taught me that true strength comes from kindness, that integrity is priceless, and that perseverance can move mountains. Your words echo in my mind during every important decision I make.</p>
-                <div class="hidden-message">
-                    Your wisdom has been the compass guiding me through life's winding paths.
-                </div>
-            </div>
-            
             <div class="quote">
                 "A father's love is the foundation upon which a child builds their world. You've given me the strongest foundation imaginable, and for that, I am eternally grateful."
             </div>
             
             <div class="photo-collage">
-                <!-- These would be replaced with actual photos of you and your dad -->
-                <img src="https://via.placeholder.com/150?text=Memory+1" alt="Special moment with dad">
-                <img src="https://via.placeholder.com/150?text=Memory+2" alt="Special moment with dad">
-                <img src="https://via.placeholder.com/150?text=Memory+3" alt="Special moment with dad">
-                <img src="https://via.placeholder.com/150?text=Memory+4" alt="Special moment with dad">
-                <img src="https://via.placeholder.com/150?text=Memory+5" alt="Special moment with dad">
-                <img src="https://via.placeholder.com/150?text=Memory+6" alt="Special moment with dad">
-                <img src="https://via.placeholder.com/150?text=Memory+7" alt="Special moment with dad">
-                <img src="https://via.placeholder.com/150?text=Memory+8" alt="Special moment with dad">
+                <div>Your<br>Smile</div>
+                <div>Your<br>Wisdom</div>
+                <div>Your<br>Hugs</div>
+                <div>Your<br>Laugh</div>
+                <div>Your<br>Advice</div>
+                <div>Your<br>Strength</div>
+                <div>Your<br>Patience</div>
+                <div>Your<br>Love</div>
             </div>
         </section>
         
@@ -504,13 +545,16 @@
             </div>
             
             <div class="card">
-                <h3>Your Enduring Lessons</h3>
+                <h3>8 Enduring Lessons You Taught Me</h3>
                 <ul>
-                    <li><strong>Work Ethic:</strong> You taught me that excellence comes from doing things right, not just getting them done.</li>
-                    <li><strong>Integrity:</strong> You showed me that character is what you do when no one is watching.</li>
-                    <li><strong>Resilience:</strong> Through your example, I learned that setbacks are temporary but perseverance is forever.</li>
-                    <li><strong>Compassion:</strong> You demonstrated that true strength includes kindness and empathy.</li>
-                    <li><strong>Wisdom:</strong> Your thoughtful approach to decisions taught me the value of patience and perspective.</li>
+                    <li><strong>Work Ethic:</strong> Excellence comes from doing things right, not just getting them done</li>
+                    <li><strong>Integrity:</strong> Character is what you do when no one is watching</li>
+                    <li><strong>Resilience:</strong> Setbacks are temporary but perseverance is forever</li>
+                    <li><strong>Compassion:</strong> True strength includes kindness and empathy</li>
+                    <li><strong>Wisdom:</strong> The value of patience and thoughtful decisions</li>
+                    <li><strong>Generosity:</strong> Giving without expectation of return</li>
+                    <li><strong>Humility:</strong> Staying grounded despite achievements</li>
+                    <li><strong>Joy:</strong> Finding happiness in simple moments</li>
                 </ul>
             </div>
             
@@ -520,35 +564,27 @@
             
             <div class="memory-box">
                 <div class="memory">
-                    <img src="https://via.placeholder.com/300x200?text=Life+Lesson+1" alt="Dad teaching me">
+                    Leading by Example
                     <div class="memory-caption">
-                        <h4>Leading by Example</h4>
+                        <h4>Your Actions Spoke Loudest</h4>
                         <p>You never just told me how to live - you showed me through your actions.</p>
                     </div>
                 </div>
                 
                 <div class="memory">
-                    <img src="https://via.placeholder.com/300x200?text=Life+Lesson+2" alt="Dad supporting me">
+                    Unwavering Support
                     <div class="memory-caption">
-                        <h4>Unwavering Support</h4>
+                        <h4>My Greatest Cheerleader</h4>
                         <p>Your belief in me gave me the courage to believe in myself.</p>
                     </div>
                 </div>
                 
                 <div class="memory">
-                    <img src="https://via.placeholder.com/300x200?text=Life+Lesson+3" alt="Dad laughing with me">
+                    Shared Laughter
                     <div class="memory-caption">
                         <h4>Joy in the Journey</h4>
                         <p>You taught me that life's greatest treasures are simple moments shared.</p>
                     </div>
-                </div>
-            </div>
-            
-            <div class="card interactive-element">
-                <h3>My Promise to You</h3>
-                <p>Because of all you've given me, I promise to honor your legacy by living with the same integrity, compassion, and dedication you've shown throughout your life. I'll carry your wisdom forward, sharing it with others as you've shared it with me.</p>
-                <div class="hidden-message">
-                    Just as the number 8 symbolizes balance and infinity, I will strive to balance all you've taught me and pass it forward infinitely.
                 </div>
             </div>
         </section>
@@ -556,9 +592,9 @@
     
     <footer>
         <div class="container">
-            <p>Created with <span class="heart">♥</span> for the world's greatest dad</p>
-            <p>Your favorite number: <span style="font-size: 1.8em;">8</span></p>
-            <p>© <span id="year"></span> - A Grateful Child's Tribute</p>
+            <p>Created with <span class="heart">♥</span> for the world's greatest dad | Your favorite number: <span style="font-size: 1.8em;">8</span></p>
+            <p>© <span id="year"></span> | Made with love by your child</p>
+            <p style="font-size:0.8em; opacity:0.7;">Website crafted by DeepSeek Chat</p>
         </div>
     </footer>
     
@@ -569,6 +605,11 @@
                 page.classList.remove('active');
             });
             document.getElementById(pageId).classList.add('active');
+            
+            // Create 8 pieces of confetti
+            for (let i = 0; i < 8; i++) {
+                setTimeout(createConfetti, i * 150);
+            }
         }
         
         // Set current year in footer
@@ -579,25 +620,30 @@
             element.addEventListener('click', function() {
                 const message = this.querySelector('.hidden-message');
                 message.style.display = message.style.display === 'block' ? 'none' : 'block';
+                
+                // Create 8 pieces of confetti for this interaction
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(createConfetti, i * 150);
+                }
             });
         });
         
-        // Confetti effect for special interactions
+        // Confetti effect
         function createConfetti() {
             const confetti = document.createElement('div');
+            confetti.innerHTML = '8';
             confetti.style.position = 'fixed';
-            confetti.style.width = '8px';
-            confetti.style.height = '8px';
-            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            confetti.style.borderRadius = '50%';
+            confetti.style.fontSize = `${Math.random() * 16 + 8}px`;
+            confetti.style.color = `hsl(${Math.random() * 60 + 270}, 100%, ${Math.random() * 30 + 50}%)`;
             confetti.style.left = `${Math.random() * 100}vw`;
-            confetti.style.top = '-10px';
+            confetti.style.top = '-20px';
             confetti.style.zIndex = '1000';
+            confetti.style.fontWeight = 'bold';
             document.body.appendChild(confetti);
             
             const animation = confetti.animate([
-                { top: '-10px', opacity: 1 },
-                { top: `${Math.random() * 100 + 50}vh`, opacity: 0 }
+                { top: '-20px', opacity: 1, transform: 'rotate(0deg)' },
+                { top: `${Math.random() * 100 + 50}vh`, opacity: 0, transform: 'rotate(360deg)' }
             ], {
                 duration: Math.random() * 3000 + 2000,
                 easing: 'cubic-bezier(0.1, 0.8, 0.9, 1)'
@@ -606,8 +652,8 @@
             animation.onfinish = () => confetti.remove();
         }
         
-        // Add confetti when clicking on certain elements
-        document.querySelectorAll('nav a, .memory, .quote').forEach(element => {
+        // Add confetti when clicking on memories
+        document.querySelectorAll('.memory, .eight-fact').forEach(element => {
             element.addEventListener('click', function() {
                 for (let i = 0; i < 8; i++) {
                     setTimeout(createConfetti, i * 200);
