@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Father's Day</title>
+    <title>To the Father I'm Thankful For</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -31,6 +31,28 @@
             min-height: 100vh;
             overflow-x: hidden;
             line-height: 1.6;
+            position: relative;
+        }
+        
+        /* Background 8s Pattern */
+        .bg-8s {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            pointer-events: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 120px;
+            font-weight: 700;
+            color: var(--purple);
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-auto-rows: 200px;
+            line-height: 200px;
+            text-align: center;
         }
         
         /* Countdown Overlay */
@@ -98,6 +120,11 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 1s ease;
+            background-color: rgba(255,255,255,0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
         }
         
         .container.visible {
@@ -111,56 +138,108 @@
             position: relative;
         }
         
-        .number-8 {
+        .header-title {
             font-family: 'Playfair Display', serif;
-            font-size: 8rem;
-            font-weight: 700;
-            color: var(--purple-dark);
-            margin: 1rem 0;
-            display: inline-block;
-            position: relative;
-            transition: all 0.4s ease;
-        }
-        
-        .number-8::before {
-            content: '';
-            position: absolute;
-            top: -15px;
-            left: -15px;
-            right: -15px;
-            bottom: -15px;
-            border: 3px solid var(--lime);
-            border-radius: 50%;
-            opacity: 0;
-            transition: all 0.4s ease;
-        }
-        
-        .number-8:hover {
-            color: var(--lime-dark);
-        }
-        
-        .number-8:hover::before {
-            opacity: 1;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-        }
-        
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
             color: var(--purple-dark);
+            position: relative;
+            display: inline-block;
         }
         
-        /* Overlay Menu */
+        .header-title::before, .header-title::after {
+            content: '8';
+            position: absolute;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--lime-dark);
+            opacity: 0.7;
+        }
+        
+        .header-title::before {
+            top: -20px;
+            left: -30px;
+        }
+        
+        .header-title::after {
+            bottom: -20px;
+            right: -30px;
+        }
+        
+        .header-subtitle {
+            font-size: 1.5rem;
+            color: var(--purple);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+        
+        /* Homepage Content */
+        .home-content {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .interactive-points {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .point-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            width: 220px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .point-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .point-card::before {
+            content: '8';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            font-weight: 700;
+            color: rgba(106, 13, 173, 0.05);
+            z-index: 0;
+        }
+        
+        .point-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--purple-dark);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .point-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--lime-dark);
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Menu System */
         .menu-toggle {
             position: fixed;
             top: 30px;
             right: 30px;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: var(--purple-dark);
             border-radius: 50%;
             display: flex;
@@ -169,7 +248,7 @@
             align-items: center;
             cursor: pointer;
             z-index: 1001;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
         }
         
@@ -180,15 +259,16 @@
         
         .menu-toggle span {
             display: block;
-            width: 24px;
-            height: 2px;
+            width: 28px;
+            height: 3px;
             background: white;
-            margin: 4px 0;
+            margin: 5px 0;
             transition: all 0.3s ease;
+            border-radius: 3px;
         }
         
         .menu-toggle.active span:nth-child(1) {
-            transform: translateY(6px) rotate(45deg);
+            transform: translateY(8px) rotate(45deg);
         }
         
         .menu-toggle.active span:nth-child(2) {
@@ -196,7 +276,7 @@
         }
         
         .menu-toggle.active span:nth-child(3) {
-            transform: translateY(-6px) rotate(-45deg);
+            transform: translateY(-8px) rotate(-45deg);
         }
         
         .menu-overlay {
@@ -237,12 +317,30 @@
             font-weight: 600;
             text-decoration: none;
             position: relative;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.5rem;
             transition: all 0.3s ease;
             display: inline-block;
         }
         
         .menu-link::before {
+            content: '8';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--lime);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-link:hover::before {
+            opacity: 1;
+            left: -10px;
+        }
+        
+        .menu-link::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -259,7 +357,7 @@
             color: var(--lime);
         }
         
-        .menu-link:hover::before {
+        .menu-link:hover::after {
             transform: scaleX(1);
             transform-origin: left;
         }
@@ -328,6 +426,19 @@
             color: var(--gray-dark);
             font-size: 1.1rem;
             margin-top: 2rem;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '8';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(106, 13, 173, 0.05);
+            z-index: 0;
         }
         
         .signature {
@@ -336,20 +447,87 @@
             margin-top: 1rem;
             display: inline-block;
             position: relative;
+            z-index: 1;
         }
         
-        .signature::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--lime), var(--purple));
+        .heart {
+            color: #ff3366;
+            display: inline-block;
+            animation: heartBeat 1.5s infinite;
+            margin-left: 5px;
+        }
+        
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.3); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.2); }
+        }
+        
+        /* Interactive Features */
+        .action-btn {
+            background: linear-gradient(135deg, var(--lime), var(--lime-dark));
+            color: var(--purple-dark);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .action-btn:active {
+            transform: translateY(0);
+        }
+        
+        .hidden-message {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease;
+            background: rgba(255,255,255,0.8);
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        
+        .hidden-message.show {
+            max-height: 500px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.5rem;
+            }
+            
+            .header-title::before, .header-title::after {
+                font-size: 1.5rem;
+            }
+            
+            .header-title::before {
+                top: -15px;
+                left: -20px;
+            }
+            
+            .header-title::after {
+                bottom: -15px;
+                right: -20px;
+            }
+            
+            .header-subtitle {
+                font-size: 1.2rem;
+            }
+            
             .countdown-title {
                 font-size: 2rem;
             }
@@ -358,16 +536,13 @@
                 font-size: 5rem;
             }
             
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .number-8 {
-                font-size: 6rem;
-            }
-            
             .menu-link {
                 font-size: 2rem;
+            }
+            
+            .point-card {
+                width: 100%;
+                max-width: 280px;
             }
             
             .content-section {
@@ -381,6 +556,9 @@
     </style>
 </head>
 <body>
+    <!-- Background 8s Pattern -->
+    <div class="bg-8s" id="bg8s"></div>
+    
     <!-- Countdown Overlay -->
     <div class="countdown-overlay">
         <div class="countdown-content">
@@ -399,6 +577,7 @@
     <!-- Overlay Menu -->
     <div class="menu-overlay" id="menuOverlay">
         <ul class="menu-list">
+            <li class="menu-item"><a href="#" class="menu-link" data-target="home">Home</a></li>
             <li class="menu-item"><a href="#" class="menu-link" data-target="gratitude">My Gratitude</a></li>
             <li class="menu-item"><a href="#" class="menu-link" data-target="lessons">Your Lessons</a></li>
             <li class="menu-item"><a href="#" class="menu-link" data-target="inspiration">My Inspiration</a></li>
@@ -408,17 +587,63 @@
     
     <!-- Main Content -->
     <div class="container" id="mainContainer">
-        <header>
-            <div class="number-8">8</div>
-            <h1>Happy Father's Day</h1>
-        </header>
+        <!-- Home Section -->
+        <div id="home" class="content-section active">
+            <header>
+                <h1 class="header-title">To the father</h1>
+                <div class="header-subtitle">That I will always be thankful for</div>
+            </header>
+            
+            <div class="home-content">
+                <p>Dad, this is my tribute to you - the man who has shaped my life in countless ways.</p>
+                
+                <div class="interactive-points">
+                    <div class="point-card" onclick="incrementPoint(this)">
+                        <div class="point-title">How Encouraging</div>
+                        <div class="point-value">0</div>
+                    </div>
+                    
+                    <div class="point-card" onclick="incrementPoint(this)">
+                        <div class="point-title">How Helpful</div>
+                        <div class="point-value">0</div>
+                    </div>
+                    
+                    <div class="point-card" onclick="incrementPoint(this)">
+                        <div class="point-title">How Humble</div>
+                        <div class="point-value">0</div>
+                    </div>
+                    
+                    <div class="point-card" onclick="incrementPoint(this)">
+                        <div class="point-title">How Grounded</div>
+                        <div class="point-value">0</div>
+                    </div>
+                    
+                    <div class="point-card" onclick="incrementPoint(this)">
+                        <div class="point-title">How Smart</div>
+                        <div class="point-value">0</div>
+                    </div>
+                </div>
+                
+                <button class="action-btn" onclick="showSpecialMessage()">Reveal Special Message</button>
+                
+                <div class="hidden-message" id="specialMessage">
+                    <p>Dad, every click on these qualities represents a moment you've demonstrated them. The numbers could never be high enough to capture all the times you've shown these wonderful traits.</p>
+                    <button class="action-btn" onclick="resetPoints()">Reset Counters</button>
+                </div>
+            </div>
+        </div>
         
-        <!-- Content Sections -->
+        <!-- Other Content Sections -->
         <div id="gratitude" class="content-section">
             <h2>My Deepest Gratitude</h2>
             <p><span class="highlight">Dad, I want to take a moment to express my heartfelt gratitude</span> for the invaluable lessons you've taught me throughout my life. Your wisdom has been the foundation of my growth, helping me become the person I am today.</p>
             <p>From childhood, you've shown me the importance of <span class="highlight">hard work, integrity, and perseverance</span>. These principles have guided my decisions and shaped my character. Your nurturing love created the perfect environment for me to flourish.</p>
             <p>I often find myself following your <span class="highlight">thoughtful approach to decision-making</span>. Your ability to carefully consider options and choose the best path is something I deeply admire. Your attention to detail in everything you do has taught me to strive for excellence.</p>
+            
+            <button class="action-btn" onclick="showGratitudeMessage()">What I Appreciate Most</button>
+            <div class="hidden-message" id="gratitudeMessage">
+                <p>Your unwavering support and belief in me, even when I doubted myself, is what I cherish most. You've always been my safe harbor in life's storms.</p>
+            </div>
         </div>
         
         <div id="lessons" class="content-section">
@@ -426,6 +651,11 @@
             <p>Every moment with you is precious. You're my <span class="highlight">safe haven</span> - a constant source of comfort and strength. Whether we're having deep conversations or enjoying quiet moments together, these experiences have left a permanent mark on my heart.</p>
             <p>You've taught me how to face challenges with <span class="highlight">grace and determination</span>. Your resilience during difficult times has shown me what true strength looks like. Your kindness and dedication to our family are qualities I strive to emulate.</p>
             <p>Thank you for knowing exactly what I needed - whether it was being <span class="highlight">playful like a child, supportive like a friend, or guiding like a parent</span>. You've mastered all these roles perfectly.</p>
+            
+            <button class="action-btn" onclick="showLessonMessage()">Most Valuable Lesson</button>
+            <div class="hidden-message" id="lessonMessage">
+                <p>You taught me that true strength comes from compassion, and that success means nothing without integrity. This lesson guides me every day.</p>
+            </div>
         </div>
         
         <div id="inspiration" class="content-section">
@@ -433,6 +663,11 @@
             <p>Dad, you inspire me in ways you might not realize. Your <span class="highlight">belief in me</span>, especially during moments of self-doubt, has given me strength to pursue my dreams. You've shown me that with dedication, anything is possible.</p>
             <p>I treasure all the memories we've created - the <span class="highlight">laughter we've shared, the lessons you've taught</span> (including those colorful words for special situations!), and the love we've cultivated. These are treasures I'll always cherish.</p>
             <p>Your achievements and the example you've set remind me that I too can <span class="highlight">make a difference</span>. You've taught me the value of kindness, compassion, and hard work - lessons I carry with me every day.</p>
+            
+            <button class="action-btn" onclick="showInspirationMessage()">When You Inspired Me Most</button>
+            <div class="hidden-message" id="inspirationMessage">
+                <p>Watching you overcome obstacles with quiet determination showed me what real perseverance looks like. Those moments fuel me when I face my own challenges.</p>
+            </div>
         </div>
         
         <div id="celebration" class="content-section">
@@ -440,15 +675,30 @@
             <p>Today, I celebrate you - not just as my father, but as my <span class="highlight">confidant, hero, and best friend</span>. Your influence is woven into every part of who I am, and for that, I'm eternally grateful.</p>
             <p>You're the <span class="highlight">best man I know</span>. Hopefully one day I'll make you as proud of me as I am of you. Thank you for being my guiding light and role model.</p>
             <p>Happy Father's Day, Dad! May your day be filled with <span class="highlight">joy, love, and the knowledge that you're cherished beyond measure</span>. My life is infinitely better because you're in it.</p>
+            
+            <button class="action-btn" onclick="celebrate()">Launch Celebration!</button>
+            <div class="hidden-message" id="celebrationMessage">
+                <p>You deserve all the happiness in the world. Thank you for everything, today and always!</p>
+            </div>
         </div>
         
         <footer>
             <p>With all my love,</p>
-            <div class="signature">Nigel</div>
+            <div class="signature">Nigel <span class="heart">♥</span></div>
         </footer>
     </div>
     
     <script>
+        // Create background 8s pattern
+        const bg8s = document.getElementById('bg8s');
+        for (let i = 0; i < 50; i++) {
+            const eight = document.createElement('div');
+            eight.textContent = '8';
+            eight.style.opacity = Math.random() * 0.1 + 0.03;
+            eight.style.transform = `rotate(${Math.random() * 30 - 15}deg) scale(${Math.random() * 0.5 + 0.8})`;
+            bg8s.appendChild(eight);
+        }
+        
         // Enhanced Countdown Timer (slower)
         const countdownOverlay = document.querySelector('.countdown-overlay');
         const countdownElement = document.getElementById('countdown');
@@ -473,7 +723,6 @@
                     setTimeout(() => {
                         countdownOverlay.style.display = 'none';
                         document.getElementById('mainContainer').classList.add('visible');
-                        document.getElementById('gratitude').classList.add('active');
                     }, 1000);
                 }, 500);
             }
@@ -520,36 +769,91 @@
             });
         });
         
-        // Number 8 Interaction
-        const number8 = document.querySelector('.number-8');
-        
-        number8.addEventListener('mouseenter', () => {
-            number8.style.transform = 'scale(1.1) rotate(5deg)';
-        });
-        
-        number8.addEventListener('mouseleave', () => {
-            number8.style.transform = 'scale(1) rotate(0)';
-        });
-        
-        number8.addEventListener('click', () => {
-            number8.style.animation = 'none';
-            setTimeout(() => {
-                number8.style.animation = 'pulse 2s infinite';
-            }, 10);
-        });
-        
-        // Highlight effects
-        const highlights = document.querySelectorAll('.highlight');
-        
-        highlights.forEach(highlight => {
-            highlight.addEventListener('mouseenter', () => {
-                highlight.style.transform = 'translateY(-2px)';
-            });
+        // Interactive Points System
+        function incrementPoint(card) {
+            const valueElement = card.querySelector('.point-value');
+            let value = parseInt(valueElement.textContent);
+            value++;
+            valueElement.textContent = value;
             
-            highlight.addEventListener('mouseleave', () => {
-                highlight.style.transform = 'translateY(0)';
+            // Add animation
+            card.style.transform = 'translateY(-10px) scale(1.05)';
+            setTimeout(() => {
+                card.style.transform = 'translateY(-5px) scale(1.02)';
+            }, 150);
+            
+            // Change color after certain counts
+            if (value === 8) {
+                card.style.backgroundColor = 'rgba(181, 232, 83, 0.1)';
+            } else if (value === 18) {
+                card.style.backgroundColor = 'rgba(106, 13, 173, 0.1)';
+            }
+        }
+        
+        function resetPoints() {
+            document.querySelectorAll('.point-value').forEach(el => {
+                el.textContent = '0';
             });
-        });
+            document.querySelectorAll('.point-card').forEach(card => {
+                card.style.backgroundColor = 'white';
+            });
+        }
+        
+        // Interactive Message Functions
+        function showSpecialMessage() {
+            const message = document.getElementById('specialMessage');
+            message.classList.toggle('show');
+        }
+        
+        function showGratitudeMessage() {
+            const message = document.getElementById('gratitudeMessage');
+            message.classList.toggle('show');
+        }
+        
+        function showLessonMessage() {
+            const message = document.getElementById('lessonMessage');
+            message.classList.toggle('show');
+        }
+        
+        function showInspirationMessage() {
+            const message = document.getElementById('inspirationMessage');
+            message.classList.toggle('show');
+        }
+        
+        // Celebration Function
+        function celebrate() {
+            const message = document.getElementById('celebrationMessage');
+            message.classList.toggle('show');
+            
+            // Create confetti effect
+            const colors = ['#B5E853', '#6A0DAD', '#FFD700', '#FF3366', '#FFFFFF'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = '50%';
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.top = '-10px';
+                confetti.style.zIndex = '1000';
+                confetti.style.opacity = '0.8';
+                document.body.appendChild(confetti);
+                
+                const animation = confetti.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 0.8 },
+                    { transform: `translateY(${window.innerHeight + 10}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(0.1, 0.8, 0.2, 1)'
+                });
+                
+                animation.onfinish = () => {
+                    confetti.remove();
+                };
+            }
+        }
     </script>
 </body>
 </html>
