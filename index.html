@@ -14,65 +14,81 @@
             --highlight-color: #800080;
         }
         
-        body {
-            font-family: 'Arial', sans-serif;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
             background-color: var(--light-color);
             color: var(--dark-color);
-            transition: all 0.5s ease;
+            line-height: 1.6;
+            font-size: 16px;
+            overflow-x: hidden;
         }
         
         .container {
-            width: 80%;
+            width: 95%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 10px;
         }
         
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
             color: white;
-            padding: 40px 0;
+            padding: 30px 0;
             text-align: center;
-            border-bottom: 8px solid var(--secondary-color);
+            border-bottom: 5px solid var(--secondary-color);
             position: relative;
             overflow: hidden;
         }
         
         header h1 {
-            font-size: 3.5em;
-            margin: 0;
+            font-size: 2em;
+            margin: 0 0 10px 0;
             animation: fadeIn 2s;
-            text-shadow: 0 0 8px var(--secondary-color);
+            text-shadow: 0 0 10px var(--secondary-color);
+            position: relative;
+            z-index: 1;
         }
         
         header p {
-            font-size: 1.5em;
+            font-size: 1.1em;
             opacity: 0.9;
+            margin: 0;
+            position: relative;
+            z-index: 1;
         }
         
         .number-8 {
             position: absolute;
-            font-size: 8em;
-            opacity: 0.15;
+            font-size: 4em;
+            opacity: 0.2;
             z-index: 0;
             animation: float 8s infinite ease-in-out;
             color: var(--secondary-color);
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255,255,255,0.3);
         }
         
-        .number-8:nth-child(1) { top: 20%; left: 10%; }
-        .number-8:nth-child(2) { top: 60%; right: 15%; }
-        .number-8:nth-child(3) { bottom: 10%; left: 45%; }
-        .number-8:nth-child(4) { top: 30%; right: 25%; }
-        .number-8:nth-child(5) { bottom: 30%; left: 25%; }
+        .number-8:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .number-8:nth-child(2) { top: 50%; right: 10%; animation-delay: 1s; }
+        .number-8:nth-child(3) { bottom: 5%; left: 40%; animation-delay: 2s; }
+        .number-8:nth-child(4) { top: 25%; right: 20%; animation-delay: 3s; }
+        .number-8:nth-child(5) { bottom: 25%; left: 20%; animation-delay: 4s; }
+        .number-8:nth-child(6) { top: 70%; left: 15%; animation-delay: 5s; }
+        .number-8:nth-child(7) { bottom: 60%; right: 25%; animation-delay: 6s; }
         
         nav {
             background-color: var(--primary-color);
-            padding: 15px 0;
+            padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
         nav ul {
@@ -81,33 +97,37 @@
             list-style: none;
             padding: 0;
             margin: 0;
+            flex-wrap: wrap;
         }
         
         nav li {
-            margin: 0 15px;
+            margin: 5px;
         }
         
         nav a {
             color: white;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.2em;
+            font-size: 0.9em;
             padding: 8px 16px;
-            border-radius: 8px;
+            border-radius: 5px;
             transition: all 0.3s ease;
+            display: inline-block;
+            background-color: rgba(0,0,0,0.2);
         }
         
-        nav a:hover {
+        nav a:hover, nav a:focus {
             background-color: var(--secondary-color);
             color: var(--dark-color);
             transform: scale(1.1);
+            box-shadow: 0 0 15px var(--secondary-color);
         }
         
         .page {
-            min-height: 80vh;
-            padding: 40px 0;
+            min-height: calc(100vh - 150px);
+            padding: 20px 0;
             display: none;
-            animation: fadeIn 1s;
+            animation: fadeIn 0.5s;
         }
         
         .page.active {
@@ -116,10 +136,10 @@
         
         h2 {
             color: var(--primary-color);
-            font-size: 2.5em;
-            border-bottom: 3px solid var(--secondary-color);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+            font-size: 1.5em;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
             position: relative;
         }
         
@@ -130,52 +150,70 @@
             bottom: -15px;
             font-size: 1.5em;
             color: var(--secondary-color);
+            animation: pulse 2s infinite;
         }
         
         .card {
             background-color: white;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding: 30px;
-            margin-bottom: 30px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
             border-left: 8px solid var(--highlight-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:before {
+            content: "8";
+            position: absolute;
+            bottom: -20px;
+            right: -10px;
+            font-size: 6em;
+            color: rgba(75, 0, 130, 0.05);
+            z-index: 0;
         }
         
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card-content {
+            position: relative;
+            z-index: 1;
         }
         
         .memory-box {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            margin-top: 40px;
+            margin-top: 20px;
         }
         
         .memory {
-            width: calc(33.333% - 20px);
-            margin-bottom: 30px;
+            width: 100%;
+            margin-bottom: 15px;
             position: relative;
             overflow: hidden;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             background-color: var(--accent-color);
-            height: 200px;
+            height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 1.2em;
+            font-size: 1.1em;
             text-align: center;
         }
         
-        .memory:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        .memory:hover, .memory:focus {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         
         .memory-caption {
@@ -185,85 +223,83 @@
             right: 0;
             background: rgba(0,0,0,0.7);
             color: white;
-            padding: 15px;
+            padding: 10px;
             transform: translateY(100%);
             transition: transform 0.3s ease;
+            font-size: 0.9em;
         }
         
-        .memory:hover .memory-caption {
+        .memory:hover .memory-caption, .memory:focus .memory-caption {
             transform: translateY(0);
         }
         
         .timeline {
             position: relative;
             max-width: 800px;
-            margin: 40px auto;
+            margin: 20px auto;
         }
         
         .timeline:before {
             content: '';
             position: absolute;
-            width: 8px;
+            width: 5px;
             background-color: var(--secondary-color);
             top: 0;
             bottom: 0;
-            left: 50%;
-            margin-left: -4px;
-            border-radius: 8px;
+            left: 20px;
+            border-radius: 5px;
         }
         
         .timeline-item {
-            padding: 10px 40px;
+            padding: 10px 0 10px 40px;
             position: relative;
-            width: 50%;
+            width: 100%;
             box-sizing: border-box;
         }
         
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-        
         .timeline-content {
-            padding: 20px;
+            padding: 15px;
             background-color: white;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             position: relative;
         }
         
         .timeline-content:after {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
             background-color: var(--secondary-color);
             border-radius: 50%;
             top: 15px;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content:after {
-            right: -10px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content:after {
-            left: -10px;
+            left: -7px;
         }
         
         footer {
             background-color: var(--dark-color);
             color: white;
             text-align: center;
-            padding: 30px 0;
-            margin-top: 40px;
+            padding: 20px 0;
+            margin-top: 30px;
+            font-size: 0.9em;
+            position: relative;
+        }
+        
+        footer:before {
+            content: "8";
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3em;
+            color: var(--secondary-color);
+            opacity: 0.2;
         }
         
         .heart {
             color: var(--secondary-color);
-            font-size: 1.5em;
+            font-size: 1.2em;
             animation: pulse 1.5s infinite;
             display: inline-block;
         }
@@ -275,14 +311,20 @@
         
         @keyframes float {
             0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(8deg); }
+            50% { transform: translateY(-15px) rotate(8deg); }
             100% { transform: translateY(0px) rotate(0deg); }
         }
         
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.3); }
+            50% { transform: scale(1.2); }
             100% { transform: scale(1); }
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px var(--secondary-color); }
+            50% { text-shadow: 0 0 20px var(--secondary-color); }
+            100% { text-shadow: 0 0 5px var(--secondary-color); }
         }
         
         .interactive-element {
@@ -290,7 +332,8 @@
             position: relative;
         }
         
-        .interactive-element:hover .hidden-message {
+        .interactive-element:hover .hidden-message, 
+        .interactive-element:focus .hidden-message {
             display: block;
         }
         
@@ -300,18 +343,24 @@
             background-color: var(--secondary-color);
             color: var(--dark-color);
             padding: 10px;
-            border-radius: 8px;
+            border-radius: 5px;
             z-index: 10;
-            width: 200px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            width: 180px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             font-weight: bold;
+            font-size: 0.9em;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 10px;
+            animation: glow 2s infinite;
         }
         
         .photo-collage {
             display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            grid-gap: 8px;
-            margin: 40px 0;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin: 20px 0;
         }
         
         .photo-collage div {
@@ -323,30 +372,35 @@
             aspect-ratio: 1/1;
             border-radius: 8px;
             font-weight: bold;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9em;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         
-        .photo-collage div:hover {
-            transform: scale(1.1);
-            z-index: 5;
+        .photo-collage div:hover, .photo-collage div:focus {
+            transform: scale(1.05);
             background-color: var(--secondary-color);
             color: var(--dark-color);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         
         .quote {
             font-style: italic;
-            font-size: 1.2em;
-            padding: 20px;
+            font-size: 1em;
+            padding: 15px;
             background-color: rgba(50, 205, 50, 0.2);
-            border-left: 8px solid var(--secondary-color);
-            margin: 30px 0;
+            border-left: 5px solid var(--secondary-color);
+            margin: 20px 0;
             position: relative;
             border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
         
         .quote:before, .quote:after {
             content: '"';
-            font-size: 2em;
+            font-size: 1.5em;
             color: var(--secondary-color);
             opacity: 0.5;
         }
@@ -354,72 +408,142 @@
         .quote:before {
             position: absolute;
             top: 0;
-            left: 8px;
+            left: 5px;
         }
         
         .quote:after {
             position: absolute;
-            bottom: -20px;
-            right: 8px;
+            bottom: -15px;
+            right: 5px;
         }
         
         .eight-facts {
             display: grid;
-            grid-template-columns: repeat(8, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 8px;
-            margin: 40px 0;
+            margin: 20px 0;
         }
         
         .eight-fact {
             background: var(--primary-color);
             color: white;
-            padding: 15px;
+            padding: 12px;
             border-radius: 8px;
             text-align: center;
             transition: all 0.3s ease;
+            font-size: 0.9em;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         
-        .eight-fact:hover {
+        .eight-fact:hover, .eight-fact:focus {
             transform: scale(1.05);
             background: var(--secondary-color);
             color: var(--dark-color);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         
-        @media (max-width: 768px) {
+        .counter-container {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .counter-container:before {
+            content: "8";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10em;
+            opacity: 0.1;
+            color: white;
+        }
+        
+        .counter-title {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .counter {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            text-shadow: 0 0 10px rgba(50, 205, 50, 0.5);
+            position: relative;
+        }
+        
+        .counter-subtitle {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-top: 10px;
+            position: relative;
+        }
+        
+        /* Larger screens */
+        @media (min-width: 768px) {
+            .container {
+                width: 85%;
+                padding: 20px;
+            }
+            
+            header {
+                padding: 50px 0;
+            }
+            
+            header h1 {
+                font-size: 3em;
+                margin-bottom: 15px;
+            }
+            
+            header p {
+                font-size: 1.3em;
+            }
+            
+            .number-8 {
+                font-size: 6em;
+            }
+            
+            nav a {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+            
+            h2 {
+                font-size: 2em;
+            }
+            
             .memory {
-                width: calc(50% - 15px);
-            }
-            
-            .timeline:before {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-            
-            .timeline-content:after {
-                left: 18px !important;
+                width: calc(50% - 10px);
+                height: 180px;
+                font-size: 1.2em;
             }
             
             .photo-collage, .eight-facts {
                 grid-template-columns: repeat(4, 1fr);
             }
-        }
-        
-        @media (max-width: 480px) {
-            .memory {
-                width: 100%;
+            
+            .quote {
+                font-size: 1.2em;
+                padding: 20px;
             }
             
-            .photo-collage, .eight-facts {
-                grid-template-columns: repeat(2, 1fr);
+            .counter-title {
+                font-size: 1.5em;
+            }
+            
+            .counter {
+                font-size: 4em;
+            }
+            
+            .counter-subtitle {
+                font-size: 1.1em;
             }
         }
     </style>
@@ -431,9 +555,11 @@
         <div class="number-8">8</div>
         <div class="number-8">8</div>
         <div class="number-8">8</div>
+        <div class="number-8">8</div>
+        <div class="number-8">8</div>
         <div class="container">
             <h1>To My Extraordinary Father</h1>
-            <p>A tribute to the man who shaped my world with love, wisdom, and endless support</p>
+            <p>A tribute to the man who shaped my world</p>
         </div>
     </header>
     
@@ -451,25 +577,35 @@
             <h2>Why You're So Incredibly Special</h2>
             
             <div class="card">
-                <p>Dad, you're not just my father - you're my hero, my safe harbor, and my greatest role model. There are countless reasons why you're so special to me, but these are the ones that shine brightest in my heart:</p>
+                <div class="card-content">
+                    <p>Dad, you're not just my father - you're my hero, my safe harbor, and my greatest role model. There are countless reasons why you're so special to me, but these are the ones that shine brightest in my heart:</p>
+                </div>
+            </div>
+            
+            <div class="counter-container">
+                <div class="counter-title">Years of Your Loving Impact</div>
+                <div class="counter" id="years-counter">0</div>
+                <div class="counter-subtitle">...and counting every second</div>
             </div>
             
             <div class="eight-facts">
-                <div class="eight-fact">Unconditional Love</div>
-                <div class="eight-fact">Endless Patience</div>
-                <div class="eight-fact">Quiet Strength</div>
-                <div class="eight-fact">Wise Guidance</div>
-                <div class="eight-fact">Generous Spirit</div>
-                <div class="eight-fact">Infectious Laugh</div>
-                <div class="eight-fact">Steadfast Support</div>
-                <div class="eight-fact">Unshakable Integrity</div>
+                <div class="eight-fact" tabindex="0">Unconditional Love</div>
+                <div class="eight-fact" tabindex="0">Endless Patience</div>
+                <div class="eight-fact" tabindex="0">Quiet Strength</div>
+                <div class="eight-fact" tabindex="0">Wise Guidance</div>
+                <div class="eight-fact" tabindex="0">Generous Spirit</div>
+                <div class="eight-fact" tabindex="0">Infectious Laugh</div>
+                <div class="eight-fact" tabindex="0">Steadfast Support</div>
+                <div class="eight-fact" tabindex="0">Unshakable Integrity</div>
             </div>
             
-            <div class="card interactive-element">
-                <h3>Your Unconditional Love</h3>
-                <p>From my first breath to this very moment, you've loved me without limits or conditions. Your love has been my constant, a steady flame that's warmed me through every season of life.</p>
-                <div class="hidden-message">
-                    Like the number 8 that has no beginning or end, your love is infinite and eternal.
+            <div class="card interactive-element" tabindex="0">
+                <div class="card-content">
+                    <h3>Your Unconditional Love</h3>
+                    <p>From my first breath to this very moment, you've loved me without limits or conditions. Your love has been my constant, a steady flame that's warmed me through every season of life.</p>
+                    <div class="hidden-message">
+                        Like the number 8 that has no beginning or end, your love is infinite and eternal.
+                    </div>
                 </div>
             </div>
             
@@ -478,14 +614,14 @@
             </div>
             
             <div class="photo-collage">
-                <div>Your<br>Smile</div>
-                <div>Your<br>Wisdom</div>
-                <div>Your<br>Hugs</div>
-                <div>Your<br>Laugh</div>
-                <div>Your<br>Advice</div>
-                <div>Your<br>Strength</div>
-                <div>Your<br>Patience</div>
-                <div>Your<br>Love</div>
+                <div tabindex="0">Your<br>Smile</div>
+                <div tabindex="0">Your<br>Wisdom</div>
+                <div tabindex="0">Your<br>Hugs</div>
+                <div tabindex="0">Your<br>Laugh</div>
+                <div tabindex="0">Your<br>Advice</div>
+                <div tabindex="0">Your<br>Strength</div>
+                <div tabindex="0">Your<br>Patience</div>
+                <div tabindex="0">Your<br>Love</div>
             </div>
         </section>
         
@@ -494,7 +630,15 @@
             <h2>All You've Sacrificed and Given</h2>
             
             <div class="card">
-                <p>Dad, when I reflect on all you've done for me, I'm overwhelmed with gratitude. You've given me so much more than material things - you've given me the tools to build a meaningful life.</p>
+                <div class="card-content">
+                    <p>Dad, when I reflect on all you've done for me, I'm overwhelmed with gratitude. You've given me so much more than material things - you've given me the tools to build a meaningful life.</p>
+                </div>
+            </div>
+            
+            <div class="counter-container">
+                <div class="counter-title">Years of Your Dedication</div>
+                <div class="counter" id="years-counter-2">0</div>
+                <div class="counter-subtitle">...and counting every second</div>
             </div>
             
             <div class="timeline">
@@ -527,11 +671,13 @@
                 </div>
             </div>
             
-            <div class="card interactive-element">
-                <h3>The Greatest Gift</h3>
-                <p>Beyond all the tangible things you've provided, the greatest gift has been your time and presence. You've shown up, consistently and completely, teaching me what true devotion looks like.</p>
-                <div class="hidden-message">
-                    Like the infinite shape of the number 8, your generosity knows no bounds.
+            <div class="card interactive-element" tabindex="0">
+                <div class="card-content">
+                    <h3>The Greatest Gift</h3>
+                    <p>Beyond all the tangible things you've provided, the greatest gift has been your time and presence. You've shown up, consistently and completely, teaching me what true devotion looks like.</p>
+                    <div class="hidden-message">
+                        Like the infinite shape of the number 8, your generosity knows no bounds.
+                    </div>
                 </div>
             </div>
         </section>
@@ -541,21 +687,31 @@
             <h2>Your Lasting Imprint on My Soul</h2>
             
             <div class="card">
-                <p>Dad, your influence permeates every aspect of who I am. The values you instilled, the lessons you taught, and the love you gave have shaped me into the person I am today.</p>
+                <div class="card-content">
+                    <p>Dad, your influence permeates every aspect of who I am. The values you instilled, the lessons you taught, and the love you gave have shaped me into the person I am today.</p>
+                </div>
+            </div>
+            
+            <div class="counter-container">
+                <div class="counter-title">Years of Your Positive Influence</div>
+                <div class="counter" id="years-counter-3">0</div>
+                <div class="counter-subtitle">...and counting every second</div>
             </div>
             
             <div class="card">
-                <h3>8 Enduring Lessons You Taught Me</h3>
-                <ul>
-                    <li><strong>Work Ethic:</strong> Excellence comes from doing things right, not just getting them done</li>
-                    <li><strong>Integrity:</strong> Character is what you do when no one is watching</li>
-                    <li><strong>Resilience:</strong> Setbacks are temporary but perseverance is forever</li>
-                    <li><strong>Compassion:</strong> True strength includes kindness and empathy</li>
-                    <li><strong>Wisdom:</strong> The value of patience and thoughtful decisions</li>
-                    <li><strong>Generosity:</strong> Giving without expectation of return</li>
-                    <li><strong>Humility:</strong> Staying grounded despite achievements</li>
-                    <li><strong>Joy:</strong> Finding happiness in simple moments</li>
-                </ul>
+                <div class="card-content">
+                    <h3>8 Enduring Lessons You Taught Me</h3>
+                    <ul>
+                        <li><strong>Work Ethic:</strong> Excellence comes from doing things right, not just getting them done</li>
+                        <li><strong>Integrity:</strong> Character is what you do when no one is watching</li>
+                        <li><strong>Resilience:</strong> Setbacks are temporary but perseverance is forever</li>
+                        <li><strong>Compassion:</strong> True strength includes kindness and empathy</li>
+                        <li><strong>Wisdom:</strong> The value of patience and thoughtful decisions</li>
+                        <li><strong>Generosity:</strong> Giving without expectation of return</li>
+                        <li><strong>Humility:</strong> Staying grounded despite achievements</li>
+                        <li><strong>Joy:</strong> Finding happiness in simple moments</li>
+                    </ul>
+                </div>
             </div>
             
             <div class="quote">
@@ -563,7 +719,7 @@
             </div>
             
             <div class="memory-box">
-                <div class="memory">
+                <div class="memory" tabindex="0">
                     Leading by Example
                     <div class="memory-caption">
                         <h4>Your Actions Spoke Loudest</h4>
@@ -571,7 +727,7 @@
                     </div>
                 </div>
                 
-                <div class="memory">
+                <div class="memory" tabindex="0">
                     Unwavering Support
                     <div class="memory-caption">
                         <h4>My Greatest Cheerleader</h4>
@@ -579,7 +735,7 @@
                     </div>
                 </div>
                 
-                <div class="memory">
+                <div class="memory" tabindex="0">
                     Shared Laughter
                     <div class="memory-caption">
                         <h4>Joy in the Journey</h4>
@@ -592,9 +748,9 @@
     
     <footer>
         <div class="container">
-            <p>Created with <span class="heart">♥</span> for the world's greatest dad | Your favorite number: <span style="font-size: 1.8em;">8</span></p>
+            <p>Created with <span class="heart">♥</span> for the world's greatest dad | Your favorite number: <span style="font-size: 1.5em;">8</span></p>
             <p>© <span id="year"></span> | Made with love by your child</p>
-            <p style="font-size:0.8em; opacity:0.7;">Website crafted by DeepSeek Chat</p>
+            <p style="font-size:0.8em; opacity:0.7;">Enhanced by DeepSeek Chat</p>
         </div>
     </footer>
     
@@ -610,6 +766,9 @@
             for (let i = 0; i < 8; i++) {
                 setTimeout(createConfetti, i * 150);
             }
+            
+            // Scroll to top of page
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
         
         // Set current year in footer
@@ -618,47 +777,115 @@
         // Add interactive elements
         document.querySelectorAll('.interactive-element').forEach(element => {
             element.addEventListener('click', function() {
-                const message = this.querySelector('.hidden-message');
-                message.style.display = message.style.display === 'block' ? 'none' : 'block';
-                
-                // Create 8 pieces of confetti for this interaction
-                for (let i = 0; i < 8; i++) {
-                    setTimeout(createConfetti, i * 150);
+                toggleHiddenMessage(this);
+            });
+            element.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    toggleHiddenMessage(this);
                 }
             });
         });
+        
+        function toggleHiddenMessage(element) {
+            const message = element.querySelector('.hidden-message');
+            message.style.display = message.style.display === 'block' ? 'none' : 'block';
+            
+            // Create 8 pieces of confetti for this interaction
+            for (let i = 0; i < 8; i++) {
+                setTimeout(createConfetti, i * 150);
+            }
+        }
         
         // Confetti effect
         function createConfetti() {
             const confetti = document.createElement('div');
             confetti.innerHTML = '8';
             confetti.style.position = 'fixed';
-            confetti.style.fontSize = `${Math.random() * 16 + 8}px`;
+            confetti.style.fontSize = `${Math.random() * 16 + 12}px`;
             confetti.style.color = `hsl(${Math.random() * 60 + 270}, 100%, ${Math.random() * 30 + 50}%)`;
             confetti.style.left = `${Math.random() * 100}vw`;
             confetti.style.top = '-20px';
             confetti.style.zIndex = '1000';
             confetti.style.fontWeight = 'bold';
+            confetti.style.pointerEvents = 'none';
+            confetti.style.opacity = '0.8';
             document.body.appendChild(confetti);
             
             const animation = confetti.animate([
-                { top: '-20px', opacity: 1, transform: 'rotate(0deg)' },
+                { top: '-20px', opacity: 0.8, transform: 'rotate(0deg)' },
                 { top: `${Math.random() * 100 + 50}vh`, opacity: 0, transform: 'rotate(360deg)' }
             ], {
-                duration: Math.random() * 3000 + 2000,
+                duration: Math.random() * 2000 + 1000,
                 easing: 'cubic-bezier(0.1, 0.8, 0.9, 1)'
             });
             
             animation.onfinish = () => confetti.remove();
         }
         
-        // Add confetti when clicking on memories
-        document.querySelectorAll('.memory, .eight-fact').forEach(element => {
+        // Add confetti when clicking on memories and facts
+        document.querySelectorAll('.memory, .eight-fact, .photo-collage div').forEach(element => {
             element.addEventListener('click', function() {
-                for (let i = 0; i < 8; i++) {
-                    setTimeout(createConfetti, i * 200);
+                createConfettiForElement(this);
+            });
+            element.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    createConfettiForElement(this);
                 }
             });
+        });
+        
+        function createConfettiForElement(element) {
+            const rect = element.getBoundingClientRect();
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.innerHTML = '8';
+                    confetti.style.position = 'fixed';
+                    confetti.style.fontSize = `${Math.random() * 16 + 12}px`;
+                    confetti.style.color = `hsl(${Math.random() * 60 + 270}, 100%, ${Math.random() * 30 + 50}%)`;
+                    confetti.style.left = `${rect.left + Math.random() * rect.width}px`;
+                    confetti.style.top = `${rect.top}px`;
+                    confetti.style.zIndex = '1000';
+                    confetti.style.fontWeight = 'bold';
+                    confetti.style.pointerEvents = 'none';
+                    confetti.style.opacity = '0.8';
+                    document.body.appendChild(confetti);
+                    
+                    const animation = confetti.animate([
+                        { top: `${rect.top}px`, opacity: 0.8, transform: 'rotate(0deg)' },
+                        { top: `${rect.top + rect.height + Math.random() * 200}px`, opacity: 0, transform: 'rotate(360deg)' }
+                    ], {
+                        duration: Math.random() * 2000 + 1000,
+                        easing: 'cubic-bezier(0.1, 0.8, 0.9, 1)'
+                    });
+                    
+                    animation.onfinish = () => confetti.remove();
+                }, i * 200);
+            }
+        }
+        
+        // Year counter animation
+        function animateCounter(elementId, target, duration) {
+            const element = document.getElementById(elementId);
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    clearInterval(timer);
+                    current = target;
+                }
+                element.textContent = Math.floor(current);
+            }, 16);
+        }
+        
+        // Start counters when page is loaded
+        window.addEventListener('load', function() {
+            animateCounter('years-counter', 25, 2000);
+            animateCounter('years-counter-2', 25, 2000);
+            animateCounter('years-counter-3', 25, 2000);
         });
     </script>
 </body>
