@@ -10,18 +10,22 @@
             --purple-dark: #8e44ad;
             --green-light: #2ecc71;
             --green-dark: #16a085;
+            --chaotic-red: #e74c3c;
+            --honest-pink: #ff9ff3;
         }
         
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
         
         body {
             font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
             line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
         
         .container {
@@ -29,9 +33,9 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            text-align: center;
         }
         
+        /* Navigation */
         .springboard {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -55,15 +59,17 @@
             color: white;
             font-weight: bold;
             transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
             cursor: pointer;
             padding: 10px;
             text-decoration: none;
+            font-size: 1.1rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
         
         .springboard-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
         
         .springboard-item i {
@@ -73,74 +79,370 @@
         
         .item-1 { background: linear-gradient(135deg, var(--purple-light), var(--purple-dark)); }
         .item-2 { background: linear-gradient(135deg, var(--green-light), var(--green-dark)); }
-        .item-3 { background: linear-gradient(135deg, #9b59b6, var(--purple-dark)); }
-        .item-4 { background: linear-gradient(135deg, #27ae60, var(--green-dark)); }
+        .item-3 { background: linear-gradient(135deg, #ff9ff3, #f368e0); }
+        .item-4 { background: linear-gradient(135deg, var(--chaotic-red), #c0392b); }
+        
+        /* Page Content */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page.active {
+            display: block;
+        }
         
         h1 {
-            color: var(--purple-dark);
             font-size: clamp(1.5rem, 5vw, 2.2rem);
             margin-bottom: 15px;
+            text-align: center;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         
-        p {
-            color: #555;
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
-            max-width: 600px;
-            margin: 0 auto 20px;
+        h2 {
+            margin: 20px 0 15px;
+            color: inherit;
         }
         
-        .footer {
-            margin-top: 40px;
-            color: #777;
-            font-size: 0.9rem;
+        .back-btn {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.8);
+            color: #333;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .back-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+        
+        .content-card {
+            background: rgba(255,255,255,0.85);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Active Page */
+        #actively {
+            background: linear-gradient(135deg, var(--purple-light), var(--purple-dark));
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+        }
+        
+        #actively .content-card {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+        
+        .tilt-icon {
+            font-size: 3rem;
+            color: var(--purple-light);
+            margin: 15px 0;
+            animation: tilt 3s infinite ease-in-out;
+            text-align: center;
+        }
+        
+        @keyframes tilt {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        
+        /* Passive Page */
+        #passively {
+            background: linear-gradient(135deg, var(--green-light), var(--green-dark));
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+        }
+        
+        #passively .content-card {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+        
+        .presence-icon {
+            font-size: 4rem;
+            text-align: center;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Honest Page */
+        #honestly {
+            background: linear-gradient(135deg, var(--honest-pink), #f368e0);
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+        }
+        
+        #honestly .content-card {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+        
+        .hug-icon {
+            font-size: 5rem;
+            text-align: center;
+            margin: 20px 0;
+            animation: hug 3s infinite;
+        }
+        
+        @keyframes hug {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(5deg); }
+            50% { transform: scale(1.05) rotate(-5deg); }
+            75% { transform: scale(1.1) rotate(5deg); }
+        }
+        
+        /* Chaotic Page */
+        #chaotic {
+            background: linear-gradient(135deg, var(--chaotic-red), #c0392b);
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+        }
+        
+        #chaotic .content-card {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+        
+        .warning-icon {
+            font-size: 4rem;
+            text-align: center;
+            margin: 20px 0;
+            animation: shake 0.5s infinite alternate;
+        }
+        
+        @keyframes shake {
+            from { transform: rotate(-10deg); }
+            to { transform: rotate(10deg); }
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 15px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 10px;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .quote:before {
+            content: '"';
+            font-size: 3rem;
+            position: absolute;
+            left: 5px;
+            top: -15px;
+            color: rgba(0,0,0,0.1);
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to My Play Area</h1>
-        <p>A space to showcase my talents and updates. Tap the menu below to explore:</p>
-        
-        <div class="springboard">
-            <a href="#" class="springboard-item item-1">
-                <i class="fas fa-bolt"></i>
-                Actively
-            </a>
-            
-            <a href="#" class="springboard-item item-2">
-                <i class="fas fa-cloud"></i>
-                Passively
-            </a>
-            
-            <a href="#" class="springboard-item item-3">
-                <i class="fas fa-heart"></i>
-                Honestly
-            </a>
-            
-            <a href="#" class="springboard-item item-4">
-                <i class="fas fa-fire"></i>
-                Chaotic
-            </a>
+        <!-- Home Page -->
+        <div class="page active" id="home">
+            <h1 style="color: var(--purple-dark);">Welcome to My Play Area</h1>
+            <div class="content-card">
+                <p>A space to showcase my talents and updates. Use the menu below to explore:</p>
+                
+                <div class="springboard">
+                    <div class="springboard-item item-1" data-page="actively">
+                        <i class="fas fa-bolt"></i>
+                        Actively
+                    </div>
+                    
+                    <div class="springboard-item item-2" data-page="passively">
+                        <i class="fas fa-cloud"></i>
+                        Passively
+                    </div>
+                    
+                    <div class="springboard-item item-3" data-page="honestly">
+                        <i class="fas fa-heart"></i>
+                        Honestly
+                    </div>
+                    
+                    <div class="springboard-item item-4" data-page="chaotic">
+                        <i class="fas fa-fire"></i>
+                        Chaotic
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <div class="footer">
-            Tap any option to begin your journey
+        <!-- Actively Page -->
+        <div class="page" id="actively">
+            <h1><i class="fas fa-bolt"></i> Actively</h1>
+            <div class="content-card">
+                <div class="tilt-icon">
+                    <i class="fas fa-balance-scale-right"></i>
+                </div>
+                <h2>Focusing Your Energy on Tilt</h2>
+                
+                <p>Tilt represents that sweet spot where your active energy is neither overcontrolled nor chaotic. Here's how to find and maintain it:</p>
+                
+                <ul>
+                    <li><strong>Recognize your flow state</strong> - That moment when effort feels effortless</li>
+                    <li><strong>Embrace productive discomfort</strong> - The growth happens just beyond comfort</li>
+                    <li><strong>Balance intensity with recovery</strong> - Like waves, energy needs rhythm</li>
+                    <li><strong>Redirect frustration</strong> - Transform resistance into forward motion</li>
+                    <li><strong>Celebrate micro-wins</strong> - Small tilts create big shifts</li>
+                </ul>
+                
+                <div class="quote">
+                    "Energy flows where attention goes. Direct it wisely."
+                </div>
+                
+                <a href="#" class="back-btn" data-page="home">
+                    <i class="fas fa-arrow-left"></i> Back to Play Area
+                </a>
+            </div>
+        </div>
+        
+        <!-- Passively Page -->
+        <div class="page" id="passively">
+            <h1><i class="fas fa-cloud"></i> Passively</h1>
+            <div class="content-card">
+                <div class="presence-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h2>Being Present for Others</h2>
+                
+                <p>True presence is the art of being fully available without needing to perform. Here's how to cultivate it:</p>
+                
+                <ul>
+                    <li><strong>Listen with your whole body</strong> - Not just waiting to speak</li>
+                    <li><strong>Hold space without fixing</strong> - Sometimes presence is the solution</li>
+                    <li><strong>Notice the unsaid</strong> - Pay attention to body language and energy</li>
+                    <li><strong>Practice radical acceptance</strong> - Of others and yourself in each moment</li>
+                    <li><strong>Breathe together</strong> - Shared breaths create connection</li>
+                </ul>
+                
+                <div class="quote">
+                    "The most precious gift we can offer others is our presence."
+                </div>
+                
+                <a href="#" class="back-btn" data-page="home">
+                    <i class="fas fa-arrow-left"></i> Back to Play Area
+                </a>
+            </div>
+        </div>
+        
+        <!-- Honest Page -->
+        <div class="page" id="honestly">
+            <h1><i class="fas fa-heart"></i> Honestly</h1>
+            <div class="content-card">
+                <div class="hug-icon">
+                    <i class="fas fa-people-arrows"></i>
+                </div>
+                <h2>A Hug Is All You Need</h2>
+                
+                <p>In a world of complicated solutions, never underestimate the power of genuine human connection:</p>
+                
+                <ul>
+                    <li><strong>20-second rule</strong> - Real hugs need duration to release oxytocin</li>
+                    <li><strong>Heart to heart</strong> - Align your chests for deeper connection</li>
+                    <li><strong>Receive as much as you give</strong> - Let yourself be comforted too</li>
+                    <li><strong>Hug without words</strong> - Let the silence speak</li>
+                    <li><strong>Offer hugs without expectation</strong> - Some days people just need space</li>
+                </ul>
+                
+                <div class="quote">
+                    "We need 4 hugs a day for survival, 8 for maintenance, and 12 for growth."
+                </div>
+                
+                <div style="text-align: center; margin: 25px 0;">
+                    <i class="fas fa-heartbeat" style="font-size: 3rem; color: #f368e0;"></i>
+                </div>
+                
+                <a href="#" class="back-btn" data-page="home">
+                    <i class="fas fa-arrow-left"></i> Back to Play Area
+                </a>
+            </div>
+        </div>
+        
+        <!-- Chaotic Page -->
+        <div class="page" id="chaotic">
+            <h1><i class="fas fa-fire"></i> Chaotic</h1>
+            <div class="content-card">
+                <div class="warning-icon">
+                    <i class="fas fa-glass-whiskey"></i>
+                </div>
+                <h2>Mindful Indulgence</h2>
+                
+                <p>Chaos can be fun, but remember to protect your future self:</p>
+                
+                <ul>
+                    <li><strong>The 1-drink pause</strong> - After each drink, assess if you truly want another</li>
+                    <li><strong>Hydration balance</strong> - Alternate alcoholic drinks with water</li>
+                    <li><strong>Know your "enough"</strong> - That point where more adds nothing positive</li>
+                    <li><strong>Plan your recovery</strong> - Schedule the next day accordingly</li>
+                    <li><strong>Chaos with care</strong> - Wild nights are better with trusted friends</li>
+                </ul>
+                
+                <div class="quote">
+                    "You're not missing out by going home - you're investing in tomorrow's happiness."
+                </div>
+                
+                <div style="background: #ffe6e6; padding: 15px; border-radius: 10px; margin: 20px 0;">
+                    <h3><i class="fas fa-heartbeat"></i> Remember</h3>
+                    <p>The best nights are the ones you remember with joy, not regret.</p>
+                </div>
+                
+                <a href="#" class="back-btn" data-page="home">
+                    <i class="fas fa-arrow-left"></i> Back to Play Area
+                </a>
+            </div>
         </div>
     </div>
     
     <script>
-        document.querySelectorAll('.springboard-item').forEach(item => {
+        // Simple page navigation
+        document.querySelectorAll('[data-page]').forEach(item => {
             item.addEventListener('click', function(e) {
                 e.preventDefault();
-                // For demo purposes - replace with actual navigation
-                const sectionName = this.textContent.trim();
-                alert(`Loading: ${sectionName} section`);
+                const pageId = this.getAttribute('data-page');
                 
-                // In a real implementation, you would:
-                // 1. Load content dynamically
-                // 2. Or navigate to another page
-                // 3. Or show/hide sections
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show selected page
+                document.getElementById(pageId).classList.add('active');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
             });
         });
     </script>
