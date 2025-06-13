@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To My Extraordinary Father</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Happy Father's Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --deep-blue: #0a2463;
-            --rich-red: #d8315b;
-            --warm-gold: #ffd166;
-            --soft-teal: #06d6a0;
-            --dark-purple: #3a015c;
-            --light-bg: #f8f4f9;
-            --section-bg: rgba(255,255,255,0.85);
+            --lime: #B5E853;
+            --lime-light: #D6F58A;
+            --lime-dark: #8EC63F;
+            --purple: #6A0DAD;
+            --purple-light: #9B51E0;
+            --purple-dark: #4A148C;
+            --gold: #FFD700;
+            --deep-blue: #0F1C3F;
+            --cream: #FFF5E0;
+            --section-bg: rgba(15, 28, 63, 0.7);
         }
         
         * {
@@ -23,21 +26,22 @@
         }
         
         body {
-            font-family: 'Raleway', sans-serif;
-            background: linear-gradient(135deg, var(--light-bg), #ffffff);
-            color: #333;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--deep-blue), #1A2A5A);
+            color: white;
             min-height: 100vh;
             overflow-x: hidden;
         }
         
         /* 8 Pattern Background */
-        .eight-pattern {
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 40c0-6.6 5.4-12 12-12s12 5.4 12 12v0c0 6.6-5.4 12-12 12s-12-5.4-12-12v0zm0 20c0-6.6 5.4-12 12-12s12 5.4 12 12v0c0 6.6-5.4 12-12 12s-12-5.4-12-12v0z' fill='%230a2463' fill-opacity='0.03'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 40c0-8.3 6.7-15 15-15s15 6.7 15 15v0c0 8.3-6.7 15-15 15s-15-6.7-15-15v0zm0 30c0-8.3 6.7-15 15-15s15 6.7 15 15v0c0 8.3-6.7 15-15 15s-15-6.7-15-15v0z' fill='%239B51E0' fill-opacity='0.05'/%3E%3C/svg%3E");
             z-index: -1;
         }
         
@@ -54,7 +58,7 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            color: white;
+            transition: opacity 1s ease;
         }
         
         .countdown-container {
@@ -66,34 +70,36 @@
         .countdown-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--warm-gold);
+            margin-bottom: 3rem;
+            color: var(--lime);
+            text-shadow: 0 0 10px rgba(181, 232, 83, 0.5);
+            line-height: 1.3;
         }
         
         .countdown-number {
             font-family: 'Playfair Display', serif;
             font-size: 8rem;
             font-weight: 700;
-            color: white;
+            color: var(--lime);
             margin: 2rem 0;
             position: relative;
+            text-shadow: 0 0 20px rgba(181, 232, 83, 0.7);
         }
         
-        .countdown-number::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 25%;
-            width: 50%;
-            height: 3px;
-            background: var(--warm-gold);
-            transform: scaleX(0);
-            transform-origin: left;
-            animation: countdownLine 8s linear forwards;
+        .countdown-progress {
+            height: 4px;
+            width: 100%;
+            background: rgba(255,255,255,0.1);
+            margin-top: 2rem;
+            border-radius: 2px;
+            overflow: hidden;
         }
         
-        @keyframes countdownLine {
-            to { transform: scaleX(1); }
+        .countdown-progress-bar {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--lime), var(--purple-light));
+            transition: width 0.1s linear;
         }
         
         /* Main Content */
@@ -109,128 +115,162 @@
             transform: translateY(0);
         }
         
-        /* Navigation */
-        .main-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(10, 36, 99, 0.95);
-            padding: 1.5rem;
-            z-index: 100;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        }
-        
-        .nav-list {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-item {
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
             position: relative;
         }
         
-        .nav-link {
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
             color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link::before {
-            content: '8';
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Playfair Display', serif;
-            font-weight: bold;
-            color: var(--warm-gold);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: var(--warm-gold);
-        }
-        
-        .nav-link:hover::before {
-            opacity: 1;
-            top: -20px;
-        }
-        
-        /* Sections */
-        .content-section {
-            min-height: 100vh;
-            padding: 6rem 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--section-bg);
-            border-radius: 8px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
-            margin-bottom: 3rem;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        .content-section::before {
-            content: '8';
-            position: absolute;
-            bottom: -30px;
-            right: -30px;
-            font-family: 'Playfair Display', serif;
-            font-size: 20rem;
-            font-weight: bold;
-            color: rgba(10, 36, 99, 0.03);
-            z-index: -1;
-        }
-        
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--deep-blue);
             position: relative;
             display: inline-block;
         }
         
-        .section-title::after {
+        .header-title::after {
             content: '8';
             position: absolute;
-            top: -15px;
-            right: -25px;
+            bottom: -15px;
+            right: -20px;
             font-size: 1.5rem;
-            color: var(--rich-red);
+            color: var(--lime);
+            opacity: 0.7;
         }
         
-        .section-content {
+        .header-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Springboard Menu */
+        .springboard {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 900px;
+        }
+        
+        .springboard-btn {
+            background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+            color: white;
+            border: none;
+            padding: 1.5rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            flex: 1 1 200px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+        
+        .springboard-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: all 0.6s;
+            z-index: -1;
+        }
+        
+        .springboard-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .springboard-btn:hover::before {
+            animation: shine 1.5s infinite;
+        }
+        
+        @keyframes shine {
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Content Sections */
+        .content-section {
+            background: var(--section-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+            max-width: 800px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--lime);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--lime), var(--purple-light));
+            border-radius: 3px;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
             line-height: 1.8;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
         }
         
         .highlight {
-            background: linear-gradient(transparent 50%, rgba(255, 209, 102, 0.3) 50%);
+            background: linear-gradient(transparent 60%, rgba(181, 232, 83, 0.3) 60%);
             transition: all 0.3s ease;
-            padding: 0 3px;
+            padding: 0 2px;
+            border-radius: 2px;
         }
         
         .highlight:hover {
-            background: linear-gradient(transparent 50%, rgba(255, 209, 102, 0.7) 50%);
+            background: linear-gradient(transparent 60%, rgba(181, 232, 83, 0.7) 60%);
         }
         
         /* Footer */
-        .main-footer {
+        footer {
             text-align: center;
             padding: 3rem;
-            background: var(--deep-blue);
             color: white;
+            font-size: 1.1rem;
+            margin-top: 2rem;
             position: relative;
         }
         
@@ -238,15 +278,30 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             margin-top: 1rem;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .signature::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--lime), var(--purple-light));
         }
         
         .heart {
-            color: var(--rich-red);
             display: inline-block;
-            animation: heartbeat 1.5s infinite;
+            color: #ff3366;
+            font-size: 1.5rem;
+            animation: pulse 1.5s infinite;
+            margin-left: 0.5rem;
+            vertical-align: middle;
         }
         
-        @keyframes heartbeat {
+        @keyframes pulse {
             0%, 100% { transform: scale(1); }
             25% { transform: scale(1.3); }
             50% { transform: scale(1); }
@@ -261,7 +316,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1001;
+            z-index: 2000;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -273,35 +328,23 @@
             opacity: 1;
         }
         
-        .celebration-circle {
+        .celebration-8 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20rem;
+            font-weight: bold;
+            color: rgba(181, 232, 83, 0.2);
             position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--warm-gold), transparent);
-            animation: ripple 3s ease-out infinite;
-            transform: scale(0);
+            animation: zoomInOut 3s ease-out forwards;
         }
         
-        @keyframes ripple {
-            to { transform: scale(4); opacity: 0; }
+        @keyframes zoomInOut {
+            0% { transform: scale(0.5); opacity: 0; }
+            30% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1.5); opacity: 0; }
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-list {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: center;
-            }
-            
-            .content-section {
-                padding: 4rem 1.5rem;
-                margin: 0 1rem 2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
             .countdown-title {
                 font-size: 2rem;
             }
@@ -309,151 +352,192 @@
             .countdown-number {
                 font-size: 5rem;
             }
+            
+            .header-title {
+                font-size: 2.2rem;
+            }
+            
+            .header-title::after {
+                font-size: 1.2rem;
+                bottom: -10px;
+                right: -15px;
+            }
+            
+            .springboard {
+                flex-direction: column;
+            }
+            
+            .springboard-btn {
+                width: 100%;
+            }
+            
+            .content-section {
+                padding: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 8 Pattern Background -->
-    <div class="eight-pattern"></div>
-    
     <!-- Countdown Overlay -->
-    <div class="countdown-overlay" id="countdownOverlay">
+    <div class="countdown-overlay">
         <div class="countdown-container">
-            <h1 class="countdown-title">It has all led up to this moment...</h1>
-            <div class="countdown-number" id="countdown">25</div>
+            <h1 class="countdown-title">It has all led up to me being capable to provide you with this...</h1>
+            <div class="countdown-number">0</div>
+            <div class="countdown-progress">
+                <div class="countdown-progress-bar"></div>
+            </div>
         </div>
     </div>
     
     <!-- Celebration Animation -->
-    <div class="celebration" id="celebration">
-        <div class="celebration-circle" style="width: 100px; height: 100px; animation-delay: 0s;"></div>
-        <div class="celebration-circle" style="width: 150px; height: 150px; animation-delay: 0.5s;"></div>
-        <div class="celebration-circle" style="width: 200px; height: 200px; animation-delay: 1s;"></div>
+    <div class="celebration" id="celebrationAnimation">
+        <div class="celebration-8">8</div>
     </div>
     
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <ul class="nav-list">
-            <li class="nav-item"><a href="#gratitude" class="nav-link">My Gratitude</a></li>
-            <li class="nav-item"><a href="#lessons" class="nav-link">Your Lessons</a></li>
-            <li class="nav-item"><a href="#inspiration" class="nav-link">My Inspiration</a></li>
-            <li class="nav-item"><a href="#celebration" class="nav-link">Celebration</a></li>
-        </ul>
-    </nav>
-    
     <!-- Main Content -->
-    <main class="main-content" id="mainContent">
-        <!-- Gratitude Section -->
-        <section id="gratitude" class="content-section">
-            <h2 class="section-title">My Deepest Gratitude</h2>
-            <div class="section-content">
-                <p><span class="highlight">Dad, I want to take a moment to express my heartfelt gratitude</span> for the invaluable lessons you've taught me throughout my life. Your wisdom has been the foundation of my growth, helping me become the person I am today.</p>
-                <p>From childhood, you've shown me the importance of <span class="highlight">hard work, integrity, and perseverance</span>. These principles have guided my decisions and shaped my character. Your nurturing love created the perfect environment for me to flourish.</p>
-                <p>I often find myself following your <span class="highlight">thoughtful approach to decision-making</span>. Your ability to carefully consider options and choose the best path is something I deeply admire. Your attention to detail in everything you do has taught me to strive for excellence.</p>
-            </div>
-        </section>
+    <div class="main-content" id="mainContent">
+        <header class="header">
+            <h1 class="header-title">Happy Father's Day</h1>
+            <p class="header-subtitle">To the father that I will always be thankful for</p>
+        </header>
         
-        <!-- Lessons Section -->
-        <section id="lessons" class="content-section">
-            <h2 class="section-title">Your Priceless Lessons</h2>
-            <div class="section-content">
-                <p>Every moment with you is precious. You're my <span class="highlight">safe haven</span> - a constant source of comfort and strength. Whether we're having deep conversations or enjoying quiet moments together, these experiences have left a permanent mark on my heart.</p>
-                <p>You've taught me how to face challenges with <span class="highlight">grace and determination</span>. Your resilience during difficult times has shown me what true strength looks like. Your kindness and dedication to our family are qualities I strive to emulate.</p>
-                <p>Thank you for knowing exactly what I needed - whether it was being <span class="highlight">playful like a child, supportive like a friend, or guiding like a parent</span>. You've mastered all these roles perfectly.</p>
-            </div>
-        </section>
+        <div class="springboard">
+            <button class="springboard-btn" data-target="gratitude">My Gratitude</button>
+            <button class="springboard-btn" data-target="lessons">Your Lessons</button>
+            <button class="springboard-btn" data-target="inspiration">My Inspiration</button>
+            <button class="springboard-btn" data-target="celebration">Celebration</button>
+        </div>
         
-        <!-- Inspiration Section -->
-        <section id="inspiration" class="content-section">
-            <h2 class="section-title">My Endless Inspiration</h2>
-            <div class="section-content">
-                <p>Dad, you inspire me in ways you might not realize. Your <span class="highlight">belief in me</span>, especially during moments of self-doubt, has given me strength to pursue my dreams. You've shown me that with dedication, anything is possible.</p>
-                <p>I treasure all the memories we've created - the <span class="highlight">laughter we've shared, the lessons you've taught</span> (including those colorful words for special situations!), and the love we've cultivated. These are treasures I'll always cherish.</p>
-                <p>Your achievements and the example you've set remind me that I too can <span class="highlight">make a difference</span>. You've taught me the value of kindness, compassion, and hard work - lessons I carry with me every day.</p>
-            </div>
-        </section>
+        <div id="gratitude" class="content-section">
+            <h2>My Deepest Gratitude</h2>
+            <p><span class="highlight">Dad, I want to take a moment to express my heartfelt gratitude</span> for the invaluable lessons you've taught me throughout my life. Your wisdom has been the foundation of my growth, helping me become the person I am today.</p>
+            <p>From childhood, you've shown me the importance of <span class="highlight">hard work, integrity, and perseverance</span>. These principles have guided my decisions and shaped my character. Your nurturing love created the perfect environment for me to flourish.</p>
+            <p>I often find myself following your <span class="highlight">thoughtful approach to decision-making</span>. Your ability to carefully consider options and choose the best path is something I deeply admire. Your attention to detail in everything you do has taught me to strive for excellence.</p>
+        </div>
         
-        <!-- Celebration Section -->
-        <section id="celebration" class="content-section">
-            <h2 class="section-title">A Special Celebration</h2>
-            <div class="section-content">
-                <p>Today, I celebrate you - not just as my father, but as my <span class="highlight">confidant, hero, and best friend</span>. Your influence is woven into every part of who I am, and for that, I'm eternally grateful.</p>
-                <p>You're the <span class="highlight">best man I know</span>. Hopefully one day I'll make you as proud of me as I am of you. Thank you for being my guiding light and role model.</p>
-                <p>Happy Father's Day, Dad! May your day be filled with <span class="highlight">joy, love, and the knowledge that you're cherished beyond measure</span>. My life is infinitely better because you're in it.</p>
-            </div>
-        </section>
+        <div id="lessons" class="content-section">
+            <h2>Your Priceless Lessons</h2>
+            <p>Every moment with you is precious. You're my <span class="highlight">safe haven</span> - a constant source of comfort and strength. Whether we're having deep conversations or enjoying quiet moments together, these experiences have left a permanent mark on my heart.</p>
+            <p>You've taught me how to face challenges with <span class="highlight">grace and determination</span>. Your resilience during difficult times has shown me what true strength looks like. Your kindness and dedication to our family are qualities I strive to emulate.</p>
+            <p>Thank you for knowing exactly what I needed - whether it was being <span class="highlight">playful like a child, supportive like a friend, or guiding like a parent</span>. You've mastered all these roles perfectly.</p>
+        </div>
         
-        <!-- Footer -->
-        <footer class="main-footer">
+        <div id="inspiration" class="content-section">
+            <h2>My Endless Inspiration</h2>
+            <p>Dad, you inspire me in ways you might not realize. Your <span class="highlight">belief in me</span>, especially during moments of self-doubt, has given me strength to pursue my dreams. You've shown me that with dedication, anything is possible.</p>
+            <p>I treasure all the memories we've created - the <span class="highlight">laughter we've shared, the lessons you've taught</span> (including those colorful words for special situations!), and the love we've cultivated. These are treasures I'll always cherish.</p>
+            <p>Your achievements and the example you've set remind me that I too can <span class="highlight">make a difference</span>. You've taught me the value of kindness, compassion, and hard work - lessons I carry with me every day.</p>
+        </div>
+        
+        <div id="celebration" class="content-section">
+            <h2>A Special Celebration</h2>
+            <p>Today, I celebrate you - not just as my father, but as my <span class="highlight">confidant, hero, and best friend</span>. Your influence is woven into every part of who I am, and for that, I'm eternally grateful.</p>
+            <p>You're the <span class="highlight">best man I know</span>. Hopefully one day I'll make you as proud of me as I am of you. Thank you for being my guiding light and role model.</p>
+            <p>Happy Father's Day, Dad! May your day be filled with <span class="highlight">joy, love, and the knowledge that you're cherished beyond measure</span>. My life is infinitely better because you're in it.</p>
+        </div>
+        
+        <footer>
             <p>With all my love,</p>
             <div class="signature">Nigel <span class="heart">♥</span></div>
         </footer>
-    </main>
+    </div>
     
     <script>
         // Enhanced Countdown Timer (slower)
-        const countdownOverlay = document.getElementById('countdownOverlay');
-        const countdownElement = document.getElementById('countdown');
-        const mainContent = document.getElementById('mainContent');
-        const celebration = document.getElementById('celebration');
+        const countdownOverlay = document.querySelector('.countdown-overlay');
+        const countdownNumber = document.querySelector('.countdown-number');
+        const progressBar = document.querySelector('.countdown-progress-bar');
+        let count = 0;
+        const target = 25;
+        const duration = 10000; // 10 seconds total
         
-        let count = 25;
-        const countdownDuration = 8000; // 8 seconds total
+        const startTime = Date.now();
+        const endTime = startTime + duration;
         
         function updateCountdown() {
-            const startTime = Date.now();
-            const endTime = startTime + countdownDuration;
+            const now = Date.now();
+            const progress = Math.min((now - startTime) / duration, 1);
+            count = Math.floor(progress * target);
+            countdownNumber.textContent = count;
+            progressBar.style.width = `${progress * 100}%`;
             
-            function animate() {
-                const now = Date.now();
-                const progress = Math.min((now - startTime) / countdownDuration, 1);
-                const currentCount = Math.floor(count - (progress * count));
-                countdownElement.textContent = currentCount;
+            if (progress < 1) {
+                requestAnimationFrame(updateCountdown);
+            } else {
+                // Show celebration animation
+                const celebration = document.getElementById('celebrationAnimation');
+                celebration.classList.add('active');
                 
-                if (progress < 1) {
-                    requestAnimationFrame(animate);
-                } else {
-                    // Countdown complete
-                    celebration.classList.add('active');
-                    
+                // Create multiple 8s
+                for (let i = 0; i < 5; i++) {
                     setTimeout(() => {
-                        countdownOverlay.style.opacity = '0';
+                        const eight = document.createElement('div');
+                        eight.className = 'celebration-8';
+                        eight.textContent = '8';
+                        eight.style.left = `${Math.random() * 80 + 10}%`;
+                        eight.style.top = `${Math.random() * 80 + 10}%`;
+                        eight.style.animationDelay = `${i * 0.3}s`;
+                        celebration.appendChild(eight);
+                        
+                        // Remove after animation
                         setTimeout(() => {
-                            countdownOverlay.style.display = 'none';
-                            mainContent.classList.add('visible');
-                            
-                            // Remove celebration after 3 seconds
-                            setTimeout(() => {
-                                celebration.classList.remove('active');
-                            }, 3000);
-                        }, 1000);
-                    }, 1500);
+                            eight.remove();
+                        }, 3000);
+                    }, i * 300);
                 }
+                
+                // Hide countdown and show main content
+                setTimeout(() => {
+                    countdownOverlay.style.opacity = '0';
+                    celebration.classList.remove('active');
+                    setTimeout(() => {
+                        countdownOverlay.style.display = 'none';
+                        document.getElementById('mainContent').classList.add('visible');
+                    }, 1000);
+                }, 2000);
             }
-            
-            requestAnimationFrame(animate);
         }
         
-        // Start countdown when page loads
-        window.addEventListener('load', () => {
-            setTimeout(updateCountdown, 500);
-        });
+        requestAnimationFrame(updateCountdown);
         
-        // Smooth scrolling for navigation
-        const navLinks = document.querySelectorAll('.nav-link');
+        // Springboard Menu Navigation
+        const buttons = document.querySelectorAll('.springboard-btn');
+        const sections = document.querySelectorAll('.content-section');
         
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
                 
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
+                // Hide all sections
+                sections.forEach(section => {
+                    section.classList.remove('active');
                 });
+                
+                // Show target section
+                document.getElementById(targetId).classList.add('active');
+                
+                // Smooth scroll to section
+                document.getElementById(targetId).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Button animation
+                button.style.transform = 'translateY(0) scale(0.95)';
+                setTimeout(() => {
+                    button.style.transform = 'translateY(-5px)';
+                }, 200);
             });
         });
+        
+        // Show first section by default after countdown
+        setTimeout(() => {
+            document.getElementById('gratitude').classList.add('active');
+        }, 100);
         
         // Highlight effects
         const highlights = document.querySelectorAll('.highlight');
