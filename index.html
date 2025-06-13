@@ -3,20 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To the Father I'm Thankful For</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>To My Extraordinary Father</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --lime: #B5E853;
-            --lime-light: #D6F58A;
-            --lime-dark: #8EC63F;
-            --purple: #6A0DAD;
-            --purple-light: #9B51E0;
-            --purple-dark: #4A148C;
-            --gold: #FFD700;
-            --gray-dark: #2D3748;
-            --gray-light: #F7FAFC;
-            --section-padding: 100px;
+            --deep-blue: #0a2463;
+            --rich-red: #d8315b;
+            --warm-gold: #ffd166;
+            --soft-teal: #06d6a0;
+            --dark-purple: #3a015c;
+            --light-bg: #f8f4f9;
+            --section-bg: rgba(255,255,255,0.85);
         }
         
         * {
@@ -26,24 +23,22 @@
         }
         
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: white;
-            color: var(--gray-dark);
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(135deg, var(--light-bg), #ffffff);
+            color: #333;
+            min-height: 100vh;
             overflow-x: hidden;
-            line-height: 1.6;
         }
         
-        /* 8s Background Pattern (Subtle) */
-        body::after {
-            content: '';
+        /* 8 Pattern Background */
+        .eight-pattern {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30c0-6.6 5.4-12 12-12s12 5.4 12 12v0c0 6.6-5.4 12-12 12s-12-5.4-12-12v0zm0 20c0-6.6 5.4-12 12-12s12 5.4 12 12v0c0 6.6-5.4 12-12 12s-12-5.4-12-12v0z' fill='%236a0dad' fill-opacity='0.03'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 40c0-6.6 5.4-12 12-12s12 5.4 12 12v0c0 6.6-5.4 12-12 12s-12-5.4-12-12v0zm0 20c0-6.6 5.4-12 12-12s12 5.4 12 12v0c0 6.6-5.4 12-12 12s-12-5.4-12-12v0z' fill='%230a2463' fill-opacity='0.03'/%3E%3C/svg%3E");
             z-index: -1;
-            pointer-events: none;
         }
         
         /* Countdown Overlay */
@@ -53,16 +48,16 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: white;
+            background: var(--deep-blue);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            transition: opacity 1s ease;
+            color: white;
         }
         
-        .countdown-content {
+        .countdown-container {
             text-align: center;
             max-width: 600px;
             padding: 2rem;
@@ -70,491 +65,318 @@
         
         .countdown-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-size: 2.5rem;
             margin-bottom: 2rem;
-            color: var(--purple-dark);
-            line-height: 1.3;
+            color: var(--warm-gold);
         }
         
         .countdown-number {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(4rem, 12vw, 8rem);
+            font-size: 8rem;
             font-weight: 700;
-            color: var(--lime-dark);
+            color: white;
             margin: 2rem 0;
             position: relative;
-            display: inline-block;
         }
         
         .countdown-number::after {
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--lime), var(--purple));
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: var(--warm-gold);
             transform: scaleX(0);
             transform-origin: left;
-            animation: countdownLine 25s linear forwards;
+            animation: countdownLine 8s linear forwards;
         }
         
         @keyframes countdownLine {
             to { transform: scaleX(1); }
         }
         
-        /* Main Layout */
-        .main-container {
+        /* Main Content */
+        .main-content {
             opacity: 0;
             transform: translateY(20px);
             transition: all 1s ease;
+            padding-top: 80px;
         }
         
-        .main-container.visible {
+        .main-content.visible {
             opacity: 1;
             transform: translateY(0);
         }
         
-        /* Header */
-        .hero-section {
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: var(--section-padding) 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            margin-bottom: 1.5rem;
-            color: var(--purple-dark);
-            line-height: 1.2;
-        }
-        
-        .number-8 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(5rem, 15vw, 10rem);
-            font-weight: 700;
-            color: var(--purple-dark);
-            margin: 2rem 0;
-            display: inline-block;
-            position: relative;
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
-        
-        .number-8:hover {
-            color: var(--lime-dark);
-            transform: rotate(8deg) scale(1.1);
-        }
-        
         /* Navigation */
-        .nav-container {
+        .main-nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: rgba(10, 36, 99, 0.95);
+            padding: 1.5rem;
             z-index: 100;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
         }
         
-        .nav-logo {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: var(--purple-dark);
-            font-size: 1.5rem;
-            text-decoration: none;
-        }
-        
-        .nav-menu {
+        .nav-list {
             display: flex;
+            justify-content: center;
             list-style: none;
+            gap: 2rem;
         }
         
         .nav-item {
-            margin-left: 2rem;
+            position: relative;
         }
         
         .nav-link {
-            color: var(--gray-dark);
+            color: white;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            position: relative;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
         }
         
-        .nav-link::after {
-            content: '';
+        .nav-link::before {
+            content: '8';
             position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--lime-dark);
-            transition: width 0.3s ease;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            color: var(--warm-gold);
+            opacity: 0;
+            transition: all 0.3s ease;
         }
         
         .nav-link:hover {
-            color: var(--purple-dark);
+            color: var(--warm-gold);
         }
         
-        .nav-link:hover::after {
-            width: 100%;
+        .nav-link:hover::before {
+            opacity: 1;
+            top: -20px;
         }
         
         /* Sections */
-        .section {
-            padding: var(--section-padding) 2rem;
-            max-width: 1200px;
+        .content-section {
+            min-height: 100vh;
+            padding: 6rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 800px;
             margin: 0 auto;
+            background: var(--section-bg);
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .content-section::before {
+            content: '8';
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 20rem;
+            font-weight: bold;
+            color: rgba(10, 36, 99, 0.03);
+            z-index: -1;
         }
         
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 3rem;
-            color: var(--purple-dark);
-            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--deep-blue);
             position: relative;
+            display: inline-block;
         }
         
         .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--lime), var(--purple));
-        }
-        
-        /* Qualities Section - Wix-style interactive points */
-        .qualities-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .quality-point {
-            padding: 2rem;
-            border-radius: 8px;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .quality-point::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(181, 232, 83, 0.1), rgba(106, 13, 173, 0.1));
-            z-index: -1;
-        }
-        
-        .quality-point:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-        }
-        
-        .quality-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--purple-dark);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .quality-title::before {
             content: '8';
-            display: inline-block;
-            font-size: 1.2rem;
-            margin-right: 10px;
-            color: var(--lime-dark);
-            font-weight: bold;
+            position: absolute;
+            top: -15px;
+            right: -25px;
+            font-size: 1.5rem;
+            color: var(--rich-red);
         }
         
-        .quality-desc {
-            color: var(--gray-dark);
-            opacity: 0;
-            height: 0;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-        
-        .quality-point.active .quality-desc {
-            opacity: 1;
-            height: auto;
-            margin-top: 1rem;
-        }
-        
-        /* Content Sections */
-        .content-section {
-            margin-bottom: 3rem;
-        }
-        
-        .content-text {
-            max-width: 800px;
-            margin: 0 auto;
+        .section-content {
+            line-height: 1.8;
         }
         
         .highlight {
-            background: linear-gradient(transparent 60%, rgba(181, 232, 83, 0.3) 60%);
+            background: linear-gradient(transparent 50%, rgba(255, 209, 102, 0.3) 50%);
             transition: all 0.3s ease;
-            padding: 0 2px;
-            border-radius: 2px;
+            padding: 0 3px;
         }
         
         .highlight:hover {
-            background: linear-gradient(transparent 60%, rgba(181, 232, 83, 0.7) 60%);
+            background: linear-gradient(transparent 50%, rgba(255, 209, 102, 0.7) 50%);
         }
         
         /* Footer */
-        .footer {
+        .main-footer {
             text-align: center;
-            padding: 3rem 2rem;
-            background: var(--gray-light);
-            margin-top: var(--section-padding);
+            padding: 3rem;
+            background: var(--deep-blue);
+            color: white;
+            position: relative;
         }
         
         .signature {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             margin-top: 1rem;
-            display: inline-block;
-            position: relative;
         }
         
         .heart {
+            color: var(--rich-red);
             display: inline-block;
-            color: #ff3366;
-            font-size: 1.5rem;
-            animation: pulse 1.5s infinite;
-            margin-left: 0.5rem;
-            vertical-align: middle;
+            animation: heartbeat 1.5s infinite;
         }
         
-        @keyframes pulse {
+        @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
             25% { transform: scale(1.3); }
             50% { transform: scale(1); }
             75% { transform: scale(1.2); }
         }
         
-        /* Floating 8 Animation */
-        .floating-8 {
-            position: absolute;
-            font-family: 'Playfair Display', serif;
-            font-weight: bold;
-            color: rgba(106, 13, 173, 0.2);
-            z-index: -1;
+        /* Celebration Animation */
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            width: 40px;
-            height: 40px;
-            flex-direction: column;
+            z-index: 1001;
+            display: flex;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
-            z-index: 101;
-        }
-        
-        .mobile-menu-btn span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--purple-dark);
-            margin: 4px 0;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-menu-btn.active span:nth-child(1) {
-            transform: translateY(6px) rotate(45deg);
-        }
-        
-        .mobile-menu-btn.active span:nth-child(2) {
             opacity: 0;
+            transition: opacity 1s ease;
         }
         
-        .mobile-menu-btn.active span:nth-child(3) {
-            transform: translateY(-6px) rotate(-45deg);
+        .celebration.active {
+            opacity: 1;
+        }
+        
+        .celebration-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--warm-gold), transparent);
+            animation: ripple 3s ease-out infinite;
+            transform: scale(0);
+        }
+        
+        @keyframes ripple {
+            to { transform: scale(4); opacity: 0; }
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
-            :root {
-                --section-padding: 70px;
-            }
-            
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                height: 100vh;
-                background: white;
+            .nav-list {
                 flex-direction: column;
-                justify-content: center;
+                gap: 1rem;
                 align-items: center;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-                transition: right 0.3s ease;
-                z-index: 100;
             }
             
-            .nav-menu.active {
-                right: 0;
+            .content-section {
+                padding: 4rem 1.5rem;
+                margin: 0 1rem 2rem;
             }
             
-            .nav-item {
-                margin: 1.5rem 0;
+            .section-title {
+                font-size: 2rem;
             }
             
-            .nav-link {
-                font-size: 1.2rem;
+            .countdown-title {
+                font-size: 2rem;
             }
             
-            .mobile-menu-btn {
-                display: flex;
-            }
-            
-            .qualities-container {
-                grid-template-columns: 1fr;
+            .countdown-number {
+                font-size: 5rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- 8 Pattern Background -->
+    <div class="eight-pattern"></div>
+    
     <!-- Countdown Overlay -->
-    <div class="countdown-overlay">
-        <div class="countdown-content">
-            <h2 class="countdown-title">It has all led up to me being capable to provide you with this...</h2>
-            <div class="countdown-number" id="countdown">0</div>
+    <div class="countdown-overlay" id="countdownOverlay">
+        <div class="countdown-container">
+            <h1 class="countdown-title">It has all led up to this moment...</h1>
+            <div class="countdown-number" id="countdown">25</div>
         </div>
     </div>
     
+    <!-- Celebration Animation -->
+    <div class="celebration" id="celebration">
+        <div class="celebration-circle" style="width: 100px; height: 100px; animation-delay: 0s;"></div>
+        <div class="celebration-circle" style="width: 150px; height: 150px; animation-delay: 0.5s;"></div>
+        <div class="celebration-circle" style="width: 200px; height: 200px; animation-delay: 1s;"></div>
+    </div>
+    
     <!-- Navigation -->
-    <nav class="nav-container">
-        <a href="#" class="nav-logo">Father's Day</a>
-        
-        <div class="mobile-menu-btn" id="mobileMenuBtn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        
-        <ul class="nav-menu" id="navMenu">
-            <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="#gratitude" class="nav-link">Gratitude</a></li>
-            <li class="nav-item"><a href="#lessons" class="nav-link">Lessons</a></li>
-            <li class="nav-item"><a href="#inspiration" class="nav-link">Inspiration</a></li>
+    <nav class="main-nav">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#gratitude" class="nav-link">My Gratitude</a></li>
+            <li class="nav-item"><a href="#lessons" class="nav-link">Your Lessons</a></li>
+            <li class="nav-item"><a href="#inspiration" class="nav-link">My Inspiration</a></li>
             <li class="nav-item"><a href="#celebration" class="nav-link">Celebration</a></li>
         </ul>
     </nav>
     
     <!-- Main Content -->
-    <main class="main-container" id="mainContainer">
-        <!-- Hero Section -->
-        <section class="hero-section" id="home">
-            <div class="hero-content">
-                <h1 class="hero-title">To the father that I will always be thankful for</h1>
-                <div class="number-8" id="number8">8</div>
-            </div>
-        </section>
-        
-        <!-- Qualities Section -->
-        <section class="section">
-            <h2 class="section-title">What Makes You Special</h2>
-            <div class="qualities-container">
-                <div class="quality-point" data-quote="Your encouragement gives me wings to fly">
-                    <h3 class="quality-title">How Encouraging</h3>
-                    <p class="quality-desc">Click to reveal special message</p>
-                </div>
-                
-                <div class="quality-point" data-quote="Your help has been my compass in life's journey">
-                    <h3 class="quality-title">How Helpful</h3>
-                    <p class="quality-desc">Click to reveal special message</p>
-                </div>
-                
-                <div class="quality-point" data-quote="Your humility teaches me the true meaning of strength">
-                    <h3 class="quality-title">How Humble</h3>
-                    <p class="quality-desc">Click to reveal special message</p>
-                </div>
-                
-                <div class="quality-point" data-quote="Your grounded nature keeps our family rooted">
-                    <h3 class="quality-title">How Grounded</h3>
-                    <p class="quality-desc">Click to reveal special message</p>
-                </div>
-                
-                <div class="quality-point" data-quote="Your intelligence inspires me to keep learning">
-                    <h3 class="quality-title">How Smart</h3>
-                    <p class="quality-desc">Click to reveal special message</p>
-                </div>
-                
-                <div class="quality-point" data-quote="Your love is the foundation of everything good in my life">
-                    <h3 class="quality-title">How Loving</h3>
-                    <p class="quality-desc">Click to reveal special message</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Content Sections -->
-        <section class="section content-section" id="gratitude">
+    <main class="main-content" id="mainContent">
+        <!-- Gratitude Section -->
+        <section id="gratitude" class="content-section">
             <h2 class="section-title">My Deepest Gratitude</h2>
-            <div class="content-text">
+            <div class="section-content">
                 <p><span class="highlight">Dad, I want to take a moment to express my heartfelt gratitude</span> for the invaluable lessons you've taught me throughout my life. Your wisdom has been the foundation of my growth, helping me become the person I am today.</p>
                 <p>From childhood, you've shown me the importance of <span class="highlight">hard work, integrity, and perseverance</span>. These principles have guided my decisions and shaped my character. Your nurturing love created the perfect environment for me to flourish.</p>
                 <p>I often find myself following your <span class="highlight">thoughtful approach to decision-making</span>. Your ability to carefully consider options and choose the best path is something I deeply admire. Your attention to detail in everything you do has taught me to strive for excellence.</p>
             </div>
         </section>
         
-        <section class="section content-section" id="lessons">
+        <!-- Lessons Section -->
+        <section id="lessons" class="content-section">
             <h2 class="section-title">Your Priceless Lessons</h2>
-            <div class="content-text">
+            <div class="section-content">
                 <p>Every moment with you is precious. You're my <span class="highlight">safe haven</span> - a constant source of comfort and strength. Whether we're having deep conversations or enjoying quiet moments together, these experiences have left a permanent mark on my heart.</p>
                 <p>You've taught me how to face challenges with <span class="highlight">grace and determination</span>. Your resilience during difficult times has shown me what true strength looks like. Your kindness and dedication to our family are qualities I strive to emulate.</p>
                 <p>Thank you for knowing exactly what I needed - whether it was being <span class="highlight">playful like a child, supportive like a friend, or guiding like a parent</span>. You've mastered all these roles perfectly.</p>
             </div>
         </section>
         
-        <section class="section content-section" id="inspiration">
+        <!-- Inspiration Section -->
+        <section id="inspiration" class="content-section">
             <h2 class="section-title">My Endless Inspiration</h2>
-            <div class="content-text">
+            <div class="section-content">
                 <p>Dad, you inspire me in ways you might not realize. Your <span class="highlight">belief in me</span>, especially during moments of self-doubt, has given me strength to pursue my dreams. You've shown me that with dedication, anything is possible.</p>
                 <p>I treasure all the memories we've created - the <span class="highlight">laughter we've shared, the lessons you've taught</span> (including those colorful words for special situations!), and the love we've cultivated. These are treasures I'll always cherish.</p>
                 <p>Your achievements and the example you've set remind me that I too can <span class="highlight">make a difference</span>. You've taught me the value of kindness, compassion, and hard work - lessons I carry with me every day.</p>
             </div>
         </section>
         
-        <section class="section content-section" id="celebration">
+        <!-- Celebration Section -->
+        <section id="celebration" class="content-section">
             <h2 class="section-title">A Special Celebration</h2>
-            <div class="content-text">
+            <div class="section-content">
                 <p>Today, I celebrate you - not just as my father, but as my <span class="highlight">confidant, hero, and best friend</span>. Your influence is woven into every part of who I am, and for that, I'm eternally grateful.</p>
                 <p>You're the <span class="highlight">best man I know</span>. Hopefully one day I'll make you as proud of me as I am of you. Thank you for being my guiding light and role model.</p>
                 <p>Happy Father's Day, Dad! May your day be filled with <span class="highlight">joy, love, and the knowledge that you're cherished beyond measure</span>. My life is infinitely better because you're in it.</p>
@@ -562,7 +384,7 @@
         </section>
         
         <!-- Footer -->
-        <footer class="footer">
+        <footer class="main-footer">
             <p>With all my love,</p>
             <div class="signature">Nigel <span class="heart">♥</span></div>
         </footer>
@@ -570,136 +392,56 @@
     
     <script>
         // Enhanced Countdown Timer (slower)
-        const countdownOverlay = document.querySelector('.countdown-overlay');
+        const countdownOverlay = document.getElementById('countdownOverlay');
         const countdownElement = document.getElementById('countdown');
-        let count = 0;
-        const target = 25;
-        const duration = 5000; // 5 seconds total
+        const mainContent = document.getElementById('mainContent');
+        const celebration = document.getElementById('celebration');
         
-        const startTime = Date.now();
-        const endTime = startTime + duration;
+        let count = 25;
+        const countdownDuration = 8000; // 8 seconds total
         
         function updateCountdown() {
-            const now = Date.now();
-            const progress = Math.min((now - startTime) / duration, 1);
-            count = Math.floor(progress * target);
-            countdownElement.textContent = count;
+            const startTime = Date.now();
+            const endTime = startTime + countdownDuration;
             
-            if (progress < 1) {
-                requestAnimationFrame(updateCountdown);
-            } else {
-                setTimeout(() => {
-                    countdownOverlay.style.opacity = '0';
-                    setTimeout(() => {
-                        countdownOverlay.style.display = 'none';
-                        document.getElementById('mainContainer').classList.add('visible');
-                        
-                        // Add floating 8s to background
-                        createFloating8s();
-                    }, 1000);
-                }, 500);
-            }
-        }
-        
-        requestAnimationFrame(updateCountdown);
-        
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navMenu = document.getElementById('navMenu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenuBtn.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-        
-        // Close mobile menu when clicking a link
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenuBtn.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-        
-        // Number 8 Interaction
-        const number8 = document.getElementById('number8');
-        
-        number8.addEventListener('click', () => {
-            // Create floating 8s animation
-            for (let i = 0; i < 8; i++) {
-                createFloating8();
-            }
-        });
-        
-        function createFloating8() {
-            const floating8 = document.createElement('div');
-            floating8.className = 'floating-8';
-            floating8.textContent = '8';
-            floating8.style.fontSize = `${Math.random() * 30 + 20}px`;
-            floating8.style.left = `${Math.random() * 80 + 10}%`;
-            floating8.style.top = `${Math.random() * 80 + 10}%`;
-            floating8.style.opacity = Math.random() * 0.3 + 0.1;
-            document.body.appendChild(floating8);
-            
-            const animationDuration = Math.random() * 20000 + 10000;
-            const endLeft = parseFloat(floating8.style.left) + (Math.random() * 40 - 20);
-            const endTop = parseFloat(floating8.style.top) - (Math.random() * 30 + 20);
-            
-            floating8.animate([
-                { 
-                    transform: 'translate(0, 0) rotate(0deg)',
-                    opacity: floating8.style.opacity
-                },
-                { 
-                    transform: `translate(${endLeft - parseFloat(floating8.style.left)}%, ${endTop - parseFloat(floating8.style.top)}%) rotate(360deg)`,
-                    opacity: 0
-                }
-            ], {
-                duration: animationDuration,
-                easing: 'linear'
-            });
-            
-            setTimeout(() => {
-                floating8.remove();
-            }, animationDuration);
-        }
-        
-        // Create initial floating 8s
-        function createFloating8s() {
-            for (let i = 0; i < 12; i++) {
-                setTimeout(() => {
-                    createFloating8();
-                }, i * 2000);
-            }
-        }
-        
-        // Interactive Quality Points
-        const qualityPoints = document.querySelectorAll('.quality-point');
-        
-        qualityPoints.forEach(point => {
-            point.addEventListener('click', function() {
-                // Toggle active state
-                this.classList.toggle('active');
+            function animate() {
+                const now = Date.now();
+                const progress = Math.min((now - startTime) / countdownDuration, 1);
+                const currentCount = Math.floor(count - (progress * count));
+                countdownElement.textContent = currentCount;
                 
-                // Update content if active
-                if (this.classList.contains('active')) {
-                    const quote = this.getAttribute('data-quote');
-                    this.querySelector('.quality-desc').textContent = quote;
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
                 } else {
-                    this.querySelector('.quality-desc').textContent = 'Click to reveal special message';
+                    // Countdown complete
+                    celebration.classList.add('active');
+                    
+                    setTimeout(() => {
+                        countdownOverlay.style.opacity = '0';
+                        setTimeout(() => {
+                            countdownOverlay.style.display = 'none';
+                            mainContent.classList.add('visible');
+                            
+                            // Remove celebration after 3 seconds
+                            setTimeout(() => {
+                                celebration.classList.remove('active');
+                            }, 3000);
+                        }, 1000);
+                    }, 1500);
                 }
-                
-                // Close other points
-                qualityPoints.forEach(otherPoint => {
-                    if (otherPoint !== this && otherPoint.classList.contains('active')) {
-                        otherPoint.classList.remove('active');
-                        otherPoint.querySelector('.quality-desc').textContent = 'Click to reveal special message';
-                    }
-                });
-            });
+            }
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // Start countdown when page loads
+        window.addEventListener('load', () => {
+            setTimeout(updateCountdown, 500);
         });
         
-        // Smooth scrolling for anchor links
+        // Smooth scrolling for navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
