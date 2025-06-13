@@ -34,25 +34,15 @@
             position: relative;
         }
         
-        /* Background 8s Pattern */
-        .bg-8s {
+        /* 8s Background Pattern */
+        .eights-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20c0-5.5 4.5-10 10-10s10 4.5 10 10v0c0 5.5-4.5 10-10 10s-10-4.5-10-10v0zm0 20c0-5.5 4.5-10 10-10s10 4.5 10 10v0c0 5.5-4.5 10-10 10s-10-4.5-10-10v0z' fill='%236a0dad' fill-opacity='0.05'/%3E%3C/svg%3E");
             z-index: -1;
-            opacity: 0.03;
-            pointer-events: none;
-            font-family: 'Playfair Display', serif;
-            font-size: 120px;
-            font-weight: 700;
-            color: var(--purple);
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            grid-auto-rows: 200px;
-            line-height: 200px;
-            text-align: center;
         }
         
         /* Countdown Overlay */
@@ -120,11 +110,7 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 1s ease;
-            background-color: rgba(255,255,255,0.7);
-            backdrop-filter: blur(5px);
-            border-radius: 20px;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
+            background-color: rgba(255,255,255,0.85);
         }
         
         .container.visible {
@@ -140,106 +126,68 @@
         
         .header-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             margin-bottom: 1rem;
             color: var(--purple-dark);
             position: relative;
             display: inline-block;
         }
         
-        .header-title::before, .header-title::after {
+        .header-title::after {
             content: '8';
             position: absolute;
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            top: -20px;
+            right: -30px;
+            font-size: 3rem;
             color: var(--lime-dark);
             opacity: 0.7;
         }
         
-        .header-title::before {
-            top: -20px;
-            left: -30px;
-        }
-        
-        .header-title::after {
-            bottom: -20px;
-            right: -30px;
-        }
-        
-        .header-subtitle {
-            font-size: 1.5rem;
-            color: var(--purple);
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-        
-        /* Homepage Content */
-        .home-content {
-            text-align: center;
-            padding: 2rem 0;
-        }
-        
-        .interactive-points {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 3rem 0;
-        }
-        
-        .point-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            width: 220px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .point-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        
-        .point-card::before {
-            content: '8';
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
+        .number-8 {
             font-family: 'Playfair Display', serif;
-            font-size: 6rem;
+            font-size: 8rem;
             font-weight: 700;
-            color: rgba(106, 13, 173, 0.05);
-            z-index: 0;
-        }
-        
-        .point-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
             color: var(--purple-dark);
-            margin-bottom: 1rem;
+            margin: 1rem 0;
+            display: inline-block;
             position: relative;
-            z-index: 1;
+            transition: all 0.4s ease;
+            cursor: pointer;
         }
         
-        .point-value {
-            font-size: 3rem;
-            font-weight: 700;
+        .number-8::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border: 3px solid var(--lime);
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .number-8:hover {
             color: var(--lime-dark);
-            position: relative;
-            z-index: 1;
+            transform: rotate(8deg) scale(1.1);
         }
         
-        /* Menu System */
+        .number-8:hover::before {
+            opacity: 1;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+        }
+        
+        /* Overlay Menu */
         .menu-toggle {
             position: fixed;
             top: 30px;
             right: 30px;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: var(--purple-dark);
             border-radius: 50%;
             display: flex;
@@ -248,7 +196,7 @@
             align-items: center;
             cursor: pointer;
             z-index: 1001;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             transition: all 0.3s ease;
         }
         
@@ -259,16 +207,15 @@
         
         .menu-toggle span {
             display: block;
-            width: 28px;
-            height: 3px;
+            width: 24px;
+            height: 2px;
             background: white;
-            margin: 5px 0;
+            margin: 4px 0;
             transition: all 0.3s ease;
-            border-radius: 3px;
         }
         
         .menu-toggle.active span:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
+            transform: translateY(6px) rotate(45deg);
         }
         
         .menu-toggle.active span:nth-child(2) {
@@ -276,7 +223,7 @@
         }
         
         .menu-toggle.active span:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
+            transform: translateY(-6px) rotate(-45deg);
         }
         
         .menu-overlay {
@@ -317,30 +264,12 @@
             font-weight: 600;
             text-decoration: none;
             position: relative;
-            padding: 0.5rem 1.5rem;
+            padding: 0.5rem 1rem;
             transition: all 0.3s ease;
             display: inline-block;
         }
         
         .menu-link::before {
-            content: '8';
-            position: absolute;
-            left: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            color: var(--lime);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .menu-link:hover::before {
-            opacity: 1;
-            left: -10px;
-        }
-        
-        .menu-link::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -357,9 +286,80 @@
             color: var(--lime);
         }
         
-        .menu-link:hover::after {
+        .menu-link:hover::before {
             transform: scaleX(1);
             transform-origin: left;
+        }
+        
+        /* Home Page Content */
+        .home-content {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .qualities-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .quality-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            flex: 1 1 200px;
+            max-width: 250px;
+        }
+        
+        .quality-item::before {
+            content: '8';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 8rem;
+            font-weight: bold;
+            color: rgba(106, 13, 173, 0.05);
+            z-index: 0;
+        }
+        
+        .quality-item h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--purple-dark);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .quality-item p {
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            height: 0;
+            transition: all 0.3s ease;
+            color: var(--gray-dark);
+        }
+        
+        .quality-item.active {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        .quality-item.active p {
+            opacity: 1;
+            height: auto;
+            margin-top: 0.5rem;
+        }
+        
+        .quality-item:hover {
+            transform: translateY(-5px);
         }
         
         /* Content Sections */
@@ -429,105 +429,42 @@
             position: relative;
         }
         
-        footer::before {
-            content: '8';
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 700;
-            color: rgba(106, 13, 173, 0.05);
-            z-index: 0;
-        }
-        
         .signature {
             font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
             margin-top: 1rem;
             display: inline-block;
             position: relative;
-            z-index: 1;
+        }
+        
+        .signature::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--lime), var(--purple));
         }
         
         .heart {
-            color: #ff3366;
             display: inline-block;
-            animation: heartBeat 1.5s infinite;
-            margin-left: 5px;
+            color: #ff3366;
+            font-size: 1.5rem;
+            animation: pulse 1.5s infinite;
+            margin-left: 0.5rem;
+            vertical-align: middle;
         }
         
-        @keyframes heartBeat {
+        @keyframes pulse {
             0%, 100% { transform: scale(1); }
             25% { transform: scale(1.3); }
             50% { transform: scale(1); }
             75% { transform: scale(1.2); }
         }
         
-        /* Interactive Features */
-        .action-btn {
-            background: linear-gradient(135deg, var(--lime), var(--lime-dark));
-            color: var(--purple-dark);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin: 1rem 0;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        
-        .action-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-        
-        .action-btn:active {
-            transform: translateY(0);
-        }
-        
-        .hidden-message {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s ease;
-            background: rgba(255,255,255,0.8);
-            border-radius: 10px;
-            margin: 1rem 0;
-        }
-        
-        .hidden-message.show {
-            max-height: 500px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
         /* Responsive Design */
         @media (max-width: 768px) {
-            .header-title {
-                font-size: 2.5rem;
-            }
-            
-            .header-title::before, .header-title::after {
-                font-size: 1.5rem;
-            }
-            
-            .header-title::before {
-                top: -15px;
-                left: -20px;
-            }
-            
-            .header-title::after {
-                bottom: -15px;
-                right: -20px;
-            }
-            
-            .header-subtitle {
-                font-size: 1.2rem;
-            }
-            
             .countdown-title {
                 font-size: 2rem;
             }
@@ -536,13 +473,27 @@
                 font-size: 5rem;
             }
             
+            .header-title {
+                font-size: 2rem;
+            }
+            
+            .header-title::after {
+                font-size: 2rem;
+                top: -15px;
+                right: -20px;
+            }
+            
+            .number-8 {
+                font-size: 6rem;
+            }
+            
             .menu-link {
                 font-size: 2rem;
             }
             
-            .point-card {
-                width: 100%;
-                max-width: 280px;
+            .quality-item {
+                flex: 1 1 100%;
+                max-width: 100%;
             }
             
             .content-section {
@@ -556,8 +507,8 @@
     </style>
 </head>
 <body>
-    <!-- Background 8s Pattern -->
-    <div class="bg-8s" id="bg8s"></div>
+    <!-- 8s Background Pattern -->
+    <div class="eights-background"></div>
     
     <!-- Countdown Overlay -->
     <div class="countdown-overlay">
@@ -587,63 +538,57 @@
     
     <!-- Main Content -->
     <div class="container" id="mainContainer">
-        <!-- Home Section -->
+        <header>
+            <h1 class="header-title">To the father that I will always be thankful for</h1>
+            <div class="number-8" id="number8">8</div>
+        </header>
+        
+        <!-- Home Page -->
         <div id="home" class="content-section active">
-            <header>
-                <h1 class="header-title">To the father</h1>
-                <div class="header-subtitle">That I will always be thankful for</div>
-            </header>
-            
             <div class="home-content">
-                <p>Dad, this is my tribute to you - the man who has shaped my life in countless ways.</p>
+                <h2>What Makes You Special</h2>
+                <p>Dad, these are just some of the qualities that make you extraordinary:</p>
                 
-                <div class="interactive-points">
-                    <div class="point-card" onclick="incrementPoint(this)">
-                        <div class="point-title">How Encouraging</div>
-                        <div class="point-value">0</div>
+                <div class="qualities-list">
+                    <div class="quality-item" data-quote="Your encouragement gives me wings to fly">
+                        <h3>How Encouraging</h3>
+                        <p>Click to reveal special message</p>
                     </div>
                     
-                    <div class="point-card" onclick="incrementPoint(this)">
-                        <div class="point-title">How Helpful</div>
-                        <div class="point-value">0</div>
+                    <div class="quality-item" data-quote="Your help has been my compass in life's journey">
+                        <h3>How Helpful</h3>
+                        <p>Click to reveal special message</p>
                     </div>
                     
-                    <div class="point-card" onclick="incrementPoint(this)">
-                        <div class="point-title">How Humble</div>
-                        <div class="point-value">0</div>
+                    <div class="quality-item" data-quote="Your humility teaches me the true meaning of strength">
+                        <h3>How Humble</h3>
+                        <p>Click to reveal special message</p>
                     </div>
                     
-                    <div class="point-card" onclick="incrementPoint(this)">
-                        <div class="point-title">How Grounded</div>
-                        <div class="point-value">0</div>
+                    <div class="quality-item" data-quote="Your grounded nature keeps our family rooted">
+                        <h3>How Grounded</h3>
+                        <p>Click to reveal special message</p>
                     </div>
                     
-                    <div class="point-card" onclick="incrementPoint(this)">
-                        <div class="point-title">How Smart</div>
-                        <div class="point-value">0</div>
+                    <div class="quality-item" data-quote="Your intelligence inspires me to keep learning">
+                        <h3>How Smart</h3>
+                        <p>Click to reveal special message</p>
                     </div>
-                </div>
-                
-                <button class="action-btn" onclick="showSpecialMessage()">Reveal Special Message</button>
-                
-                <div class="hidden-message" id="specialMessage">
-                    <p>Dad, every click on these qualities represents a moment you've demonstrated them. The numbers could never be high enough to capture all the times you've shown these wonderful traits.</p>
-                    <button class="action-btn" onclick="resetPoints()">Reset Counters</button>
+                    
+                    <div class="quality-item" data-quote="Your love is the foundation of everything good in my life">
+                        <h3>How Loving</h3>
+                        <p>Click to reveal special message</p>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- Other Content Sections -->
+        <!-- Content Sections -->
         <div id="gratitude" class="content-section">
             <h2>My Deepest Gratitude</h2>
             <p><span class="highlight">Dad, I want to take a moment to express my heartfelt gratitude</span> for the invaluable lessons you've taught me throughout my life. Your wisdom has been the foundation of my growth, helping me become the person I am today.</p>
             <p>From childhood, you've shown me the importance of <span class="highlight">hard work, integrity, and perseverance</span>. These principles have guided my decisions and shaped my character. Your nurturing love created the perfect environment for me to flourish.</p>
             <p>I often find myself following your <span class="highlight">thoughtful approach to decision-making</span>. Your ability to carefully consider options and choose the best path is something I deeply admire. Your attention to detail in everything you do has taught me to strive for excellence.</p>
-            
-            <button class="action-btn" onclick="showGratitudeMessage()">What I Appreciate Most</button>
-            <div class="hidden-message" id="gratitudeMessage">
-                <p>Your unwavering support and belief in me, even when I doubted myself, is what I cherish most. You've always been my safe harbor in life's storms.</p>
-            </div>
         </div>
         
         <div id="lessons" class="content-section">
@@ -651,11 +596,6 @@
             <p>Every moment with you is precious. You're my <span class="highlight">safe haven</span> - a constant source of comfort and strength. Whether we're having deep conversations or enjoying quiet moments together, these experiences have left a permanent mark on my heart.</p>
             <p>You've taught me how to face challenges with <span class="highlight">grace and determination</span>. Your resilience during difficult times has shown me what true strength looks like. Your kindness and dedication to our family are qualities I strive to emulate.</p>
             <p>Thank you for knowing exactly what I needed - whether it was being <span class="highlight">playful like a child, supportive like a friend, or guiding like a parent</span>. You've mastered all these roles perfectly.</p>
-            
-            <button class="action-btn" onclick="showLessonMessage()">Most Valuable Lesson</button>
-            <div class="hidden-message" id="lessonMessage">
-                <p>You taught me that true strength comes from compassion, and that success means nothing without integrity. This lesson guides me every day.</p>
-            </div>
         </div>
         
         <div id="inspiration" class="content-section">
@@ -663,11 +603,6 @@
             <p>Dad, you inspire me in ways you might not realize. Your <span class="highlight">belief in me</span>, especially during moments of self-doubt, has given me strength to pursue my dreams. You've shown me that with dedication, anything is possible.</p>
             <p>I treasure all the memories we've created - the <span class="highlight">laughter we've shared, the lessons you've taught</span> (including those colorful words for special situations!), and the love we've cultivated. These are treasures I'll always cherish.</p>
             <p>Your achievements and the example you've set remind me that I too can <span class="highlight">make a difference</span>. You've taught me the value of kindness, compassion, and hard work - lessons I carry with me every day.</p>
-            
-            <button class="action-btn" onclick="showInspirationMessage()">When You Inspired Me Most</button>
-            <div class="hidden-message" id="inspirationMessage">
-                <p>Watching you overcome obstacles with quiet determination showed me what real perseverance looks like. Those moments fuel me when I face my own challenges.</p>
-            </div>
         </div>
         
         <div id="celebration" class="content-section">
@@ -675,11 +610,6 @@
             <p>Today, I celebrate you - not just as my father, but as my <span class="highlight">confidant, hero, and best friend</span>. Your influence is woven into every part of who I am, and for that, I'm eternally grateful.</p>
             <p>You're the <span class="highlight">best man I know</span>. Hopefully one day I'll make you as proud of me as I am of you. Thank you for being my guiding light and role model.</p>
             <p>Happy Father's Day, Dad! May your day be filled with <span class="highlight">joy, love, and the knowledge that you're cherished beyond measure</span>. My life is infinitely better because you're in it.</p>
-            
-            <button class="action-btn" onclick="celebrate()">Launch Celebration!</button>
-            <div class="hidden-message" id="celebrationMessage">
-                <p>You deserve all the happiness in the world. Thank you for everything, today and always!</p>
-            </div>
         </div>
         
         <footer>
@@ -689,16 +619,6 @@
     </div>
     
     <script>
-        // Create background 8s pattern
-        const bg8s = document.getElementById('bg8s');
-        for (let i = 0; i < 50; i++) {
-            const eight = document.createElement('div');
-            eight.textContent = '8';
-            eight.style.opacity = Math.random() * 0.1 + 0.03;
-            eight.style.transform = `rotate(${Math.random() * 30 - 15}deg) scale(${Math.random() * 0.5 + 0.8})`;
-            bg8s.appendChild(eight);
-        }
-        
         // Enhanced Countdown Timer (slower)
         const countdownOverlay = document.querySelector('.countdown-overlay');
         const countdownElement = document.getElementById('countdown');
@@ -769,90 +689,108 @@
             });
         });
         
-        // Interactive Points System
-        function incrementPoint(card) {
-            const valueElement = card.querySelector('.point-value');
-            let value = parseInt(valueElement.textContent);
-            value++;
-            valueElement.textContent = value;
+        // Number 8 Interaction
+        const number8 = document.getElementById('number8');
+        
+        number8.addEventListener('mouseenter', () => {
+            number8.style.transform = 'rotate(8deg) scale(1.1)';
+        });
+        
+        number8.addEventListener('mouseleave', () => {
+            number8.style.transform = 'rotate(0) scale(1)';
+        });
+        
+        number8.addEventListener('click', () => {
+            // Create floating 8s animation
+            for (let i = 0; i < 8; i++) {
+                createFloating8();
+            }
+        });
+        
+        function createFloating8() {
+            const floating8 = document.createElement('div');
+            floating8.textContent = '8';
+            floating8.style.position = 'fixed';
+            floating8.style.fontFamily = "'Playfair Display', serif";
+            floating8.style.fontSize = '2rem';
+            floating8.style.color = 'var(--purple)';
+            floating8.style.fontWeight = 'bold';
+            floating8.style.zIndex = '1000';
+            floating8.style.pointerEvents = 'none';
+            floating8.style.left = `${Math.random() * 80 + 10}%`;
+            floating8.style.top = '100%';
+            floating8.style.transform = 'translateY(0) rotate(0deg)';
+            floating8.style.opacity = '1';
+            document.body.appendChild(floating8);
             
-            // Add animation
-            card.style.transform = 'translateY(-10px) scale(1.05)';
+            const animationDuration = Math.random() * 3000 + 2000;
+            const endLeft = parseFloat(floating8.style.left) + (Math.random() * 40 - 20);
+            
+            floating8.animate([
+                { 
+                    transform: 'translateY(0) rotate(0deg)',
+                    opacity: 1,
+                    left: `${floating8.style.left}`
+                },
+                { 
+                    transform: 'translateY(-100vh) rotate(360deg)',
+                    opacity: 0,
+                    left: `${endLeft}%`
+                }
+            ], {
+                duration: animationDuration,
+                easing: 'cubic-bezier(0.1, 0.8, 0.2, 1)'
+            });
+            
             setTimeout(() => {
-                card.style.transform = 'translateY(-5px) scale(1.02)';
-            }, 150);
-            
-            // Change color after certain counts
-            if (value === 8) {
-                card.style.backgroundColor = 'rgba(181, 232, 83, 0.1)';
-            } else if (value === 18) {
-                card.style.backgroundColor = 'rgba(106, 13, 173, 0.1)';
-            }
+                floating8.remove();
+            }, animationDuration);
         }
         
-        function resetPoints() {
-            document.querySelectorAll('.point-value').forEach(el => {
-                el.textContent = '0';
-            });
-            document.querySelectorAll('.point-card').forEach(card => {
-                card.style.backgroundColor = 'white';
-            });
-        }
+        // Interactive Quality Points
+        const qualityItems = document.querySelectorAll('.quality-item');
         
-        // Interactive Message Functions
-        function showSpecialMessage() {
-            const message = document.getElementById('specialMessage');
-            message.classList.toggle('show');
-        }
-        
-        function showGratitudeMessage() {
-            const message = document.getElementById('gratitudeMessage');
-            message.classList.toggle('show');
-        }
-        
-        function showLessonMessage() {
-            const message = document.getElementById('lessonMessage');
-            message.classList.toggle('show');
-        }
-        
-        function showInspirationMessage() {
-            const message = document.getElementById('inspirationMessage');
-            message.classList.toggle('show');
-        }
-        
-        // Celebration Function
-        function celebrate() {
-            const message = document.getElementById('celebrationMessage');
-            message.classList.toggle('show');
-            
-            // Create confetti effect
-            const colors = ['#B5E853', '#6A0DAD', '#FFD700', '#FF3366', '#FFFFFF'];
-            
-            for (let i = 0; i < 100; i++) {
-                const confetti = document.createElement('div');
-                confetti.style.position = 'fixed';
-                confetti.style.width = '10px';
-                confetti.style.height = '10px';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.borderRadius = '50%';
-                confetti.style.left = `${Math.random() * 100}vw`;
-                confetti.style.top = '-10px';
-                confetti.style.zIndex = '1000';
-                confetti.style.opacity = '0.8';
-                document.body.appendChild(confetti);
+        qualityItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Toggle active state
+                this.classList.toggle('active');
                 
-                const animation = confetti.animate([
-                    { transform: 'translateY(0) rotate(0deg)', opacity: 0.8 },
-                    { transform: `translateY(${window.innerHeight + 10}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
-                ], {
-                    duration: Math.random() * 3000 + 2000,
-                    easing: 'cubic-bezier(0.1, 0.8, 0.2, 1)'
+                // Update content if active
+                if (this.classList.contains('active')) {
+                    const quote = this.getAttribute('data-quote');
+                    this.querySelector('p').textContent = quote;
+                } else {
+                    this.querySelector('p').textContent = 'Click to reveal special message';
+                }
+                
+                // Close other items
+                qualityItems.forEach(otherItem => {
+                    if (otherItem !== this && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('p').textContent = 'Click to reveal special message';
+                    }
                 });
-                
-                animation.onfinish = () => {
-                    confetti.remove();
-                };
-            }
+            });
+        });
+        
+        // Highlight effects
+        const highlights = document.querySelectorAll('.highlight');
+        
+        highlights.forEach(highlight => {
+            highlight.addEventListener('mouseenter', () => {
+                highlight.style.transform = 'translateY(-2px)';
+            });
+            
+            highlight.addEventListener('mouseleave', () => {
+                highlight.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Make first quality item active by default
+        if (qualityItems.length > 0) {
+            qualityItems[0].classList.add('active');
+            const firstQuote = qualityItems[0].getAttribute('data-quote');
+            qualityItems[0].querySelector('p').textContent = firstQuote;
         }
     </script>
 </body>
