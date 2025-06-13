@@ -3,572 +3,516 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Father's Day!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Happy Father's Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --lime: #a4ff00;
-            --lime-light: #d9ff66;
-            --lime-dark: #7acc00;
-            --purple: #800080;
-            --purple-light: #b300b3;
-            --purple-dark: #4b004b;
-            --gold: #ffd700;
+            --lime: #B5E853;
+            --lime-light: #D6F58A;
+            --lime-dark: #8EC63F;
+            --purple: #6A0DAD;
+            --purple-light: #9B51E0;
+            --purple-dark: #4A148C;
+            --gold: #FFD700;
+            --gray-dark: #2D3748;
+            --gray-light: #F7FAFC;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(-45deg, var(--lime-dark), var(--purple-dark), var(--lime), var(--purple-light));
-            background-size: 400% 400%;
-            animation: gradientBG 12s ease infinite;
-            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--gray-light);
+            color: var(--gray-dark);
             min-height: 100vh;
             overflow-x: hidden;
-            perspective: 1000px;
-        }
-        
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            line-height: 1.6;
         }
         
         /* Countdown Overlay */
-        .countdown-container {
+        .countdown-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.95);
+            background: rgba(255,255,255,0.96);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            color: white;
+            transition: opacity 1s ease;
         }
         
-        .countdown-container h1 {
-            font-size: 3rem;
-            margin-bottom: 3rem;
+        .countdown-content {
             text-align: center;
-            color: var(--lime);
-            text-shadow: 0 0 15px var(--purple);
-            animation: textGlow 2s infinite alternate;
+            max-width: 600px;
+            padding: 2rem;
         }
         
-        @keyframes textGlow {
-            from { text-shadow: 0 0 10px var(--lime), 0 0 20px var(--purple); }
-            to { text-shadow: 0 0 20px var(--lime), 0 0 40px var(--purple), 0 0 60px var(--gold); }
+        .countdown-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--purple-dark);
+            line-height: 1.3;
         }
         
-        .countdown {
+        .countdown-number {
+            font-family: 'Playfair Display', serif;
             font-size: 8rem;
-            font-weight: 900;
-            color: var(--lime);
-            text-shadow: 0 0 25px var(--purple);
+            font-weight: 700;
+            color: var(--lime-dark);
+            margin: 2rem 0;
             position: relative;
-            transform-style: preserve-3d;
-            animation: float 3s ease-in-out infinite;
+            display: inline-block;
         }
         
-        .countdown::after {
+        .countdown-number::after {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: -10px;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, var(--lime) 0%, transparent 70%);
-            filter: blur(20px);
-            z-index: -1;
-            opacity: 0.7;
-            animation: pulseGlow 2s infinite alternate;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lime), var(--purple));
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: countdownLine 25s linear forwards;
         }
         
-        @keyframes pulseGlow {
-            0% { transform: scale(0.8); opacity: 0.5; }
-            100% { transform: scale(1.2); opacity: 0.9; }
+        @keyframes countdownLine {
+            to { transform: scaleX(1); }
         }
         
         /* Main Content */
-        header {
-            text-align: center;
-            padding: 3rem 0;
-            position: relative;
-            transform-style: preserve-3d;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
         }
         
-        .number-8-container {
+        .container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        header {
+            text-align: center;
+            padding: 4rem 0 2rem;
             position: relative;
-            display: inline-block;
-            margin: 2rem 0;
-            transform-style: preserve-3d;
         }
         
         .number-8 {
-            font-size: 12rem;
-            font-weight: 900;
-            color: var(--purple);
-            text-shadow: 8px 8px 0 var(--lime),
-                         15px 15px 10px rgba(0,0,0,0.3);
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--purple-dark);
             margin: 1rem 0;
             display: inline-block;
-            transform: rotateY(0deg);
-            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             position: relative;
-            z-index: 2;
-            cursor: pointer;
-        }
-        
-        .number-8:hover {
-            transform: rotateY(20deg) scale(1.1);
-            color: var(--lime);
-            text-shadow: 8px 8px 0 var(--purple),
-                         0 0 20px var(--gold);
+            transition: all 0.4s ease;
         }
         
         .number-8::before {
-            content: '8';
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            color: rgba(255,255,255,0.2);
-            z-index: -1;
-        }
-        
-        .number-8::after {
             content: '';
             position: absolute;
-            top: -20px;
-            left: -20px;
-            right: -20px;
-            bottom: -20px;
-            border: 5px dashed var(--lime);
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border: 3px solid var(--lime);
             border-radius: 50%;
-            animation: rotate 20s linear infinite;
-            z-index: -1;
             opacity: 0;
-            transition: all 0.4s;
+            transition: all 0.4s ease;
         }
         
-        .number-8:hover::after {
+        .number-8:hover {
+            color: var(--lime-dark);
+        }
+        
+        .number-8:hover::before {
             opacity: 1;
-            transform: scale(1.1);
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
         }
         
         h1 {
-            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: white;
-            text-shadow: 3px 3px 0 var(--purple),
-                         6px 6px 0 rgba(0,0,0,0.2);
-            animation: float 4s ease-in-out infinite;
+            color: var(--purple-dark);
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        /* Springboard Menu */
-        .springboard {
+        /* Overlay Menu */
+        .menu-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--purple-dark);
+            border-radius: 50%;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            padding: 2rem;
-            margin: 3rem auto;
-            max-width: 900px;
-            perspective: 1000px;
-        }
-        
-        .springboard-btn {
-            background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-            color: white;
-            border: none;
-            padding: 1.5rem 2.5rem;
-            font-size: 1.4rem;
-            font-weight: 700;
-            border-radius: 20px;
+            align-items: center;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3),
-                        inset 0 1px 1px rgba(255,255,255,0.2);
-            flex: 1 1 180px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            transition: all 0.4s;
-            z-index: 1;
+            z-index: 1001;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
         }
         
-        .springboard-btn::before {
-            content: '';
-            position: absolute;
+        .menu-toggle:hover {
+            transform: scale(1.1);
+            background: var(--purple);
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
+        
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+        
+        .menu-overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            transform: translateX(-100%);
-            transition: all 0.6s;
-            z-index: -1;
+            background: rgba(107, 70, 193, 0.98);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
         }
         
-        .springboard-btn:hover {
-            transform: translateY(-10px) rotateX(15deg);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4),
-                        inset 0 1px 1px rgba(255,255,255,0.3);
-            color: var(--lime-light);
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
         
-        .springboard-btn:hover::before {
-            animation: shine 1.5s infinite;
+        .menu-list {
+            list-style: none;
+            text-align: center;
         }
         
-        .springboard-btn:active {
-            transform: translateY(-5px) scale(0.98);
+        .menu-item {
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
         }
         
-        @keyframes shine {
-            100% { transform: translateX(100%); }
+        .menu-link {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .menu-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--lime);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+        
+        .menu-link:hover {
+            color: var(--lime);
+        }
+        
+        .menu-link:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
         }
         
         /* Content Sections */
         .content-section {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
+            background: white;
+            border-radius: 12px;
             padding: 3rem;
             margin: 3rem auto;
-            max-width: 850px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2),
-                        inset 0 1px 1px rgba(255,255,255,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             display: none;
-            transform: translateY(50px);
-            opacity: 0;
-            border: 1px solid rgba(255,255,255,0.1);
+            max-width: 800px;
         }
         
         .content-section.active {
             display: block;
-            animation: sectionEntry 0.8s forwards;
+            animation: fadeInUp 0.8s ease forwards;
         }
         
-        @keyframes sectionEntry {
-            to { transform: translateY(0); opacity: 1; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         h2 {
-            color: var(--lime);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
             margin-bottom: 2rem;
-            text-align: center;
-            font-size: 2.5rem;
+            color: var(--purple-dark);
             position: relative;
             padding-bottom: 1rem;
-            text-shadow: 2px 2px 0 var(--purple);
         }
         
         h2::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 25%;
-            width: 50%;
+            left: 0;
+            width: 60px;
             height: 3px;
-            background: linear-gradient(90deg, transparent, var(--lime), transparent);
+            background: linear-gradient(90deg, var(--lime), var(--purple));
             border-radius: 3px;
         }
         
         p {
             margin-bottom: 1.5rem;
-            line-height: 1.8;
             font-size: 1.1rem;
-            text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
         }
         
-        /* Interactive Elements */
-        .interactive-highlight {
-            background: linear-gradient(transparent 60%, rgba(164, 255, 0, 0.3) 60%);
-            cursor: pointer;
-            transition: all 0.3s;
+        .highlight {
+            background: linear-gradient(transparent 60%, rgba(181, 232, 83, 0.3) 60%);
+            transition: all 0.3s ease;
             padding: 0 2px;
             border-radius: 2px;
         }
         
-        .interactive-highlight:hover {
-            background: linear-gradient(transparent 60%, rgba(164, 255, 0, 0.7) 60%);
-            transform: translateY(-2px);
-        }
-        
-        /* Confetti Button */
-        .confetti-btn {
-            display: block;
-            margin: 2rem auto;
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, var(--lime), var(--lime-dark));
-            color: var(--purple-dark);
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-        
-        .confetti-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-        
-        .confetti-btn:active {
-            transform: translateY(0) scale(0.98);
+        .highlight:hover {
+            background: linear-gradient(transparent 60%, rgba(181, 232, 83, 0.7) 60%);
         }
         
         /* Footer */
         footer {
             text-align: center;
             padding: 3rem;
-            color: white;
+            color: var(--gray-dark);
+            font-size: 1.1rem;
+            margin-top: 2rem;
+        }
+        
+        .signature {
+            font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
-            margin-top: 3rem;
+            margin-top: 1rem;
+            display: inline-block;
             position: relative;
         }
         
-        .hearts {
-            color: #ff3366;
-            font-size: 2rem;
-            display: inline-block;
-            animation: heartBeat 1.5s infinite;
-            text-shadow: 0 0 10px rgba(255,51,102,0.7);
-        }
-        
-        @keyframes heartBeat {
-            0%, 100% { transform: scale(1); }
-            25% { transform: scale(1.3); }
-            50% { transform: scale(1); }
-            75% { transform: scale(1.2); }
-        }
-        
-        /* Floating Elements */
-        .floating-elements {
-            position: fixed;
-            top: 0;
+        .signature::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
             left: 0;
             width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
-        }
-        
-        .floating-element {
-            position: absolute;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            animation: floatElement 15s infinite linear;
-        }
-        
-        @keyframes floatElement {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-100px) rotate(180deg); }
-            100% { transform: translateY(0) rotate(360deg); }
+            height: 2px;
+            background: linear-gradient(90deg, var(--lime), var(--purple));
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
-            .countdown-container h1 {
-                font-size: 1.8rem;
-                margin-bottom: 2rem;
+            .countdown-title {
+                font-size: 2rem;
             }
             
-            .countdown {
+            .countdown-number {
                 font-size: 5rem;
             }
             
-            .number-8 {
-                font-size: 8rem;
-            }
-            
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
-            .springboard {
-                flex-direction: column;
-                padding: 1rem;
+            .number-8 {
+                font-size: 6rem;
             }
             
-            .springboard-btn {
-                width: 100%;
-                padding: 1.2rem;
+            .menu-link {
+                font-size: 2rem;
             }
             
             .content-section {
-                padding: 2rem 1.5rem;
-                margin: 2rem 1rem;
+                padding: 2rem;
             }
             
             h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Floating background elements -->
-    <div class="floating-elements" id="floatingElements"></div>
-    
     <!-- Countdown Overlay -->
-    <div class="countdown-container">
-        <h1>It has all led up to me being capable to provide you with this...</h1>
-        <div class="countdown">0</div>
+    <div class="countdown-overlay">
+        <div class="countdown-content">
+            <h2 class="countdown-title">It has all led up to me being capable to provide you with this...</h2>
+            <div class="countdown-number" id="countdown">0</div>
+        </div>
+    </div>
+    
+    <!-- Menu Toggle -->
+    <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
+    <!-- Overlay Menu -->
+    <div class="menu-overlay" id="menuOverlay">
+        <ul class="menu-list">
+            <li class="menu-item"><a href="#" class="menu-link" data-target="gratitude">My Gratitude</a></li>
+            <li class="menu-item"><a href="#" class="menu-link" data-target="lessons">Your Lessons</a></li>
+            <li class="menu-item"><a href="#" class="menu-link" data-target="inspiration">My Inspiration</a></li>
+            <li class="menu-item"><a href="#" class="menu-link" data-target="celebration">Celebration</a></li>
+        </ul>
     </div>
     
     <!-- Main Content -->
-    <header>
-        <div class="number-8-container">
-            <div class="number-8" id="number8">8</div>
+    <div class="container" id="mainContainer">
+        <header>
+            <div class="number-8">8</div>
+            <h1>Happy Father's Day</h1>
+        </header>
+        
+        <!-- Content Sections -->
+        <div id="gratitude" class="content-section">
+            <h2>My Deepest Gratitude</h2>
+            <p><span class="highlight">Dad, I want to take a moment to express my heartfelt gratitude</span> for the invaluable lessons you've taught me throughout my life. Your wisdom has been the foundation of my growth, helping me become the person I am today.</p>
+            <p>From childhood, you've shown me the importance of <span class="highlight">hard work, integrity, and perseverance</span>. These principles have guided my decisions and shaped my character. Your nurturing love created the perfect environment for me to flourish.</p>
+            <p>I often find myself following your <span class="highlight">thoughtful approach to decision-making</span>. Your ability to carefully consider options and choose the best path is something I deeply admire. Your attention to detail in everything you do has taught me to strive for excellence.</p>
         </div>
-        <h1>Happy Father's Day!</h1>
-    </header>
-    
-    <!-- Springboard Menu -->
-    <div class="springboard">
-        <button class="springboard-btn" data-target="gratitude">My Gratitude</button>
-        <button class="springboard-btn" data-target="lessons">Your Lessons</button>
-        <button class="springboard-btn" data-target="inspiration">My Inspiration</button>
-        <button class="springboard-btn" data-target="celebration">Celebration</button>
-    </div>
-    
-    <!-- Content Sections -->
-    <div id="gratitude" class="content-section">
-        <h2>My Deepest Gratitude</h2>
-        <p><span class="interactive-highlight">Dad, I want to take a moment to express my heartfelt gratitude</span> for the invaluable lessons you've taught me throughout my life. Your wisdom has been the foundation of my growth, helping me become the person I am today.</p>
-        <p>From childhood, you've shown me the importance of <span class="interactive-highlight">hard work, integrity, and perseverance</span>. These principles have guided my decisions and shaped my character. Your nurturing love created the perfect environment for me to flourish.</p>
-        <p>I often find myself following your <span class="interactive-highlight">thoughtful approach to decision-making</span>. Your ability to carefully consider options and choose the best path is something I deeply admire. Your attention to detail in everything you do has taught me to strive for excellence.</p>
         
-        <button class="confetti-btn" id="gratitudeBtn">Show Appreciation</button>
-    </div>
-    
-    <div id="lessons" class="content-section">
-        <h2>Your Priceless Lessons</h2>
-        <p>Every moment with you is precious. You're my <span class="interactive-highlight">safe haven</span> - a constant source of comfort and strength. Whether we're having deep conversations or enjoying quiet moments together, these experiences have left a permanent mark on my heart.</p>
-        <p>You've taught me how to face challenges with <span class="interactive-highlight">grace and determination</span>. Your resilience during difficult times has shown me what true strength looks like. Your kindness and dedication to our family are qualities I strive to emulate.</p>
-        <p>Thank you for knowing exactly what I needed - whether it was being <span class="interactive-highlight">playful like a child, supportive like a friend, or guiding like a parent</span>. You've mastered all these roles perfectly.</p>
+        <div id="lessons" class="content-section">
+            <h2>Your Priceless Lessons</h2>
+            <p>Every moment with you is precious. You're my <span class="highlight">safe haven</span> - a constant source of comfort and strength. Whether we're having deep conversations or enjoying quiet moments together, these experiences have left a permanent mark on my heart.</p>
+            <p>You've taught me how to face challenges with <span class="highlight">grace and determination</span>. Your resilience during difficult times has shown me what true strength looks like. Your kindness and dedication to our family are qualities I strive to emulate.</p>
+            <p>Thank you for knowing exactly what I needed - whether it was being <span class="highlight">playful like a child, supportive like a friend, or guiding like a parent</span>. You've mastered all these roles perfectly.</p>
+        </div>
         
-        <button class="confetti-btn" id="lessonsBtn">Celebrate Lessons</button>
-    </div>
-    
-    <div id="inspiration" class="content-section">
-        <h2>My Endless Inspiration</h2>
-        <p>Dad, you inspire me in ways you might not realize. Your <span class="interactive-highlight">belief in me</span>, especially during moments of self-doubt, has given me strength to pursue my dreams. You've shown me that with dedication, anything is possible.</p>
-        <p>I treasure all the memories we've created - the <span class="interactive-highlight">laughter we've shared, the lessons you've taught</span> (including those colorful words for special situations!), and the love we've cultivated. These are treasures I'll always cherish.</p>
-        <p>Your achievements and the example you've set remind me that I too can <span class="interactive-highlight">make a difference</span>. You've taught me the value of kindness, compassion, and hard work - lessons I carry with me every day.</p>
+        <div id="inspiration" class="content-section">
+            <h2>My Endless Inspiration</h2>
+            <p>Dad, you inspire me in ways you might not realize. Your <span class="highlight">belief in me</span>, especially during moments of self-doubt, has given me strength to pursue my dreams. You've shown me that with dedication, anything is possible.</p>
+            <p>I treasure all the memories we've created - the <span class="highlight">laughter we've shared, the lessons you've taught</span> (including those colorful words for special situations!), and the love we've cultivated. These are treasures I'll always cherish.</p>
+            <p>Your achievements and the example you've set remind me that I too can <span class="highlight">make a difference</span>. You've taught me the value of kindness, compassion, and hard work - lessons I carry with me every day.</p>
+        </div>
         
-        <button class="confetti-btn" id="inspirationBtn">Feel Inspired</button>
-    </div>
-    
-    <div id="celebration" class="content-section">
-        <h2>A Special Celebration</h2>
-        <p>Today, I celebrate you - not just as my father, but as my <span class="interactive-highlight">confidant, hero, and best friend</span>. Your influence is woven into every part of who I am, and for that, I'm eternally grateful.</p>
-        <p>You're the <span class="interactive-highlight">best man I know</span>. Hopefully one day I'll make you as proud of me as I am of you. Thank you for being my guiding light and role model.</p>
-        <p>Happy Father's Day, Dad! May your day be filled with <span class="interactive-highlight">joy, love, and the knowledge that you're cherished beyond measure</span>. My life is infinitely better because you're in it.</p>
+        <div id="celebration" class="content-section">
+            <h2>A Special Celebration</h2>
+            <p>Today, I celebrate you - not just as my father, but as my <span class="highlight">confidant, hero, and best friend</span>. Your influence is woven into every part of who I am, and for that, I'm eternally grateful.</p>
+            <p>You're the <span class="highlight">best man I know</span>. Hopefully one day I'll make you as proud of me as I am of you. Thank you for being my guiding light and role model.</p>
+            <p>Happy Father's Day, Dad! May your day be filled with <span class="highlight">joy, love, and the knowledge that you're cherished beyond measure</span>. My life is infinitely better because you're in it.</p>
+        </div>
         
-        <button class="confetti-btn" id="celebrationBtn">Launch Celebration!</button>
+        <footer>
+            <p>With all my love,</p>
+            <div class="signature">Nigel</div>
+        </footer>
     </div>
-    
-    <footer>
-        Your loving son, Nigel <span class="hearts">♥</span>
-    </footer>
-    
-    <!-- Confetti Canvas -->
-    <canvas id="confettiCanvas" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:100;"></canvas>
     
     <script>
-        // Enhanced Countdown Timer
-        const countdownContainer = document.querySelector('.countdown-container');
-        const countdownElement = document.querySelector('.countdown');
+        // Enhanced Countdown Timer (slower)
+        const countdownOverlay = document.querySelector('.countdown-overlay');
+        const countdownElement = document.getElementById('countdown');
         let count = 0;
         const target = 25;
+        const duration = 5000; // 5 seconds total
         
-        const timer = setInterval(() => {
-            count++;
+        const startTime = Date.now();
+        const endTime = startTime + duration;
+        
+        function updateCountdown() {
+            const now = Date.now();
+            const progress = Math.min((now - startTime) / duration, 1);
+            count = Math.floor(progress * target);
             countdownElement.textContent = count;
             
-            // Add pulse effect on certain numbers
-            if (count % 5 === 0) {
-                countdownElement.style.animation = 'none';
+            if (progress < 1) {
+                requestAnimationFrame(updateCountdown);
+            } else {
                 setTimeout(() => {
-                    countdownElement.style.animation = 'pulseGlow 0.5s';
-                }, 10);
-            }
-            
-            if (count === target) {
-                clearInterval(timer);
-                countdownElement.style.transform = 'scale(1.5) rotate(10deg)';
-                setTimeout(() => {
-                    countdownContainer.style.opacity = '0';
+                    countdownOverlay.style.opacity = '0';
                     setTimeout(() => {
-                        countdownContainer.style.display = 'none';
-                    }, 500);
-                }, 800);
+                        countdownOverlay.style.display = 'none';
+                        document.getElementById('mainContainer').classList.add('visible');
+                        document.getElementById('gratitude').classList.add('active');
+                    }, 1000);
+                }, 500);
             }
-        }, 80);
+        }
         
-        // Springboard Menu with Enhanced Interactions
-        const buttons = document.querySelectorAll('.springboard-btn');
-        const sections = document.querySelectorAll('.content-section');
+        requestAnimationFrame(updateCountdown);
         
-        buttons.forEach(button => {
-            button.addEventListener('mouseenter', () => {
-                button.style.transform = 'translateY(-15px) rotateX(20deg) scale(1.05)';
-                button.style.boxShadow = '0 20px 40px rgba(0,0,0,0.4)';
-            });
-            
-            button.addEventListener('mouseleave', () => {
-                button.style.transform = 'translateY(-10px) rotateX(15deg)';
-                button.style.boxShadow = '0 15px 30px rgba(0,0,0,0.4)';
-            });
-            
-            button.addEventListener('click', (e) => {
-                const targetId = e.currentTarget.getAttribute('data-target');
+        // Menu Toggle Functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        });
+        
+        // Menu Navigation
+        const menuLinks = document.querySelectorAll('.menu-link');
+        const contentSections = document.querySelectorAll('.content-section');
+        
+        menuLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
                 
-                // Animate button press
-                e.currentTarget.style.transform = 'translateY(0) scale(0.95)';
-                setTimeout(() => {
-                    e.currentTarget.style.transform = 'translateY(-10px) rotateX(15deg)';
-                }, 200);
+                // Close menu
+                menuToggle.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                
+                const targetId = e.target.getAttribute('data-target');
                 
                 // Hide all sections
-                sections.forEach(section => {
+                contentSections.forEach(section => {
                     section.classList.remove('active');
                 });
                 
                 // Show target section
                 document.getElementById(targetId).classList.add('active');
                 
-                // Scroll to section smoothly
+                // Smooth scroll to section
                 document.getElementById(targetId).scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
@@ -576,256 +520,35 @@
             });
         });
         
-        // Show first section by default after countdown
-        setTimeout(() => {
-            document.getElementById('gratitude').classList.add('active');
-        }, 100);
-        
-        // Enhanced Number 8 Interactions
-        const number8 = document.getElementById('number8');
+        // Number 8 Interaction
+        const number8 = document.querySelector('.number-8');
         
         number8.addEventListener('mouseenter', () => {
-            number8.style.transform = 'rotateY(30deg) scale(1.2)';
-            number8.style.color = 'var(--lime)';
-            number8.style.textShadow = '15px 15px 0 var(--purple), 0 0 30px var(--gold)';
+            number8.style.transform = 'scale(1.1) rotate(5deg)';
         });
         
         number8.addEventListener('mouseleave', () => {
-            number8.style.transform = 'rotateY(0) scale(1)';
-            number8.style.color = 'var(--purple)';
-            number8.style.textShadow = '8px 8px 0 var(--lime), 15px 15px 10px rgba(0,0,0,0.3)';
+            number8.style.transform = 'scale(1) rotate(0)';
         });
         
         number8.addEventListener('click', () => {
             number8.style.animation = 'none';
-            number8.style.transform = 'scale(1.5) rotate(360deg)';
             setTimeout(() => {
-                number8.style.transform = 'scale(1) rotate(0)';
                 number8.style.animation = 'pulse 2s infinite';
-            }, 1000);
-            
-            // Create mini explosion effect
-            createExplosion(number8, 20);
+            }, 10);
         });
         
-        // Interactive Highlight Effects
-        const highlights = document.querySelectorAll('.interactive-highlight');
+        // Highlight effects
+        const highlights = document.querySelectorAll('.highlight');
         
         highlights.forEach(highlight => {
             highlight.addEventListener('mouseenter', () => {
-                highlight.style.transform = 'translateY(-3px)';
-                highlight.style.boxShadow = '0 5px 10px rgba(164, 255, 0, 0.5)';
+                highlight.style.transform = 'translateY(-2px)';
             });
             
             highlight.addEventListener('mouseleave', () => {
                 highlight.style.transform = 'translateY(0)';
-                highlight.style.boxShadow = 'none';
             });
-        });
-        
-        // Floating Background Elements
-        const floatingElements = document.getElementById('floatingElements');
-        
-        for (let i = 0; i < 20; i++) {
-            const element = document.createElement('div');
-            element.classList.add('floating-element');
-            
-            // Random properties
-            const size = Math.random() * 20 + 10;
-            const posX = Math.random() * 100;
-            const posY = Math.random() * 100;
-            const delay = Math.random() * 15;
-            const duration = Math.random() * 10 + 10;
-            
-            element.style.width = `${size}px`;
-            element.style.height = `${size}px`;
-            element.style.left = `${posX}%`;
-            element.style.top = `${posY}%`;
-            element.style.animationDelay = `${delay}s`;
-            element.style.animationDuration = `${duration}s`;
-            element.style.opacity = Math.random() * 0.5 + 0.1;
-            
-            // Random shape
-            if (Math.random() > 0.5) {
-                element.style.borderRadius = '50%';
-            } else {
-                element.style.borderRadius = '10%';
-            }
-            
-            // Random color
-            const colors = ['var(--lime)', 'var(--purple)', 'var(--gold)', 'white'];
-            element.style.background = colors[Math.floor(Math.random() * colors.length)];
-            
-            floatingElements.appendChild(element);
-        }
-        
-        // Confetti Button Effects
-        const confettiButtons = document.querySelectorAll('.confetti-btn');
-        const confettiCanvas = document.getElementById('confettiCanvas');
-        const ctx = confettiCanvas.getContext('2d');
-        confettiCanvas.width = window.innerWidth;
-        confettiCanvas.height = window.innerHeight;
-        
-        confettiButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                createConfettiExplosion(button);
-                
-                // Button animation
-                button.style.transform = 'translateY(0) scale(0.95)';
-                setTimeout(() => {
-                    button.style.transform = 'translateY(-5px) scale(1.05)';
-                }, 200);
-            });
-        });
-        
-        // Confetti Functions
-        function createConfettiExplosion(element) {
-            const rect = element.getBoundingClientRect();
-            const x = rect.left + rect.width / 2;
-            const y = rect.top + rect.height / 2;
-            
-            const particles = [];
-            const colors = ['#a4ff00', '#800080', '#ffd700', '#ffffff', '#ff3366'];
-            
-            for (let i = 0; i < 150; i++) {
-                particles.push({
-                    x: x,
-                    y: y,
-                    size: Math.random() * 8 + 3,
-                    color: colors[Math.floor(Math.random() * colors.length)],
-                    velocity: {
-                        x: (Math.random() - 0.5) * 10,
-                        y: (Math.random() - 0.5) * 10 - 5
-                    },
-                    rotation: Math.random() * 360,
-                    rotationSpeed: (Math.random() - 0.5) * 20,
-                    life: 100,
-                    opacity: 1
-                });
-            }
-            
-            animateConfetti(particles);
-        }
-        
-        function animateConfetti(particles) {
-            ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-            
-            for (let i = 0; i < particicles.length; i++) {
-                const p = particicles[i];
-                
-                ctx.save();
-                ctx.translate(p.x, p.y);
-                ctx.rotate(p.rotation * Math.PI / 180);
-                
-                ctx.fillStyle = p.color;
-                ctx.globalAlpha = p.opacity;
-                
-                // Draw different shapes
-                if (Math.random() > 0.3) {
-                    // Rectangle
-                    ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
-                } else {
-                    // Circle
-                    ctx.beginPath();
-                    ctx.arc(0, 0, p.size/2, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-                
-                ctx.restore();
-                
-                // Update position
-                p.x += p.velocity.x;
-                p.y += p.velocity.y;
-                p.velocity.y += 0.1; // gravity
-                p.rotation += p.rotationSpeed;
-                p.life--;
-                p.opacity = p.life / 100;
-            }
-            
-            // Remove dead particles
-            for (let i = particicles.length - 1; i >= 0; i--) {
-                if (particles[i].life <= 0) {
-                    particicles.splice(i, 1);
-                }
-            }
-            
-            if (particles.length > 0) {
-                requestAnimationFrame(() => animateConfetti(particles));
-            }
-        }
-        
-        function createExplosion(element, particleCount) {
-            const rect = element.getBoundingClientRect();
-            const x = rect.left + rect.width / 2;
-            const y = rect.top + rect.height / 2;
-            
-            const particles = [];
-            const colors = ['#a4ff00', '#800080', '#ffd700'];
-            
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: x,
-                    y: y,
-                    size: Math.random() * 15 + 5,
-                    color: colors[Math.floor(Math.random() * colors.length)],
-                    velocity: {
-                        x: (Math.random() - 0.5) * 20,
-                        y: (Math.random() - 0.5) * 20
-                    },
-                    life: 50 + Math.random() * 50
-                });
-            }
-            
-            const explosionElement = document.createElement('div');
-            explosionElement.style.position = 'fixed';
-            explosionElement.style.left = '0';
-            explosionElement.style.top = '0';
-            explosionElement.style.width = '100%';
-            explosionElement.style.height = '100%';
-            explosionElement.style.pointerEvents = 'none';
-            explosionElement.style.zIndex = '100';
-            document.body.appendChild(explosionElement);
-            
-            particles.forEach(p => {
-                const particle = document.createElement('div');
-                particle.style.position = 'absolute';
-                particle.style.left = `${p.x}px`;
-                particle.style.top = `${p.y}px`;
-                particle.style.width = `${p.size}px`;
-                particle.style.height = `${p.size}px`;
-                particle.style.background = p.color;
-                particle.style.borderRadius = '50%';
-                particle.style.transform = 'translate(-50%, -50%)';
-                particle.style.opacity = '1';
-                explosionElement.appendChild(particle);
-                
-                const anim = particle.animate([
-                    { 
-                        transform: `translate(-50%, -50%) translate(0, 0)`,
-                        opacity: 1
-                    },
-                    { 
-                        transform: `translate(-50%, -50%) translate(${p.velocity.x * 5}px, ${p.velocity.y * 5}px)`,
-                        opacity: 0
-                    }
-                ], {
-                    duration: p.life * 10,
-                    easing: 'cubic-bezier(0.1, 0.8, 0.2, 1)'
-                });
-                
-                anim.onfinish = () => {
-                    particle.remove();
-                    if (explosionElement.children.length === 0) {
-                        explosionElement.remove();
-                    }
-                };
-            });
-        }
-        
-        // Resize handler
-        window.addEventListener('resize', () => {
-            confettiCanvas.width = window.innerWidth;
-            confettiCanvas.height = window.innerHeight;
         });
     </script>
 </body>
