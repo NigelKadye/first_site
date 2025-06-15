@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gin Enthusiast | Your Journey Through the World of Gin</title>
+    <title>Kadye & Gin | Your Gin Journey</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -22,6 +22,9 @@
             --botanical: #88b04b;
             --gin-blue: #1e3d59;
             --gin-green: #4a9c7c;
+            --tonic-yellow: #ffd700;
+            --tonic-lime: #c0d725;
+            --tonic-pink: #f28b82;
         }
         
         body {
@@ -163,6 +166,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(212, 175, 55, 0.2);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            animation: float 8s ease-in-out infinite;
         }
         
         .hero h1 {
@@ -447,6 +451,142 @@
             left: -20px;
         }
         
+        /* Flavor Profile */
+        .flavor-profile {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .flavor-tag {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            animation: popIn 0.5s ease-out;
+        }
+        
+        /* Tonic Guide */
+        .tonic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .tonic-card {
+            background: rgba(26, 58, 79, 0.6);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tonic-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--tonic-lime);
+        }
+        
+        .tonic-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .tonic-card.classic .tonic-icon {
+            color: var(--tonic-yellow);
+        }
+        
+        .tonic-card.light .tonic-icon {
+            color: var(--tonic-lime);
+        }
+        
+        .tonic-card.flavored .tonic-icon {
+            color: var(--tonic-pink);
+        }
+        
+        .tonic-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+        
+        .tonic-card p {
+            margin-bottom: 15px;
+        }
+        
+        /* History Animation */
+        .distillation-animation {
+            width: 100%;
+            height: 300px;
+            background: rgba(26, 58, 79, 0.6);
+            border-radius: 15px;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--gold);
+        }
+        
+        .still {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px 10px 0 0;
+            border: 2px solid var(--gold);
+        }
+        
+        .still-top {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 50% 50% 0 0;
+        }
+        
+        .condenser {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--gold);
+        }
+        
+        .drip {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            width: 5px;
+            height: 30px;
+            background: var(--accent);
+            animation: drip 2s infinite;
+        }
+        
+        .liquid {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            background: rgba(76, 201, 240, 0.5);
+            animation: fill 8s infinite;
+        }
+        
         /* Footer */
         footer {
             background: rgba(12, 45, 72, 0.95);
@@ -571,11 +711,28 @@
             to { width: 150px; }
         }
         
-        @keyframes ginPour {
-            0% { transform: translateY(-100%) rotate(0); opacity: 0; }
-            30% { transform: translateY(0) rotate(0); opacity: 1; }
-            70% { transform: translateY(0) rotate(-20deg); }
-            100% { transform: translateY(100%) rotate(-20deg); opacity: 0; }
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes drip {
+            0% { height: 0; opacity: 1; }
+            50% { height: 30px; opacity: 1; }
+            51% { opacity: 0; }
+            100% { height: 30px; opacity: 0; }
+        }
+        
+        @keyframes fill {
+            0% { height: 0; }
+            50% { height: 100%; }
+            100% { height: 100%; }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0); }
+            100% { transform: rotate(360deg); }
         }
         
         /* Responsive Design */
@@ -656,7 +813,7 @@
         <div class="container header-container">
             <a href="#" class="logo">
                 <i class="fas fa-cocktail"></i>
-                <span>Gin Enthusiast</span>
+                <span>Kadye & Gin</span>
             </a>
             <button class="mobile-toggle" id="mobileToggle">
                 <i class="fas fa-bars"></i>
@@ -664,11 +821,10 @@
             <nav id="mainNav">
                 <ul>
                     <li><a href="#" class="nav-link active" data-page="home"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#" class="nav-link" data-page="understanding"><i class="fas fa-book"></i> Understanding Gin</a></li>
-                    <li><a href="#" class="nav-link" data-page="started"><i class="fas fa-play-circle"></i> Getting Started</a></li>
-                    <li><a href="#" class="nav-link" data-page="mixtures"><i class="fas fa-flask"></i> Ideal Mixtures</a></li>
-                    <li><a href="#" class="nav-link" data-page="gins"><i class="fas fa-wine-bottle"></i> Good Gins</a></li>
-                    <li><a href="#" class="nav-link" data-page="public"><i class="fas fa-glass-cheers"></i> Gin in Public</a></li>
+                    <li><a href="#" class="nav-link" data-page="history"><i class="fas fa-book"></i> Gin History</a></li>
+                    <li><a href="#" class="nav-link" data-page="budget"><i class="fas fa-coins"></i> Budget Gins</a></li>
+                    <li><a href="#" class="nav-link" data-page="premium"><i class="fas fa-crown"></i> Premium Gins</a></li>
+                    <li><a href="#" class="nav-link" data-page="tonic"><i class="fas fa-glass-whiskey"></i> Tonic Guide</a></li>
                     <li><a href="#" class="nav-link" data-page="explorer"><i class="fas fa-compass"></i> Gin Explorer</a></li>
                 </ul>
             </nav>
@@ -680,8 +836,8 @@
         <!-- Home Page -->
         <section id="home" class="page active">
             <div class="hero">
-                <h1>Discover the World of Gin</h1>
-                <p>Welcome to your journey through the sophisticated world of gin. Explore premium yet affordable gins from around the globe, learn mixology secrets, and elevate your gin experience to new heights.</p>
+                <h1>Discover the Art of Gin</h1>
+                <p>Welcome to Kadye & Gin - your passport to the sophisticated world of gin. Explore premium spirits, cocktail recipes, and gin culture from around the globe.</p>
                 <a href="#" class="btn" data-page="explorer">Explore Gins <i class="fas fa-arrow-right"></i></a>
             </div>
 
@@ -724,10 +880,10 @@
             </div>
         </section>
 
-        <!-- Understanding Gin Page -->
-        <section id="understanding" class="page">
+        <!-- Gin History Page -->
+        <section id="history" class="page">
             <div class="container">
-                <h2 class="section-title">Understanding Gin</h2>
+                <h2 class="section-title">The History of Gin</h2>
                 
                 <div class="cards-grid">
                     <div class="card">
@@ -735,9 +891,8 @@
                             <img src="https://images.unsplash.com/photo-1629456199798-06d9a4c30bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gin History">
                         </div>
                         <div class="card-content">
-                            <h3>History of Gin</h3>
-                            <p>Gin originated in the Netherlands in the 17th century and became popular in England when William of Orange became king.</p>
-                            <p>Originally used for medicinal purposes, gin evolved into the beloved spirit we know today.</p>
+                            <h3>Origins of Gin</h3>
+                            <p>Gin originated in the Netherlands in the 17th century as "genever," a medicinal spirit. British soldiers discovered it during the Thirty Years' War and brought it back to England.</p>
                         </div>
                     </div>
                     
@@ -746,159 +901,204 @@
                             <img src="https://images.unsplash.com/photo-1596803244618-8dbee441d70b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gin Production">
                         </div>
                         <div class="card-content">
-                            <h3>How Gin is Made</h3>
-                            <p>Gin is created by distilling neutral grain alcohol with juniper berries and other botanicals.</p>
-                            <p>The distillation process allows the flavors of the botanicals to infuse into the spirit.</p>
+                            <h3>Gin Production</h3>
+                            <p>Gin is created by distilling neutral grain alcohol with juniper berries and other botanicals. The distillation process allows the flavors of the botanicals to infuse into the spirit.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>The Gin Distillation Process</h3>
+                            <div class="distillation-animation">
+                                <div class="still">
+                                    <div class="still-top"></div>
+                                    <div class="condenser"></div>
+                                    <div class="drip"></div>
+                                    <div class="liquid"></div>
+                                </div>
+                            </div>
+                            <p>This animation illustrates the traditional copper pot distillation process used to create premium gin. Botanicals are steeped in neutral spirit before distillation to extract their flavors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Budget Gins Page -->
+        <section id="budget" class="page">
+            <div class="container">
+                <h2 class="section-title">Budget Gins ($5-$15)</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem; opacity: 0.9;">Quality gin doesn't have to break the bank. Discover these excellent value options.</p>
+                
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1633934458019-1b009d1c8a7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gordon's">
+                        </div>
+                        <div class="card-content">
+                            <h3>Gordon's London Dry</h3>
+                            <p>A classic London dry gin with a crisp juniper flavor and notes of citrus. Perfect for G&Ts.</p>
+                            <div class="price-tag">$10-12</div>
+                            <div class="flavor-profile">
+                                <span class="flavor-tag">Juniper</span>
+                                <span class="flavor-tag">Citrus</span>
+                                <span class="flavor-tag">Spice</span>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="card">
                         <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1596803244618-8dbee441d70b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gin Botanicals">
+                            <img src="https://images.unsplash.com/photo-1570691079992-778b03e7c1b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Seagram's">
                         </div>
                         <div class="card-content">
-                            <h3>Key Botanicals</h3>
-                            <p>While juniper is the defining botanical, gin makers use a wide variety of ingredients:</p>
-                            <ul>
-                                <li>Coriander seeds</li>
-                                <li>Angelica root</li>
-                                <li>Citrus peels</li>
-                                <li>Orris root</li>
-                                <li>Cardamom</li>
-                            </ul>
+                            <h3>Seagram's Extra Dry</h3>
+                            <p>Smooth and well-balanced with citrus and spice notes. Excellent value for mixing cocktails.</p>
+                            <div class="price-tag">$8-10</div>
+                            <div class="flavor-profile">
+                                <span class="flavor-tag">Citrus</span>
+                                <span class="flavor-tag">Coriander</span>
+                                <span class="flavor-tag">Smooth</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="New Amsterdam">
+                        </div>
+                        <div class="card-content">
+                            <h3>New Amsterdam</h3>
+                            <p>Modern style gin with a smooth citrus-forward profile. Great for those new to gin.</p>
+                            <div class="price-tag">$12-14</div>
+                            <div class="flavor-profile">
+                                <span class="flavor-tag">Lemon</span>
+                                <span class="flavor-tag">Orange</span>
+                                <span class="flavor-tag">Smooth</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Getting Started Page -->
-        <section id="started" class="page">
+        <!-- Premium Gins Page -->
+        <section id="premium" class="page">
             <div class="container">
-                <h2 class="section-title">Getting Started with Gin</h2>
+                <h2 class="section-title">Premium Gins ($25-$50)</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem; opacity: 0.9;">Exceptional gins for the discerning enthusiast.</p>
+                
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1598974357801-cbca100e65d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bombay Sapphire">
+                        </div>
+                        <div class="card-content">
+                            <h3>Bombay Sapphire</h3>
+                            <p>Vapor-infused with 10 botanicals for a complex yet balanced flavor profile with citrus and spice notes.</p>
+                            <div class="price-tag">$25-30</div>
+                            <div class="flavor-profile">
+                                <span class="flavor-tag">Juniper</span>
+                                <span class="flavor-tag">Lemon Peel</span>
+                                <span class="flavor-tag">Coriander</span>
+                                <span class="flavor-tag">Almond</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hendrick's">
+                        </div>
+                        <div class="card-content">
+                            <h3>Hendrick's</h3>
+                            <p>Infused with rose and cucumber for a uniquely refreshing gin. Distilled in small batches.</p>
+                            <div class="price-tag">$35-40</div>
+                            <div class="flavor-profile">
+                                <span class="flavor-tag">Rose</span>
+                                <span class="flavor-tag">Cucumber</span>
+                                <span class="flavor-tag">Juniper</span>
+                                <span class="flavor-tag">Citrus</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1600565193541-423a5e9c44e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tanqueray">
+                        </div>
+                        <div class="card-content">
+                            <h3>Tanqueray No. TEN</h3>
+                            <p>Premium small-batch gin distilled with fresh citrus fruits. Smooth and vibrant.</p>
+                            <div class="price-tag">$35-40</div>
+                            <div class="flavor-profile">
+                                <span class="flavor-tag">Grapefruit</span>
+                                <span class="flavor-tag">Lime</span>
+                                <span class="flavor-tag">Juniper</span>
+                                <span class="flavor-tag">Chamomile</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tonic Guide Page -->
+        <section id="tonic" class="page">
+            <div class="container">
+                <h2 class="section-title">Tonic Water Guide</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem; opacity: 0.9;">The perfect tonic can elevate your gin experience. Discover the different varieties.</p>
+                
+                <div class="tonic-grid">
+                    <div class="tonic-card classic">
+                        <div class="tonic-icon">
+                            <i class="fas fa-glass-martini-alt"></i>
+                        </div>
+                        <h3>Classic Tonic</h3>
+                        <p>Traditional tonic with balanced bitterness and sweetness. Pairs well with London Dry gins.</p>
+                        <p><strong>Best with:</strong> Tanqueray, Beefeater, Gordon's</p>
+                    </div>
+                    
+                    <div class="tonic-card light">
+                        <div class="tonic-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Light Tonic</h3>
+                        <p>Lower in sugar with subtle flavors. Allows the gin's botanicals to shine through.</p>
+                        <p><strong>Best with:</strong> Premium gins like Hendrick's, Botanist</p>
+                    </div>
+                    
+                    <div class="tonic-card flavored">
+                        <div class="tonic-icon">
+                            <i class="fas fa-berry"></i>
+                        </div>
+                        <h3>Flavored Tonic</h3>
+                        <p>Infused with fruits, herbs or spices. Adds an extra dimension to your G&T.</p>
+                        <p><strong>Best with:</strong> Citrus-forward gins, floral gins</p>
+                    </div>
+                </div>
+                
+                <h2 class="section-title" style="margin-top: 80px;">Tonic Pairing Recommendations</h2>
                 
                 <div class="cards-grid">
                     <div class="card">
                         <div class="card-content">
-                            <h3>The Essential Tools</h3>
-                            <p>To begin your gin journey, you'll need a few basic bar tools:</p>
-                            <ul>
-                                <li>A jigger for precise measurements</li>
-                                <li>A cocktail shaker</li>
-                                <li>A mixing glass</li>
-                                <li>A bar spoon</li>
-                                <li>A strainer</li>
-                                <li>Quality glassware</li>
-                            </ul>
+                            <h3>London Dry Gin</h3>
+                            <p>Classic tonic with a slice of lime. The bitterness complements the juniper-forward profile.</p>
                         </div>
                     </div>
                     
                     <div class="card">
                         <div class="card-content">
-                            <h3>Building Your Home Bar</h3>
-                            <p>Start with these essentials for crafting perfect gin cocktails:</p>
-                            <ul>
-                                <li>1 quality London Dry Gin</li>
-                                <li>1 modern botanical gin</li>
-                                <li>Premium tonic water</li>
-                                <li>Fresh citrus fruits (lemons, limes)</li>
-                                <li>Simple syrup</li>
-                                <li>Angostura bitters</li>
-                                <li>Quality vermouth</li>
-                            </ul>
+                            <h3>Citrus-forward Gin</h3>
+                            <p>Elderflower tonic with a grapefruit twist. Enhances the citrus notes.</p>
                         </div>
                     </div>
                     
                     <div class="card">
                         <div class="card-content">
-                            <h3>Your First Gin & Tonic</h3>
-                            <p>The perfect starting point for any gin enthusiast:</p>
-                            <ol>
-                                <li>Fill a highball glass with ice</li>
-                                <li>Add 50ml of your chosen gin</li>
-                                <li>Top with 150ml premium tonic water</li>
-                                <li>Gently stir to combine</li>
-                                <li>Garnish with a lime wedge or botanicals</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Ideal Mixtures Page -->
-        <section id="mixtures" class="page">
-            <div class="container">
-                <h2 class="section-title">Ideal Gin Mixtures</h2>
-                
-                <div class="recipe-grid">
-                    <div class="recipe-card">
-                        <h3><i class="fas fa-glass-martini-alt"></i> Classic Gin & Tonic</h3>
-                        <div class="ingredients">
-                            <h4>Ingredients</h4>
-                            <ul>
-                                <li>50ml London Dry Gin</li>
-                                <li>150ml Premium Tonic Water</li>
-                                <li>Ice cubes</li>
-                                <li>Lime wedge</li>
-                            </ul>
-                        </div>
-                        <div class="instructions">
-                            <h4>Instructions</h4>
-                            <p>Fill a highball glass with ice. Add gin and top with tonic water. Gently stir and garnish with a lime wedge.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="recipe-card">
-                        <h3><i class="fas fa-cocktail"></i> Negroni</h3>
-                        <div class="ingredients">
-                            <h4>Ingredients</h4>
-                            <ul>
-                                <li>30ml Gin</li>
-                                <li>30ml Campari</li>
-                                <li>30ml Sweet Vermouth</li>
-                                <li>Orange peel for garnish</li>
-                            </ul>
-                        </div>
-                        <div class="instructions">
-                            <h4>Instructions</h4>
-                            <p>Add all ingredients to a mixing glass with ice. Stir well for 30 seconds. Strain into a rocks glass over ice. Garnish with an orange peel.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="recipe-card">
-                        <h3><i class="fas fa-lemon"></i> Tom Collins</h3>
-                        <div class="ingredients">
-                            <h4>Ingredients</h4>
-                            <ul>
-                                <li>50ml Gin</li>
-                                <li>25ml Fresh Lemon Juice</li>
-                                <li>15ml Simple Syrup</li>
-                                <li>Soda Water</li>
-                                <li>Lemon slice and cherry for garnish</li>
-                            </ul>
-                        </div>
-                        <div class="instructions">
-                            <h4>Instructions</h4>
-                            <p>Shake gin, lemon juice and syrup with ice. Strain into a Collins glass filled with ice. Top with soda water. Garnish with lemon and cherry.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="recipe-card">
-                        <h3><i class="fas fa-moon"></i> Aviation Cocktail</h3>
-                        <div class="ingredients">
-                            <h4>Ingredients</h4>
-                            <ul>
-                                <li>50ml Gin</li>
-                                <li>15ml Maraschino Liqueur</li>
-                                <li>15ml Fresh Lemon Juice</li>
-                                <li>5ml Crème de Violette</li>
-                                <li>Cherry for garnish</li>
-                            </ul>
-                        </div>
-                        <div class="instructions">
-                            <h4>Instructions</h4>
-                            <p>Shake all ingredients with ice. Strain into a chilled coupe glass. Garnish with a cherry.</p>
+                            <h3>Floral Gin</h3>
+                            <p>Light tonic with cucumber or rose petals. Doesn't overpower delicate flavors.</p>
                         </div>
                     </div>
                 </div>
@@ -949,7 +1149,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Gin Enthusiast</h3>
+                    <h3>Kadye & Gin</h3>
                     <p>Your guide to the world of gin. Discover premium spirits, cocktail recipes, and gin culture from around the globe.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -960,27 +1160,28 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Quick Links</h3>
+                    <h3>Explore</h3>
                     <ul class="footer-links">
                         <li><a href="#" data-page="home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#" data-page="gins"><i class="fas fa-chevron-right"></i> Good Gins</a></li>
-                        <li><a href="#" data-page="mixtures"><i class="fas fa-chevron-right"></i> Ideal Mixtures</a></li>
-                        <li><a href="#" data-page="explorer"><i class="fas fa-chevron-right"></i> Gin Explorer</a></li>
+                        <li><a href="#" data-page="budget"><i class="fas fa-chevron-right"></i> Budget Gins</a></li>
+                        <li><a href="#" data-page="premium"><i class="fas fa-chevron-right"></i> Premium Gins</a></li>
+                        <li><a href="#" data-page="tonic"><i class="fas fa-chevron-right"></i> Tonic Guide</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Gin Newsletter</h3>
-                    <p>Subscribe for monthly gin discoveries, cocktail recipes, and exclusive content.</p>
-                    <form>
-                        <input type="email" placeholder="Your Email" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 5px; border: none; background: rgba(255,255,255,0.1); color: white;">
-                        <button type="submit" class="btn" style="width: 100%;">Subscribe</button>
-                    </form>
+                    <h3>Gin Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-page="history"><i class="fas fa-chevron-right"></i> Gin History</a></li>
+                        <li><a href="#" data-page="explorer"><i class="fas fa-chevron-right"></i> Gin Explorer</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cocktail Recipes</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Gin Tasting Guide</a></li>
+                    </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Gin Enthusiast. All rights reserved. Enjoy responsibly.</p>
+                <p>&copy; 2023 Kadye & Gin. All rights reserved. Enjoy responsibly.</p>
             </div>
         </div>
     </footer>
@@ -1008,7 +1209,7 @@
                         "Bombay Sapphire Martini with dry vermouth",
                         "French 75 with lemon juice, sugar and champagne"
                     ],
-                    flavors: ["Juniper", "Lemon Peel", "Coriander", "Angelica", "Almond"],
+                    flavors: ["Juniper", "Lemon Peel", "Coriander", "Angelica", "Almond", "Cubeb Berries", "Liquorice", "Cassia Bark", "Orris Root", "Nutmeg"],
                     image: "https://images.unsplash.com/photo-1598974357801-cbca100e65d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
                 },
                 hendricks: {
@@ -1021,7 +1222,7 @@
                         "Hendrick's Martini with a twist of cucumber",
                         "Gin Fizz with lemon juice and soda"
                     ],
-                    flavors: ["Rose", "Cucumber", "Juniper", "Citrus", "Chamomile"],
+                    flavors: ["Rose", "Cucumber", "Juniper", "Citrus", "Chamomile", "Elderflower", "Orange Peel", "Caraway", "Coriander", "Angelica"],
                     image: "https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
                 },
                 tanqueray: {
@@ -1034,7 +1235,7 @@
                         "Negroni with Campari and sweet vermouth",
                         "Tom Collins with lemon juice and soda"
                     ],
-                    flavors: ["Juniper", "Citrus", "Angelica", "Spice", "Pepper"],
+                    flavors: ["Juniper", "Citrus", "Angelica", "Spice", "Pepper", "Coriander", "Liquorice", "Floral Notes"],
                     image: "https://images.unsplash.com/photo-1600565193541-423a5e9c44e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
                 },
                 beefeater: {
@@ -1047,7 +1248,7 @@
                         "Gin & Tonic with lemon wedge",
                         "Corpse Reviver No. 2 with lemon, Cointreau and Lillet"
                     ],
-                    flavors: ["Juniper", "Lemon", "Seville Orange", "Almond", "Liquorice"],
+                    flavors: ["Juniper", "Lemon", "Seville Orange", "Almond", "Liquorice", "Angelica", "Orris Root", "Coriander", "Savory Notes"],
                     image: "https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
                 }
             };
@@ -1143,27 +1344,17 @@
                         `;
                         
                         ginDetails.classList.add('active');
+                        
+                        // Animate flavor tags
+                        document.querySelectorAll('.flavor-tag').forEach((tag, index) => {
+                            tag.style.animationDelay = `${index * 0.1}s`;
+                        });
                     }
                 });
             });
             
             // Initialize home page
             setActivePage('home');
-            
-            // Add flavor tag styling
-            const style = document.createElement('style');
-            style.textContent = `
-                .flavor-tag {
-                    display: inline-block;
-                    background: rgba(212, 175, 55, 0.2);
-                    color: var(--gold);
-                    padding: 5px 15px;
-                    border-radius: 20px;
-                    font-size: 0.9rem;
-                    margin: 5px 0;
-                }
-            `;
-            document.head.appendChild(style);
         });
     </script>
 </body>
