@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,6 +25,9 @@
             --tonic-yellow: #ffd700;
             --tonic-lime: #c0d725;
             --tonic-pink: #f28b82;
+            --tonic-purple: #c8a2c8;
+            --tonic-orange: #ffa500;
+            --tonic-blue: #87ceeb;
         }
         
         body {
@@ -281,17 +284,92 @@
             height: 250px;
             overflow: hidden;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .card-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+        /* Gin Bottle Illustration */
+        .gin-bottle-illustration {
+            position: relative;
+            width: 120px;
+            height: 220px;
+            margin: 0 auto;
         }
         
-        .card:hover .card-img img {
-            transform: scale(1.1);
+        .bottle-body {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 180px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.7), rgba(255,255,255,0.9));
+            border-radius: 10px 10px 0 0;
+            border: 2px solid rgba(255,255,255,0.8);
+            overflow: hidden;
+        }
+        
+        .bottle-neck {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 40px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 0 0 5px 5px;
+            border: 2px solid rgba(255,255,255,0.8);
+            border-top: none;
+        }
+        
+        .bottle-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(210, 180, 60, 0.2);
+            border-radius: 5px;
+            border: 1px solid var(--gold);
+        }
+        
+        .bottle-botanical {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--botanical);
+            border-radius: 50%;
+            animation: floatBotanical 8s infinite ease-in-out;
+        }
+        
+        .botanical-1 {
+            top: 30px;
+            left: 20px;
+            animation-delay: 0s;
+            background: var(--gin-green);
+        }
+        
+        .botanical-2 {
+            top: 70px;
+            right: 15px;
+            animation-delay: 1s;
+            background: var(--accent);
+        }
+        
+        .botanical-3 {
+            bottom: 40px;
+            left: 25px;
+            animation-delay: 2s;
+            background: var(--botanical);
+        }
+        
+        .botanical-4 {
+            bottom: 60px;
+            right: 20px;
+            animation-delay: 3s;
+            background: var(--gin-green);
         }
         
         .card-content {
@@ -346,15 +424,12 @@
             border-color: var(--gold);
         }
         
-        .gin-bottle img {
-            width: 120px;
-            height: 220px;
-            object-fit: contain;
+        .gin-bottle .gin-bottle-illustration {
             margin-bottom: 20px;
             transition: transform 0.3s ease;
         }
         
-        .gin-bottle:hover img {
+        .gin-bottle:hover .gin-bottle-illustration {
             transform: scale(1.1) rotate(5deg);
         }
         
@@ -509,6 +584,18 @@
         
         .tonic-card.flavored .tonic-icon {
             color: var(--tonic-pink);
+        }
+        
+        .tonic-card.purple .tonic-icon {
+            color: var(--tonic-purple);
+        }
+        
+        .tonic-card.orange .tonic-icon {
+            color: var(--tonic-orange);
+        }
+        
+        .tonic-card.blue .tonic-icon {
+            color: var(--tonic-blue);
         }
         
         .tonic-card h3 {
@@ -701,6 +788,12 @@
             100% { transform: translateY(0px); }
         }
         
+        @keyframes floatBotanical {
+            0% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0); }
+        }
+        
         @keyframes slideIn {
             from { transform: translateX(-50px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
@@ -846,7 +939,15 @@
                 <div class="cards-grid">
                     <div class="card">
                         <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1598974357801-cbca100e65d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="London Dry Gin">
+                            <div class="gin-bottle-illustration">
+                                <div class="bottle-body"></div>
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-label"></div>
+                                <div class="bottle-botanical botanical-1"></div>
+                                <div class="bottle-botanical botanical-2"></div>
+                                <div class="bottle-botanical botanical-3"></div>
+                                <div class="bottle-botanical botanical-4"></div>
+                            </div>
                         </div>
                         <div class="card-content">
                             <h3>London Dry Gin</h3>
@@ -857,7 +958,15 @@
                     
                     <div class="card">
                         <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Plymouth Gin">
+                            <div class="gin-bottle-illustration">
+                                <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(210,230,255,0.7), rgba(180,210,240,0.9));"></div>
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-label" style="background: rgba(100,150,200,0.2);"></div>
+                                <div class="bottle-botanical botanical-1" style="background: #4a9c7c;"></div>
+                                <div class="bottle-botanical botanical-2" style="background: #88b04b;"></div>
+                                <div class="bottle-botanical botanical-3" style="background: #52ab98;"></div>
+                                <div class="bottle-botanical botanical-4" style="background: #4a9c7c;"></div>
+                            </div>
                         </div>
                         <div class="card-content">
                             <h3>Plymouth Gin</h3>
@@ -868,7 +977,15 @@
                     
                     <div class="card">
                         <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1600565193541-423a5e9c44e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Botanical Gin">
+                            <div class="gin-bottle-illustration">
+                                <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(230,255,230,0.7), rgba(200,230,200,0.9));"></div>
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-label" style="background: rgba(150,200,150,0.2);"></div>
+                                <div class="bottle-botanical botanical-1" style="background: #88b04b;"></div>
+                                <div class="bottle-botanical botanical-2" style="background: #4a9c7c;"></div>
+                                <div class="bottle-botanical botanical-3" style="background: #52ab98;"></div>
+                                <div class="bottle-botanical botanical-4" style="background: #88b04b;"></div>
+                            </div>
                         </div>
                         <div class="card-content">
                             <h3>Botanical Gin</h3>
@@ -887,8 +1004,10 @@
                 
                 <div class="cards-grid">
                     <div class="card">
-                        <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1629456199798-06d9a4c30bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gin History">
+                        <div class="card-img" style="display: flex; align-items: center; justify-content: center;">
+                            <div style="width: 150px; height: 150px; background: rgba(212,175,55,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid var(--gold);">
+                                <i class="fas fa-history" style="font-size: 4rem; color: var(--gold);"></i>
+                            </div>
                         </div>
                         <div class="card-content">
                             <h3>Origins of Gin</h3>
@@ -897,8 +1016,10 @@
                     </div>
                     
                     <div class="card">
-                        <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1596803244618-8dbee441d70b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gin Production">
+                        <div class="card-img" style="display: flex; align-items: center; justify-content: center;">
+                            <div style="width: 150px; height: 150px; background: rgba(82,171,152,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid var(--accent);">
+                                <i class="fas fa-industry" style="font-size: 4rem; color: var(--accent);"></i>
+                            </div>
                         </div>
                         <div class="card-content">
                             <h3>Gin Production</h3>
@@ -933,7 +1054,15 @@
                 <div class="cards-grid">
                     <div class="card">
                         <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1633934458019-1b009d1c8a7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gordon's">
+                            <div class="gin-bottle-illustration">
+                                <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(240,240,240,0.7), rgba(220,220,220,0.9));"></div>
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-label" style="background: rgba(200,150,100,0.2);"></div>
+                                <div class="bottle-botanical botanical-1" style="background: #52ab98;"></div>
+                                <div class="bottle-botanical botanical-2" style="background: #4a9c7c;"></div>
+                                <div class="bottle-botanical botanical-3" style="background: #88b04b;"></div>
+                                <div class="bottle-botanical botanical-4" style="background: #52ab98;"></div>
+                            </div>
                         </div>
                         <div class="card-content">
                             <h3>Gordon's London Dry</h3>
@@ -949,7 +1078,15 @@
                     
                     <div class="card">
                         <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1570691079992-778b03e7c1b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Seagram's">
+                            <div class="gin-bottle-illustration">
+                                <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(220,240,240,0.7), rgba(200,220,220,0.9));"></div>
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-label" style="background: rgba(100,150,200,0.2);"></div>
+                                <div class="bottle-botanical botanical-1" style="background: #88b04b;"></div>
+                                <div class="bottle-botanical botanical-2" style="background: #52ab98;"></div>
+                                <div class="bottle-botanical botanical-3" style="background: #4a9c7c;"></div>
+                                <div class="bottle-botanical botanical-4" style="background: #88b04b;"></div>
+                            </div>
                         </div>
                         <div class="card-content">
                             <h3>Seagram's Extra Dry</h3>
@@ -965,7 +1102,15 @@
                     
                     <div class="card">
                         <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="New Amsterdam">
+                            <div class="gin-bottle-illustration">
+                                <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(240,240,220,0.7), rgba(220,220,200,0.9));"></div>
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-label" style="background: rgba(200,180,100,0.2);"></div>
+                                <div class="bottle-botanical botanical-1" style="background: #4a9c7c;"></div>
+                                <div class="bottle-botanical botanical-2" style="background: #88b04b;"></div>
+                                <div class="bottle-botanical botanical-3" style="background: #52ab98;"></div>
+                                <div class="bottle-botanical botanical-4" style="background: #4a9c7c;"></div>
+                            </div>
                         </div>
                         <div class="card-content">
                             <h3>New Amsterdam</h3>
@@ -975,6 +1120,79 @@
                                 <span class="flavor-tag">Lemon</span>
                                 <span class="flavor-tag">Orange</span>
                                 <span class="flavor-tag">Smooth</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Budget Gins -->
+                    <div class="card">
+                        <div class="card-img">
+                            <div class="gin-bottle-illustration">
+                                <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(230,230,255,0.7), rgba(210,210,240,0.9));"></div>
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-label" style="background: rgba(150,100,200,0.2);"></div>
+                                <div class="bottle-botanical botanical-1" style="background: #88b04b;"></div>
+                                <div class="bottle-botanical botanical-2" style="background: #4a9c7c;"></div>
+                                <div class="bottle-botanical botanical-3" style="background: #52ab98;"></div>
+                                <div class="bottle-botanical botanical-4" style="background: #88b04b;"></div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Gilbey's</h3>
+                            <p>Crisp and clean with balanced juniper and citrus notes. A versatile budget option.</p>
+                            <div class="price-tag">$9-11</div>
+                            <div class="flavor-profile">
+                                <span class="flavor-tag">Juniper</span>
+                                <span class="flavor-tag">Lemon</span>
+                                <span class="flavor-tag">Clean</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-img">
+                            <div class="gin-bottle-illustration">
+                                <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(255,240,230,0.7), rgba(240,220,200,0.9));"></div>
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-label" style="background: rgba(200,100,100,0.2);"></div>
+                                <div class="bottle-botanical botanical-1" style="background: #4a9c7c;"></div>
+                                <div class="bottle-botanical botanical-2" style="background: #52ab98;"></div>
+                                <div class="bottle-botanical botanical-3" style="background: #88b04b;"></div>
+                                <div class="bottle-botanical botanical-4" style="background: #4a9c7c;"></div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Burnett's</h3>
+                            <p>Light and refreshing with subtle botanical notes. Perfect for gin and tonics.</p>
+                            <div class="price-tag">$7-9</div>
+                            <div class="flavor-profile">
+                                <span class="flavor-tag">Light</span>
+                                <span class="flavor-tag">Refreshing</span>
+                                <span class="flavor-tag">Subtle</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-img">
+                            <div class="gin-bottle-illustration">
+                                <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(240,255,230,0.7), rgba(220,240,200,0.9));"></div>
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-label" style="background: rgba(100,200,150,0.2);"></div>
+                                <div class="bottle-botanical botanical-1" style="background: #52ab98;"></div>
+                                <div class="bottle-botanical botanical-2" style="background: #88b04b;"></div>
+                                <div class="bottle-botanical botanical-3" style="background: #4a9c7c;"></div>
+                                <div class="bottle-botanical botanical-4" style="background: #52ab98;"></div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Broker's</h3>
+                            <p>Traditional London dry gin with bold juniper character and citrus zest.</p>
+                            <div class="price-tag">$13-15</div>
+                            <div class="flavor-profile">
+                                <span class="flavor-tag">Bold</span>
+                                <span class="flavor-tag">Juniper</span>
+                                <span class="flavor-tag">Zesty</span>
                             </div>
                         </div>
                     </div>
@@ -991,7 +1209,15 @@
                 <div class="cards-grid">
                     <div class="card">
                         <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1598974357801-cbca100e65d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bombay Sapphire">
+                            <div class="gin-bottle-illustration">
+                                <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(200,220,255,0.7), rgba(180,200,240,0.9));"></div>
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-label" style="background: rgba(50,100,200,0.2);"></div>
+                                <div class="bottle-botanical botanical-1" style="background: #88b04b;"></div>
+                                <div class="bottle-botanical botanical-2" style="background: #52ab98;"></div>
+                                <div class="bottle-botanical botanical-3" style="background: #4a9c7c;"></div>
+                                <div class="bottle-botanical botanical-4" style="background: #88b04b;"></div>
+                            </div>
                         </div>
                         <div class="card-content">
                             <h3>Bombay Sapphire</h3>
@@ -1008,7 +1234,15 @@
                     
                     <div class="card">
                         <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hendrick's">
+                            <div class="gin-bottle-illustration">
+                                <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(220,240,240,0.7), rgba(200,220,220,0.9));"></div>
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-label" style="background: rgba(100,200,200,0.2);"></div>
+                                <div class="bottle-botanical botanical-1" style="background: #4a9c7c;"></div>
+                                <div class="bottle-botanical botanical-2" style="background: #88b04b;"></div>
+                                <div class="bottle-botanical botanical-3" style="background: #52ab98;"></div>
+                                <div class="bottle-botanical botanical-4" style="background: #4a9c7c;"></div>
+                            </div>
                         </div>
                         <div class="card-content">
                             <h3>Hendrick's</h3>
@@ -1025,7 +1259,15 @@
                     
                     <div class="card">
                         <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1600565193541-423a5e9c44e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tanqueray">
+                            <div class="gin-bottle-illustration">
+                                <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(240,240,200,0.7), rgba(220,220,180,0.9));"></div>
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-label" style="background: rgba(200,180,50,0.2);"></div>
+                                <div class="bottle-botanical botanical-1" style="background: #52ab98;"></div>
+                                <div class="bottle-botanical botanical-2" style="background: #4a9c7c;"></div>
+                                <div class="bottle-botanical botanical-3" style="background: #88b04b;"></div>
+                                <div class="bottle-botanical botanical-4" style="background: #52ab98;"></div>
+                            </div>
                         </div>
                         <div class="card-content">
                             <h3>Tanqueray No. TEN</h3>
@@ -1036,6 +1278,82 @@
                                 <span class="flavor-tag">Lime</span>
                                 <span class="flavor-tag">Juniper</span>
                                 <span class="flavor-tag">Chamomile</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Premium Gins -->
+                    <div class="card">
+                        <div class="card-img">
+                            <div class="gin-bottle-illustration">
+                                <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(255,220,220,0.7), rgba(240,200,200,0.9));"></div>
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-label" style="background: rgba(200,100,150,0.2);"></div>
+                                <div class="bottle-botanical botanical-1" style="background: #88b04b;"></div>
+                                <div class="bottle-botanical botanical-2" style="background: #52ab98;"></div>
+                                <div class="bottle-botanical botanical-3" style="background: #4a9c7c;"></div>
+                                <div class="bottle-botanical botanical-4" style="background: #88b04b;"></div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Monkey 47</h3>
+                            <p>German gin with 47 botanicals, offering complex floral and fruity notes with a hint of pepper.</p>
+                            <div class="price-tag">$45-50</div>
+                            <div class="flavor-profile">
+                                <span class="flavor-tag">Complex</span>
+                                <span class="flavor-tag">Floral</span>
+                                <span class="flavor-tag">Fruity</span>
+                                <span class="flavor-tag">Peppery</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-img">
+                            <div class="gin-bottle-illustration">
+                                <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(220,255,220,0.7), rgba(200,240,200,0.9));"></div>
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-label" style="background: rgba(100,200,100,0.2);"></div>
+                                <div class="bottle-botanical botanical-1" style="background: #4a9c7c;"></div>
+                                <div class="bottle-botanical botanical-2" style="background: #88b04b;"></div>
+                                <div class="bottle-botanical botanical-3" style="background: #52ab98;"></div>
+                                <div class="bottle-botanical botanical-4" style="background: #4a9c7c;"></div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>The Botanist</h3>
+                            <p>Islay dry gin with 22 hand-foraged botanicals. Earthy, floral, and beautifully balanced.</p>
+                            <div class="price-tag">$40-45</div>
+                            <div class="flavor-profile">
+                                <span class="flavor-tag">Earthy</span>
+                                <span class="flavor-tag">Floral</span>
+                                <span class="flavor-tag">Complex</span>
+                                <span class="flavor-tag">Balanced</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-img">
+                            <div class="gin-bottle-illustration">
+                                <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(240,220,255,0.7), rgba(220,200,240,0.9));"></div>
+                                <div class="bottle-neck"></div>
+                                <div class="bottle-label" style="background: rgba(150,100,200,0.2);"></div>
+                                <div class="bottle-botanical botanical-1" style="background: #52ab98;"></div>
+                                <div class="bottle-botanical botanical-2" style="background: #4a9c7c;"></div>
+                                <div class="bottle-botanical botanical-3" style="background: #88b04b;"></div>
+                                <div class="bottle-botanical botanical-4" style="background: #52ab98;"></div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Sipsmith</h3>
+                            <p>Traditional London dry gin with bold juniper, zesty citrus and subtle spice notes.</p>
+                            <div class="price-tag">$30-35</div>
+                            <div class="flavor-profile">
+                                <span class="flavor-tag">Juniper</span>
+                                <span class="flavor-tag">Citrus</span>
+                                <span class="flavor-tag">Spice</span>
+                                <span class="flavor-tag">Smooth</span>
                             </div>
                         </div>
                     </div>
@@ -1076,6 +1394,34 @@
                         <p>Infused with fruits, herbs or spices. Adds an extra dimension to your G&T.</p>
                         <p><strong>Best with:</strong> Citrus-forward gins, floral gins</p>
                     </div>
+                    
+                    <!-- Additional Tonic Types -->
+                    <div class="tonic-card purple">
+                        <div class="tonic-icon">
+                            <i class="fas fa-wine-bottle"></i>
+                        </div>
+                        <h3>Indian Tonic</h3>
+                        <p>Higher quinine content for a more bitter profile. Traditional pairing for gin.</p>
+                        <p><strong>Best with:</strong> Classic London Dry gins</p>
+                    </div>
+                    
+                    <div class="tonic-card orange">
+                        <div class="tonic-icon">
+                            <i class="fas fa-citrus"></i>
+                        </div>
+                        <h3>Mediterranean Tonic</h3>
+                        <p>Infused with herbs like rosemary and thyme. Perfect for herbal gins.</p>
+                        <p><strong>Best with:</strong> Botanist, Sipsmith</p>
+                    </div>
+                    
+                    <div class="tonic-card blue">
+                        <div class="tonic-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3>Elderflower Tonic</h3>
+                        <p>Floral and sweet with delicate elderflower notes. Complements floral gins.</p>
+                        <p><strong>Best with:</strong> Hendrick's, Bloom Gin</p>
+                    </div>
                 </div>
                 
                 <h2 class="section-title" style="margin-top: 80px;">Tonic Pairing Recommendations</h2>
@@ -1113,25 +1459,57 @@
                 
                 <div class="gin-explorer">
                     <div class="gin-bottle" data-gin="bombay">
-                        <img src="https://images.unsplash.com/photo-1598974357801-cbca100e65d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bombay Sapphire">
+                        <div class="gin-bottle-illustration">
+                            <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(200,220,255,0.7), rgba(180,200,240,0.9));"></div>
+                            <div class="bottle-neck"></div>
+                            <div class="bottle-label" style="background: rgba(50,100,200,0.2);"></div>
+                            <div class="bottle-botanical botanical-1" style="background: #88b04b;"></div>
+                            <div class="bottle-botanical botanical-2" style="background: #52ab98;"></div>
+                            <div class="bottle-botanical botanical-3" style="background: #4a9c7c;"></div>
+                            <div class="bottle-botanical botanical-4" style="background: #88b04b;"></div>
+                        </div>
                         <h4>Bombay Sapphire</h4>
                         <p>England | $28</p>
                     </div>
                     
                     <div class="gin-bottle" data-gin="hendricks">
-                        <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hendrick's">
+                        <div class="gin-bottle-illustration">
+                            <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(220,240,240,0.7), rgba(200,220,220,0.9));"></div>
+                            <div class="bottle-neck"></div>
+                            <div class="bottle-label" style="background: rgba(100,200,200,0.2);"></div>
+                            <div class="bottle-botanical botanical-1" style="background: #4a9c7c;"></div>
+                            <div class="bottle-botanical botanical-2" style="background: #88b04b;"></div>
+                            <div class="bottle-botanical botanical-3" style="background: #52ab98;"></div>
+                            <div class="bottle-botanical botanical-4" style="background: #4a9c7c;"></div>
+                        </div>
                         <h4>Hendrick's</h4>
                         <p>Scotland | $35</p>
                     </div>
                     
                     <div class="gin-bottle" data-gin="tanqueray">
-                        <img src="https://images.unsplash.com/photo-1600565193541-423a5e9c44e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tanqueray">
+                        <div class="gin-bottle-illustration">
+                            <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(240,240,200,0.7), rgba(220,220,180,0.9));"></div>
+                            <div class="bottle-neck"></div>
+                            <div class="bottle-label" style="background: rgba(200,180,50,0.2);"></div>
+                            <div class="bottle-botanical botanical-1" style="background: #52ab98;"></div>
+                            <div class="bottle-botanical botanical-2" style="background: #4a9c7c;"></div>
+                            <div class="bottle-botanical botanical-3" style="background: #88b04b;"></div>
+                            <div class="bottle-botanical botanical-4" style="background: #52ab98;"></div>
+                        </div>
                         <h4>Tanqueray</h4>
                         <p>England | $26</p>
                     </div>
                     
                     <div class="gin-bottle" data-gin="beefeater">
-                        <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Beefeater">
+                        <div class="gin-bottle-illustration">
+                            <div class="bottle-body" style="background: linear-gradient(to bottom, rgba(240,220,220,0.7), rgba(220,200,200,0.9));"></div>
+                            <div class="bottle-neck"></div>
+                            <div class="bottle-label" style="background: rgba(200,100,100,0.2);"></div>
+                            <div class="bottle-botanical botanical-1" style="background: #88b04b;"></div>
+                            <div class="bottle-botanical botanical-2" style="background: #52ab98;"></div>
+                            <div class="bottle-botanical botanical-3" style="background: #4a9c7c;"></div>
+                            <div class="bottle-botanical botanical-4" style="background: #88b04b;"></div>
+                        </div>
                         <h4>Beefeater</h4>
                         <p>England | $22</p>
                     </div>
@@ -1210,7 +1588,6 @@
                         "French 75 with lemon juice, sugar and champagne"
                     ],
                     flavors: ["Juniper", "Lemon Peel", "Coriander", "Angelica", "Almond", "Cubeb Berries", "Liquorice", "Cassia Bark", "Orris Root", "Nutmeg"],
-                    image: "https://images.unsplash.com/photo-1598974357801-cbca100e65d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
                 },
                 hendricks: {
                     name: "Hendrick's Gin",
@@ -1223,7 +1600,6 @@
                         "Gin Fizz with lemon juice and soda"
                     ],
                     flavors: ["Rose", "Cucumber", "Juniper", "Citrus", "Chamomile", "Elderflower", "Orange Peel", "Caraway", "Coriander", "Angelica"],
-                    image: "https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
                 },
                 tanqueray: {
                     name: "Tanqueray London Dry",
@@ -1236,7 +1612,6 @@
                         "Tom Collins with lemon juice and soda"
                     ],
                     flavors: ["Juniper", "Citrus", "Angelica", "Spice", "Pepper", "Coriander", "Liquorice", "Floral Notes"],
-                    image: "https://images.unsplash.com/photo-1600565193541-423a5e9c44e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
                 },
                 beefeater: {
                     name: "Beefeater London Dry",
@@ -1249,7 +1624,6 @@
                         "Corpse Reviver No. 2 with lemon, Cointreau and Lillet"
                     ],
                     flavors: ["Juniper", "Lemon", "Seville Orange", "Almond", "Liquorice", "Angelica", "Orris Root", "Coriander", "Savory Notes"],
-                    image: "https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
                 }
             };
             
@@ -1320,8 +1694,16 @@
                         ginDetails.innerHTML = `
                             <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
                                 <div style="flex: 1; min-width: 250px;">
-                                    <img src="${gin.image}" alt="${gin.name}" style="width: 100%; max-width: 200px; border-radius: 10px; margin-bottom: 20px;">
-                                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                                    <div class="gin-bottle-illustration" style="margin: 0 auto;">
+                                        <div class="bottle-body" style="height: 220px;"></div>
+                                        <div class="bottle-neck"></div>
+                                        <div class="bottle-label"></div>
+                                        <div class="bottle-botanical botanical-1"></div>
+                                        <div class="bottle-botanical botanical-2"></div>
+                                        <div class="bottle-botanical botanical-3"></div>
+                                        <div class="bottle-botanical botanical-4"></div>
+                                    </div>
+                                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-top: 20px;">
                                         <p><strong>Origin:</strong> ${gin.origin}</p>
                                         <p><strong>Price Range:</strong> ${gin.price}</p>
                                     </div>
