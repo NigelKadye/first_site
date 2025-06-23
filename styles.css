@@ -8,6 +8,8 @@
     --juniper-purple: #6a67ce;
     --slate: #3b6064;
     --light: #f7f9f9;
+    --gold: #FFD700;
+    --silver: #C0C0C0;
 }
 
 * {
@@ -308,30 +310,184 @@ section {
     text-align: center;
 }
 
+/* Gin Details */
+.gin-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.gin-card {
+    background: rgba(247, 249, 249, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    width: 300px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(247, 249, 249, 0.1);
+}
+
+.gin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-color: var(--citrus-yellow);
+}
+
+.gin-card.budget {
+    border-top: 4px solid var(--silver);
+}
+
+.gin-card.quality {
+    border-top: 4px solid var(--gold);
+}
+
+.gin-name {
+    font-size: 1.5rem;
+    color: var(--tonic-green);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.gin-name i {
+    margin-right: 0.5rem;
+}
+
+.gin-price {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--citrus-yellow);
+}
+
+.gin-origin {
+    font-style: italic;
+    color: var(--herb-mint);
+    margin-bottom: 1rem;
+}
+
+.gin-taste {
+    margin-bottom: 1rem;
+}
+
+.gin-taste span {
+    display: inline-block;
+    background: rgba(39, 251, 107, 0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+    margin: 0.2rem;
+    font-size: 0.85rem;
+}
+
+/* Recipe Section */
+.recipe-section {
+    background: rgba(59, 96, 100, 0.2);
+    border-radius: 20px;
+    padding: 3rem;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.recipe-card {
+    background: rgba(10, 46, 54, 0.6);
+    border-radius: 15px;
+    padding: 1.8rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(247, 249, 249, 0.1);
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-color: var(--berry-pink);
+}
+
+.recipe-name {
+    font-size: 1.6rem;
+    color: var(--berry-pink);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--berry-pink);
+    padding-bottom: 0.5rem;
+}
+
+.recipe-gin {
+    font-weight: bold;
+    color: var(--herb-mint);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.recipe-gin i {
+    margin-right: 0.5rem;
+}
+
+.recipe-ingredients {
+    margin-bottom: 1.5rem;
+}
+
+.recipe-ingredients h4 {
+    color: var(--citrus-yellow);
+    margin-bottom: 0.5rem;
+}
+
+.recipe-ingredients ul {
+    padding-left: 1.5rem;
+}
+
+.recipe-ingredients li {
+    margin-bottom: 0.3rem;
+}
+
+.recipe-steps {
+    margin-bottom: 1.5rem;
+}
+
+.recipe-steps h4 {
+    color: var(--citrus-yellow);
+    margin-bottom: 0.5rem;
+}
+
+.recipe-steps ol {
+    padding-left: 1.5rem;
+}
+
+.recipe-steps li {
+    margin-bottom: 0.5rem;
+}
+
 /* Interactive Tabs */
 .tabs {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin-bottom: 2rem;
+    gap: 0.5rem;
 }
 
 .tab-btn {
     background: transparent;
     border: none;
     color: var(--light);
-    padding: 0.8rem 2rem;
-    margin: 0 0.5rem;
+    padding: 0.8rem 1.8rem;
     border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
+    border: 2px solid rgba(247, 249, 249, 0.2);
 }
 
 .tab-btn.active {
     background: var(--tonic-green);
     color: var(--gin-blue);
+    border-color: var(--tonic-green);
 }
 
 .tab-content {
