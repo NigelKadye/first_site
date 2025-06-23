@@ -1,4 +1,5 @@
 // scripts.js
+
 // Mobile menu toggle
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
@@ -30,7 +31,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Explore button animation
+// Explore button animation and scroll
 const exploreBtn = document.getElementById('exploreBtn');
 if (exploreBtn) {
     exploreBtn.addEventListener('click', () => {
@@ -41,31 +42,44 @@ if (exploreBtn) {
     });
 }
 
-// Tab functionality
-const tabBtns = document.querySelectorAll('.tab-btn');
-tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Remove active class from all buttons
-        tabBtns.forEach(b => b.classList.remove('active'));
-        // Add active class to clicked button
-        btn.classList.add('active');
+// Tab functionality for gin collection
+function setupTabs() {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.getAttribute('data-tab');
+            
+            // Remove active class from all buttons and contents
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked button
+            btn.classList.add('active');
+            
+            // Show corresponding tab content
+            document.getElementById(`${tabId}-gins`).classList.add('active');
+        });
     });
-});
+}
 
 // Card hover effect enhancement
-const cards = document.querySelectorAll('.card');
-cards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-10px)';
+function setupCardHover() {
+    const cards = document.querySelectorAll('.card, .gin-card, .recipe-card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+        });
     });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0)';
-    });
-});
+}
 
 // Generate animated background elements
-window.addEventListener('DOMContentLoaded', () => {
+function generateBackgroundElements() {
     const hero = document.querySelector('.hero');
     if (!hero) return;
     
@@ -98,7 +112,7 @@ window.addEventListener('DOMContentLoaded', () => {
         bottle.style.left = pos.left;
         hero.appendChild(bottle);
     });
-});
+}
 
 // Load content sections
 document.addEventListener('DOMContentLoaded', () => {
@@ -117,6 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function attachEventListeners() {
     // Re-attach event listeners to newly loaded elements
+    
+    // Explore button
     const exploreBtn = document.getElementById('exploreBtn');
     if (exploreBtn) {
         exploreBtn.addEventListener('click', () => {
@@ -126,24 +142,45 @@ function attachEventListeners() {
         });
     }
     
-    // Re-attach tab functionality
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            tabBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        });
-    });
+    // Setup tabs for gin collection
+    setupTabs();
     
-    // Re-attach card hover effects
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px)';
+    // Setup card hover effects
+    setupCardHover();
+    
+    // Generate background elements for hero section
+    generateBackgroundElements();
+}
+
+// Initial setup when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    // Generate background elements for hero section (if hero is in index.html)
+    generateBackgroundElements();
+    
+    // Setup mobile menu
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0)';
+    }
+    
+    // Setup smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
         });
     });
-}
+});
