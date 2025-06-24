@@ -3,33 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kadye & Gin | Premium Gin Experience</title>
+    <title>Kadye & Gin | Interactive Gin Experience</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header & Smart Menu -->
-    <header>
-        <nav class="smart-menu">
-            <div class="logo">Kadye<span>&</span>Gin</div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#gins">Gin Collection</a></li>
-                <li><a href="#tonics">Tonic Sommelier</a></li>
-                <li><a href="#recipes">Recipes</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
-    </header>
+    <!-- Animated Background Elements -->
+    <div class="bubble" style="--size: 20px; --top: 15%; --left: 10%; --delay: 0s;"></div>
+    <div class="bubble" style="--size: 35px; --top: 25%; --left: 85%; --delay: 1s;"></div>
+    <div class="bubble" style="--size: 25px; --top: 65%; --left: 20%; --delay: 2s;"></div>
+    <div class="gin-bottle" style="--top: 30%; --left: 75%; --delay: 0.5s;"></div>
+    <div class="gin-bottle" style="--top: 60%; --left: 15%; --delay: 1.5s;"></div>
+    <div class="gin-bottle" style="--top: 45%; --left: 90%; --delay: 2.5s;"></div>
+    
+    <!-- Colorful Navigation -->
+    <nav class="colorful-nav">
+        <div class="logo">Kadye<span>&</span>Gin</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="nav-item" style="--color: #27fb6b;"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#gins" class="nav-item" style="--color: #ff6b6b;"><i class="fas fa-wine-bottle"></i> Gins</a></li>
+            <li><a href="#tonics" class="nav-item" style="--color: #f7cb15;"><i class="fas fa-glass-cheers"></i> Tonics</a></li>
+            <li><a href="#recipes" class="nav-item" style="--color: #6a67ce;"><i class="fas fa-cocktail"></i> Recipes</a></li>
+            <li><a href="#about" class="nav-item" style="--color: #c9e4ca;"><i class="fas fa-info-circle"></i> About</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
 
     <!-- Content Sections -->
     <div id="content">
         <!-- Content loaded from content.html -->
+    </div>
+    
+    <!-- Floating Action Button -->
+    <div class="fab" id="fab">
+        <i class="fas fa-glass-martini-alt"></i>
     </div>
 
     <script src="scripts.js"></script>
