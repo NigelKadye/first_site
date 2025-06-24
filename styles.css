@@ -24,10 +24,12 @@ body {
     color: var(--light);
     overflow-x: hidden;
     line-height: 1.6;
+    position: relative;
+    min-height: 100vh;
 }
 
-/* Header & Navigation */
-header {
+/* Colorful Navigation */
+.colorful-nav {
     position: fixed;
     top: 0;
     width: 100%;
@@ -36,6 +38,9 @@ header {
     background: rgba(10, 46, 54, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
@@ -44,6 +49,7 @@ header {
     color: var(--tonic-green);
     display: flex;
     align-items: center;
+    z-index: 1001;
 }
 
 .logo span {
@@ -51,56 +57,163 @@ header {
     margin: 0 0.3rem;
 }
 
-.smart-menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .nav-links {
     display: flex;
     list-style: none;
+    gap: 1.5rem;
 }
 
 .nav-links li {
-    margin: 0 1.2rem;
     position: relative;
 }
 
-.nav-links a {
+.nav-item {
     text-decoration: none;
     color: var(--light);
-    font-weight: 400;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.9rem;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.nav-links a::after {
+.nav-item::before {
     content: '';
     position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
+    top: 0;
     left: 0;
-    background: var(--tonic-green);
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--tonic-green);
-}
-
-.nav-links a:hover::after {
     width: 100%;
+    height: 100%;
+    background: var(--color);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.nav-item:hover::before {
+    transform: scaleX(1);
+}
+
+.nav-item:hover {
+    color: var(--gin-blue);
 }
 
 .menu-toggle {
     display: none;
     cursor: pointer;
     font-size: 1.5rem;
+    color: var(--light);
+    z-index: 1001;
+}
+
+/* Animated Background Elements */
+.bubble {
+    position: fixed;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: rgba(247, 249, 249, 0.15);
+    top: var(--top);
+    left: var(--left);
+    animation: float 8s infinite ease-in-out;
+    animation-delay: var(--delay);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.gin-bottle {
+    position: fixed;
+    width: 50px;
+    height: 100px;
+    background: linear-gradient(to bottom, var(--herb-mint), var(--tonic-green));
+    border-radius: 10px 10px 5px 5px;
+    opacity: 0.7;
+    top: var(--top);
+    left: var(--left);
+    animation: float 10s infinite ease-in-out;
+    animation-delay: var(--delay);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Sections */
+.page {
+    padding: 8rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 4px;
+    background: var(--tonic-green);
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.card {
+    background: rgba(247, 249, 249, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(247, 249, 249, 0.1);
+    cursor: pointer;
+    animation: fadeInUp 0.8s ease;
+    z-index: 2;
+}
+
+.card:hover {
+    transform: translateY(-10px) rotate(2deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border-color: var(--tonic-green);
+}
+
+.card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--tonic-green);
+    display: flex;
+    align-items: center;
+}
+
+.card h3 i {
+    margin-right: 0.8rem;
 }
 
 /* Hero Section */
@@ -156,6 +269,7 @@ header {
     position: relative;
     overflow: hidden;
     animation: pulse 2s infinite;
+    z-index: 2;
 }
 
 .explore-btn:hover {
@@ -170,110 +284,48 @@ header {
     transform: translateY(0);
 }
 
-/* Animated Background Elements */
-.gin-bottle {
-    position: absolute;
-    width: 50px;
-    height: 100px;
-    background: linear-gradient(to bottom, var(--herb-mint), var(--tonic-green));
-    border-radius: 10px 10px 5px 5px;
-    opacity: 0.7;
-    animation: float 8s infinite ease-in-out;
-    z-index: -1;
-}
-
-.bubble {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(247, 249, 249, 0.15);
-    animation: float 6s infinite ease-in-out;
-    z-index: -1;
-}
-
-/* Sections */
-section {
-    padding: 8rem 2rem;
-    min-height: 100vh;
+/* Interactive Flavor Wheel */
+.flavor-wheel-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-}
-
-.section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 4rem;
-    position: relative;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    width: 100px;
-    height: 4px;
-    background: var(--tonic-green);
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 2px;
-}
-
-.content-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.card {
-    background: rgba(247, 249, 249, 0.1);
-    border-radius: 15px;
-    padding: 2rem;
-    transition: all 0.4s ease;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(247, 249, 249, 0.1);
-    cursor: pointer;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    border-color: var(--tonic-green);
-}
-
-.card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: var(--tonic-green);
-    display: flex;
-    align-items: center;
-}
-
-.card h3 i {
-    margin-right: 0.8rem;
-}
-
-.tonic-sommelier {
-    background: rgba(201, 228, 202, 0.1);
-    max-width: 1000px;
-    margin: 0 auto;
-    border-radius: 20px;
-    padding: 3rem;
-    text-align: center;
-}
-
-.tonic-sommelier h3 {
-    color: var(--citrus-yellow);
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
+    margin: 3rem 0;
+    perspective: 1000px;
 }
 
 .flavor-wheel {
     width: 300px;
     height: 300px;
     border-radius: 50%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+    cursor: pointer;
+    animation: rotate 30s linear infinite;
+}
+
+.flavor-wheel:hover {
+    animation: rotate 10s linear infinite;
+}
+
+.flavor-wheel.flipped {
+    transform: rotateY(180deg);
+    animation: none;
+}
+
+.flavor-wheel-front, .flavor-wheel-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.flavor-wheel-front {
     background: conic-gradient(
         var(--juniper-purple) 0% 15%,
         var(--berry-pink) 15% 30%,
@@ -282,17 +334,17 @@ section {
         var(--herb-mint) 60% 75%,
         var(--slate) 75% 100%
     );
-    margin: 2rem auto;
-    position: relative;
-    animation: rotate 20s linear infinite;
-    cursor: pointer;
 }
 
-.flavor-wheel:hover {
-    animation: rotate 5s linear infinite;
+.flavor-wheel-back {
+    background: var(--gin-blue);
+    transform: rotateY(180deg);
+    padding: 2rem;
+    text-align: center;
+    flex-direction: column;
 }
 
-.flavor-wheel::after {
+.flavor-wheel-front::after {
     content: 'Explore Flavors';
     position: absolute;
     top: 50%;
@@ -310,83 +362,20 @@ section {
     text-align: center;
 }
 
-/* Gin Details */
-.gin-details {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
+.flavor-detail {
+    margin-bottom: 1rem;
 }
 
-.gin-card {
-    background: rgba(247, 249, 249, 0.1);
-    border-radius: 15px;
-    padding: 1.5rem;
-    width: 300px;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(247, 249, 249, 0.1);
-}
-
-.gin-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    border-color: var(--citrus-yellow);
-}
-
-.gin-card.budget {
-    border-top: 4px solid var(--silver);
-}
-
-.gin-card.quality {
-    border-top: 4px solid var(--gold);
-}
-
-.gin-name {
-    font-size: 1.5rem;
+.flavor-detail h3 {
     color: var(--tonic-green);
     margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
 }
 
-.gin-name i {
-    margin-right: 0.5rem;
-}
-
-.gin-price {
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: var(--citrus-yellow);
-}
-
-.gin-origin {
-    font-style: italic;
-    color: var(--herb-mint);
-    margin-bottom: 1rem;
-}
-
-.gin-taste {
-    margin-bottom: 1rem;
-}
-
-.gin-taste span {
-    display: inline-block;
-    background: rgba(39, 251, 107, 0.2);
-    padding: 0.2rem 0.5rem;
-    border-radius: 20px;
-    margin: 0.2rem;
-    font-size: 0.85rem;
+.flavor-detail p {
+    font-size: 0.9rem;
 }
 
 /* Recipe Section */
-.recipe-section {
-    background: rgba(59, 96, 100, 0.2);
-    border-radius: 20px;
-    padding: 3rem;
-}
-
 .recipe-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -399,11 +388,13 @@ section {
     padding: 1.8rem;
     transition: all 0.3s ease;
     border: 1px solid rgba(247, 249, 249, 0.1);
+    animation: fadeInUp 0.8s ease;
+    z-index: 2;
 }
 
 .recipe-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     border-color: var(--berry-pink);
 }
 
@@ -461,83 +452,30 @@ section {
     margin-bottom: 0.5rem;
 }
 
-/* Interactive Tabs */
-.tabs {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-    gap: 0.5rem;
-}
-
-.tab-btn {
-    background: transparent;
-    border: none;
-    color: var(--light);
-    padding: 0.8rem 1.8rem;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: 2px solid rgba(247, 249, 249, 0.2);
-}
-
-.tab-btn.active {
-    background: var(--tonic-green);
-    color: var(--gin-blue);
-    border-color: var(--tonic-green);
-}
-
-.tab-content {
-    display: none;
-    animation: fadeIn 0.5s ease;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-/* Footer */
-footer {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 3rem 2rem;
-    text-align: center;
-    border-top: 1px solid rgba(247, 249, 249, 0.1);
-}
-
-.footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--tonic-green);
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-
-.social-icons a {
+/* Floating Action Button */
+.fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    background: var(--berry-pink);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(247, 249, 249, 0.1);
-    color: var(--light);
-    font-size: 1.2rem;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    animation: pulse 2s infinite;
     transition: all 0.3s ease;
 }
 
-.social-icons a:hover {
-    background: var(--tonic-green);
-    color: var(--gin-blue);
-    transform: translateY(-5px);
+.fab:hover {
+    transform: scale(1.1) rotate(15deg);
+    animation: none;
 }
 
 /* Animations */
@@ -588,47 +526,80 @@ footer {
 @media (max-width: 768px) {
     .nav-links {
         position: fixed;
-        top: 80px;
+        top: 0;
         right: -100%;
         flex-direction: column;
         background: var(--gin-blue);
-        width: 100%;
-        text-align: center;
+        width: 70%;
+        height: 100vh;
+        padding: 6rem 2rem 2rem;
         transition: 0.5s;
-        padding: 2rem 0;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        gap: 1.5rem;
     }
-
+    
     .nav-links.active {
         right: 0;
     }
-
+    
     .nav-links li {
-        margin: 1.5rem 0;
+        margin: 0;
     }
-
+    
     .menu-toggle {
         display: block;
     }
-
+    
     .hero h1 {
         font-size: 3rem;
     }
-
+    
     .section-title {
         font-size: 2.5rem;
     }
-
+    
     .content-grid {
         grid-template-columns: 1fr;
     }
-
-    .tabs {
-        flex-wrap: wrap;
+    
+    .flavor-wheel {
+        width: 250px;
+        height: 250px;
     }
+    
+    .flavor-wheel-front::after {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .fab {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
 
-    .tab-btn {
-        margin: 0.5rem;
-        padding: 0.6rem 1.5rem;
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .flavor-wheel {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .flavor-wheel-front::after {
+        width: 100px;
+        height: 100px;
+        font-size: 0.9rem;
+    }
+    
+    .recipe-grid {
+        grid-template-columns: 1fr;
     }
 }
