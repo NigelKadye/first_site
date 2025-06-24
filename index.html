@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gin Sommelier | The Art of Gin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <title>Kadye & Gin | The Art of Gin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Raleway:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* === GLOBAL STYLES === */
         :root {
@@ -17,6 +18,7 @@
             --mixers: #6a67ce;
             --premium: #00b4d8;
             --botanicals: #4caf50;
+            --recipes: #ff6b6b;
         }
         
         * {
@@ -31,6 +33,7 @@
             color: var(--light);
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
         }
         
         h1, h2, h3 {
@@ -54,6 +57,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            animation: headerPulse 4s infinite alternate;
         }
         
         nav {
@@ -71,6 +75,12 @@
             background-clip: text;
             color: transparent;
             animation: logoPulse 2s infinite alternate;
+        }
+        
+        .logo span {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-left: 5px;
         }
         
         .nav-links {
@@ -128,6 +138,7 @@
             background-clip: text;
             color: transparent;
             text-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+            animation: titleFloat 6s infinite ease-in-out;
         }
         
         .hero p {
@@ -135,6 +146,7 @@
             max-width: 700px;
             margin-bottom: 40px;
             color: var(--light);
+            animation: fadeInUp 1.5s ease-out;
         }
         
         .cta-button {
@@ -152,11 +164,13 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
         }
         
         .cta-button:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            animation: none;
         }
         
         .cta-button::after {
@@ -197,6 +211,7 @@
             height: 5px;
             background: var(--accent);
             border-radius: 5px;
+            animation: linePulse 2s infinite alternate;
         }
         
         .category-grid {
@@ -216,12 +231,14 @@
             backdrop-filter: blur(10px);
             border: 2px solid transparent;
             cursor: pointer;
+            animation: cardFloat 8s infinite ease-in-out;
         }
         
         .category-card:hover {
             transform: translateY(-10px);
             border-color: var(--accent);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: none;
         }
         
         .category-icon {
@@ -234,6 +251,7 @@
             font-size: 2.5rem;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
+            animation: iconSpin 8s infinite linear;
         }
         
         .budget .category-icon {
@@ -254,6 +272,11 @@
         .botanicals .category-icon {
             background: rgba(76, 175, 80, 0.2);
             color: var(--botanicals);
+        }
+        
+        .recipes .category-icon {
+            background: rgba(255, 107, 107, 0.2);
+            color: var(--recipes);
         }
         
         .category-card h3 {
@@ -295,6 +318,7 @@
             height: 4px;
             background: var(--accent);
             border-radius: 5px;
+            animation: linePulse 2s infinite alternate;
         }
         
         .gin-list {
@@ -311,12 +335,14 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             border: 2px solid transparent;
+            animation: cardFloat 10s infinite ease-in-out;
         }
         
         .gin-item:hover {
             border-color: var(--accent);
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            animation: none;
         }
         
         .gin-name {
@@ -336,6 +362,7 @@
             font-size: 1.2rem;
             color: var(--primary);
             margin: 10px 0;
+            animation: priceGlow 2s infinite alternate;
         }
         
         .gin-description {
@@ -350,79 +377,87 @@
         
         .gin-tips li {
             margin-bottom: 8px;
+            position: relative;
         }
         
-        /* === ANIMATIONS === */
-        @keyframes logoPulse {
-            0% {
-                text-shadow: 0 0 10px var(--primary);
-            }
-            100% {
-                text-shadow: 0 0 30px var(--secondary), 0 0 20px var(--accent);
-            }
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* === ILLUSTRATIONS === */
-        .botanical {
+        .gin-tips li::before {
+            content: '➡️';
             position: absolute;
-            z-index: -1;
-            opacity: 0.3;
-            animation: float 10s infinite ease-in-out;
+            left: -20px;
+            animation: tipBullet 1s infinite alternate;
         }
         
-        .botanical-1 {
-            top: 20%;
-            left: 10%;
-            font-size: 5rem;
-            color: var(--botanicals);
-            animation-delay: 0s;
+        /* === RECIPES PAGE === */
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
         
-        .botanical-2 {
-            top: 60%;
-            right: 15%;
-            font-size: 4rem;
-            color: var(--accent);
-            animation-delay: 2s;
+        .recipe-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid transparent;
+            animation: cardFloat 12s infinite ease-in-out;
         }
         
-        .botanical-3 {
-            bottom: 20%;
-            left: 20%;
-            font-size: 6rem;
-            color: var(--primary);
-            animation-delay: 4s;
+        .recipe-card:hover {
+            border-color: var(--recipes);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            animation: none;
         }
         
-        .botanical-4 {
-            top: 30%;
-            right: 25%;
-            font-size: 3rem;
-            color: var(--secondary);
-            animation-delay: 6s;
+        .recipe-title {
+            font-size: 1.8rem;
+            color: var(--recipes);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(10deg);
-            }
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
+        .recipe-icon {
+            font-size: 1.5rem;
+            animation: iconSpin 5s infinite linear;
+        }
+        
+        .recipe-ingredients {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .recipe-ingredients li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .recipe-ingredients li::before {
+            content: '🍸';
+            position: absolute;
+            left: -20px;
+            animation: ingredientBullet 1.5s infinite alternate;
+        }
+        
+        .recipe-steps {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .recipe-steps li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .recipe-steps li::before {
+            content: '🔹';
+            position: absolute;
+            left: -20px;
+            animation: stepBullet 1s infinite alternate;
         }
         
         /* === TONICS SECTION === */
@@ -439,11 +474,13 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             border: 2px solid transparent;
+            animation: cardFloat 9s infinite ease-in-out;
         }
         
         .tonic-item:hover {
             border-color: var(--mixers);
             transform: translateY(-5px);
+            animation: none;
         }
         
         .tonic-name {
@@ -467,23 +504,237 @@
             backdrop-filter: blur(10px);
             border: 2px solid transparent;
             text-align: center;
+            animation: cardFloat 11s infinite ease-in-out;
         }
         
         .botanical-item:hover {
             border-color: var(--botanicals);
             transform: translateY(-5px);
+            animation: none;
         }
         
         .botanical-icon {
             font-size: 3rem;
             margin-bottom: 15px;
             color: var(--botanicals);
+            animation: iconSpin 10s infinite linear;
         }
         
         .botanical-name {
             font-size: 1.3rem;
             margin-bottom: 10px;
             color: var(--accent);
+        }
+        
+        /* === FOOTER === */
+        footer {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border-top: 2px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+            animation: footerFloat 8s infinite ease-in-out;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .copyright {
+            font-size: 1.1rem;
+            color: var(--light);
+            font-weight: 500;
+        }
+        
+        .copyright span {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .footer-botanical {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.2;
+            z-index: -1;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .footer-botanical:nth-child(1) {
+            top: -20px;
+            left: 10%;
+            color: var(--botanicals);
+            animation-delay: 0s;
+        }
+        
+        .footer-botanical:nth-child(2) {
+            bottom: -20px;
+            right: 15%;
+            color: var(--accent);
+            animation-delay: 3s;
+        }
+        
+        /* === ANIMATIONS === */
+        @keyframes logoPulse {
+            0% {
+                text-shadow: 0 0 10px var(--primary);
+            }
+            100% {
+                text-shadow: 0 0 30px var(--secondary), 0 0 20px var(--accent);
+            }
+        }
+        
+        @keyframes headerPulse {
+            0% {
+                box-shadow: 0 5px 20px rgba(255, 51, 102, 0.3);
+            }
+            100% {
+                box-shadow: 0 5px 30px rgba(102, 51, 255, 0.5);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.7);
+            }
+            70% {
+                transform: scale(1.02);
+                box-shadow: 0 0 0 15px rgba(255, 51, 102, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 51, 102, 0);
+            }
+        }
+        
+        @keyframes titleFloat {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes cardFloat {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes linePulse {
+            0% {
+                width: 80px;
+                opacity: 0.8;
+            }
+            100% {
+                width: 120px;
+                opacity: 1;
+            }
+        }
+        
+        @keyframes iconSpin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes priceGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(255, 154, 60, 0.5);
+            }
+            100% {
+                text-shadow: 0 0 15px rgba(255, 154, 60, 0.8);
+            }
+        }
+        
+        @keyframes tipBullet {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(5px);
+            }
+        }
+        
+        @keyframes ingredientBullet {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.2);
+            }
+        }
+        
+        @keyframes stepBullet {
+            0% {
+                opacity: 0.6;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes footerFloat {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+            100% {
+                transform: translateY(0);
+            }
         }
         
         /* === RESPONSIVE DESIGN === */
@@ -523,13 +774,14 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">GIN SOMMELIER</div>
+                <div class="logo">Kadye<span>& Gin</span></div>
                 <div class="nav-links">
                     <div class="nav-link" data-target="home">Home</div>
                     <div class="nav-link" data-target="budget">Budget Gins</div>
                     <div class="nav-link" data-target="mixers">Gin Mixers</div>
                     <div class="nav-link" data-target="premium">Premium Gins</div>
                     <div class="nav-link" data-target="botanicals">Botanicals</div>
+                    <div class="nav-link" data-target="recipes">Recipes</div>
                 </div>
             </nav>
         </div>
@@ -574,6 +826,12 @@
                         <div class="category-icon">🌿</div>
                         <h3>Botanicals</h3>
                         <p>The secret ingredients of gin</p>
+                    </div>
+                    
+                    <div class="category-card recipes" data-target="recipes">
+                        <div class="category-icon">🍸</div>
+                        <h3>Homemade Recipes</h3>
+                        <p>Simple drinks with minimal equipment</p>
                     </div>
                 </div>
             </div>
@@ -808,12 +1066,117 @@
         </div>
     </section>
 
+    <!-- Recipes Page -->
+    <section id="recipes" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h2 class="page-title">Homemade Drink Recipes</h2>
+                <p>Simple, delicious gin cocktails with minimal equipment</p>
+            </div>
+            
+            <div class="recipe-grid">
+                <div class="recipe-card">
+                    <h3 class="recipe-title"><span class="recipe-icon">🍋</span> Gin & Tonic Twist</h3>
+                    <p><strong>Equipment:</strong> Glass, spoon</p>
+                    <p><strong>Ingredients:</strong></p>
+                    <ul class="recipe-ingredients">
+                        <li>50ml gin</li>
+                        <li>150ml tonic water</li>
+                        <li>1/2 lemon, sliced</li>
+                        <li>1 tsp honey</li>
+                        <li>Fresh basil leaves</li>
+                    </ul>
+                    <p><strong>Steps:</strong></p>
+                    <ol class="recipe-steps">
+                        <li>Muddle lemon slices and basil in glass</li>
+                        <li>Add honey and stir until dissolved</li>
+                        <li>Fill glass with ice cubes</li>
+                        <li>Pour gin over ice</li>
+                        <li>Top with tonic water and stir gently</li>
+                    </ol>
+                </div>
+                
+                <div class="recipe-card">
+                    <h3 class="recipe-title"><span class="recipe-icon">🍓</span> Berry Gin Fizz</h3>
+                    <p><strong>Equipment:</strong> Glass, fork</p>
+                    <p><strong>Ingredients:</strong></p>
+                    <ul class="recipe-ingredients">
+                        <li>50ml gin</li>
+                        <li>100ml soda water</li>
+                        <li>Handful of mixed berries</li>
+                        <li>1 tbsp sugar</li>
+                        <li>Splash of lemon juice</li>
+                    </ul>
+                    <p><strong>Steps:</strong></p>
+                    <ol class="recipe-steps">
+                        <li>Mash berries with sugar in glass</li>
+                        <li>Add lemon juice and stir</li>
+                        <li>Fill glass with crushed ice</li>
+                        <li>Pour gin over ice</li>
+                        <li>Top with soda water and stir gently</li>
+                    </ol>
+                </div>
+                
+                <div class="recipe-card">
+                    <h3 class="recipe-title"><span class="recipe-icon">🍯</span> Honey Rosemary Gin</h3>
+                    <p><strong>Equipment:</strong> Glass, spoon</p>
+                    <p><strong>Ingredients:</strong></p>
+                    <ul class="recipe-ingredients">
+                        <li>50ml gin</li>
+                        <li>100ml sparkling water</li>
+                        <li>1 sprig fresh rosemary</li>
+                        <li>1 tbsp honey</li>
+                        <li>Lemon twist</li>
+                    </ul>
+                    <p><strong>Steps:</strong></p>
+                    <ol class="recipe-steps">
+                        <li>Muddle rosemary with honey in glass</li>
+                        <li>Add gin and stir until honey dissolves</li>
+                        <li>Fill glass with ice cubes</li>
+                        <li>Top with sparkling water</li>
+                        <li>Garnish with lemon twist</li>
+                    </ol>
+                </div>
+                
+                <div class="recipe-card">
+                    <h3 class="recipe-title"><span class="recipe-icon">☕</span> Coffee Gin Fix</h3>
+                    <p><strong>Equipment:</strong> Glass, spoon</p>
+                    <p><strong>Ingredients:</strong></p>
+                    <ul class="recipe-ingredients">
+                        <li>50ml gin</li>
+                        <li>50ml cold brew coffee</li>
+                        <li>1 tbsp maple syrup</li>
+                        <li>2 dashes orange bitters</li>
+                        <li>Orange peel</li>
+                    </ul>
+                    <p><strong>Steps:</strong></p>
+                    <ol class="recipe-steps">
+                        <li>Fill glass with ice cubes</li>
+                        <li>Add gin, cold brew coffee, and maple syrup</li>
+                        <li>Stir well to combine</li>
+                        <li>Add orange bitters and stir gently</li>
+                        <li>Express orange peel over drink and drop in</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">© 2023 <span>Kadye & Gin</span>. All rights reserved.</div>
+            <div class="footer-botanical">🍃</div>
+            <div class="footer-botanical">🍊</div>
+        </div>
+    </footer>
+
     <script>
         // DOM Elements
         const navLinks = document.querySelectorAll('.nav-link');
         const categoryCards = document.querySelectorAll('.category-card');
         const pages = document.querySelectorAll('.page');
-        const exploreBtn = document.getElementById('explore-btn');
+        const exploreBtn = document.querySelector('#explore-btn');
         
         // Navigation function
         function navigateToPage(pageId) {
@@ -869,7 +1232,7 @@
         });
         
         // Add hover animations to all interactive elements
-        const interactiveElements = document.querySelectorAll('.nav-link, .category-card, .cta-button, .gin-item, .tonic-item, .botanical-item');
+        const interactiveElements = document.querySelectorAll('.nav-link, .category-card, .cta-button, .gin-item, .tonic-item, .botanical-item, .recipe-card');
         
         interactiveElements.forEach(element => {
             element.addEventListener('mouseenter', () => {
@@ -884,13 +1247,34 @@
         });
         
         // Floating botanicals animation
-        const botanicals = document.querySelectorAll('.botanical');
+        const botanicals = document.querySelectorAll('.botanical, .footer-botanical');
         
         botanicals.forEach(botanical => {
             // Randomize initial position slightly
             const randomX = (Math.random() * 20) - 10;
             const randomY = (Math.random() * 20) - 10;
             botanical.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            
+            // Randomize animation duration
+            const duration = 10 + Math.random() * 20;
+            botanical.style.animationDuration = `${duration}s`;
+        });
+        
+        // Add animation to recipe icons
+        const recipeIcons = document.querySelectorAll('.recipe-icon');
+        recipeIcons.forEach(icon => {
+            icon.style.animationDuration = `${3 + Math.random() * 4}s`;
+        });
+        
+        // Add scroll animation to page titles
+        const pageTitles = document.querySelectorAll('.page-title');
+        window.addEventListener('scroll', () => {
+            pageTitles.forEach(title => {
+                const rect = title.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    title.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
         });
     </script>
 </body>
