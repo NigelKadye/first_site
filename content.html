@@ -1,220 +1,141 @@
 <!-- content.html -->
 
-<!-- Hero Section -->
-<section id="home" class="hero">
-    <h1>The Art of Gin Appreciation</h1>
-    <p>Discover the world of premium gins with our expert sommelier guidance. Explore botanicals, perfect pairings, and the craftsmanship behind every bottle.</p>
-    <button class="explore-btn" id="exploreBtn">Explore Our Collection</button>
+<!-- Home Page -->
+<section id="home" class="page">
+    <div class="hero">
+        <h1>The Art of Gin Appreciation</h1>
+        <p>Discover the world of premium gins with our expert sommelier guidance. Explore botanicals, perfect pairings, and the craftsmanship behind every bottle.</p>
+        <button class="explore-btn" id="exploreBtn">Explore Our Collection</button>
+    </div>
 </section>
 
-<!-- Gin Collection Section -->
-<section id="gins" class="gin-collection">
-    <h2 class="section-title">Gin Collection</h2>
+<!-- Gins Page -->
+<section id="gins" class="page">
+    <h2 class="section-title">Premium Gin Collection</h2>
+    
     <div class="tabs">
-        <button class="tab-btn active" data-tab="budget">Budget Gins</button>
-        <button class="tab-btn" data-tab="quality">Quality Gins</button>
-        <button class="tab-btn" data-tab="premium">Premium Gins</button>
+        <button class="tab-btn active" data-tab="budget">Budget</button>
+        <button class="tab-btn" data-tab="quality">Quality</button>
+        <button class="tab-btn" data-tab="premium">Premium</button>
     </div>
     
-    <!-- Budget Gins -->
-    <div class="tab-content active" id="budget-gins">
-        <div class="gin-details">
-            <!-- Ginato -->
-            <div class="gin-card budget">
-                <h3 class="gin-name"><i class="fas fa-wine-bottle"></i> Ginato London Dry Gin</h3>
-                <div class="gin-price">Price: $20-25</div>
-                <div class="gin-origin">Origin: Italy</div>
-                <p class="gin-description">A classic London Dry style gin with a smooth and balanced profile. Perfect for everyday cocktails.</p>
-                <div class="gin-taste">
-                    <span>Juniper-forward</span>
-                    <span>Citrus notes</span>
-                    <span>Peppery finish</span>
-                </div>
-            </div>
-            
-            <!-- Other budget gins -->
-            <div class="gin-card budget">
-                <h3 class="gin-name"><i class="fas fa-wine-bottle"></i> Gordon's London Dry Gin</h3>
-                <div class="gin-price">Price: $15-20</div>
-                <div class="gin-origin">Origin: United Kingdom</div>
-                <p class="gin-description">A classic and reliable gin with a crisp, juniper-led taste. Perfect for a classic G&T.</p>
-                <div class="gin-taste">
-                    <span>Juniper</span>
-                    <span>Citrus</span>
-                    <span>Spicy</span>
-                </div>
-            </div>
-            
-            <div class="gin-card budget">
-                <h3 class="gin-name"><i class="fas fa-wine-bottle"></i> Beefeater London Dry Gin</h3>
-                <div class="gin-price">Price: $20-25</div>
-                <div class="gin-origin">Origin: United Kingdom</div>
-                <p class="gin-description">A quintessential London dry gin with bold juniper and citrus notes.</p>
-                <div class="gin-taste">
-                    <span>Juniper</span>
-                    <span>Lemon</span>
-                    <span>Angelica</span>
-                </div>
-            </div>
-            
-            <div class="gin-card budget">
-                <h3 class="gin-name"><i class="fas fa-wine-bottle"></i> Seagram's Extra Dry Gin</h3>
-                <div class="gin-price">Price: $12-15</div>
-                <div class="gin-origin">Origin: United States</div>
-                <p class="gin-description">A smooth and versatile gin with a balanced botanical character.</p>
-                <div class="gin-taste">
-                    <span>Citrus</span>
-                    <span>Spice</span>
-                    <span>Smooth</span>
-                </div>
-            </div>
-            
-            <div class="gin-card budget">
-                <h3 class="gin-name"><i class="fas fa-wine-bottle"></i> New Amsterdam Gin</h3>
-                <div class="gin-price">Price: $15-20</div>
-                <div class="gin-origin">Origin: United States</div>
-                <p class="gin-description">A modern gin with a citrus-forward profile and smooth finish.</p>
-                <div class="gin-taste">
-                    <span>Citrus</span>
-                    <span>Sweet</span>
-                    <span>Smooth</span>
-                </div>
+    <div class="content-grid">
+        <div class="card">
+            <h3><i class="fas fa-wine-bottle"></i> Ginato London Dry</h3>
+            <p>Italian excellence with juniper-forward profile and citrus notes. Perfect for classic cocktails.</p>
+            <div class="gin-tags">
+                <span>Juniper</span>
+                <span>Citrus</span>
+                <span>Peppery</span>
             </div>
         </div>
-    </div>
-    
-    <!-- Quality Gins -->
-    <div class="tab-content" id="quality-gins">
-        <div class="gin-details">
-            <div class="gin-card quality">
-                <h3 class="gin-name"><i class="fas fa-wine-bottle"></i> Tanqueray No. TEN</h3>
-                <div class="gin-price">Price: $30-35</div>
-                <div class="gin-origin">Origin: United Kingdom</div>
-                <p class="gin-description">A premium gin made with fresh citrus fruits, resulting in a bright and vibrant flavor.</p>
-                <div class="gin-taste">
-                    <span>Grapefruit</span>
-                    <span>Lime</span>
-                    <span>Juniper</span>
-                </div>
-            </div>
-            
-            <div class="gin-card quality">
-                <h3 class="gin-name"><i class="fas fa-wine-bottle"></i> Hendrick's Gin</h3>
-                <div class="gin-price">Price: $35-40</div>
-                <div class="gin-origin">Origin: Scotland</div>
-                <p class="gin-description">Unusual yet delightful infusion of rose and cucumber.</p>
-                <div class="gin-taste">
-                    <span>Rose</span>
-                    <span>Cucumber</span>
-                    <span>Floral</span>
-                </div>
-            </div>
-            
-            <div class="gin-card quality">
-                <h3 class="gin-name"><i class="fas fa-wine-bottle"></i> The Botanist Islay Dry Gin</h3>
-                <div class="gin-price">Price: $40-45</div>
-                <div class="gin-origin">Origin: Scotland</div>
-                <p class="gin-description">A complex, floral gin with 22 hand-foraged botanicals.</p>
-                <div class="gin-taste">
-                    <span>Herbal</span>
-                    <span>Floral</span>
-                    <span>Complex</span>
-                </div>
-            </div>
-            
-            <div class="gin-card quality">
-                <h3 class="gin-name"><i class="fas fa-wine-bottle"></i> Monkey 47 Schwarzwald Dry Gin</h3>
-                <div class="gin-price">Price: $45-50</div>
-                <div class="gin-origin">Origin: Germany</div>
-                <p class="gin-description">A complex gin with 47 botanicals offering a rich and layered experience.</p>
-                <div class="gin-taste">
-                    <span>Berry</span>
-                    <span>Citrus</span>
-                    <span>Pepper</span>
-                </div>
-            </div>
-            
-            <div class="gin-card quality">
-                <h3 class="gin-name"><i class="fas fa-wine-bottle"></i> Sipsmith London Dry Gin</h3>
-                <div class="gin-price">Price: $35-40</div>
-                <div class="gin-origin">Origin: United Kingdom</div>
-                <p class="gin-description">A classic, balanced London Dry Gin with a smooth and complex character.</p>
-                <div class="gin-taste">
-                    <span>Juniper</span>
-                    <span>Citrus</span>
-                    <span>Spice</span>
-                </div>
+        
+        <div class="card">
+            <h3><i class="fas fa-wine-bottle"></i> Hendrick's</h3>
+            <p>Unusual infusion of rose and cucumber creates a uniquely refreshing gin.</p>
+            <div class="gin-tags">
+                <span>Rose</span>
+                <span>Cucumber</span>
+                <span>Floral</span>
             </div>
         </div>
-    </div>
-    
-    <!-- Premium Gins -->
-    <div class="tab-content" id="premium-gins">
-        <div class="gin-details">
-            <div class="gin-card premium">
-                <h3 class="gin-name"><i class="fas fa-crown"></i> Nolet's Reserve Gin</h3>
-                <div class="gin-price">Price: $90-100</div>
-                <div class="gin-origin">Origin: Netherlands</div>
-                <p class="gin-description">An ultra-premium gin with saffron, verbena, and peach notes.</p>
-                <div class="gin-taste">
-                    <span>Saffron</span>
-                    <span>Peach</span>
-                    <span>Verbena</span>
-                </div>
+        
+        <div class="card">
+            <h3><i class="fas fa-wine-bottle"></i> The Botanist</h3>
+            <p>Complex, floral gin with 22 hand-foraged botanicals from Islay.</p>
+            <div class="gin-tags">
+                <span>Herbal</span>
+                <span>Floral</span>
+                <span>Complex</span>
             </div>
-            
-            <div class="gin-card premium">
-                <h3 class="gin-name"><i class="fas fa-crown"></i> Watenshi Gin</h3>
-                <div class="gin-price">Price: $200+</div>
-                <div class="gin-origin">Origin: United Kingdom</div>
-                <p class="gin-description">One of the world's most exclusive gins, distilled at a fraction of normal volume.</p>
-                <div class="gin-taste">
-                    <span>Delicate</span>
-                    <span>Complex</span>
-                    <span>Floral</span>
-                </div>
+        </div>
+        
+        <div class="card">
+            <h3><i class="fas fa-wine-bottle"></i> Monkey 47</h3>
+            <p>German gin with 47 botanicals offering a rich and layered experience.</p>
+            <div class="gin-tags">
+                <span>Berry</span>
+                <span>Citrus</span>
+                <span>Pepper</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3><i class="fas fa-wine-bottle"></i> Tanqueray No. TEN</h3>
+            <p>Fresh citrus fruits create a bright and vibrant premium gin.</p>
+            <div class="gin-tags">
+                <span>Grapefruit</span>
+                <span>Lime</span>
+                <span>Juniper</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3><i class="fas fa-wine-bottle"></i> Sipsmith</h3>
+            <p>Classic, balanced London Dry Gin with a smooth and complex character.</p>
+            <div class="gin-tags">
+                <span>Juniper</span>
+                <span>Citrus</span>
+                <span>Spice</span>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Tonic Sommelier Section -->
-<section id="tonics" class="tonic-section">
+<!-- Tonics Page -->
+<section id="tonics" class="page">
     <h2 class="section-title">Tonic Sommelier</h2>
     
-    <div class="tonic-sommelier">
-        <h3>The Perfect Pairing</h3>
-        <p>Just as important as the gin, the tonic water can make or break your G&T. Our tonic sommelier guides you through the world of premium tonics, from classic Indian tonic to exotic botanical infusions.</p>
-        
-        <div class="flavor-wheel"></div>
-        
-        <div class="content-grid">
-            <div class="card">
-                <h3><i class="fas fa-quote-left"></i> Tonic Wisdom</h3>
-                <p>"The best tonic should complement, not overpower. Look for natural quinine, balanced sweetness, and bubbles that persist." - Master Tonic Sommelier</p>
+    <div class="tonic-intro">
+        <p>Just as important as the gin, the tonic water can make or break your G&T. Our tonic sommelier guides you through the world of premium tonics.</p>
+    </div>
+    
+    <div class="flavor-wheel-container">
+        <div class="flavor-wheel">
+            <div class="flavor-wheel-front"></div>
+            <div class="flavor-wheel-back">
+                <div class="flavor-detail">
+                    <h3>Juniper Forward</h3>
+                    <p>Classic tonic with crisp quinine. Pairs perfectly with traditional London Dry gins.</p>
+                </div>
+                <div class="flavor-detail">
+                    <h3>Citrus Burst</h3>
+                    <p>Zesty tonic with lemon and lime notes. Complements citrus-forward gins.</p>
+                </div>
+                <div class="flavor-detail">
+                    <h3>Floral Notes</h3>
+                    <p>Elderflower or rose-infused tonic. Perfect with floral and delicate gins.</p>
+                </div>
             </div>
-            <div class="card">
-                <h3><i class="fas fa-lightbulb"></i> Pro Tip</h3>
-                <p>Always pour tonic over ice first to preserve carbonation. Gently stir to combine with gin - never shake, as it breaks down the delicate botanicals.</p>
-            </div>
+        </div>
+    </div>
+    
+    <div class="content-grid">
+        <div class="card">
+            <h3><i class="fas fa-quote-left"></i> Tonic Wisdom</h3>
+            <p>"The best tonic should complement, not overpower. Look for natural quinine, balanced sweetness, and persistent bubbles."</p>
+        </div>
+        <div class="card">
+            <h3><i class="fas fa-lightbulb"></i> Pro Tip</h3>
+            <p>Always pour tonic over ice first to preserve carbonation. Gently stir to combine with gin.</p>
         </div>
     </div>
 </section>
 
-<!-- Recipe Section -->
-<section id="recipes" class="recipe-section">
-    <h2 class="section-title">Gin Cocktail Recipes</h2>
+<!-- Recipes Page -->
+<section id="recipes" class="page">
+    <h2 class="section-title">Signature Gin Cocktails</h2>
     
     <div class="recipe-grid">
         <!-- Recipe 1 -->
         <div class="recipe-card">
             <h3 class="recipe-name">Classic Gin & Tonic</h3>
-            <div class="recipe-gin"><i class="fas fa-wine-bottle"></i> Recommended Gin: London Dry (e.g., Beefeater)</div>
+            <div class="recipe-gin"><i class="fas fa-wine-bottle"></i> Recommended: London Dry Gin</div>
             <div class="recipe-ingredients">
                 <h4>Ingredients</h4>
                 <ul>
                     <li>50ml Gin</li>
-                    <li>150ml Premium Tonic Water</li>
+                    <li>150ml Premium Tonic</li>
                     <li>Lime wedge</li>
                     <li>Ice cubes</li>
                 </ul>
@@ -222,10 +143,10 @@
             <div class="recipe-steps">
                 <h4>Steps</h4>
                 <ol>
-                    <li>Fill a highball glass with ice cubes.</li>
-                    <li>Pour gin over the ice.</li>
-                    <li>Top with tonic water.</li>
-                    <li>Gently stir and garnish with a lime wedge.</li>
+                    <li>Fill glass with ice</li>
+                    <li>Add gin</li>
+                    <li>Top with tonic</li>
+                    <li>Garnish with lime</li>
                 </ol>
             </div>
         </div>
@@ -233,25 +154,23 @@
         <!-- Recipe 2 -->
         <div class="recipe-card">
             <h3 class="recipe-name">Negroni</h3>
-            <div class="recipe-gin"><i class="fas fa-wine-bottle"></i> Recommended Gin: London Dry (e.g., Tanqueray)</div>
+            <div class="recipe-gin"><i class="fas fa-wine-bottle"></i> Recommended: Bold Gin</div>
             <div class="recipe-ingredients">
                 <h4>Ingredients</h4>
                 <ul>
                     <li>30ml Gin</li>
                     <li>30ml Campari</li>
-                    <li>30ml Sweet Vermouth</li>
-                    <li>Orange peel for garnish</li>
-                    <li>Ice cubes</li>
+                    <li>30ml Vermouth</li>
+                    <li>Orange peel</li>
                 </ul>
             </div>
             <div class="recipe-steps">
                 <h4>Steps</h4>
                 <ol>
-                    <li>Fill a mixing glass with ice.</li>
-                    <li>Add gin, Campari, and vermouth.</li>
-                    <li>Stir until well chilled.</li>
-                    <li>Strain into a rocks glass with ice.</li>
-                    <li>Garnish with an orange peel.</li>
+                    <li>Mix all ingredients</li>
+                    <li>Stir with ice</li>
+                    <li>Strain into glass</li>
+                    <li>Garnish with orange</li>
                 </ol>
             </div>
         </div>
@@ -259,73 +178,70 @@
         <!-- Recipe 3 -->
         <div class="recipe-card">
             <h3 class="recipe-name">Aviation</h3>
-            <div class="recipe-gin"><i class="fas fa-wine-bottle"></i> Recommended Gin: Floral Gin (e.g., The Botanist)</div>
+            <div class="recipe-gin"><i class="fas fa-wine-bottle"></i> Recommended: Floral Gin</div>
             <div class="recipe-ingredients">
                 <h4>Ingredients</h4>
                 <ul>
                     <li>50ml Gin</li>
-                    <li>15ml Maraschino Liqueur</li>
-                    <li>15ml Fresh Lemon Juice</li>
-                    <li>5ml Crème de Violette</li>
-                    <li>Cherry for garnish</li>
+                    <li>15ml Maraschino</li>
+                    <li>15ml Lemon juice</li>
+                    <li>5ml Violette</li>
                 </ul>
             </div>
             <div class="recipe-steps">
                 <h4>Steps</h4>
                 <ol>
-                    <li>Add all ingredients into a shaker with ice.</li>
-                    <li>Shake well and strain into a chilled cocktail glass.</li>
-                    <li>Garnish with a cherry.</li>
+                    <li>Shake all ingredients</li>
+                    <li>Strain into glass</li>
+                    <li>Garnish with cherry</li>
                 </ol>
             </div>
         </div>
         
         <!-- Recipe 4 -->
         <div class="recipe-card">
-            <h3 class="recipe-name">Tom Collins</h3>
-            <div class="recipe-gin"><i class="fas fa-wine-bottle"></i> Recommended Gin: Citrus-forward (e.g., Tanqueray No. TEN)</div>
+            <h3 class="recipe-name">French 75</h3>
+            <div class="recipe-gin"><i class="fas fa-wine-bottle"></i> Recommended: Citrus Gin</div>
             <div class="recipe-ingredients">
                 <h4>Ingredients</h4>
                 <ul>
-                    <li>50ml Gin</li>
-                    <li>25ml Fresh Lemon Juice</li>
-                    <li>15ml Simple Syrup</li>
-                    <li>Soda Water</li>
-                    <li>Lemon slice and cherry for garnish</li>
+                    <li>30ml Gin</li>
+                    <li>15ml Lemon juice</li>
+                    <li>10ml Syrup</li>
+                    <li>Champagne</li>
                 </ul>
             </div>
             <div class="recipe-steps">
                 <h4>Steps</h4>
                 <ol>
-                    <li>Add gin, lemon juice, and simple syrup into a shaker with ice.</li>
-                    <li>Shake well and strain into a Collins glass filled with ice.</li>
-                    <li>Top with soda water.</li>
-                    <li>Garnish with a lemon slice and cherry.</li>
+                    <li>Shake gin, lemon, syrup</li>
+                    <li>Strain into flute</li>
+                    <li>Top with champagne</li>
+                    <li>Garnish with lemon</li>
                 </ol>
             </div>
         </div>
         
         <!-- Recipe 5 -->
         <div class="recipe-card">
-            <h3 class="recipe-name">French 75</h3>
-            <div class="recipe-gin"><i class="fas fa-wine-bottle"></i> Recommended Gin: Dry Gin (e.g., Sipsmith)</div>
+            <h3 class="recipe-name">Bramble</h3>
+            <div class="recipe-gin"><i class="fas fa-wine-bottle"></i> Recommended: Berry Gin</div>
             <div class="recipe-ingredients">
                 <h4>Ingredients</h4>
                 <ul>
-                    <li>30ml Gin</li>
-                    <li>15ml Fresh Lemon Juice</li>
-                    <li>10ml Simple Syrup</li>
-                    <li>Champagne or Sparkling Wine</li>
-                    <li>Lemon twist for garnish</li>
+                    <li>50ml Gin</li>
+                    <li>25ml Lemon juice</li>
+                    <li>15ml Syrup</li>
+                    <li>15ml Mûre</li>
                 </ul>
             </div>
             <div class="recipe-steps">
                 <h4>Steps</h4>
                 <ol>
-                    <li>Shake gin, lemon juice, and simple syrup with ice.</li>
-                    <li>Strain into a champagne flute.</li>
-                    <li>Top with champagne.</li>
-                    <li>Garnish with a lemon twist.</li>
+                    <li>Shake gin, lemon, syrup</li>
+                    <li>Pour over crushed ice</li>
+                    <li>Drizzle Mûre</li>
+                    <li>Garnish with berries</li>
                 </ol>
             </div>
         </div>
@@ -333,111 +249,66 @@
         <!-- Recipe 6 -->
         <div class="recipe-card">
             <h3 class="recipe-name">Southside</h3>
-            <div class="recipe-gin"><i class="fas fa-wine-bottle"></i> Recommended Gin: Classic London Dry (e.g., Beefeater)</div>
+            <div class="recipe-gin"><i class="fas fa-wine-bottle"></i> Recommended: Classic Gin</div>
             <div class="recipe-ingredients">
                 <h4>Ingredients</h4>
                 <ul>
                     <li>60ml Gin</li>
-                    <li>30ml Fresh Lime Juice</li>
-                    <li>20ml Simple Syrup</li>
-                    <li>6-8 Mint Leaves</li>
-                    <li>Mint sprig for garnish</li>
+                    <li>30ml Lime juice</li>
+                    <li>20ml Syrup</li>
+                    <li>Mint leaves</li>
                 </ul>
             </div>
             <div class="recipe-steps">
                 <h4>Steps</h4>
                 <ol>
-                    <li>Muddle mint leaves in a shaker.</li>
-                    <li>Add gin, lime juice, simple syrup, and ice.</li>
-                    <li>Shake well and double strain into a chilled coupe glass.</li>
-                    <li>Garnish with a mint sprig.</li>
-                </ol>
-            </div>
-        </div>
-        
-        <!-- Recipe 7 -->
-        <div class="recipe-card">
-            <h3 class="recipe-name">Bramble</h3>
-            <div class="recipe-gin"><i class="fas fa-wine-bottle"></i> Recommended Gin: Berry-friendly (e.g., Hendrick's)</div>
-            <div class="recipe-ingredients">
-                <h4>Ingredients</h4>
-                <ul>
-                    <li>50ml Gin</li>
-                    <li>25ml Fresh Lemon Juice</li>
-                    <li>15ml Simple Syrup</li>
-                    <li>15ml Crème de Mûre</li>
-                    <li>Fresh blackberries for garnish</li>
-                </ul>
-            </div>
-            <div class="recipe-steps">
-                <h4>Steps</h4>
-                <ol>
-                    <li>Shake gin, lemon juice, and simple syrup with ice.</li>
-                    <li>Strain into a rocks glass filled with crushed ice.</li>
-                    <li>Drizzle Crème de Mûre over the top.</li>
-                    <li>Garnish with fresh blackberries.</li>
-                </ol>
-            </div>
-        </div>
-        
-        <!-- Recipe 8 -->
-        <div class="recipe-card">
-            <h3 class="recipe-name">Gin Fizz</h3>
-            <div class="recipe-gin"><i class="fas fa-wine-bottle"></i> Recommended Gin: Citrus-forward (e.g., Tanqueray No. TEN)</div>
-            <div class="recipe-ingredients">
-                <h4>Ingredients</h4>
-                <ul>
-                    <li>50ml Gin</li>
-                    <li>30ml Fresh Lemon Juice</li>
-                    <li>15ml Simple Syrup</li>
-                    <li>1 Egg White</li>
-                    <li>Soda Water</li>
-                </ul>
-            </div>
-            <div class="recipe-steps">
-                <h4>Steps</h4>
-                <ol>
-                    <li>Add gin, lemon juice, simple syrup, and egg white to a shaker without ice.</li>
-                    <li>Dry shake vigorously for 15 seconds.</li>
-                    <li>Add ice and shake again until chilled.</li>
-                    <li>Strain into a highball glass and top with soda water.</li>
+                    <li>Muddle mint</li>
+                    <li>Add other ingredients</li>
+                    <li>Shake well</li>
+                    <li>Double strain</li>
                 </ol>
             </div>
         </div>
     </div>
 </section>
 
-<!-- About Section -->
-<section id="about" class="about-section">
-    <h2 class="section-title">Our Philosophy</h2>
+<!-- About Page -->
+<section id="about" class="page">
+    <h2 class="section-title">Our Gin Journey</h2>
     
     <div class="content-grid">
         <div class="card">
-            <h3><i class="fas fa-seedling"></i> Craftsmanship</h3>
-            <p>We celebrate the art of small-batch distilling, where each bottle tells a story of botanical selection and careful craftsmanship.</p>
+            <h3><i class="fas fa-history"></i> Our Story</h3>
+            <p>Founded in 2020, Kadye & Gin began as a passion project between friends who shared a love for craft spirits. Today, we're dedicated to exploring the world of gin.</p>
         </div>
         <div class="card">
-            <h3><i class="fas fa-globe-africa"></i> Sustainability</h3>
-            <p>Ethical sourcing and sustainable practices are at the heart of our selections. We partner with distilleries that prioritize environmental responsibility.</p>
+            <h3><i class="fas fa-award"></i> Our Mission</h3>
+            <p>To demystify gin appreciation and help enthusiasts discover new favorites through education, tasting events, and curated recommendations.</p>
         </div>
         <div class="card">
-            <h3><i class="fas fa-book"></i> Education</h3>
-            <p>Through tastings and workshops, we demystify gin appreciation and empower enthusiasts to explore with confidence.</p>
+            <h3><i class="fas fa-users"></i> Our Community</h3>
+            <p>Join our growing community of gin lovers who share tasting notes, cocktail recipes, and distillery discoveries.</p>
+        </div>
+    </div>
+    
+    <div class="team-showcase">
+        <h3 class="team-title"><i class="fas fa-users"></i> Meet Our Sommeliers</h3>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-avatar" style="background: var(--berry-pink);"></div>
+                <h4>Sarah Jenkins</h4>
+                <p>Head Gin Sommelier</p>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar" style="background: var(--citrus-yellow);"></div>
+                <h4>Michael Torres</h4>
+                <p>Tonic Specialist</p>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar" style="background: var(--juniper-purple);"></div>
+                <h4>Emma Richardson</h4>
+                <p>Cocktail Curator</p>
+            </div>
         </div>
     </div>
 </section>
-
-<!-- Footer -->
-<footer id="contact">
-    <div class="footer-logo">Kadye & Gin</div>
-    <p>Elevating the gin experience through education, appreciation, and perfect pairings.</p>
-    
-    <div class="social-icons">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-pinterest"></i></a>
-    </div>
-    
-    <p>&copy; 2023 Kadye & Gin. All rights reserved.</p>
-</footer>
