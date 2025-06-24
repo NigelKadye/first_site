@@ -10,107 +10,118 @@ menuToggle.addEventListener('click', () => {
         '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
 });
 
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+// Page navigation
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', function(e) {
         e.preventDefault();
         
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            window.scrollTo({
-                top: target.offsetTop - 80,
-                behavior: 'smooth'
-            });
-            
-            // Close mobile menu if open
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
+        // Remove active class from all nav items
+        document.querySelectorAll('.nav-item').forEach(navItem => {
+            navItem.classList.remove('active');
+        });
+        
+        // Add active class to clicked nav item
+        this.classList.add('active');
+        
+        // Close mobile menu if open
+        if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
         }
-    });
-});
-
-// Explore button animation and scroll
-const exploreBtn = document.getElementById('exploreBtn');
-if (exploreBtn) {
-    exploreBtn.addEventListener('click', () => {
-        // Scroll to gin collection
-        document.querySelector('#gins').scrollIntoView({
+        
+        // Scroll to top
+        window.scrollTo({
+            top: 0,
             behavior: 'smooth'
         });
     });
+});
+
+// Flavor wheel interaction
+function setupFlavorWheel() {
+    const flavorWheel = document.querySelector('.flavor-wheel');
+    if (flavorWheel) {
+        flavorWheel.addEventListener('click', () => {
+            flavorWheel.classList.toggle('flipped');
+        });
+    }
 }
 
-// Tab functionality for gin collection
-function setupTabs() {
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
+// Generate more animated elements
+function generateAnimatedElements() {
+    const container = document.querySelector('.page');
+    if (!container) return;
     
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const tabId = btn.getAttribute('data-tab');
-            
-            // Remove active class from all buttons and contents
-            tabBtns.forEach(b => b.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
-            
-            // Add active class to clicked button
-            btn.classList.add('active');
-            
-            // Show corresponding tab content
-            document.getElementById(`${tabId}-gins`).classList.add('active');
-        });
-    });
-}
-
-// Card hover effect enhancement
-function setupCardHover() {
-    const cards = document.querySelectorAll('.card, .gin-card, .recipe-card');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px)';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0)';
-        });
-    });
-}
-
-// Generate animated background elements
-function generateBackgroundElements() {
-    const hero = document.querySelector('.hero');
-    if (!hero) return;
-    
-    // Generate bubbles
-    for (let i = 0; i < 8; i++) {
+    // Create bubbles
+    for (let i = 0; i < 5; i++) {
         const bubble = document.createElement('div');
         bubble.classList.add('bubble');
-        const size = Math.random() * 30 + 10;
-        bubble.style.width = `${size}px`;
-        bubble.style.height = `${size}px`;
-        bubble.style.top = `${Math.random() * 100}%`;
-        bubble.style.left = `${Math.random() * 100}%`;
-        bubble.style.animationDelay = `${Math.random() * 5}s`;
-        hero.appendChild(bubble);
+        
+        // Random properties
+        const size = Math.floor(Math.random() * 30) + 10;
+        const top = Math.floor(Math.random() * 90) + 5;
+        const left = Math.floor(Math.random() * 90) + 5;
+        const delay = Math.random() * 5;
+        
+        bubble.style.setProperty('--size', `${size}px`);
+        bubble.style.setProperty('--top', `${top}%`);
+        bubble.style.setProperty('--left', `${left}%`);
+        bubble.style.setProperty('--delay', `${delay}s`);
+        
+        container.appendChild(bubble);
     }
     
-    // Predefined bottle positions
-    const bottlePositions = [
-        { top: '20%', left: '10%' },
-        { top: '40%', left: '85%' },
-        { top: '60%', left: '20%' },
-        { top: '30%', left: '75%' }
-    ];
-    
-    // Generate gin bottles
-    bottlePositions.forEach(pos => {
+    // Create gin bottles
+    for (let i = 0; i < 3; i++) {
         const bottle = document.createElement('div');
         bottle.classList.add('gin-bottle');
-        bottle.style.top = pos.top;
-        bottle.style.left = pos.left;
-        hero.appendChild(bottle);
+        
+        // Random properties
+        const top = Math.floor(Math.random() * 90) + 5;
+        const left = Math.floor(Math.random() * 90) + 5;
+        const delay = Math.random() * 5;
+        
+        bottle.style.setProperty('--top', `${top}%`);
+        bottle.style.setProperty('--left', `${left}%`);
+        bottle.style.setProperty('--delay', `${delay}s`);
+        
+        container.appendChild(bottle);
+    }
+}
+
+// FAB interaction
+const fab = document.getElementById('fab');
+if (fab) {
+    fab.addEventListener('click', () => {
+        fab.classList.add('animate');
+        setTimeout(() => {
+            fab.classList.remove('animate');
+        }, 1000);
+        
+        // Create a bubble effect
+        for (let i = 0; i < 5; i++) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            bubble.style.position = 'fixed';
+            bubble.style.bottom = '2rem';
+            bubble.style.right = '2rem';
+            bubble.style.setProperty('--size', '20px');
+            bubble.style.zIndex = '999';
+            
+            // Random animation properties
+            const animX = (Math.random() - 0.5) * 100;
+            const animY = -(Math.random() * 100 + 50);
+            bubble.style.animation = `floatUp ${Math.random() * 2 + 1}s ease-out forwards`;
+            bubble.style.setProperty('--anim-x', `${animX}vw`);
+            bubble.style.setProperty('--anim-y', `${animY}px`);
+            
+            document.body.appendChild(bubble);
+            
+            // Remove after animation
+            setTimeout(() => {
+                bubble.remove();
+            }, 1000);
+        }
     });
 }
 
@@ -142,45 +153,60 @@ function attachEventListeners() {
         });
     }
     
-    // Setup tabs for gin collection
-    setupTabs();
+    // Setup flavor wheel
+    setupFlavorWheel();
     
-    // Setup card hover effects
-    setupCardHover();
+    // Generate animated elements
+    generateAnimatedElements();
     
-    // Generate background elements for hero section
-    generateBackgroundElements();
-}
-
-// Initial setup when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    // Generate background elements for hero section (if hero is in index.html)
-    generateBackgroundElements();
-    
-    // Setup mobile menu
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuToggle.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    // Setup FAB
+    if (fab) {
+        fab.addEventListener('click', () => {
+            fab.classList.add('animate');
+            setTimeout(() => {
+                fab.classList.remove('animate');
+            }, 1000);
+            
+            // Create a bubble effect
+            for (let i = 0; i < 5; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                bubble.style.position = 'fixed';
+                bubble.style.bottom = '2rem';
+                bubble.style.right = '2rem';
+                bubble.style.setProperty('--size', '20px');
+                bubble.style.zIndex = '999';
+                
+                // Random animation properties
+                const animX = (Math.random() - 0.5) * 100;
+                const animY = -(Math.random() * 100 + 50);
+                bubble.style.animation = `floatUp ${Math.random() * 2 + 1}s ease-out forwards`;
+                bubble.style.setProperty('--anim-x', `${animX}vw`);
+                bubble.style.setProperty('--anim-y', `${animY}px`);
+                
+                document.body.appendChild(bubble);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    bubble.remove();
+                }, 1000);
+            }
         });
     }
     
-    // Setup smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                }
+    // Add CSS for floatUp animation
+    const style = document.createElement('style');
+    style.innerHTML = `
+        @keyframes floatUp {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
             }
-        });
-    });
-});
+            100% {
+                transform: translate(var(--anim-x), var(--anim-y));
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
