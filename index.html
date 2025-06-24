@@ -3,45 +3,895 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kadye & Gin | Interactive Gin Experience</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>Gin Sommelier | The Art of Gin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* === GLOBAL STYLES === */
+        :root {
+            --primary: #ff3366;
+            --secondary: #6633ff;
+            --accent: #33ffcc;
+            --dark: #1a1a2e;
+            --light: #f0f0f5;
+            --budget: #ff9a3c;
+            --mixers: #6a67ce;
+            --premium: #00b4d8;
+            --botanicals: #4caf50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(135deg, var(--dark), #16213e);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* === HEADER & NAVIGATION === */
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: logoPulse 2s infinite alternate;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            position: relative;
+            padding: 10px 0;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* === HERO SECTION === */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin-bottom: 40px;
+            color: var(--light);
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .cta-button:hover::after {
+            transform: translateX(100%);
+        }
+        
+        /* === GIN CATEGORIES === */
+        .categories {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 5px;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .category-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .budget .category-icon {
+            background: rgba(255, 154, 60, 0.2);
+            color: var(--budget);
+        }
+        
+        .mixers .category-icon {
+            background: rgba(106, 103, 206, 0.2);
+            color: var(--mixers);
+        }
+        
+        .premium .category-icon {
+            background: rgba(0, 180, 216, 0.2);
+            color: var(--premium);
+        }
+        
+        .botanicals .category-icon {
+            background: rgba(76, 175, 80, 0.2);
+            color: var(--botanicals);
+        }
+        
+        .category-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* === CONTENT PAGES === */
+        .page {
+            display: none;
+            padding: 100px 0;
+            min-height: 100vh;
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 5px;
+        }
+        
+        .gin-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .gin-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid transparent;
+        }
+        
+        .gin-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gin-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .gin-origin {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .gin-price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+        
+        .gin-description {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .gin-tips {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .gin-tips li {
+            margin-bottom: 8px;
+        }
+        
+        /* === ANIMATIONS === */
+        @keyframes logoPulse {
+            0% {
+                text-shadow: 0 0 10px var(--primary);
+            }
+            100% {
+                text-shadow: 0 0 30px var(--secondary), 0 0 20px var(--accent);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* === ILLUSTRATIONS === */
+        .botanical {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.3;
+            animation: float 10s infinite ease-in-out;
+        }
+        
+        .botanical-1 {
+            top: 20%;
+            left: 10%;
+            font-size: 5rem;
+            color: var(--botanicals);
+            animation-delay: 0s;
+        }
+        
+        .botanical-2 {
+            top: 60%;
+            right: 15%;
+            font-size: 4rem;
+            color: var(--accent);
+            animation-delay: 2s;
+        }
+        
+        .botanical-3 {
+            bottom: 20%;
+            left: 20%;
+            font-size: 6rem;
+            color: var(--primary);
+            animation-delay: 4s;
+        }
+        
+        .botanical-4 {
+            top: 30%;
+            right: 25%;
+            font-size: 3rem;
+            color: var(--secondary);
+            animation-delay: 6s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+        
+        /* === TONICS SECTION === */
+        .tonic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .tonic-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid transparent;
+        }
+        
+        .tonic-item:hover {
+            border-color: var(--mixers);
+            transform: translateY(-5px);
+        }
+        
+        .tonic-name {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        /* === BOTANICALS SECTION === */
+        .botanicals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .botanical-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid transparent;
+            text-align: center;
+        }
+        
+        .botanical-item:hover {
+            border-color: var(--botanicals);
+            transform: translateY(-5px);
+        }
+        
+        .botanical-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--botanicals);
+        }
+        
+        .botanical-name {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Animated Background Elements -->
-    <div class="bubble" style="--size: 20px; --top: 15%; --left: 10%; --delay: 0s;"></div>
-    <div class="bubble" style="--size: 35px; --top: 25%; --left: 85%; --delay: 1s;"></div>
-    <div class="bubble" style="--size: 25px; --top: 65%; --left: 20%; --delay: 2s;"></div>
-    <div class="gin-bottle" style="--top: 30%; --left: 75%; --delay: 0.5s;"></div>
-    <div class="gin-bottle" style="--top: 60%; --left: 15%; --delay: 1.5s;"></div>
-    <div class="gin-bottle" style="--top: 45%; --left: 90%; --delay: 2.5s;"></div>
-    
-    <!-- Colorful Navigation -->
-    <nav class="colorful-nav">
-        <div class="logo">Kadye<span>&</span>Gin</div>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home" class="nav-item" style="--color: #27fb6b;"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="#gins" class="nav-item" style="--color: #ff6b6b;"><i class="fas fa-wine-bottle"></i> Gins</a></li>
-            <li><a href="#tonics" class="nav-item" style="--color: #f7cb15;"><i class="fas fa-glass-cheers"></i> Tonics</a></li>
-            <li><a href="#recipes" class="nav-item" style="--color: #6a67ce;"><i class="fas fa-cocktail"></i> Recipes</a></li>
-            <li><a href="#about" class="nav-item" style="--color: #c9e4ca;"><i class="fas fa-info-circle"></i> About</a></li>
-        </ul>
-        <div class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">GIN SOMMELIER</div>
+                <div class="nav-links">
+                    <div class="nav-link" data-target="home">Home</div>
+                    <div class="nav-link" data-target="budget">Budget Gins</div>
+                    <div class="nav-link" data-target="mixers">Gin Mixers</div>
+                    <div class="nav-link" data-target="premium">Premium Gins</div>
+                    <div class="nav-link" data-target="botanicals">Botanicals</div>
+                </div>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Content Sections -->
-    <div id="content">
-        <!-- Content loaded from content.html -->
-    </div>
-    
-    <!-- Floating Action Button -->
-    <div class="fab" id="fab">
-        <i class="fas fa-glass-martini-alt"></i>
-    </div>
+    <!-- Home Page -->
+    <section id="home" class="page active">
+        <div class="hero">
+            <div class="botanical botanical-1">🍃</div>
+            <div class="botanical botanical-2">🌸</div>
+            <div class="botanical botanical-3">🍋</div>
+            <div class="botanical botanical-4">🍊</div>
+            
+            <h1>THE ART OF GIN</h1>
+            <p>Discover the world of gin through the eyes of a sommelier. Explore budget options, premium experiences, perfect mixers, and the botanicals that make each gin unique.</p>
+            <button class="cta-button" id="explore-btn">Explore Gins</button>
+        </div>
 
-    <script src="scripts.js"></script>
+        <div class="container">
+            <div class="categories">
+                <h2 class="section-title">Gin Categories</h2>
+                <div class="category-grid">
+                    <div class="category-card budget" data-target="budget">
+                        <div class="category-icon">💰</div>
+                        <h3>Budget Gins</h3>
+                        <p>Quality gins that won't break the bank</p>
+                    </div>
+                    
+                    <div class="category-card mixers" data-target="mixers">
+                        <div class="category-icon">🍹</div>
+                        <h3>Gin Mixers</h3>
+                        <p>Perfect pairings for your gin</p>
+                    </div>
+                    
+                    <div class="category-card premium" data-target="premium">
+                        <div class="category-icon">👑</div>
+                        <h3>Premium Gins</h3>
+                        <p>Exceptional gins for special moments</p>
+                    </div>
+                    
+                    <div class="category-card botanicals" data-target="botanicals">
+                        <div class="category-icon">🌿</div>
+                        <h3>Botanicals</h3>
+                        <p>The secret ingredients of gin</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Gins Page -->
+    <section id="budget" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h2 class="page-title">Budget Gins</h2>
+                <p>Exceptional value without compromising on quality</p>
+            </div>
+            
+            <div class="gin-list">
+                <div class="gin-item">
+                    <h3 class="gin-name">Gordon's London Dry Gin</h3>
+                    <div class="gin-origin">United Kingdom</div>
+                    <div class="gin-price">$18.99 USD</div>
+                    <p class="gin-description">A classic London dry gin with a crisp, juniper-forward profile. Perfect for cocktails.</p>
+                    <p><strong>Enhancement Tips:</strong></p>
+                    <ul class="gin-tips">
+                        <li>Serve with premium tonic and a slice of lime</li>
+                        <li>Add a sprig of fresh rosemary for aromatic complexity</li>
+                        <li>Try with a splash of elderflower cordial</li>
+                    </ul>
+                </div>
+                
+                <div class="gin-item">
+                    <h3 class="gin-name">Bombay Sapphire</h3>
+                    <div class="gin-origin">United Kingdom</div>
+                    <div class="gin-price">$24.99 USD</div>
+                    <p class="gin-description">Infused with 10 botanicals, this gin offers a balanced and versatile flavor profile.</p>
+                    <p><strong>Enhancement Tips:</strong></p>
+                    <ul class="gin-tips">
+                        <li>Pair with Fever-Tree Mediterranean tonic</li>
+                        <li>Garnish with lemon peel and juniper berries</li>
+                        <li>Add a few drops of orange bitters</li>
+                    </ul>
+                </div>
+                
+                <div class="gin-item">
+                    <h3 class="gin-name">Inverroche Classic</h3>
+                    <div class="gin-origin">South Africa</div>
+                    <div class="gin-price">$26.99 USD</div>
+                    <p class="gin-description">Distilled with indigenous South African fynbos botanicals for a unique flavor.</p>
+                    <p><strong>Enhancement Tips:</strong></p>
+                    <ul class="gin-tips">
+                        <li>Serve with a premium Indian tonic water</li>
+                        <li>Garnish with a slice of grapefruit</li>
+                        <li>Add a few fresh cape gooseberries</li>
+                    </ul>
+                </div>
+                
+                <div class="gin-item">
+                    <h3 class="gin-name">Tanqueray London Dry</h3>
+                    <div class="gin-origin">United Kingdom</div>
+                    <div class="gin-price">$22.99 USD</div>
+                    <p class="gin-description">A bold gin with a juniper core and citrus notes. Perfect for a classic G&T.</p>
+                    <p><strong>Enhancement Tips:</strong></p>
+                    <ul class="gin-tips">
+                        <li>Pair with Fentiman's tonic water</li>
+                        <li>Garnish with a lime wedge and juniper berries</li>
+                        <li>Add a splash of grapefruit juice</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gin Mixers Page -->
+    <section id="mixers" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h2 class="page-title">Gin Mixers</h2>
+                <p>The perfect companions for your gin experience</p>
+            </div>
+            
+            <div class="tonic-grid">
+                <div class="tonic-item">
+                    <h3 class="tonic-name">Classic Indian Tonic</h3>
+                    <p><strong>Best with:</strong> London Dry Gins (Gordon's, Tanqueray)</p>
+                    <p><strong>Garnish:</strong> Lime wedge, juniper berries</p>
+                    <p><strong>Recipe:</strong> 50ml gin, 150ml tonic, plenty of ice</p>
+                </div>
+                
+                <div class="tonic-item">
+                    <h3 class="tonic-name">Mediterranean Tonic</h3>
+                    <p><strong>Best with:</strong> Citrus-forward gins (Bombay Sapphire)</p>
+                    <p><strong>Garnish:</strong> Lemon peel, rosemary sprig</p>
+                    <p><strong>Recipe:</strong> 50ml gin, 150ml tonic, ice, gently stir</p>
+                </div>
+                
+                <div class="tonic-item">
+                    <h3 class="tonic-name">Elderflower Tonic</h3>
+                    <p><strong>Best with:</strong> Floral gins (Hendrick's, Bloom)</p>
+                    <p><strong>Garnish:</strong> Cucumber slice, edible flowers</p>
+                    <p><strong>Recipe:</strong> 50ml gin, 100ml tonic, 20ml elderflower cordial</p>
+                </div>
+                
+                <div class="tonic-item">
+                    <h3 class="tonic-name">Spiced Tonic</h3>
+                    <p><strong>Best with:</strong> Spiced gins (Opihr, Whitley Neill)</p>
+                    <p><strong>Garnish:</strong> Orange slice, star anise</p>
+                    <p><strong>Recipe:</strong> 50ml gin, 150ml tonic, dash of orange bitters</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Gins Page -->
+    <section id="premium" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h2 class="page-title">Premium Gins</h2>
+                <p>Exceptional gins for the discerning palate</p>
+            </div>
+            
+            <div class="gin-list">
+                <div class="gin-item">
+                    <h3 class="gin-name">Monkey 47</h3>
+                    <div class="gin-origin">Germany</div>
+                    <div class="gin-price">$59.99 USD</div>
+                    <p class="gin-description">Complex gin with 47 botanicals, aged in acacia wood. Offers a rich, layered experience.</p>
+                    <p><strong>How to Enjoy:</strong></p>
+                    <ul class="gin-tips">
+                        <li>Serve neat in a tulip glass to appreciate aromas</li>
+                        <li>With a premium tonic and a twist of lemon</li>
+                        <li>In a dry martini with a lemon twist</li>
+                    </ul>
+                </div>
+                
+                <div class="gin-item">
+                    <h3 class="gin-name">Hendrick's</h3>
+                    <div class="gin-origin">Scotland</div>
+                    <div class="gin-price">$39.99 USD</div>
+                    <p class="gin-description">Infused with rose and cucumber for a uniquely refreshing gin experience.</p>
+                    <p><strong>How to Enjoy:</strong></p>
+                    <ul class="gin-tips">
+                        <li>With premium tonic and cucumber garnish</li>
+                        <li>Neat over ice with a rose petal</li>
+                        <li>In a gin cocktail with floral elements</li>
+                    </ul>
+                </div>
+                
+                <div class="gin-item">
+                    <h3 class="gin-name">The Botanist</h3>
+                    <div class="gin-origin">Scotland</div>
+                    <div class="gin-price">$44.99 USD</div>
+                    <p class="gin-description">A complex, floral gin with 22 hand-foraged Islay botanicals.</p>
+                    <p><strong>How to Enjoy:</strong></p>
+                    <ul class="gin-tips">
+                        <li>Neat to appreciate the botanical complexity</li>
+                        <li>With a light tonic and lemon verbena</li>
+                        <li>In a martini with a twist of orange</li>
+                    </ul>
+                </div>
+                
+                <div class="gin-item">
+                    <h3 class="gin-name">Nolet's Silver</h3>
+                    <div class="gin-origin">Netherlands</div>
+                    <div class="gin-price">$69.99 USD</div>
+                    <p class="gin-description">Elegant gin with Turkish rose, peach, and raspberry notes.</p>
+                    <p><strong>How to Enjoy:</strong></p>
+                    <ul class="gin-tips">
+                        <li>Neat in a brandy snifter</li>
+                        <li>With a light tonic and edible rose petals</li>
+                        <li>In a sophisticated gin cocktail</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botanicals Page -->
+    <section id="botanicals" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h2 class="page-title">Botanicals</h2>
+                <p>The essential ingredients that define gin's character</p>
+            </div>
+            
+            <div class="botanicals-grid">
+                <div class="botanical-item">
+                    <div class="botanical-icon">🌲</div>
+                    <h3 class="botanical-name">Juniper Berries</h3>
+                    <p>The essential botanical that defines gin. Provides piney, resinous notes and is required by law.</p>
+                </div>
+                
+                <div class="botanical-item">
+                    <div class="botanical-icon">🍊</div>
+                    <h3 class="botanical-name">Citrus Peels</h3>
+                    <p>Orange, lemon, and grapefruit peels add bright, zesty notes to balance juniper.</p>
+                </div>
+                
+                <div class="botanical-item">
+                    <div class="botanical-icon">🌿</div>
+                    <h3 class="botanical-name">Coriander Seed</h3>
+                    <p>Adds spicy, citrusy notes and is the second most common botanical in gin.</p>
+                </div>
+                
+                <div class="botanical-item">
+                    <div class="botanical-icon">🌸</div>
+                    <h3 class="botanical-name">Angelica Root</h3>
+                    <p>Adds earthy, musky notes and helps bind other flavors together.</p>
+                </div>
+                
+                <div class="botanical-item">
+                    <div class="botanical-icon">🍃</div>
+                    <h3 class="botanical-name">Orris Root</h3>
+                    <p>Provides a floral, violet-like aroma and acts as a fixative for other botanicals.</p>
+                </div>
+                
+                <div class="botanical-item">
+                    <div class="botanical-icon">🌶️</div>
+                    <h3 class="botanical-name">Cassia Bark</h3>
+                    <p>Similar to cinnamon, adds warmth and spicy sweetness to the gin profile.</p>
+                </div>
+                
+                <div class="botanical-item">
+                    <div class="botanical-icon">🍓</div>
+                    <h3 class="botanical-name">Liquorice Root</h3>
+                    <p>Adds sweetness and a distinctive anise-like flavor to the gin.</p>
+                </div>
+                
+                <div class="botanical-item">
+                    <div class="botanical-icon">🌼</div>
+                    <h3 class="botanical-name">Chamomile</h3>
+                    <p>Adds delicate floral notes and a soothing, honey-like character.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // DOM Elements
+        const navLinks = document.querySelectorAll('.nav-link');
+        const categoryCards = document.querySelectorAll('.category-card');
+        const pages = document.querySelectorAll('.page');
+        const exploreBtn = document.getElementById('explore-btn');
+        
+        // Navigation function
+        function navigateToPage(pageId) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show target page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Add event listeners to navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const targetPage = link.getAttribute('data-target');
+                navigateToPage(targetPage);
+                
+                // Add animation effect
+                link.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    link.style.transform = '';
+                }, 200);
+            });
+        });
+        
+        // Add event listeners to category cards
+        categoryCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const targetPage = card.getAttribute('data-target');
+                navigateToPage(targetPage);
+                
+                // Add animation effect
+                card.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    card.style.transform = '';
+                }, 200);
+            });
+        });
+        
+        // Explore button event listener
+        exploreBtn.addEventListener('click', () => {
+            navigateToPage('budget');
+            
+            // Button animation
+            exploreBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                exploreBtn.style.transform = '';
+            }, 200);
+        });
+        
+        // Add hover animations to all interactive elements
+        const interactiveElements = document.querySelectorAll('.nav-link, .category-card, .cta-button, .gin-item, .tonic-item, .botanical-item');
+        
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                element.style.transform = 'translateY(-5px)';
+                element.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.3)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.transform = '';
+                element.style.boxShadow = '';
+            });
+        });
+        
+        // Floating botanicals animation
+        const botanicals = document.querySelectorAll('.botanical');
+        
+        botanicals.forEach(botanical => {
+            // Randomize initial position slightly
+            const randomX = (Math.random() * 20) - 10;
+            const randomY = (Math.random() * 20) - 10;
+            botanical.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        });
+    </script>
 </body>
 </html>
