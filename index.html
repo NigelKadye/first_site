@@ -48,6 +48,53 @@
             padding: 0 20px;
         }
         
+        /* === ANIMATED BACKGROUND === */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            filter: blur(60px);
+            animation: floatBg 25s infinite linear;
+        }
+        
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            top: 10%;
+            left: 5%;
+            animation-duration: 40s;
+        }
+        
+        .circle-2 {
+            width: 600px;
+            height: 600px;
+            background: var(--secondary);
+            bottom: 10%;
+            right: 5%;
+            animation-duration: 50s;
+            animation-direction: reverse;
+        }
+        
+        .circle-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            top: 40%;
+            right: 20%;
+            animation-duration: 30s;
+        }
+        
         /* === HEADER & NAVIGATION === */
         header {
             background: rgba(0, 0, 0, 0.7);
@@ -232,13 +279,30 @@
             border: 2px solid transparent;
             cursor: pointer;
             animation: cardFloat 8s infinite ease-in-out;
+            perspective: 1000px;
         }
         
         .category-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) rotateX(5deg);
             border-color: var(--accent);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             animation: none;
+        }
+        
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .category-card:hover::before {
+            opacity: 1;
         }
         
         .category-icon {
@@ -252,6 +316,12 @@
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             animation: iconSpin 8s infinite linear;
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover .category-icon {
+            transform: scale(1.2);
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
         }
         
         .budget .category-icon {
@@ -289,6 +359,7 @@
             display: none;
             padding: 100px 0;
             min-height: 100vh;
+            position: relative;
         }
         
         .page.active {
@@ -336,6 +407,8 @@
             backdrop-filter: blur(10px);
             border: 2px solid transparent;
             animation: cardFloat 10s infinite ease-in-out;
+            position: relative;
+            overflow: hidden;
         }
         
         .gin-item:hover {
@@ -343,6 +416,23 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
             animation: none;
+        }
+        
+        .gin-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        
+        .gin-item:hover::before {
+            transform: scaleX(1);
         }
         
         .gin-name {
@@ -363,6 +453,10 @@
             color: var(--primary);
             margin: 10px 0;
             animation: priceGlow 2s infinite alternate;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.1);
         }
         
         .gin-description {
@@ -403,6 +497,8 @@
             backdrop-filter: blur(10px);
             border: 2px solid transparent;
             animation: cardFloat 12s infinite ease-in-out;
+            position: relative;
+            overflow: hidden;
         }
         
         .recipe-card:hover {
@@ -410,6 +506,23 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
             animation: none;
+        }
+        
+        .recipe-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--x) var(--y), rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .recipe-card:hover::after {
+            opacity: 1;
         }
         
         .recipe-title {
@@ -518,6 +631,7 @@
             margin-bottom: 15px;
             color: var(--botanicals);
             animation: iconSpin 10s infinite linear;
+            display: inline-block;
         }
         
         .botanical-name {
@@ -630,6 +744,24 @@
             }
         }
         
+        @keyframes floatBg {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(20px, 20px) rotate(90deg);
+            }
+            50% {
+                transform: translate(0, 40px) rotate(180deg);
+            }
+            75% {
+                transform: translate(-20px, 20px) rotate(270deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+        
         @keyframes pulse {
             0% {
                 transform: scale(1);
@@ -737,6 +869,13 @@
             }
         }
         
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
         /* === RESPONSIVE DESIGN === */
         @media (max-width: 768px) {
             .hero h1 {
@@ -770,6 +909,13 @@
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+    </div>
+
     <!-- Header with Navigation -->
     <header>
         <div class="container">
@@ -1194,41 +1340,32 @@
         
         // Add event listeners to navigation links
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (e) => {
                 const targetPage = link.getAttribute('data-target');
                 navigateToPage(targetPage);
                 
-                // Add animation effect
-                link.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    link.style.transform = '';
-                }, 200);
+                // Add ripple effect
+                createRipple(e, link);
             });
         });
         
         // Add event listeners to category cards
         categoryCards.forEach(card => {
-            card.addEventListener('click', () => {
+            card.addEventListener('click', (e) => {
                 const targetPage = card.getAttribute('data-target');
                 navigateToPage(targetPage);
                 
-                // Add animation effect
-                card.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    card.style.transform = '';
-                }, 200);
+                // Add ripple effect
+                createRipple(e, card);
             });
         });
         
         // Explore button event listener
-        exploreBtn.addEventListener('click', () => {
+        exploreBtn.addEventListener('click', (e) => {
             navigateToPage('budget');
             
-            // Button animation
-            exploreBtn.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                exploreBtn.style.transform = '';
-            }, 200);
+            // Add ripple effect
+            createRipple(e, exploreBtn);
         });
         
         // Add hover animations to all interactive elements
@@ -1274,6 +1411,37 @@
                 if (rect.top < window.innerHeight * 0.8) {
                     title.style.animation = 'fadeInUp 0.8s ease-out forwards';
                 }
+            });
+        });
+        
+        // Create ripple effect function
+        function createRipple(event, element) {
+            const circle = document.createElement("span");
+            const diameter = Math.max(element.clientWidth, element.clientHeight);
+            const radius = diameter / 2;
+            
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - element.getBoundingClientRect().left - radius}px`;
+            circle.style.top = `${event.clientY - element.getBoundingClientRect().top - radius}px`;
+            circle.classList.add("ripple");
+            
+            // Clean up existing ripples
+            const ripple = element.getElementsByClassName("ripple")[0];
+            if (ripple) ripple.remove();
+            
+            element.appendChild(circle);
+        }
+        
+        // Mouse position tracking for recipe cards
+        const recipeCards = document.querySelectorAll('.recipe-card');
+        recipeCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
             });
         });
     </script>
