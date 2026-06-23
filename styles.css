@@ -773,6 +773,58 @@ body {
     }
 }
 
+/* Home landing / region selector */
+.home-section {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+.home-title {
+  font-size: 2.2rem;
+  margin-bottom: 0.3rem;
+  color: var(--dark-charcoal);
+}
+.home-intro {
+  color: var(--neutral-gray);
+  margin-bottom: 1.2rem;
+}
+.region-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+}
+.region-btn {
+  background: linear-gradient(135deg, var(--primary-gold), var(--primary-amber));
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.region-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,0.12); }
+
+/* utility to hide sections when JS is active */
+.js-hidden { display: none !important; }
+
+/* small nav active state */
+.nav-link.active { color: var(--primary-gold); }
+
+/* Back button */
+.back-to-home {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--primary-emerald);
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
 /* ===== GRAPHIC SVG ANIMATIONS ===== */
 @keyframes pulse-glow {
     0%, 100% { opacity: 1; }
