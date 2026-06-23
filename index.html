@@ -3,1447 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kadye & Gin | The Art of Gin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Raleway:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <title>Modern Portfolio - Elevate Your Presence</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* === GLOBAL STYLES === */
-        :root {
-            --primary: #ff3366;
-            --secondary: #6633ff;
-            --accent: #33ffcc;
-            --dark: #1a1a2e;
-            --light: #f0f0f5;
-            --budget: #ff9a3c;
-            --mixers: #6a67ce;
-            --premium: #00b4d8;
-            --botanicals: #4caf50;
-            --recipes: #ff6b6b;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Raleway', sans-serif;
-            background: linear-gradient(135deg, var(--dark), #16213e);
-            color: var(--light);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-        
-        h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* === ANIMATED BACKGROUND === */
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            overflow: hidden;
-        }
-        
-        .bg-circle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.1;
-            filter: blur(60px);
-            animation: floatBg 25s infinite linear;
-        }
-        
-        .circle-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--primary);
-            top: 10%;
-            left: 5%;
-            animation-duration: 40s;
-        }
-        
-        .circle-2 {
-            width: 600px;
-            height: 600px;
-            background: var(--secondary);
-            bottom: 10%;
-            right: 5%;
-            animation-duration: 50s;
-            animation-direction: reverse;
-        }
-        
-        .circle-3 {
-            width: 300px;
-            height: 300px;
-            background: var(--accent);
-            top: 40%;
-            right: 20%;
-            animation-duration: 30s;
-        }
-        
-        /* === HEADER & NAVIGATION === */
-        header {
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-            animation: headerPulse 4s infinite alternate;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: 900;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: logoPulse 2s infinite alternate;
-        }
-        
-        .logo span {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            margin-left: 5px;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .nav-link {
-            position: relative;
-            padding: 10px 0;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-        
-        .nav-link:hover {
-            color: var(--accent);
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        /* === HERO SECTION === */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding-top: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero h1 {
-            font-size: 5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
-            animation: titleFloat 6s infinite ease-in-out;
-        }
-        
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 700px;
-            margin-bottom: 40px;
-            color: var(--light);
-            animation: fadeInUp 1.5s ease-out;
-        }
-        
-        .cta-button {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            border-radius: 50px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            animation: pulse 2s infinite;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            animation: none;
-        }
-        
-        .cta-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(-100%);
-            transition: transform 0.4s ease;
-        }
-        
-        .cta-button:hover::after {
-            transform: translateX(100%);
-        }
-        
-        /* === GIN CATEGORIES === */
-        .categories {
-            padding: 100px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            font-size: 2.5rem;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 5px;
-            background: var(--accent);
-            border-radius: 5px;
-            animation: linePulse 2s infinite alternate;
-        }
-        
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .category-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            border: 2px solid transparent;
-            cursor: pointer;
-            animation: cardFloat 8s infinite ease-in-out;
-            perspective: 1000px;
-        }
-        
-        .category-card:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            border-color: var(--accent);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            animation: none;
-        }
-        
-        .category-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .category-card:hover::before {
-            opacity: 1;
-        }
-        
-        .category-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            animation: iconSpin 8s infinite linear;
-            transition: all 0.3s ease;
-        }
-        
-        .category-card:hover .category-icon {
-            transform: scale(1.2);
-            box-shadow: 0 0 20px rgba(255,255,255,0.3);
-        }
-        
-        .budget .category-icon {
-            background: rgba(255, 154, 60, 0.2);
-            color: var(--budget);
-        }
-        
-        .mixers .category-icon {
-            background: rgba(106, 103, 206, 0.2);
-            color: var(--mixers);
-        }
-        
-        .premium .category-icon {
-            background: rgba(0, 180, 216, 0.2);
-            color: var(--premium);
-        }
-        
-        .botanicals .category-icon {
-            background: rgba(76, 175, 80, 0.2);
-            color: var(--botanicals);
-        }
-        
-        .recipes .category-icon {
-            background: rgba(255, 107, 107, 0.2);
-            color: var(--recipes);
-        }
-        
-        .category-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        
-        /* === CONTENT PAGES === */
-        .page {
-            display: none;
-            padding: 100px 0;
-            min-height: 100vh;
-            position: relative;
-        }
-        
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .page-title {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .page-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 5px;
-            animation: linePulse 2s infinite alternate;
-        }
-        
-        .gin-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .gin-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 25px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 2px solid transparent;
-            animation: cardFloat 10s infinite ease-in-out;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .gin-item:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            animation: none;
-        }
-        
-        .gin-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-        }
-        
-        .gin-item:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .gin-name {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--accent);
-        }
-        
-        .gin-origin {
-            font-size: 0.9rem;
-            color: var(--accent);
-            margin-bottom: 15px;
-        }
-        
-        .gin-price {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin: 10px 0;
-            animation: priceGlow 2s infinite alternate;
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            background: rgba(255,255,255,0.1);
-        }
-        
-        .gin-description {
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-        
-        .gin-tips {
-            padding-left: 20px;
-            margin-top: 15px;
-        }
-        
-        .gin-tips li {
-            margin-bottom: 8px;
-            position: relative;
-        }
-        
-        .gin-tips li::before {
-            content: '➡️';
-            position: absolute;
-            left: -20px;
-            animation: tipBullet 1s infinite alternate;
-        }
-        
-        /* === RECIPES PAGE === */
-        .recipe-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .recipe-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 25px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 2px solid transparent;
-            animation: cardFloat 12s infinite ease-in-out;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .recipe-card:hover {
-            border-color: var(--recipes);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            animation: none;
-        }
-        
-        .recipe-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at var(--x) var(--y), rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-        
-        .recipe-card:hover::after {
-            opacity: 1;
-        }
-        
-        .recipe-title {
-            font-size: 1.8rem;
-            color: var(--recipes);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .recipe-icon {
-            font-size: 1.5rem;
-            animation: iconSpin 5s infinite linear;
-        }
-        
-        .recipe-ingredients {
-            margin: 15px 0;
-            padding-left: 20px;
-        }
-        
-        .recipe-ingredients li {
-            margin-bottom: 8px;
-            position: relative;
-        }
-        
-        .recipe-ingredients li::before {
-            content: '🍸';
-            position: absolute;
-            left: -20px;
-            animation: ingredientBullet 1.5s infinite alternate;
-        }
-        
-        .recipe-steps {
-            padding-left: 20px;
-            margin-top: 15px;
-        }
-        
-        .recipe-steps li {
-            margin-bottom: 10px;
-            position: relative;
-        }
-        
-        .recipe-steps li::before {
-            content: '🔹';
-            position: absolute;
-            left: -20px;
-            animation: stepBullet 1s infinite alternate;
-        }
-        
-        /* === TONICS SECTION === */
-        .tonic-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .tonic-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 25px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 2px solid transparent;
-            animation: cardFloat 9s infinite ease-in-out;
-        }
-        
-        .tonic-item:hover {
-            border-color: var(--mixers);
-            transform: translateY(-5px);
-            animation: none;
-        }
-        
-        .tonic-name {
-            font-size: 1.5rem;
-            color: var(--accent);
-            margin-bottom: 15px;
-        }
-        
-        /* === BOTANICALS SECTION === */
-        .botanicals-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .botanical-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 25px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 2px solid transparent;
-            text-align: center;
-            animation: cardFloat 11s infinite ease-in-out;
-        }
-        
-        .botanical-item:hover {
-            border-color: var(--botanicals);
-            transform: translateY(-5px);
-            animation: none;
-        }
-        
-        .botanical-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: var(--botanicals);
-            animation: iconSpin 10s infinite linear;
-            display: inline-block;
-        }
-        
-        .botanical-name {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--accent);
-        }
-        
-        /* === FOOTER === */
-        footer {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 30px 0;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border-top: 2px solid var(--accent);
-            position: relative;
-            overflow: hidden;
-            animation: footerFloat 8s infinite ease-in-out;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .copyright {
-            font-size: 1.1rem;
-            color: var(--light);
-            font-weight: 500;
-        }
-        
-        .copyright span {
-            color: var(--accent);
-            font-weight: 700;
-        }
-        
-        .footer-botanical {
-            position: absolute;
-            font-size: 3rem;
-            opacity: 0.2;
-            z-index: -1;
-            animation: float 15s infinite ease-in-out;
-        }
-        
-        .footer-botanical:nth-child(1) {
-            top: -20px;
-            left: 10%;
-            color: var(--botanicals);
-            animation-delay: 0s;
-        }
-        
-        .footer-botanical:nth-child(2) {
-            bottom: -20px;
-            right: 15%;
-            color: var(--accent);
-            animation-delay: 3s;
-        }
-        
-        /* === ANIMATIONS === */
-        @keyframes logoPulse {
-            0% {
-                text-shadow: 0 0 10px var(--primary);
-            }
-            100% {
-                text-shadow: 0 0 30px var(--secondary), 0 0 20px var(--accent);
-            }
-        }
-        
-        @keyframes headerPulse {
-            0% {
-                box-shadow: 0 5px 20px rgba(255, 51, 102, 0.3);
-            }
-            100% {
-                box-shadow: 0 5px 30px rgba(102, 51, 255, 0.5);
-            }
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(10deg);
-            }
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-        }
-        
-        @keyframes floatBg {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            25% {
-                transform: translate(20px, 20px) rotate(90deg);
-            }
-            50% {
-                transform: translate(0, 40px) rotate(180deg);
-            }
-            75% {
-                transform: translate(-20px, 20px) rotate(270deg);
-            }
-            100% {
-                transform: translate(0, 0) rotate(360deg);
-            }
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.7);
-            }
-            70% {
-                transform: scale(1.02);
-                box-shadow: 0 0 0 15px rgba(255, 51, 102, 0);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(255, 51, 102, 0);
-            }
-        }
-        
-        @keyframes titleFloat {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes cardFloat {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes linePulse {
-            0% {
-                width: 80px;
-                opacity: 0.8;
-            }
-            100% {
-                width: 120px;
-                opacity: 1;
-            }
-        }
-        
-        @keyframes iconSpin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        
-        @keyframes priceGlow {
-            0% {
-                text-shadow: 0 0 5px rgba(255, 154, 60, 0.5);
-            }
-            100% {
-                text-shadow: 0 0 15px rgba(255, 154, 60, 0.8);
-            }
-        }
-        
-        @keyframes tipBullet {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(5px);
-            }
-        }
-        
-        @keyframes ingredientBullet {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.2);
-            }
-        }
-        
-        @keyframes stepBullet {
-            0% {
-                opacity: 0.6;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-        
-        @keyframes footerFloat {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes ripple {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-        
-        /* === RESPONSIVE DESIGN === */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .nav-links {
-                gap: 15px;
-            }
-            
-            .category-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            nav {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="animated-bg">
-        <div class="bg-circle circle-1"></div>
-        <div class="bg-circle circle-2"></div>
-        <div class="bg-circle circle-3"></div>
-    </div>
-
-    <!-- Header with Navigation -->
+    <!-- HEADER -->
     <header>
-        <div class="container">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-rocket"></i> Portfolio
+            </div>
             <nav>
-                <div class="logo">Kadye<span>& Gin</span></div>
-                <div class="nav-links">
-                    <div class="nav-link" data-target="home">Home</div>
-                    <div class="nav-link" data-target="budget">Budget Gins</div>
-                    <div class="nav-link" data-target="mixers">Gin Mixers</div>
-                    <div class="nav-link" data-target="premium">Premium Gins</div>
-                    <div class="nav-link" data-target="botanicals">Botanicals</div>
-                    <div class="nav-link" data-target="recipes">Recipes</div>
-                </div>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Home Page -->
-    <section id="home" class="page active">
-        <div class="hero">
-            <div class="botanical botanical-1">🍃</div>
-            <div class="botanical botanical-2">🌸</div>
-            <div class="botanical botanical-3">🍋</div>
-            <div class="botanical botanical-4">🍊</div>
-            
-            <h1>THE ART OF GIN</h1>
-            <p>Discover the world of gin through the eyes of a sommelier. Explore budget options, premium experiences, perfect mixers, and the botanicals that make each gin unique.</p>
-            <button class="cta-button" id="explore-btn">Explore Gins</button>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to the Future</h1>
+            <p>Discover a modern platform designed for excellence, innovation, and your success. Join thousands of satisfied users today.</p>
+            <div>
+                <button class="btn btn-primary" onclick="scrollToReviews()">Explore Now</button>
+                <button class="btn btn-secondary" onclick="scrollToForm()">Get Started</button>
+            </div>
         </div>
+        <div class="hero-image">
+            <i class="fas fa-star hero-icon"></i>
+        </div>
+    </section>
 
-        <div class="container">
-            <div class="categories">
-                <h2 class="section-title">Gin Categories</h2>
-                <div class="category-grid">
-                    <div class="category-card budget" data-target="budget">
-                        <div class="category-icon">💰</div>
-                        <h3>Budget Gins</h3>
-                        <p>Quality gins that won't break the bank</p>
+    <!-- FEATURES SECTION -->
+    <section class="features" id="features">
+        <h2 class="section-title">Why Choose Us</h2>
+        <p class="section-subtitle">Modern features built for your success</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-lightning-bolt"></i></div>
+                <h3>Lightning Fast</h3>
+                <p>Experience blazing-fast performance optimized for speed and efficiency across all devices.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Secure & Safe</h3>
+                <p>Bank-level security ensures your data is protected with the latest encryption technology.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Mobile Ready</h3>
+                <p>Fully responsive design that works seamlessly on smartphones, tablets, and desktops.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
+                <h3>Beautiful Design</h3>
+                <p>Modern UI/UX with smooth animations and intuitive navigation for the best user experience.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-cog"></i></div>
+                <h3>Customizable</h3>
+                <p>Tailor every aspect to match your brand identity with flexible configuration options.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                <h3>24/7 Support</h3>
+                <p>Our dedicated team is always available to help you succeed with comprehensive support.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATISTICS SECTION -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>10K+</h3>
+                <p>Happy Users</p>
+            </div>
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Projects Completed</p>
+            </div>
+            <div class="stat-item">
+                <h3>98%</h3>
+                <p>Satisfaction Rate</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Customer Support</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section class="reviews-section" id="reviews">
+        <h2 class="section-title">What Our Users Say</h2>
+        <p class="section-subtitle">Real feedback from real users</p>
+
+        <!-- ADD REVIEW FORM -->
+        <div class="add-review-section" id="form">
+            <h3 style="margin-bottom: 1.5rem; color: var(--dark);">Share Your Experience</h3>
+            <form id="reviewForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="John Doe" required>
                     </div>
-                    
-                    <div class="category-card mixers" data-target="mixers">
-                        <div class="category-icon">🍹</div>
-                        <h3>Gin Mixers</h3>
-                        <p>Perfect pairings for your gin</p>
-                    </div>
-                    
-                    <div class="category-card premium" data-target="premium">
-                        <div class="category-icon">👑</div>
-                        <h3>Premium Gins</h3>
-                        <p>Exceptional gins for special moments</p>
-                    </div>
-                    
-                    <div class="category-card botanicals" data-target="botanicals">
-                        <div class="category-icon">🌿</div>
-                        <h3>Botanicals</h3>
-                        <p>The secret ingredients of gin</p>
-                    </div>
-                    
-                    <div class="category-card recipes" data-target="recipes">
-                        <div class="category-icon">🍸</div>
-                        <h3>Homemade Recipes</h3>
-                        <p>Simple drinks with minimal equipment</p>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" placeholder="Amazing Experience!" required>
                     </div>
                 </div>
-            </div>
+                
+                <div class="form-group">
+                    <label>Rating</label>
+                    <div class="star-rating" id="starRating">
+                        <input type="radio" id="star5" name="rating" value="5">
+                        <label for="star5" onclick="setRating(5)"><i class="fas fa-star"></i></label>
+                        
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4" onclick="setRating(4)"><i class="fas fa-star"></i></label>
+                        
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3" onclick="setRating(3)"><i class="fas fa-star"></i></label>
+                        
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2" onclick="setRating(2)"><i class="fas fa-star"></i></label>
+                        
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1" onclick="setRating(1)"><i class="fas fa-star"></i></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="review">Your Review</label>
+                    <textarea id="review" placeholder="Share your thoughts..." rows="4" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-paper-plane"></i> Submit Review
+                </button>
+            </form>
+        </div>
+
+        <!-- REVIEWS LIST -->
+        <div class="reviews-container" id="reviewsList">
+            <!-- Reviews will be added here dynamically -->
         </div>
     </section>
 
-    <!-- Budget Gins Page -->
-    <section id="budget" class="page">
-        <div class="container">
-            <div class="page-header">
-                <h2 class="page-title">Budget Gins</h2>
-                <p>Exceptional value without compromising on quality</p>
-            </div>
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">We'd love to hear from you</p>
             
-            <div class="gin-list">
-                <div class="gin-item">
-                    <h3 class="gin-name">Gordon's London Dry Gin</h3>
-                    <div class="gin-origin">United Kingdom</div>
-                    <div class="gin-price">$18.99 USD</div>
-                    <p class="gin-description">A classic London dry gin with a crisp, juniper-forward profile. Perfect for cocktails.</p>
-                    <p><strong>Enhancement Tips:</strong></p>
-                    <ul class="gin-tips">
-                        <li>Serve with premium tonic and a slice of lime</li>
-                        <li>Add a sprig of fresh rosemary for aromatic complexity</li>
-                        <li>Try with a splash of elderflower cordial</li>
-                    </ul>
+            <div class="contact-content">
+                <div class="contact-form-wrapper">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
                 </div>
                 
-                <div class="gin-item">
-                    <h3 class="gin-name">Bombay Sapphire</h3>
-                    <div class="gin-origin">United Kingdom</div>
-                    <div class="gin-price">$24.99 USD</div>
-                    <p class="gin-description">Infused with 10 botanicals, this gin offers a balanced and versatile flavor profile.</p>
-                    <p><strong>Enhancement Tips:</strong></p>
-                    <ul class="gin-tips">
-                        <li>Pair with Fever-Tree Mediterranean tonic</li>
-                        <li>Garnish with lemon peel and juniper berries</li>
-                        <li>Add a few drops of orange bitters</li>
-                    </ul>
-                </div>
-                
-                <div class="gin-item">
-                    <h3 class="gin-name">Inverroche Classic</h3>
-                    <div class="gin-origin">South Africa</div>
-                    <div class="gin-price">$26.99 USD</div>
-                    <p class="gin-description">Distilled with indigenous South African fynbos botanicals for a unique flavor.</p>
-                    <p><strong>Enhancement Tips:</strong></p>
-                    <ul class="gin-tips">
-                        <li>Serve with a premium Indian tonic water</li>
-                        <li>Garnish with a slice of grapefruit</li>
-                        <li>Add a few fresh cape gooseberries</li>
-                    </ul>
-                </div>
-                
-                <div class="gin-item">
-                    <h3 class="gin-name">Tanqueray London Dry</h3>
-                    <div class="gin-origin">United Kingdom</div>
-                    <div class="gin-price">$22.99 USD</div>
-                    <p class="gin-description">A bold gin with a juniper core and citrus notes. Perfect for a classic G&T.</p>
-                    <p><strong>Enhancement Tips:</strong></p>
-                    <ul class="gin-tips">
-                        <li>Pair with Fentiman's tonic water</li>
-                        <li>Garnish with a lime wedge and juniper berries</li>
-                        <li>Add a splash of grapefruit juice</li>
-                    </ul>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="info-content">
+                            <h4>Location</h4>
+                            <p>123 Innovation Street, Tech City, TC 12345</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-phone"></i></div>
+                        <div class="info-content">
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="info-content">
+                            <h4>Email</h4>
+                            <p>hello@portfolio.com</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gin Mixers Page -->
-    <section id="mixers" class="page">
-        <div class="container">
-            <div class="page-header">
-                <h2 class="page-title">Gin Mixers</h2>
-                <p>The perfect companions for your gin experience</p>
-            </div>
-            
-            <div class="tonic-grid">
-                <div class="tonic-item">
-                    <h3 class="tonic-name">Classic Indian Tonic</h3>
-                    <p><strong>Best with:</strong> London Dry Gins (Gordon's, Tanqueray)</p>
-                    <p><strong>Garnish:</strong> Lime wedge, juniper berries</p>
-                    <p><strong>Recipe:</strong> 50ml gin, 150ml tonic, plenty of ice</p>
-                </div>
-                
-                <div class="tonic-item">
-                    <h3 class="tonic-name">Mediterranean Tonic</h3>
-                    <p><strong>Best with:</strong> Citrus-forward gins (Bombay Sapphire)</p>
-                    <p><strong>Garnish:</strong> Lemon peel, rosemary sprig</p>
-                    <p><strong>Recipe:</strong> 50ml gin, 150ml tonic, ice, gently stir</p>
-                </div>
-                
-                <div class="tonic-item">
-                    <h3 class="tonic-name">Elderflower Tonic</h3>
-                    <p><strong>Best with:</strong> Floral gins (Hendrick's, Bloom)</p>
-                    <p><strong>Garnish:</strong> Cucumber slice, edible flowers</p>
-                    <p><strong>Recipe:</strong> 50ml gin, 100ml tonic, 20ml elderflower cordial</p>
-                </div>
-                
-                <div class="tonic-item">
-                    <h3 class="tonic-name">Spiced Tonic</h3>
-                    <p><strong>Best with:</strong> Spiced gins (Opihr, Whitley Neill)</p>
-                    <p><strong>Garnish:</strong> Orange slice, star anise</p>
-                    <p><strong>Recipe:</strong> 50ml gin, 150ml tonic, dash of orange bitters</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Premium Gins Page -->
-    <section id="premium" class="page">
-        <div class="container">
-            <div class="page-header">
-                <h2 class="page-title">Premium Gins</h2>
-                <p>Exceptional gins for the discerning palate</p>
-            </div>
-            
-            <div class="gin-list">
-                <div class="gin-item">
-                    <h3 class="gin-name">Monkey 47</h3>
-                    <div class="gin-origin">Germany</div>
-                    <div class="gin-price">$59.99 USD</div>
-                    <p class="gin-description">Complex gin with 47 botanicals, aged in acacia wood. Offers a rich, layered experience.</p>
-                    <p><strong>How to Enjoy:</strong></p>
-                    <ul class="gin-tips">
-                        <li>Serve neat in a tulip glass to appreciate aromas</li>
-                        <li>With a premium tonic and a twist of lemon</li>
-                        <li>In a dry martini with a lemon twist</li>
-                    </ul>
-                </div>
-                
-                <div class="gin-item">
-                    <h3 class="gin-name">Hendrick's</h3>
-                    <div class="gin-origin">Scotland</div>
-                    <div class="gin-price">$39.99 USD</div>
-                    <p class="gin-description">Infused with rose and cucumber for a uniquely refreshing gin experience.</p>
-                    <p><strong>How to Enjoy:</strong></p>
-                    <ul class="gin-tips">
-                        <li>With premium tonic and cucumber garnish</li>
-                        <li>Neat over ice with a rose petal</li>
-                        <li>In a gin cocktail with floral elements</li>
-                    </ul>
-                </div>
-                
-                <div class="gin-item">
-                    <h3 class="gin-name">The Botanist</h3>
-                    <div class="gin-origin">Scotland</div>
-                    <div class="gin-price">$44.99 USD</div>
-                    <p class="gin-description">A complex, floral gin with 22 hand-foraged Islay botanicals.</p>
-                    <p><strong>How to Enjoy:</strong></p>
-                    <ul class="gin-tips">
-                        <li>Neat to appreciate the botanical complexity</li>
-                        <li>With a light tonic and lemon verbena</li>
-                        <li>In a martini with a twist of orange</li>
-                    </ul>
-                </div>
-                
-                <div class="gin-item">
-                    <h3 class="gin-name">Nolet's Silver</h3>
-                    <div class="gin-origin">Netherlands</div>
-                    <div class="gin-price">$69.99 USD</div>
-                    <p class="gin-description">Elegant gin with Turkish rose, peach, and raspberry notes.</p>
-                    <p><strong>How to Enjoy:</strong></p>
-                    <ul class="gin-tips">
-                        <li>Neat in a brandy snifter</li>
-                        <li>With a light tonic and edible rose petals</li>
-                        <li>In a sophisticated gin cocktail</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Botanicals Page -->
-    <section id="botanicals" class="page">
-        <div class="container">
-            <div class="page-header">
-                <h2 class="page-title">Botanicals</h2>
-                <p>The essential ingredients that define gin's character</p>
-            </div>
-            
-            <div class="botanicals-grid">
-                <div class="botanical-item">
-                    <div class="botanical-icon">🌲</div>
-                    <h3 class="botanical-name">Juniper Berries</h3>
-                    <p>The essential botanical that defines gin. Provides piney, resinous notes and is required by law.</p>
-                </div>
-                
-                <div class="botanical-item">
-                    <div class="botanical-icon">🍊</div>
-                    <h3 class="botanical-name">Citrus Peels</h3>
-                    <p>Orange, lemon, and grapefruit peels add bright, zesty notes to balance juniper.</p>
-                </div>
-                
-                <div class="botanical-item">
-                    <div class="botanical-icon">🌿</div>
-                    <h3 class="botanical-name">Coriander Seed</h3>
-                    <p>Adds spicy, citrusy notes and is the second most common botanical in gin.</p>
-                </div>
-                
-                <div class="botanical-item">
-                    <div class="botanical-icon">🌸</div>
-                    <h3 class="botanical-name">Angelica Root</h3>
-                    <p>Adds earthy, musky notes and helps bind other flavors together.</p>
-                </div>
-                
-                <div class="botanical-item">
-                    <div class="botanical-icon">🍃</div>
-                    <h3 class="botanical-name">Orris Root</h3>
-                    <p>Provides a floral, violet-like aroma and acts as a fixative for other botanicals.</p>
-                </div>
-                
-                <div class="botanical-item">
-                    <div class="botanical-icon">🌶️</div>
-                    <h3 class="botanical-name">Cassia Bark</h3>
-                    <p>Similar to cinnamon, adds warmth and spicy sweetness to the gin profile.</p>
-                </div>
-                
-                <div class="botanical-item">
-                    <div class="botanical-icon">🍓</div>
-                    <h3 class="botanical-name">Liquorice Root</h3>
-                    <p>Adds sweetness and a distinctive anise-like flavor to the gin.</p>
-                </div>
-                
-                <div class="botanical-item">
-                    <div class="botanical-icon">🌼</div>
-                    <h3 class="botanical-name">Chamomile</h3>
-                    <p>Adds delicate floral notes and a soothing, honey-like character.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Recipes Page -->
-    <section id="recipes" class="page">
-        <div class="container">
-            <div class="page-header">
-                <h2 class="page-title">Homemade Drink Recipes</h2>
-                <p>Simple, delicious gin cocktails with minimal equipment</p>
-            </div>
-            
-            <div class="recipe-grid">
-                <div class="recipe-card">
-                    <h3 class="recipe-title"><span class="recipe-icon">🍋</span> Gin & Tonic Twist</h3>
-                    <p><strong>Equipment:</strong> Glass, spoon</p>
-                    <p><strong>Ingredients:</strong></p>
-                    <ul class="recipe-ingredients">
-                        <li>50ml gin</li>
-                        <li>150ml tonic water</li>
-                        <li>1/2 lemon, sliced</li>
-                        <li>1 tsp honey</li>
-                        <li>Fresh basil leaves</li>
-                    </ul>
-                    <p><strong>Steps:</strong></p>
-                    <ol class="recipe-steps">
-                        <li>Muddle lemon slices and basil in glass</li>
-                        <li>Add honey and stir until dissolved</li>
-                        <li>Fill glass with ice cubes</li>
-                        <li>Pour gin over ice</li>
-                        <li>Top with tonic water and stir gently</li>
-                    </ol>
-                </div>
-                
-                <div class="recipe-card">
-                    <h3 class="recipe-title"><span class="recipe-icon">🍓</span> Berry Gin Fizz</h3>
-                    <p><strong>Equipment:</strong> Glass, fork</p>
-                    <p><strong>Ingredients:</strong></p>
-                    <ul class="recipe-ingredients">
-                        <li>50ml gin</li>
-                        <li>100ml soda water</li>
-                        <li>Handful of mixed berries</li>
-                        <li>1 tbsp sugar</li>
-                        <li>Splash of lemon juice</li>
-                    </ul>
-                    <p><strong>Steps:</strong></p>
-                    <ol class="recipe-steps">
-                        <li>Mash berries with sugar in glass</li>
-                        <li>Add lemon juice and stir</li>
-                        <li>Fill glass with crushed ice</li>
-                        <li>Pour gin over ice</li>
-                        <li>Top with soda water and stir gently</li>
-                    </ol>
-                </div>
-                
-                <div class="recipe-card">
-                    <h3 class="recipe-title"><span class="recipe-icon">🍯</span> Honey Rosemary Gin</h3>
-                    <p><strong>Equipment:</strong> Glass, spoon</p>
-                    <p><strong>Ingredients:</strong></p>
-                    <ul class="recipe-ingredients">
-                        <li>50ml gin</li>
-                        <li>100ml sparkling water</li>
-                        <li>1 sprig fresh rosemary</li>
-                        <li>1 tbsp honey</li>
-                        <li>Lemon twist</li>
-                    </ul>
-                    <p><strong>Steps:</strong></p>
-                    <ol class="recipe-steps">
-                        <li>Muddle rosemary with honey in glass</li>
-                        <li>Add gin and stir until honey dissolves</li>
-                        <li>Fill glass with ice cubes</li>
-                        <li>Top with sparkling water</li>
-                        <li>Garnish with lemon twist</li>
-                    </ol>
-                </div>
-                
-                <div class="recipe-card">
-                    <h3 class="recipe-title"><span class="recipe-icon">☕</span> Coffee Gin Fix</h3>
-                    <p><strong>Equipment:</strong> Glass, spoon</p>
-                    <p><strong>Ingredients:</strong></p>
-                    <ul class="recipe-ingredients">
-                        <li>50ml gin</li>
-                        <li>50ml cold brew coffee</li>
-                        <li>1 tbsp maple syrup</li>
-                        <li>2 dashes orange bitters</li>
-                        <li>Orange peel</li>
-                    </ul>
-                    <p><strong>Steps:</strong></p>
-                    <ol class="recipe-steps">
-                        <li>Fill glass with ice cubes</li>
-                        <li>Add gin, cold brew coffee, and maple syrup</li>
-                        <li>Stir well to combine</li>
-                        <li>Add orange bitters and stir gently</li>
-                        <li>Express orange peel over drink and drop in</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
-            <div class="copyright">© 2023 <span>Kadye & Gin</span>. All rights reserved.</div>
-            <div class="footer-botanical">🍃</div>
-            <div class="footer-botanical">🍊</div>
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Modern Portfolio. All rights reserved.</p>
         </div>
     </footer>
 
-    <script>
-        // DOM Elements
-        const navLinks = document.querySelectorAll('.nav-link');
-        const categoryCards = document.querySelectorAll('.category-card');
-        const pages = document.querySelectorAll('.page');
-        const exploreBtn = document.querySelector('#explore-btn');
-        
-        // Navigation function
-        function navigateToPage(pageId) {
-            // Hide all pages
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Show target page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        }
-        
-        // Add event listeners to navigation links
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                const targetPage = link.getAttribute('data-target');
-                navigateToPage(targetPage);
-                
-                // Add ripple effect
-                createRipple(e, link);
-            });
-        });
-        
-        // Add event listeners to category cards
-        categoryCards.forEach(card => {
-            card.addEventListener('click', (e) => {
-                const targetPage = card.getAttribute('data-target');
-                navigateToPage(targetPage);
-                
-                // Add ripple effect
-                createRipple(e, card);
-            });
-        });
-        
-        // Explore button event listener
-        exploreBtn.addEventListener('click', (e) => {
-            navigateToPage('budget');
-            
-            // Add ripple effect
-            createRipple(e, exploreBtn);
-        });
-        
-        // Add hover animations to all interactive elements
-        const interactiveElements = document.querySelectorAll('.nav-link, .category-card, .cta-button, .gin-item, .tonic-item, .botanical-item, .recipe-card');
-        
-        interactiveElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                element.style.transform = 'translateY(-5px)';
-                element.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.3)';
-            });
-            
-            element.addEventListener('mouseleave', () => {
-                element.style.transform = '';
-                element.style.boxShadow = '';
-            });
-        });
-        
-        // Floating botanicals animation
-        const botanicals = document.querySelectorAll('.botanical, .footer-botanical');
-        
-        botanicals.forEach(botanical => {
-            // Randomize initial position slightly
-            const randomX = (Math.random() * 20) - 10;
-            const randomY = (Math.random() * 20) - 10;
-            botanical.style.transform = `translate(${randomX}px, ${randomY}px)`;
-            
-            // Randomize animation duration
-            const duration = 10 + Math.random() * 20;
-            botanical.style.animationDuration = `${duration}s`;
-        });
-        
-        // Add animation to recipe icons
-        const recipeIcons = document.querySelectorAll('.recipe-icon');
-        recipeIcons.forEach(icon => {
-            icon.style.animationDuration = `${3 + Math.random() * 4}s`;
-        });
-        
-        // Add scroll animation to page titles
-        const pageTitles = document.querySelectorAll('.page-title');
-        window.addEventListener('scroll', () => {
-            pageTitles.forEach(title => {
-                const rect = title.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.8) {
-                    title.style.animation = 'fadeInUp 0.8s ease-out forwards';
-                }
-            });
-        });
-        
-        // Create ripple effect function
-        function createRipple(event, element) {
-            const circle = document.createElement("span");
-            const diameter = Math.max(element.clientWidth, element.clientHeight);
-            const radius = diameter / 2;
-            
-            circle.style.width = circle.style.height = `${diameter}px`;
-            circle.style.left = `${event.clientX - element.getBoundingClientRect().left - radius}px`;
-            circle.style.top = `${event.clientY - element.getBoundingClientRect().top - radius}px`;
-            circle.classList.add("ripple");
-            
-            // Clean up existing ripples
-            const ripple = element.getElementsByClassName("ripple")[0];
-            if (ripple) ripple.remove();
-            
-            element.appendChild(circle);
-        }
-        
-        // Mouse position tracking for recipe cards
-        const recipeCards = document.querySelectorAll('.recipe-card');
-        recipeCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                card.style.setProperty('--x', `${x}px`);
-                card.style.setProperty('--y', `${y}px`);
-            });
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
