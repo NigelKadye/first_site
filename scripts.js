@@ -1,90 +1,66 @@
-// Smooth scroll behavior for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+ocument.addEventListener('DOMContentLoaded', function () {
+  const home = document.getElementById('home');
+  const regionSections = Array.from(document.querySelectorAll('main > section[id]')).filter(s => s.id !== 'home');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const regionButtons = document.querySelectorAll('.region-btn');
+
+  function showHome() {
+    if (home) home.classList.remove('js-hidden');
+    regionSections.forEach(s => s.classList.add('js-hidden'));
+    navLinks.forEach(a => a.classList.remove('active'));
+    history.replaceState(null, '', '#');
+  }
+
+  function showRegion(id) {
+    const section = document.getElementById(id);
+    if (!section) return;
+    if (home) home.classList.add('js-hidden');
+    regionSections.forEach(s => {
+      if (s.id === id) {
+        s.classList.remove('js-hidden');
+        s.scrollIntoView({behavior: 'smooth'});
+      } else {
+        s.classList.add('js-hidden');
+      }
     });
-});
+    navLinks.forEach(a => a.classList.toggle('active', a.dataset.target === id));
+    history.replaceState(null, '', `#${id}`);
+  }
 
-// Add active state to navigation based on scroll position
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('.main-section');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    sections.forEach((section, index) => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionBottom = sectionTop + section.offsetHeight;
-        const scrollPosition = window.scrollY;
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            if (navLinks[index]) {
-                navLinks[index].classList.add('active');
-            }
-        }
+  navLinks.forEach(link => {
+    const target = link.dataset.target || link.getAttribute('href')?.replace('#','');
+    link.addEventListener('click', (e) => {
+      if (target) { e.preventDefault(); showRegion(target); }
     });
-});
-
-// Add animation on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
+  });
+  regionButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const t = btn.dataset.target;
+      if (t) showRegion(t);
     });
-}, observerOptions);
+  });
 
-// Observe gin cards for animation
-document.querySelectorAll('.gin-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(card);
-});
-
-// Observe botanical cards
-document.querySelectorAll('.botanical-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(card);
-});
-
-// Add scroll to top button functionality
-window.addEventListener('scroll', () => {
-    const scrollPosition = window.scrollY;
-    if (scrollPosition > 300) {
-        // Can add scroll-to-top button here
+  regionSections.forEach(s => {
+    let header = s.querySelector('.section-header');
+    if (!header) {
+      header = document.createElement('div');
+      header.className = 'section-header';
+      s.insertBefore(header, s.firstChild);
     }
+    if (!s.querySelector('.back-to-home')) {
+      const back = document.createElement('button');
+      back.className = 'back-to-home';
+      back.textContent = '◀ Back';
+      back.style.marginBottom = '1rem';
+      back.addEventListener('click', showHome);
+      header.insertBefore(back, header.firstChild);
+    }
+  });
+
+  const initialHash = location.hash.replace('#','');
+  if (initialHash && document.getElementById(initialHash)) {
+    showRegion(initialHash);
+  } else {
+    showHome();
+  }
 });
-
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('🍸 Kadye & Gin website loaded successfully!');
-    console.log('🌿 Exploring gin from Southern Africa, United Kingdom, and United States');
-});
-
-// Add interactive features
-function initializeInteractiveFeatures() {
-    const ginCards = document.querySelectorAll('.gin-card');
-    
-    ginCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.cursor = 'pointer';
-        });
-    });
-}
-
-initializeInteractiveFeatures();
