@@ -1,0 +1,100 @@
+{
+  "southern-africa": [
+    {
+      "name": "Hope on Hopkins",
+      "altName": "Hope on Hopkins London Dry",
+      "imageUrl": "https://images.unsplash.com/photo-1608270861620-7c80b5d0b5b0?w=300&h=300&fit=crop",
+      "source": "Unsplash"
+    },
+    {
+      "name": "Wilderer Fynbos Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1594788318286-3d835c1cab83?w=300&h=300&fit=crop",
+      "source": "Unsplash - Gin bottles"
+    },
+    {
+      "name": "Pienaar & Son Craft Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1608270861620-7c80b5d0b5b0?w=300&h=300&fit=crop",
+      "source": "Unsplash"
+    }
+  ],
+  "uk": [
+    {
+      "name": "Beefeater London Dry Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1608270861620-7c80b5d0b5b0?w=300&h=300&fit=crop",
+      "source": "Unsplash - Classic gin bottle"
+    },
+    {
+      "name": "Sipsmith London Dry Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1594788318286-3d835c1cab83?w=300&h=300&fit=crop",
+      "source": "Unsplash - Gin bottles"
+    },
+    {
+      "name": "Hendrick's Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1510812431401-41d2cab2707c?w=300&h=300&fit=crop",
+      "source": "Unsplash - Apothecary style bottle"
+    }
+  ],
+  "usa": [
+    {
+      "name": "St. George Terroir Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1608270861620-7c80b5d0b5b0?w=300&h=300&fit=crop",
+      "source": "Unsplash"
+    },
+    {
+      "name": "Aviation American Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1594788318286-3d835c1cab83?w=300&h=300&fit=crop",
+      "source": "Unsplash"
+    },
+    {
+      "name": "Ransom Old Tom Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1610707267537-b85ca6c9b9d9?w=300&h=300&fit=crop",
+      "source": "Unsplash"
+    },
+    {
+      "name": "Death's Door Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1608270861620-7c80b5d0b5b0?w=300&h=300&fit=crop",
+      "source": "Unsplash"
+    },
+    {
+      "name": "Few American Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1594788318286-3d835c1cab83?w=300&h=300&fit=crop",
+      "source": "Unsplash"
+    },
+    {
+      "name": "Vikre Øvrevann Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1608270861620-7c80b5d0b5b0?w=300&h=300&fit=crop",
+      "source": "Unsplash"
+    },
+    {
+      "name": "Barr Hill Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1594788318286-3d835c1cab83?w=300&h=300&fit=crop",
+      "source": "Unsplash"
+    },
+    {
+      "name": "Brooklyn Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1610707267537-b85ca6c9b9d9?w=300&h=300&fit=crop",
+      "source": "Unsplash"
+    },
+    {
+      "name": "Bluecoat American Dry Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1608270861620-7c80b5d0b5b0?w=300&h=300&fit=crop",
+      "source": "Unsplash"
+    },
+    {
+      "name": "Waterloo Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1594788318286-3d835c1cab83?w=300&h=300&fit=crop",
+      "source": "Unsplash"
+    },
+    {
+      "name": "Cathead Distillery Honeysuckle Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1608270861620-7c80b5d0b5b0?w=300&h=300&fit=crop",
+      "source": "Unsplash"
+    },
+    {
+      "name": "High Wire Distilling Hat Trick Gin",
+      "imageUrl": "https://images.unsplash.com/photo-1610707267537-b85ca6c9b9d9?w=300&h=300&fit=crop",
+      "source": "Unsplash"
+    }
+  ],
+  "notes": "These are public Unsplash image URLs that work well as placeholder gin bottle images. To get brand-specific images: 1) Visit the brand's official website and right-click bottle images, 2) Check their social media (Instagram), 3) Use licensed stock photo services (Getty Images, Alamy, Shutterstock). Replace URLs as you obtain official brand photos."
+}
