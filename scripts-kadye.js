@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const regionSections = Array.from(document.querySelectorAll('main > section[id]')).filter(s => s.id !== 'home');
   const navLinks = document.querySelectorAll('.nav-link');
   const regionButtons = document.querySelectorAll('.region-btn');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const stickyNav = document.querySelector('.sticky-nav');
+  const brandHome = document.querySelector('.brand-home');
 
   function showHome() {
     if (home) {
@@ -33,16 +36,42 @@ document.addEventListener('DOMContentLoaded', function () {
     history.replaceState(null, '', `#${id}`);
   }
 
+  function closeMenu() {
+    if (!menuToggle || !stickyNav) return;
+    stickyNav.classList.remove('menu-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.querySelector('i').className = 'fa-solid fa-bars';
+  }
+
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = stickyNav.classList.toggle('menu-open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.querySelector('i').className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+  });
+
+  brandHome?.addEventListener('click', event => {
+    event.preventDefault();
+    showHome();
+    closeMenu();
+  });
+
   navLinks.forEach(link => {
     const target = link.dataset.target || link.getAttribute('href')?.replace('#','');
     link.addEventListener('click', (e) => {
-      if (target) { e.preventDefault(); showRegion(target); }
+      if (target) {
+        e.preventDefault();
+        showRegion(target);
+        closeMenu();
+      }
     });
   });
   regionButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const t = btn.dataset.target;
-      if (t) showRegion(t);
+      if (t) {
+        showRegion(t);
+        closeMenu();
+      }
     });
   });
 
