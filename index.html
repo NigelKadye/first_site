@@ -13,10 +13,10 @@
   <header class="main-header">
     <div class="header-container">
       <div class="header-content">
-        <h1 class="main-title"><i class="fa-solid fa-martini-glass-citrus" aria-hidden="true"></i> KADYE & GIN <i class="fa-solid fa-leaf" aria-hidden="true"></i></h1>
+        <a href="#" class="brand-home" aria-label="Return to Kadye and Gin home"><h1 class="main-title"><i class="fa-solid fa-martini-glass-citrus" aria-hidden="true"></i> KADYE & GIN <i class="fa-solid fa-leaf" aria-hidden="true"></i></h1></a>
         <p class="tagline"><i class="fa-solid fa-sparkles" aria-hidden="true"></i> kadye meets botanicals <i class="fa-solid fa-sparkles" aria-hidden="true"></i></p>
-        <p class="subtitle">📍 Southern African & UK craft gins · budget-friendly bottles · mixers & pairings</p>
-        <p class="quote">✦ Pure gin wisdom ✦</p>
+        <p class="subtitle"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Southern African & UK craft gins · budget-friendly bottles · mixers & pairings</p>
+        <p class="quote"><i class="fa-solid fa-sparkles" aria-hidden="true"></i> Pure gin wisdom <i class="fa-solid fa-sparkles" aria-hidden="true"></i></p>
       </div>
     </div>
   </header>
@@ -32,6 +32,7 @@
       <button class="region-btn" data-target="americas"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Southern America & Mexico</button>
       <button class="region-btn" data-target="botanicals"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Botanicals</button>
       <button class="region-btn" data-target="mixers"><i class="fa-solid fa-glass-water" aria-hidden="true"></i> Mixers</button>
+      <button class="region-btn" data-target="spirit-coolers"><i class="fa-solid fa-snowflake" aria-hidden="true"></i> Spirit Coolers</button>
       <button class="region-btn" data-target="budget"><i class="fa-solid fa-wallet" aria-hidden="true"></i> Budget Picks</button>
       <button class="region-btn" data-target="first-dates"><i class="fa-solid fa-heart" aria-hidden="true"></i> First Dates</button>
       <button class="region-btn" data-target="serving"><i class="fa-solid fa-martini-glass" aria-hidden="true"></i> Serving Tips</button>
@@ -40,13 +41,18 @@
 </section>
 
   <nav class="sticky-nav">
-  <div class="nav-container">
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    <span>Menu</span>
+  </button>
+  <div class="nav-container" id="primary-navigation">
     <a href="#southern-africa" class="nav-link" data-target="southern-africa"><i class="fa-solid fa-earth-africa" aria-hidden="true"></i> Southern Africa</a>
     <a href="#uk" class="nav-link" data-target="uk"><i class="fa-solid fa-crown" aria-hidden="true"></i> United Kingdom</a>
     <a href="#usa" class="nav-link" data-target="usa"><i class="fa-solid fa-star" aria-hidden="true"></i> United States</a>
     <a href="#americas" class="nav-link" data-target="americas"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Southern America & Mexico</a>
     <a href="#botanicals" class="nav-link" data-target="botanicals"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Botanicals</a>
     <a href="#mixers" class="nav-link" data-target="mixers"><i class="fa-solid fa-glass-water" aria-hidden="true"></i> Mixers</a>
+    <a href="#spirit-coolers" class="nav-link" data-target="spirit-coolers"><i class="fa-solid fa-snowflake" aria-hidden="true"></i> Spirit Coolers</a>
     <a href="#budget" class="nav-link" data-target="budget"><i class="fa-solid fa-wallet" aria-hidden="true"></i> Budget Picks</a>
     <a href="#first-dates" class="nav-link" data-target="first-dates"><i class="fa-solid fa-heart" aria-hidden="true"></i> First Dates</a>
     <a href="#serving" class="nav-link" data-target="serving"><i class="fa-solid fa-martini-glass" aria-hidden="true"></i> Serving Tips</a>
@@ -811,7 +817,7 @@
         </article>
 
         <article class="mixer-card">
-          <h3 class="mixer-title">🍹 Regional Cooler Recipes</h3>
+          <h3 class="mixer-title"><i class="fa-solid fa-glass-water" aria-hidden="true"></i> Regional Cooler Recipes</h3>
           <div class="mixer-content">
             <div class="mixer-recipe">
               <strong><i class="fa-solid fa-glass-water" aria-hidden="true"></i> Georgia Peach Cooler (Southern):</strong>
@@ -849,6 +855,65 @@
             </div>
           </div>
         </article>
+      </div>
+    </section>
+
+    <!-- ========== GIN SPIRIT COOLERS SECTION ========== -->
+    <section id="spirit-coolers" class="main-section">
+      <div class="section-header">
+        <h2 class="section-title"><i class="fa-solid fa-snowflake" aria-hidden="true"></i> Gin Spirit Coolers</h2>
+        <p class="section-intro">Long, refreshing serves built for warm afternoons, relaxed gatherings, and easy conversation.</p>
+      </div>
+
+      <div class="coolers-container">
+        <article class="cooler-card">
+          <div class="cooler-icon"><i class="fa-solid fa-lemon" aria-hidden="true"></i></div>
+          <div>
+            <h3 class="cooler-title">Citrus Garden Cooler</h3>
+            <p class="cooler-profile">Bright, crisp, and easy to enjoy.</p>
+            <p class="cooler-recipe"><strong>Recipe:</strong> 50 ml dry gin, 25 ml lemon juice, 15 ml honey syrup, soda water, and a lemon wheel.</p>
+            <p class="cooler-pairing"><strong>Best with:</strong> citrus-forward or classic London dry gins.</p>
+          </div>
+        </article>
+
+        <article class="cooler-card">
+          <div class="cooler-icon"><i class="fa-solid fa-apple-whole" aria-hidden="true"></i></div>
+          <div>
+            <h3 class="cooler-title">Orchard Ginger Cooler</h3>
+            <p class="cooler-profile">Warm spice balanced by fresh apple.</p>
+            <p class="cooler-recipe"><strong>Recipe:</strong> 50 ml gin, 75 ml cloudy apple juice, 100 ml ginger beer, lime juice, and fresh mint.</p>
+            <p class="cooler-pairing"><strong>Best with:</strong> botanical gins, Old Tom styles, and autumn serves.</p>
+          </div>
+        </article>
+
+        <article class="cooler-card">
+          <div class="cooler-icon"><i class="fa-solid fa-pepper-hot" aria-hidden="true"></i></div>
+          <div>
+            <h3 class="cooler-title">Agave Lime Cooler</h3>
+            <p class="cooler-profile">A lively Mexican-inspired serve with a clean finish.</p>
+            <p class="cooler-recipe"><strong>Recipe:</strong> 50 ml agave-forward gin, 20 ml lime juice, 10 ml agave syrup, soda water, and a pinch of sea salt.</p>
+            <p class="cooler-pairing"><strong>Best with:</strong> the Mexico and citrus gins in the Southern America collection.</p>
+          </div>
+        </article>
+
+        <article class="cooler-card">
+          <div class="cooler-icon"><i class="fa-solid fa-seedling" aria-hidden="true"></i></div>
+          <div>
+            <h3 class="cooler-title">Naartjie and Herb Cooler</h3>
+            <p class="cooler-profile">Soft, fragrant, and distinctly Southern African.</p>
+            <p class="cooler-recipe"><strong>Recipe:</strong> 50 ml gin, 60 ml fresh naartjie juice, tonic water, rosemary, and plenty of ice.</p>
+            <p class="cooler-pairing"><strong>Best with:</strong> fynbos, buchu, and floral botanical profiles.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="cooler-guide">
+        <h3><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Build a Better Cooler</h3>
+        <div class="cooler-guide-grid">
+          <p><strong>Keep it cold:</strong> use large ice and chill the glass first.</p>
+          <p><strong>Balance sweetness:</strong> pair fruit with citrus or soda.</p>
+          <p><strong>Protect the botanicals:</strong> add tonic slowly and stir once.</p>
+        </div>
       </div>
     </section>
 

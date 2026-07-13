@@ -170,6 +170,40 @@ body {
     border-radius: 6px;
 }
 
+.brand-home {
+    color: inherit;
+    text-decoration: none;
+}
+
+.brand-home:focus-visible {
+    outline: 3px solid var(--primary-gold);
+    outline-offset: 0.4rem;
+    border-radius: 0.4rem;
+}
+
+.menu-toggle {
+    display: none;
+    width: min(100% - 2rem, 1200px);
+    margin: 0 auto;
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.menu-toggle:hover,
+.menu-toggle[aria-expanded="true"] {
+    color: var(--primary-gold);
+    background: rgba(212, 175, 55, 0.15);
+}
+
 /* ===== MAIN SECTIONS ===== */
 .main-section {
     width: min(100% - 2rem, 1200px);
@@ -522,6 +556,91 @@ body {
     line-height: 1.5;
 }
 
+/* ===== GIN SPIRIT COOLERS SECTION ===== */
+.coolers-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+}
+
+.cooler-card {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: 1.2rem;
+    align-items: start;
+    min-width: 0;
+    padding: 1.75rem;
+    background: white;
+    border-top: 5px solid var(--primary-sapphire);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cooler-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(15, 82, 186, 0.15);
+}
+
+.cooler-icon {
+    display: grid;
+    place-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    color: white;
+    background: linear-gradient(135deg, var(--primary-sapphire), var(--primary-emerald));
+    font-size: 1.35rem;
+}
+
+.cooler-title {
+    margin-bottom: 0.35rem;
+    color: var(--dark-charcoal);
+    font-size: 1.25rem;
+}
+
+.cooler-profile,
+.cooler-recipe,
+.cooler-pairing {
+    color: var(--neutral-gray);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.cooler-profile {
+    margin-bottom: 0.7rem;
+    color: var(--primary-sapphire);
+    font-style: italic;
+}
+
+.cooler-pairing {
+    margin-top: 0.55rem;
+}
+
+.cooler-guide {
+    margin-top: 2rem;
+    padding: 1.75rem;
+    border-radius: 15px;
+    background: linear-gradient(135deg, var(--light-cream), var(--light-sage));
+    border-left: 5px solid var(--primary-gold);
+}
+
+.cooler-guide h3 {
+    margin-bottom: 1rem;
+    color: var(--dark-charcoal);
+}
+
+.cooler-guide-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.cooler-guide-grid p {
+    color: var(--neutral-gray);
+    font-size: 0.92rem;
+}
+
 /* ===== BUDGET SECTION ===== */
 .budget-container {
     display: grid;
@@ -855,6 +974,23 @@ body {
         grid-template-columns: 1fr;
     }
 
+    .menu-toggle {
+        display: flex;
+    }
+
+    .sticky-nav:not(.menu-open) .nav-container {
+        display: none;
+    }
+
+    .sticky-nav.menu-open .nav-container {
+        width: min(100% - 2rem, 1200px);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.35rem;
+        padding-top: 0.6rem;
+        overflow: visible;
+    }
+
     .nav-container {
         gap: 0.3rem;
     }
@@ -907,6 +1043,14 @@ body {
         gap: 1rem;
     }
 
+    .coolers-container {
+        grid-template-columns: 1fr;
+    }
+
+    .cooler-guide-grid {
+        grid-template-columns: 1fr;
+    }
+
     .region-btn {
         padding: 0.85rem 1.2rem;
         font-size: 0.9rem;
@@ -934,6 +1078,10 @@ body {
     .nav-link {
         padding: 0.5rem 0.7rem;
         font-size: 0.7rem;
+    }
+
+    .sticky-nav.menu-open .nav-container {
+        grid-template-columns: 1fr;
     }
 
     .nav-container {
