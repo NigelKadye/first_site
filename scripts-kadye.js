@@ -5,7 +5,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const regionButtons = document.querySelectorAll('.region-btn');
 
   function showHome() {
-    if (home) home.classList.remove('js-hidden');
+    if (home) {
+      home.classList.remove('js-hidden');
+      home.classList.remove('section-transition');
+      requestAnimationFrame(() => home.classList.add('section-transition'));
+    }
     regionSections.forEach(s => s.classList.add('js-hidden'));
     navLinks.forEach(a => a.classList.remove('active'));
     history.replaceState(null, '', '#');
@@ -18,7 +22,9 @@ document.addEventListener('DOMContentLoaded', function () {
     regionSections.forEach(s => {
       if (s.id === id) {
         s.classList.remove('js-hidden');
-        s.scrollIntoView({behavior: 'smooth'});
+        s.classList.remove('section-transition');
+        requestAnimationFrame(() => s.classList.add('section-transition'));
+        s.scrollIntoView({behavior: 'smooth', block: 'start'});
       } else {
         s.classList.add('js-hidden');
       }
@@ -50,11 +56,20 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!s.querySelector('.back-to-home')) {
       const back = document.createElement('button');
       back.className = 'back-to-home';
-      back.textContent = '◀ Back';
-      back.style.marginBottom = '1rem';
+      back.innerHTML = '<i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back';
       back.addEventListener('click', showHome);
       header.insertBefore(back, header.firstChild);
     }
+  });
+
+  document.querySelectorAll('.gin-image').forEach(image => {
+    image.addEventListener('error', () => {
+      image.hidden = true;
+      const placeholder = document.createElement('div');
+      placeholder.className = 'gin-image-placeholder';
+      placeholder.innerHTML = '<i class="fa-solid fa-bottle-droplet" aria-hidden="true"></i>';
+      image.parentElement.appendChild(placeholder);
+    }, { once: true });
   });
 
   const initialHash = location.hash.replace('#','');
