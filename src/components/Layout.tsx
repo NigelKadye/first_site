@@ -1,11 +1,11 @@
 import Header from './Header'
 import Nav from './Nav'
 
-export default function Layout({ activeSection, onNavigate, navGroups, children }) {
+export default function Layout({ activeGroupSlug = null, children }) {
   return (
     <div className="app-shell">
       <Header />
-      <Nav activeSection={activeSection} onNavigate={onNavigate} navGroups={navGroups} />
+      <Nav activeGroupSlug={activeGroupSlug} />
       <main id="main-content" className="page-main">{children}</main>
       <footer className="site-footer">
         <div className="site-width footer-inner">

@@ -171,15 +171,18 @@ img {
 
 .home-link,
 .menu-toggle,
+.nav-tab,
 .nav-link,
 .explore-button,
-.section-back {
+.section-back,
+.gesture-link {
   border: 1px solid var(--color-border);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.02);
   color: var(--color-text);
   transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .home-link,
@@ -197,24 +200,64 @@ img {
 
 .home-link:hover,
 .menu-toggle:hover,
+.nav-tab:hover,
 .nav-link:hover,
 .explore-button:hover,
-.section-back:hover {
+.section-back:hover,
+.gesture-link:hover {
   transform: translateY(-1px);
   border-color: rgba(201, 168, 76, 0.4);
   background: rgba(201, 168, 76, 0.08);
 }
 
 .home-link.is-active,
+.nav-tab.is-active,
 .nav-link.is-active {
   color: var(--color-accent);
   border-color: rgba(201, 168, 76, 0.45);
   background: var(--color-accent-glow);
 }
 
-.nav-groups {
+.nav-panel {
   display: none;
   margin-top: 1rem;
+}
+
+.nav-panel.is-open {
+  display: grid;
+  gap: 1rem;
+}
+
+.nav-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.nav-tab,
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.4rem;
+  padding: 0.8rem 1rem;
+  text-align: center;
+  line-height: 1.35;
+}
+
+.nav-context-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.section-menu-toggle {
+  padding-inline: 1rem;
+}
+
+.nav-groups {
+  display: none;
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-md);
   background: rgba(22, 25, 33, 0.92);
@@ -226,7 +269,7 @@ img {
 }
 
 .nav-group {
-  padding: 1rem;
+  padding: 1.15rem;
 }
 
 .nav-group + .nav-group {
@@ -234,14 +277,9 @@ img {
 }
 
 .nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-top: 0.75rem;
-}
-
-.nav-link {
-  padding: 0.65rem 0.95rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
 }
 
 .page-main {
@@ -297,6 +335,17 @@ img {
   padding: 1rem 1.1rem;
   border-radius: var(--radius-sm);
   text-align: left;
+}
+
+.explore-copy {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.explore-meta {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
 }
 
 .section-shell {
@@ -525,6 +574,19 @@ img {
   padding: 1rem;
 }
 
+.category-link {
+  display: grid;
+  gap: 0.8rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.category-link-arrow {
+  display: inline-flex;
+  justify-self: flex-end;
+  color: var(--color-accent);
+}
+
 .rule-banner {
   color: var(--color-text);
 }
@@ -536,6 +598,67 @@ img {
 
 .site-footer {
   padding: 0 0 3rem;
+}
+
+.section-gestures {
+  margin-top: 1.5rem;
+}
+
+.section-gestures-shell {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(30, 34, 45, 0.92), rgba(22, 25, 33, 0.96));
+  box-shadow: var(--shadow-soft);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.section-gesture-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.gesture-link {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 4.25rem;
+  padding: 1rem 1.1rem;
+}
+
+.gesture-link--next {
+  justify-content: space-between;
+}
+
+.gesture-link--center {
+  justify-content: center;
+}
+
+.gesture-link.is-static {
+  cursor: default;
+  opacity: 0.72;
+}
+
+.gesture-link.is-static:hover {
+  transform: none;
+  border-color: var(--color-border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.gesture-label {
+  display: block;
+  color: var(--color-text-subtle);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.gesture-title {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--color-text);
+  line-height: 1.45;
 }
 
 .footer-inner {
@@ -568,20 +691,18 @@ img {
     gap: 1rem;
   }
 
-  .menu-toggle {
-    display: none;
-  }
-
-  .nav-groups {
+  .nav-panel {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0;
     margin-top: 0;
   }
 
-  .nav-group + .nav-group {
-    border-top: 0;
-    border-left: 1px solid rgba(255, 255, 255, 0.05);
+  .nav-tabs {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .nav-top-row .menu-toggle,
+  .nav-top-row .home-link {
+    display: none;
   }
 
   .footer-inner {
@@ -597,6 +718,7 @@ img {
   }
 
   .hero-actions,
+  .nav-tabs,
   .card-grid,
   .info-grid,
   .guide-grid {
