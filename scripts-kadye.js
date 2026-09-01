@@ -93,11 +93,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelectorAll('.gin-image').forEach(image => {
     image.addEventListener('error', () => {
+      const parent = image.parentElement;
+      if (!parent) return;
+
       image.hidden = true;
       const placeholder = document.createElement('div');
       placeholder.className = 'gin-image-placeholder';
       placeholder.innerHTML = '<i class="fa-solid fa-bottle-droplet" aria-hidden="true"></i>';
-      image.parentElement.appendChild(placeholder);
+      parent.appendChild(placeholder);
     }, { once: true });
   });
 
