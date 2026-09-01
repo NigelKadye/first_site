@@ -11,9 +11,9 @@ export default function Layout({ activeGroupSlug = null, children }) {
         <div className="site-width footer-inner">
           <div>
             <p className="footer-brand">KADYE & GIN</p>
-            <p className="footer-copy">Southern African, UK & American Gin Guide</p>
+            <p className="footer-copy">African. Europe. & American Gin Guide</p>
           </div>
-          <p className="footer-note">Just knowledge, botanicals, and good taste from three continents.</p>
+          <p className="footer-note">Just knowledge, botanicals, and good taste from different continents.</p>
         </div>
       </footer>
     </div>
