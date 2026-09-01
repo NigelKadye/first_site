@@ -1,16 +1,3 @@
-import Americas from './components/sections/Americas'
-import Botanicals from './components/sections/Botanicals'
-import Budget from './components/sections/Budget'
-import FirstDates from './components/sections/FirstDates'
-import Mixers from './components/sections/Mixers'
-import Pairings from './components/sections/Pairings'
-import QuickFixes from './components/sections/QuickFixes'
-import Serving from './components/sections/Serving'
-import SouthernAfrica from './components/sections/SouthernAfrica'
-import SpiritCoolers from './components/sections/SpiritCoolers'
-import UnitedKingdom from './components/sections/UnitedKingdom'
-import UnitedStates from './components/sections/UnitedStates'
-
 export const navGroups = [
   {
     slug: 'regions',
@@ -62,21 +49,6 @@ export const navGroups = [
   })),
 }))
 
-const sectionComponents = {
-  'southern-africa': SouthernAfrica,
-  uk: UnitedKingdom,
-  usa: UnitedStates,
-  americas: Americas,
-  botanicals: Botanicals,
-  mixers: Mixers,
-  'spirit-coolers': SpiritCoolers,
-  budget: Budget,
-  'first-dates': FirstDates,
-  serving: Serving,
-  pairings: Pairings,
-  'quick-fixes': QuickFixes,
-}
-
 export const topLevelNav = [
   { href: '/', label: 'Home', slug: null },
   ...navGroups.map((group) => ({ href: group.href, label: group.title, slug: group.slug })),
@@ -103,7 +75,6 @@ export function getSectionBySlug(slug) {
         ...item,
         groupSlug: group.slug,
         groupTitle: group.title,
-        component: sectionComponents[slug],
       }
     }
   }
