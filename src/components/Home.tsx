@@ -6,10 +6,9 @@ export default function Home({ items }) {
     <section className="hero-home">
       <div className="site-width hero-panel">
         <p className="section-eyebrow">Explore the guide</p>
-        <h2 className="hero-title">Choose a page and focus on one guide at a time.</h2>
+        <h2 className="hero-title">Choose a page for you.</h2>
         <p className="hero-copy">
-          Jump into dedicated pages for regions, lifestyle picks, extras, and gin knowledge without stacking every
-          section into one view.
+          Jump in for regions. lifestyle picks. extras.
         </p>
         <div className="hero-actions">
           {items.map((item) => (
