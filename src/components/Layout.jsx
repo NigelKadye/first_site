@@ -6,7 +6,7 @@ export default function Layout({ activeSection, onNavigate, navGroups, children 
     <div className="app-shell">
       <Header />
       <Nav activeSection={activeSection} onNavigate={onNavigate} navGroups={navGroups} />
-      <main className="page-main">{children}</main>
+      <main id="main-content" className="page-main">{children}</main>
       <footer className="site-footer">
         <div className="site-width footer-inner">
           <div>
