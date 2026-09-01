@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import DOMPurify from 'dompurify'
 import {
   Crown,
   Earth,
@@ -34,15 +35,18 @@ export default function App() {
 
   const sectionsMarkup = useMemo(
     () =>
-      legacySections
-        .replace(/<i[^>]*><\/i>/g, '')
-        .replace(/ onerror="[^"]*"/g, '')
-        .replace(
-          'https://https%3A%2F%2Fshop.thebeermerchant.co.za%2Fproducts%2Fhope-on-hopkins-mediterranean-gin-750ml%3Fsrsltid%3DAfmBOopSbjyEnUv8yfAmZ1SH0XE_Vv6LnVvVRbqY80AGikM0HzhVuILx&ved=0CBYQjRxqFwoTCPDk-qfos5UDFQAAAAAdAAAAABA3&opi=89978449w=300&h=300&fit=crop',
-          'https://images.unsplash.com/photo-1510812431401-41d2cab2707c?w=300&h=300&fit=crop',
-        ),
+      DOMPurify.sanitize(legacySections, {
+      USE_PROFILES: { html: true },
+      }),
     [],
   )
+
+  useEffect(() => {
+    const heroImage = document.querySelector('img[alt="Hope on Hopkins Gin"]')
+    if (heroImage) {
+      heroImage.src = 'https://images.unsplash.com/photo-1510812431401-41d2cab2707c?w=300&h=300&fit=crop'
+    }
+  }, [])
 
   const goToSection = (id) => {
     const section = document.getElementById(id)
