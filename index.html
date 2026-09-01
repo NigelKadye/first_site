@@ -3,71 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kadye & Gin · Southern African & UK Gin Guide</title>
+  <title>Kadye &amp; Gin — Southern African &amp; UK Gin Guide</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <a class="skip-link" href="#home">Skip to content</a>
-
-  <!-- HEADER -->
   <header class="main-header">
     <div class="header-container">
       <div class="header-content">
-        <a href="#" class="brand-home" aria-label="Return to Kadye and Gin home"><h1 class="main-title"><i class="fa-solid fa-martini-glass-citrus" aria-hidden="true"></i> KADYE & GIN <i class="fa-solid fa-leaf" aria-hidden="true"></i></h1></a>
-        <p class="tagline"><i class="fa-solid fa-sparkles" aria-hidden="true"></i> kadye meets botanicals <i class="fa-solid fa-sparkles" aria-hidden="true"></i></p>
-        <p class="subtitle"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Southern African & UK craft gins · budget-friendly bottles · mixers & pairings</p>
-        <p class="quote"><i class="fa-solid fa-sparkles" aria-hidden="true"></i> Pure gin wisdom <i class="fa-solid fa-sparkles" aria-hidden="true"></i></p>
+        <a href="#home" class="brand-home" aria-label="Return to Kadye and Gin home">
+          <h1 class="main-title"><i class="fa-solid fa-martini-glass-citrus" aria-hidden="true"></i> Kadye &amp; Gin</h1>
+        </a>
+        <p class="tagline">Southern African &amp; UK Gin Guide</p>
+        <p class="subtitle"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Southern African, UK, and American gin selections with botanicals, mixers, pairings, and serving tips</p>
+        <p class="quote"><i class="fa-solid fa-glass-water" aria-hidden="true"></i> Pure gin wisdom</p>
       </div>
     </div>
   </header>
-  <!-- HOME / REGION SELECTOR (small landing) -->
-<section id="home" class="home-section">
-  <div class="home-container">
-    <h2 class="home-title">Explore Regions</h2>
-    <p class="home-intro">Choose a region to view curated gin lists and serving tips.</p>
-    <div class="region-buttons">
-      <button class="region-btn" data-target="southern-africa"><i class="fa-solid fa-earth-africa" aria-hidden="true"></i> Southern Africa</button>
-      <button class="region-btn" data-target="uk"><i class="fa-solid fa-crown" aria-hidden="true"></i> United Kingdom</button>
-      <button class="region-btn" data-target="usa"><i class="fa-solid fa-star" aria-hidden="true"></i> United States</button>
-      <button class="region-btn" data-target="americas"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Southern America & Mexico</button>
-      <button class="region-btn" data-target="botanicals"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Botanicals</button>
-      <button class="region-btn" data-target="mixers"><i class="fa-solid fa-glass-water" aria-hidden="true"></i> Mixers</button>
-      <button class="region-btn" data-target="spirit-coolers"><i class="fa-solid fa-snowflake" aria-hidden="true"></i> Spirit Coolers</button>
-      <button class="region-btn" data-target="pairings"><i class="fa-solid fa-utensils" aria-hidden="true"></i> Food Pairings</button>
-      <button class="region-btn" data-target="quick-fixes"><i class="fa-solid fa-wrench" aria-hidden="true"></i> Quick Gin Fixes</button>
-      <button class="region-btn" data-target="budget"><i class="fa-solid fa-wallet" aria-hidden="true"></i> Budget Picks</button>
-      <button class="region-btn" data-target="first-dates"><i class="fa-solid fa-heart" aria-hidden="true"></i> First Dates</button>
-      <button class="region-btn" data-target="serving"><i class="fa-solid fa-martini-glass" aria-hidden="true"></i> Serving Tips</button>
+
+  <nav class="primary-nav sticky-nav" aria-label="Primary">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      <span>Menu</span>
+    </button>
+    <div class="nav-container" id="primary-navigation">
+      <section class="nav-group" aria-labelledby="nav-group-regions">
+        <h2 id="nav-group-regions" class="nav-group-title">Regions</h2>
+        <div class="nav-group-links">
+          <a href="#southern-africa" class="nav-link" data-target="southern-africa"><i class="fa-solid fa-earth-africa" aria-hidden="true"></i> Southern Africa</a>
+          <a href="#uk" class="nav-link" data-target="uk"><i class="fa-solid fa-crown" aria-hidden="true"></i> United Kingdom</a>
+          <a href="#usa" class="nav-link" data-target="usa"><i class="fa-solid fa-star" aria-hidden="true"></i> United States</a>
+          <a href="#americas" class="nav-link" data-target="americas"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Southern America &amp; Mexico</a>
+        </div>
+      </section>
+
+      <section class="nav-group" aria-labelledby="nav-group-knowledge">
+        <h2 id="nav-group-knowledge" class="nav-group-title">Knowledge</h2>
+        <div class="nav-group-links">
+          <a href="#botanicals" class="nav-link" data-target="botanicals"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Botanicals</a>
+          <a href="#mixers" class="nav-link" data-target="mixers"><i class="fa-solid fa-glass-water" aria-hidden="true"></i> Mixers &amp; Coolers</a>
+          <a href="#serving" class="nav-link" data-target="serving"><i class="fa-solid fa-martini-glass" aria-hidden="true"></i> Serving Tips</a>
+        </div>
+      </section>
+
+      <section class="nav-group" aria-labelledby="nav-group-lifestyle">
+        <h2 id="nav-group-lifestyle" class="nav-group-title">Lifestyle</h2>
+        <div class="nav-group-links">
+          <a href="#spirit-coolers" class="nav-link" data-target="spirit-coolers"><i class="fa-solid fa-snowflake" aria-hidden="true"></i> Spirit Coolers</a>
+          <a href="#budget" class="nav-link" data-target="budget"><i class="fa-solid fa-wallet" aria-hidden="true"></i> Budget Picks</a>
+          <a href="#first-dates" class="nav-link" data-target="first-dates"><i class="fa-solid fa-heart" aria-hidden="true"></i> First Dates</a>
+        </div>
+      </section>
+
+      <section class="nav-group" aria-labelledby="nav-group-extras">
+        <h2 id="nav-group-extras" class="nav-group-title">Extras</h2>
+        <div class="nav-group-links">
+          <a href="#pairings" class="nav-link" data-target="pairings"><i class="fa-solid fa-utensils" aria-hidden="true"></i> Food Pairings</a>
+          <a href="#quick-fixes" class="nav-link" data-target="quick-fixes"><i class="fa-solid fa-wrench" aria-hidden="true"></i> Quick Gin Fixes</a>
+        </div>
+      </section>
     </div>
-  </div>
-</section>
+  </nav>
 
-  <nav class="sticky-nav">
-  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
-    <i class="fa-solid fa-bars" aria-hidden="true"></i>
-    <span>Menu</span>
-  </button>
-  <div class="nav-container" id="primary-navigation">
-    <a href="#southern-africa" class="nav-link" data-target="southern-africa"><i class="fa-solid fa-earth-africa" aria-hidden="true"></i> Southern Africa</a>
-    <a href="#uk" class="nav-link" data-target="uk"><i class="fa-solid fa-crown" aria-hidden="true"></i> United Kingdom</a>
-    <a href="#usa" class="nav-link" data-target="usa"><i class="fa-solid fa-star" aria-hidden="true"></i> United States</a>
-    <a href="#americas" class="nav-link" data-target="americas"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Southern America & Mexico</a>
-    <a href="#botanicals" class="nav-link" data-target="botanicals"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Botanicals</a>
-    <a href="#mixers" class="nav-link" data-target="mixers"><i class="fa-solid fa-glass-water" aria-hidden="true"></i> Mixers</a>
-    <a href="#spirit-coolers" class="nav-link" data-target="spirit-coolers"><i class="fa-solid fa-snowflake" aria-hidden="true"></i> Spirit Coolers</a>
-    <a href="#pairings" class="nav-link" data-target="pairings"><i class="fa-solid fa-utensils" aria-hidden="true"></i> Food Pairings</a>
-    <a href="#quick-fixes" class="nav-link" data-target="quick-fixes"><i class="fa-solid fa-wrench" aria-hidden="true"></i> Quick Gin Fixes</a>
-    <a href="#budget" class="nav-link" data-target="budget"><i class="fa-solid fa-wallet" aria-hidden="true"></i> Budget Picks</a>
-    <a href="#first-dates" class="nav-link" data-target="first-dates"><i class="fa-solid fa-heart" aria-hidden="true"></i> First Dates</a>
-    <a href="#serving" class="nav-link" data-target="serving"><i class="fa-solid fa-martini-glass" aria-hidden="true"></i> Serving Tips</a>
-  </div>
-</nav>
+  <main id="main-content">
+    <section id="home" class="home-section">
+      <div class="home-container">
+        <header class="section-header home-header">
+          <h2 class="home-title">Explore the Gin Guide</h2>
+          <p class="home-intro">Choose a region or topic to explore curated bottles, botanicals, mixers, spirit coolers, budget picks, first-date serves, and practical serving advice.</p>
+        </header>
+        <div class="region-buttons">
+          <button class="region-btn" data-target="southern-africa"><i class="fa-solid fa-earth-africa" aria-hidden="true"></i> Southern Africa</button>
+          <button class="region-btn" data-target="uk"><i class="fa-solid fa-crown" aria-hidden="true"></i> United Kingdom</button>
+          <button class="region-btn" data-target="usa"><i class="fa-solid fa-star" aria-hidden="true"></i> United States</button>
+          <button class="region-btn" data-target="americas"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Southern America &amp; Mexico</button>
+          <button class="region-btn" data-target="botanicals"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Botanicals</button>
+          <button class="region-btn" data-target="mixers"><i class="fa-solid fa-glass-water" aria-hidden="true"></i> Mixers &amp; Coolers</button>
+          <button class="region-btn" data-target="spirit-coolers"><i class="fa-solid fa-snowflake" aria-hidden="true"></i> Spirit Coolers</button>
+          <button class="region-btn" data-target="budget"><i class="fa-solid fa-wallet" aria-hidden="true"></i> Budget Picks</button>
+          <button class="region-btn" data-target="first-dates"><i class="fa-solid fa-heart" aria-hidden="true"></i> First Dates</button>
+          <button class="region-btn" data-target="serving"><i class="fa-solid fa-martini-glass" aria-hidden="true"></i> Serving Tips</button>
+        </div>
+      </div>
+    </section>
 
-  <main>
-
-    <!-- ========== SOUTHERN AFRICAN GINS ========== -->
     <section id="southern-africa" class="main-section">
       <div class="section-header">
         <h2 class="section-title"><i class="fa-solid fa-earth-africa" aria-hidden="true"></i> Southern African Gins</h2>
@@ -183,7 +204,6 @@
       </section>
     </section>
 
-    <!-- ========== UNITED KINGDOM GINS ========== -->
     <section id="uk" class="main-section">
       <div class="section-header">
         <h2 class="section-title"><i class="fa-solid fa-crown" aria-hidden="true"></i> United Kingdom Gins</h2>
@@ -310,7 +330,6 @@
       </section>
     </section>
 
-    <!-- ========== AMERICAN GINS ========== -->
     <section id="usa" class="main-section">
       <div class="section-header">
         <h2 class="section-title"><i class="fa-solid fa-star" aria-hidden="true"></i> American Gins</h2>
@@ -662,7 +681,6 @@
       </section>
     </section>
 
-    <!-- ========== SOUTHERN AMERICA AND MEXICO GINS ========== -->
     <section id="americas" class="main-section">
       <div class="section-header">
         <h2 class="section-title"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Southern America & Mexico Gins</h2>
@@ -772,7 +790,6 @@
       </section>
     </section>
 
-    <!-- ========== BOTANICALS & FRUITS ========== -->
     <section id="botanicals" class="main-section">
       <div class="section-header">
         <h2 class="section-title"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Botanicals & Fruits</h2>
@@ -799,7 +816,7 @@
         </article>
 
         <article class="botanical-card">
-          <h3 class="botanical-title">🌲 American & Distinctly Unique</h3>
+          <h3 class="botanical-title">American & Distinctly Unique</h3>
           <div class="botanical-list">
             <div class="botanical-item">
               <strong>Douglas Fir</strong>
@@ -848,7 +865,6 @@
       </div>
     </section>
 
-    <!-- ========== MIXERS SECTION ========== -->
     <section id="mixers" class="main-section">
       <div class="section-header">
         <h2 class="section-title"><i class="fa-solid fa-glass-water" aria-hidden="true"></i> Mixers & Coolers</h2>
@@ -916,7 +932,6 @@
       </div>
     </section>
 
-    <!-- ========== GIN SPIRIT COOLERS SECTION ========== -->
     <section id="spirit-coolers" class="main-section">
       <div class="section-header">
         <h2 class="section-title"><i class="fa-solid fa-snowflake" aria-hidden="true"></i> Gin Spirit Coolers</h2>
@@ -975,7 +990,6 @@
       </div>
     </section>
 
-    <!-- ========== BUDGET SECTION ========== -->
     <section id="budget" class="main-section">
       <div class="section-header">
         <h2 class="section-title"><i class="fa-solid fa-wallet" aria-hidden="true"></i> Wallet-Friendly Bottles</h2>
@@ -1039,7 +1053,6 @@
       </div>
     </section>
 
-    <!-- ========== FIRST DATES SECTION ========== -->
     <section id="first-dates" class="main-section">
       <div class="section-header">
         <h2 class="section-title"><i class="fa-solid fa-heart" aria-hidden="true"></i> Gins for First Dates</h2>
@@ -1145,7 +1158,6 @@
       </div>
     </section>
 
-    <!-- ========== SERVING TIPS SECTION ========== -->
     <section id="serving" class="main-section">
       <div class="section-header">
         <h2 class="section-title"><i class="fa-solid fa-martini-glass" aria-hidden="true"></i> Kadye & Gin Serving Philosophy</h2>
@@ -1199,9 +1211,6 @@
       </div>
     </section>
 
-  </main>
-
-    <!-- ========== FOOD AND SNACK PAIRINGS ========== -->
     <section id="pairings" class="main-section">
       <div class="section-header">
         <h2 class="section-title"><i class="fa-solid fa-utensils" aria-hidden="true"></i> Food and Snack Pairings</h2>
@@ -1240,7 +1249,6 @@
       <div class="pairing-rule"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Keep strong chilli, very sweet desserts, and heavily smoked foods in small portions so the gin remains noticeable.</div>
     </section>
 
-    <!-- ========== QUICK GIN FIXES ========== -->
     <section id="quick-fixes" class="main-section">
       <div class="section-header">
         <h2 class="section-title"><i class="fa-solid fa-wrench" aria-hidden="true"></i> Quick Gin Fixes</h2>
@@ -1280,27 +1288,24 @@
       </div>
       <div class="quick-fix-highlight"><strong><i class="fa-solid fa-star" aria-hidden="true"></i> Home bar rule:</strong> Start with gin, something cold, something bright, and something bubbly. Taste before adding more sweetener.</div>
     </section>
+  </main>
 
-  <!-- ========== FOOTER ========== -->
   <footer class="main-footer">
     <div class="footer-content">
-      <div class="footer-section">
-        <p class="footer-title"><i class="fa-solid fa-leaf" aria-hidden="true"></i> KADYE & GIN</p>
-        <p class="footer-subtitle">Southern African, UK & American Gin Guide</p>
+      <section class="footer-section">
+        <p class="footer-title"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Kadye &amp; Gin</p>
+        <p class="footer-subtitle">Southern African, UK &amp; American Gin Guide</p>
         <p class="footer-tagline"><strong>Breathing Gin Since 2023</strong></p>
-      </div>
-      <div class="footer-section">
+      </section>
+      <section class="footer-section">
         <p><em>Just knowledge, botanicals, and good taste from three continents</em></p>
-      </div>
-      <div class="footer-section">
-        
-      </div>
+      </section>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2023 Kadye & Gin. · Crafted with passion and botanicals · </p>
+      <p>&copy; 2023 Kadye &amp; Gin. Crafted with passion and botanicals.</p>
     </div>
   </footer>
 
-  <script src="scripts-kadye.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>
