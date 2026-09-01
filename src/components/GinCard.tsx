@@ -11,7 +11,14 @@ export default function GinCard({ name, badge, badgeType, distiller, botanicals,
     <article className="gin-card-react">
       {showImage ? (
         <div className="gin-card-image-wrap">
-          <img className="gin-card-image" src={image} alt={name} onError={() => setShowImage(false)} />
+          <img
+            className="gin-card-image"
+            src={image}
+            alt={name}
+            loading="lazy"
+            decoding="async"
+            onError={() => setShowImage(false)}
+          />
         </div>
       ) : null}
       <div className="gin-card-body">

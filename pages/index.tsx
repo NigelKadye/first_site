@@ -1,8 +1,12 @@
 import Head from 'next/head'
-import GinBot from '../src/components/GinBot'
+import dynamic from 'next/dynamic'
 import Home from '../src/components/Home'
 import Layout from '../src/components/Layout'
 import { homeItems } from '../src/siteConfig'
+
+const GinBot = dynamic(() => import('../src/components/GinBot'), {
+  ssr: false,
+})
 
 export default function HomePage() {
   const pageTitle = 'Kadye & Gin · Southern African & UK Gin Guide'
