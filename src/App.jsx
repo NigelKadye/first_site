@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import Layout from './components/Layout'
 import Home from './components/Home'
+import GinBot from './components/GinBot'
 import SouthernAfrica from './components/sections/SouthernAfrica'
 import UnitedKingdom from './components/sections/UnitedKingdom'
 import UnitedStates from './components/sections/UnitedStates'
@@ -83,6 +84,7 @@ export default function App() {
       <div className="content-stage" key={activeSection}>
         {ActiveSection ? <ActiveSection onNavigate={handleNavigate} /> : <Home items={homeItems} onNavigate={handleNavigate} />}
       </div>
+      <GinBot />
     </Layout>
   )
 }

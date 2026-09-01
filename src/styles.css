@@ -582,3 +582,246 @@ img {
     flex-direction: column;
   }
 }
+
+/* ===================================================
+   GINBOT — Floating Chat Widget
+   =================================================== */
+
+/* Floating action button */
+.ginbot-fab {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.1rem;
+  background: var(--color-accent);
+  color: #0d0f14;
+  border: none;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(201, 168, 76, 0.45);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.ginbot-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(201, 168, 76, 0.6);
+}
+.ginbot-fab:active {
+  transform: translateY(0);
+}
+.ginbot-fab-label {
+  letter-spacing: 0.04em;
+}
+
+/* Chat panel */
+.ginbot-panel {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.75rem;
+  z-index: 499;
+  width: min(380px, calc(100vw - 2rem));
+  max-height: min(560px, calc(100dvh - 8rem));
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+/* Panel header */
+.ginbot-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1rem 0.9rem 1.1rem;
+  background: var(--color-surface-2, #1e222d);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+.ginbot-header-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+  flex: 1;
+}
+.ginbot-header-sub {
+  font-size: 0.75rem;
+  color: var(--color-text-subtle, #5c6078);
+  margin-right: auto;
+  display: none;
+}
+@media (min-width: 420px) {
+  .ginbot-header-sub {
+    display: inline;
+  }
+}
+.ginbot-close {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  transition: color 150ms ease;
+}
+.ginbot-close:hover {
+  color: var(--color-accent);
+}
+
+/* Messages area */
+.ginbot-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  scroll-behavior: smooth;
+}
+.ginbot-messages::-webkit-scrollbar {
+  width: 4px;
+}
+.ginbot-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+.ginbot-messages::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+/* Message bubbles */
+.ginbot-bubble {
+  max-width: 88%;
+  padding: 0.6rem 0.85rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  word-break: break-word;
+}
+.ginbot-bubble--bot {
+  background: var(--color-surface-2, #1e222d);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+.ginbot-bubble--bot strong {
+  color: var(--color-accent);
+}
+.ginbot-bubble--user {
+  background: var(--color-accent);
+  color: #0d0f14;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+  font-weight: 500;
+}
+
+/* Suggested prompts */
+.ginbot-suggestions {
+  padding: 0.5rem 0.9rem 0.25rem;
+  flex-shrink: 0;
+  border-top: 1px solid var(--color-border);
+}
+.ginbot-suggestions-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-subtle);
+  margin: 0 0 0.45rem;
+}
+.ginbot-suggestions-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  max-height: 6rem;
+  overflow-y: auto;
+}
+.ginbot-suggestions-list::-webkit-scrollbar {
+  display: none;
+}
+.ginbot-suggestion-chip {
+  padding: 0.3rem 0.7rem;
+  background: var(--color-surface-2, #1e222d);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+.ginbot-suggestion-chip:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Input row */
+.ginbot-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0.9rem;
+  border-top: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+.ginbot-input {
+  flex: 1;
+  background: var(--color-surface-2, #1e222d);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-text);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 150ms ease;
+}
+.ginbot-input::placeholder {
+  color: var(--color-text-subtle);
+}
+.ginbot-input:focus {
+  border-color: var(--color-accent);
+}
+.ginbot-send {
+  background: var(--color-accent);
+  color: #0d0f14;
+  border: none;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity 150ms ease;
+}
+.ginbot-send:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.ginbot-send:not(:disabled):hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 480px) {
+  .ginbot-fab {
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .ginbot-panel {
+    bottom: 4.75rem;
+    right: 1rem;
+    left: 1rem;
+    width: auto;
+  }
+}
