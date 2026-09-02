@@ -347,6 +347,14 @@ img {
   padding-top: 0.5rem;
 }
 
+.home-stage {
+  display: grid;
+  width: var(--site-width);
+  grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.65fr);
+  gap: 1rem;
+  margin: 0 auto;
+}
+
 .hero-panel,
 .section-shell,
 .guide-card,
@@ -363,6 +371,7 @@ img {
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  height: 100%;
   padding: clamp(1.5rem, 5vw, 3.5rem);
 }
 
@@ -481,6 +490,139 @@ img {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.explore-panel {
+  align-self: stretch;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid rgba(130, 150, 196, 0.25);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, rgba(27, 37, 64, 0.98), rgba(16, 21, 35, 0.98));
+  box-shadow: var(--shadow-soft);
+}
+
+.explore-panel-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(130, 150, 196, 0.2);
+}
+
+.explore-panel-heading h2 {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.55rem, 3vw, 2rem);
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.explore-panel-count {
+  color: var(--color-accent);
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.explore-dropdowns {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.explore-dropdown {
+  overflow: hidden;
+  border: 1px solid rgba(130, 150, 196, 0.22);
+  border-radius: var(--radius-sm);
+  background: rgba(13, 17, 28, 0.46);
+}
+
+.explore-dropdown summary {
+  display: grid;
+  grid-template-columns: 2rem 1fr auto;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.85rem 0.9rem;
+  color: var(--color-text);
+  cursor: pointer;
+  list-style: none;
+}
+
+.explore-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.explore-dropdown summary > svg {
+  color: var(--color-juniper);
+  transition: transform 160ms ease;
+}
+
+.explore-dropdown[open] summary {
+  color: var(--color-accent);
+  background: rgba(130, 150, 196, 0.1);
+}
+
+.explore-dropdown[open] summary > svg {
+  transform: rotate(180deg);
+}
+
+.explore-dropdown-number {
+  color: var(--color-juniper);
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+.explore-dropdown-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.explore-dropdown-body {
+  padding: 0.9rem;
+  border-top: 1px solid rgba(130, 150, 196, 0.18);
+}
+
+.explore-dropdown-body p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.explore-all-link,
+.explore-sub-links a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.explore-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.explore-all-link:hover,
+.explore-sub-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.explore-sub-links {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.8rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(130, 150, 196, 0.14);
+}
+
+.explore-sub-links a {
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
 }
 
 .section-shell {
@@ -846,6 +988,12 @@ img {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
+  }
+}
+
+@media (max-width: 760px) {
+  .home-stage {
+    grid-template-columns: 1fr;
   }
 }
 

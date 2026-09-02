@@ -34,9 +34,11 @@ export default function Nav({ activeGroupSlug }) {
     <nav className="sticky-nav" aria-label="Primary">
       <div className="site-width nav-shell">
         <div className="nav-top-row">
-          <Link href="/" className={`home-link ${router.asPath === '/' ? 'is-active' : ''}`} onClick={() => setMenuOpen(false)}>
-            Home
-          </Link>
+          {router.asPath !== '/' ? (
+            <Link href="/" className="home-link" onClick={() => setMenuOpen(false)}>
+              Home
+            </Link>
+          ) : null}
           <button
             type="button"
             className="menu-toggle"

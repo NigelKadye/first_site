@@ -58,6 +58,7 @@ export const homeItems = navGroups.map((group) => ({
   href: group.href,
   label: group.title,
   description: group.description,
+  items: group.items,
 }))
 
 export const allPageSlugs = navGroups.flatMap((group) => [group.slug, ...group.items.map((item) => item.id)])
