@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo, useState } from 'react'
 import { ChevronDown, Menu, X } from 'lucide-react'
-import BrandLogo from './BrandLogo'
 import { getGroupBySlug, topLevelNav } from '../siteConfig'
 
 export default function Nav({ activeGroupSlug }) {
@@ -35,9 +34,6 @@ export default function Nav({ activeGroupSlug }) {
     <nav className="sticky-nav" aria-label="Primary">
       <div className="site-width nav-shell">
         <div className="nav-top-row">
-          <Link href="/" className="nav-brand" aria-label="Kadye & Gin home">
-            <BrandLogo compact />
-          </Link>
           <Link href="/" className={`home-link ${router.asPath === '/' ? 'is-active' : ''}`} onClick={() => setMenuOpen(false)}>
             Home
           </Link>
