@@ -474,6 +474,136 @@ export const europeGins = {
           image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=300&h=300&fit=crop"
         }
       ]
+    },
+    {
+      id: "netherlands-genever-roots",
+      title: "Netherlands · Genever Roots",
+      gins: [
+        {
+          name: "Bols Genever",
+          badge: "Historic Style",
+          badgeType: "iconic",
+          distiller: "Lucas Bols · Amsterdam",
+          botanicals: ["Juniper", "Malt Wine", "Coriander"],
+          description: "Malt wine gives this Dutch classic a richer, almost whisky-like body. It is a direct link to gin's genever ancestry.",
+          serve: "Neat Chilled or Dutch Mule",
+          image: "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=300&fit=crop"
+        },
+        {
+          name: "Bobby's Schiedam Dry Gin",
+          badge: "Indonesian Dutch",
+          badgeType: "unique",
+          distiller: "Bobby's Gin · Schiedam",
+          botanicals: ["Lemongrass", "Clove", "Cinnamon", "Juniper"],
+          description: "A bright meeting point between Dutch distilling and Indonesian spice. Lemongrass and citrus keep its warm botanicals lively.",
+          serve: "Tonic + Orange Peel",
+          image: "https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      id: "spain-mediterranean-citrus",
+      title: "Spain · Mediterranean Citrus",
+      gins: [
+        {
+          name: "Gin Mare",
+          badge: "Mediterranean",
+          badgeType: "terroir",
+          distiller: "Gin Mare · Catalonia",
+          botanicals: ["Arbequina Olive", "Rosemary", "Basil", "Thyme"],
+          description: "Savoury Mediterranean botanicals make this a natural partner for food. Olive, rosemary, and citrus give it a distinctly coastal identity.",
+          serve: "Mediterranean Tonic + Rosemary",
+          image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=300&h=300&fit=crop"
+        },
+        {
+          name: "Nordés Atlantic Galician Gin",
+          badge: "Atlantic Floral",
+          badgeType: "floral",
+          distiller: "Nordés · Galicia",
+          botanicals: ["Albariño Grape", "Hibiscus", "Lemon Verbena"],
+          description: "Soft, aromatic, and floral with an Atlantic freshness. It is an approachable choice for drinkers who prefer gentler juniper.",
+          serve: "Neutral Tonic + White Grape",
+          image: "https://images.unsplash.com/photo-1574914629385-46448b0ddc1b?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      id: "germany-black-forest-botanicals",
+      title: "Germany · Black Forest Botanicals",
+      gins: [
+        {
+          name: "Monkey 47 Schwarzwald Dry Gin",
+          badge: "47 Botanicals",
+          badgeType: "complex",
+          distiller: "Black Forest Distillers · Baden-Württemberg",
+          botanicals: ["Lingonberry", "Black Forest Herbs", "Juniper", "Citrus"],
+          description: "Layered, aromatic, and intensely expressive, with forest fruit, spice, and citrus unfolding over a firm juniper frame.",
+          serve: "Light Tonic + Grapefruit Peel",
+          image: "https://images.unsplash.com/photo-1614963326505-3d8b1e22b5f6?w=300&h=300&fit=crop"
+        },
+        {
+          name: "Windspiel Premium Dry Gin",
+          badge: "Potato Spirit",
+          badgeType: "premium",
+          distiller: "Windspiel Manufaktur · Eifel",
+          botanicals: ["Juniper", "Cinnamon", "Lavender", "Cardamom"],
+          description: "A silky potato-based gin with warm spice and soft floral edges. Its rounded texture works beautifully in a Martini.",
+          serve: "Martini + Lemon Twist",
+          image: "https://images.unsplash.com/photo-1559628129-67cf63b72248?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      id: "italy-mediterranean-modern",
+      title: "Italy · Citrus and Alpine Herbs",
+      gins: [
+        {
+          name: "Malfy Con Limone",
+          badge: "Italian Citrus",
+          badgeType: "citrus",
+          distiller: "Malfy · Piedmont",
+          botanicals: ["Italian Lemons", "Juniper", "Coriander"],
+          description: "Bright lemon leads a clean, easy-drinking profile. It is made for sunny aperitivo serves and simple, cold tonic pours.",
+          serve: "Mediterranean Tonic + Lemon Wheel",
+          image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300&h=300&fit=crop"
+        },
+        {
+          name: "VII Hills Italian Dry Gin",
+          badge: "Roman Botanicals",
+          badgeType: "botanical",
+          distiller: "VII Hills · Rome",
+          botanicals: ["Celery", "Artichoke", "Blood Orange", "Juniper"],
+          description: "A savoury Italian gin with citrus lift and unusual vegetable depth. It is especially interesting alongside antipasti and seafood.",
+          serve: "Dry Tonic + Blood Orange",
+          image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      id: "nordics-floral-and-herbal",
+      title: "The Nordics · Clean and Foraged",
+      gins: [
+        {
+          name: "Hernö Gin",
+          badge: "Swedish Craft",
+          badgeType: "craft",
+          distiller: "Hernö Gin · Ångermanland",
+          botanicals: ["Lingonberry", "Meadowsweet", "Vanilla", "Juniper"],
+          description: "Softly floral with bright berry and vanilla notes, balanced by a clean Nordic dryness. It rewards a restrained garnish.",
+          serve: "Tonic + Lingonberry or Lemon",
+          image: "https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=300&h=300&fit=crop"
+        },
+        {
+          name: "Kyrö Gin",
+          badge: "Rye Based",
+          badgeType: "unique",
+          distiller: "Kyrö Distillery · Finland",
+          botanicals: ["Meadowsweet", "Birch Leaves", "Cranberry", "Juniper"],
+          description: "A rye-based gin with gentle spice, tart berry, and a fresh woodland character. A great bridge between classic and contemporary styles.",
+          serve: "Tonic + Rosemary",
+          image: "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=300&fit=crop"
+        }
+      ]
     }
   ]
 };
