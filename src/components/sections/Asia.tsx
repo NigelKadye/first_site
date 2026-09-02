@@ -1,29 +1,21 @@
-import GinCard from '../GinCard'
-import { europeGins } from '../../data/gins'
-
 import { ArrowLeft } from 'lucide-react'
+import GinCard from '../GinCard'
+import { asianGins } from '../../data/gins'
 
-function BackHomeButton({ onNavigate }) {
-  return (
-    <button type="button" className="section-back" onClick={() => onNavigate('home')}>
-      <ArrowLeft size={16} aria-hidden="true" />
-      Back to Home
-    </button>
-  )
-}
-
-
-export default function Europe({ onNavigate }) {
+export default function Asia({ onNavigate }) {
   return (
     <section className="content-section">
       <div className="site-width section-shell">
-        <BackHomeButton onNavigate={onNavigate} />
+        <button type="button" className="section-back" onClick={() => onNavigate('home')}>
+          <ArrowLeft size={16} aria-hidden="true" />
+          Back to Home
+        </button>
         <div className="section-heading">
           <p className="section-eyebrow">Regional collection</p>
-          <h2 className="section-title">{europeGins.title}</h2>
-          <p className="section-intro">{europeGins.intro}</p>
+          <h2 className="section-title">{asianGins.title}</h2>
+          <p className="section-intro">{asianGins.intro}</p>
         </div>
-        {europeGins.regions.map((region) => (
+        {asianGins.regions.map((region) => (
           <section key={region.id} className="region-block">
             <h3 className="region-title">{region.title}</h3>
             <div className="card-grid">

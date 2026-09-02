@@ -220,10 +220,10 @@ export const southernAfricaGins = {
   ]
 };
 
-export const unitedKingdomGins = {
-  id: "uk",
-  title: "United Kingdom Gins",
-  intro: "The spiritual home of gin. From London dry benchmarks to island and hedgerow bottlings, the UK still defines both tradition and modern craft.",
+export const europeGins = {
+  id: "europe",
+  title: "European Gins",
+  intro: "From London dry benchmarks and Dutch genever roots to Mediterranean citrus and Nordic botanicals, Europe offers a remarkable range of gin traditions and modern craft styles.",
   regions: [
     {
       id: "london-south-east-the-gin-capital",
