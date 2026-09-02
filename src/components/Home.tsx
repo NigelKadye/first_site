@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
-import ExplorePanel from './ExplorePanel'
 
 export default function Home({ items }) {
   return (
@@ -28,7 +27,6 @@ export default function Home({ items }) {
           </div>
           <p className="hero-footnote">Curated across Africa, Europe, and the Americas.</p>
         </div>
-        <ExplorePanel items={items} />
       </div>
     </section>
   )
