@@ -1,4 +1,5 @@
 import Header from './Header'
+import BrandLogo from './BrandLogo'
 import Nav from './Nav'
 
 export default function Layout({ activeGroupSlug = null, children }) {
@@ -10,8 +11,10 @@ export default function Layout({ activeGroupSlug = null, children }) {
       <footer className="site-footer">
         <div className="site-width footer-inner">
           <div>
-            <p className="footer-brand">KADYE & GIN</p>
-            <p className="footer-copy">African. Europe. & American Gin Guide</p>
+            <div className="footer-brand">
+              <BrandLogo compact />
+            </div>
+            <p className="footer-copy">African. Europe. Americas</p>
           </div>
           <p className="footer-note">Just knowledge, botanicals, and good taste from different continents.</p>
         </div>

@@ -18,6 +18,12 @@ export const suggestedPrompts = [
   "What mixer should I use?",
   "Best South African gin?",
   "What makes a good first-date gin?",
+  "How do I taste gin?",
+  "How is gin made?",
+  "Where did gin come from?",
+  "How do I choose a tonic?",
+  "Why does my G&T taste bitter?",
+  "What is a zero-proof gin serve?",
 ]
 
 // Each rule: array of trigger keywords/phrases + a response string
@@ -159,6 +165,42 @@ export const botRules = [
   {
     triggers: ['gin vs vodka', 'vodka', 'difference between gin and vodka', 'what makes gin different'],
     response: "Gin vs Vodka — the key distinction:\n\n• **Vodka** is a neutral spirit. By definition it should be odourless, colourless, and tasteless.\n• **Gin** is a flavoured spirit. It starts as a neutral spirit but is re-distilled with botanicals — juniper being mandatory.\n\nIn essence: if vodka is a blank canvas, gin is the painting.\n\nBoth start from the same base (grain or potato spirit), but gin's botanical bill gives it enormous flavour complexity. This is why gin cocktails can be so varied — the botanicals interact differently with each mixer.",
+  },
+
+  // --- Tonic pairing ---
+  {
+    triggers: ['choose a tonic', 'tonic pairing', 'which tonic', 'tonic pair', 'mixer pairing'],
+    response: "Choose a tonic that supports the gin rather than hiding it:\n\n• **Dry, juniper-led gin** — Indian or dry tonic with lemon peel\n• **Citrus-led gin** — Mediterranean tonic with grapefruit or orange\n• **Floral gin** — light tonic with cucumber or a small mint sprig\n• **Herbal or savoury gin** — dry tonic, soda, or a gentle ginger mixer\n\nStart at **1 part gin to 2–3 parts tonic**, then adjust. If the drink tastes too sweet, switch to a dry tonic before adding more garnish. Keep tonic cold and pour it gently to preserve the bubbles.",
+  },
+
+  // --- Tasting ---
+  {
+    triggers: ['taste gin', 'tasting gin', 'how to taste', 'taste a gin', 'gin tasting'],
+    response: "Use a simple three-step tasting ritual:\n\n1. **Look** — check the clarity and colour. A clear gin is the usual starting point; colour may come from botanicals or ageing.\n2. **Smell** — swirl gently, then nose the glass from a little distance. Look for juniper, citrus, floral, spice, or earthy notes.\n3. **Sip** — taste a small amount neat, then add a few drops of water or try it with tonic. Notice what changes.\n\nWrite down the first three aromas that come to mind. There is no wrong answer, and comparing two gins side by side is more useful than trying to remember a flavour on its own.",
+  },
+
+  // --- Production ---
+  {
+    triggers: ['how gin is made', 'how is gin made', 'make gin', 'gin production', 'distill gin', 'distilling gin'],
+    response: "Most gin follows this path:\n\n• A neutral spirit is made from a base such as grain, grape, or molasses.\n• Juniper and other botanicals are steeped in the spirit, suspended in the vapour path, or added in a combination of both methods.\n• The spirit is distilled so the botanical aromas become part of the final liquid.\n• The distiller reduces it to bottling strength with water, then lets the gin rest before release.\n\nThe recipe, extraction method, distillation cuts, water, and bottling strength all affect the result. Gin does not need barrel ageing to be complete; its character usually comes from the botanical balance.",
+  },
+
+  // --- History ---
+  {
+    triggers: ['history of gin', 'where gin came from', 'origin of gin', 'gin history', 'who invented gin', 'genever'],
+    response: "Gin grew from **genever**, a juniper-flavoured spirit made in the Low Countries. English soldiers encountered it in the late 16th century and brought the taste home.\n\nEngland's gin boom followed in the 18th century, and later distillers developed the cleaner, drier style now known as London Dry. Today, distillers across Africa, Europe, the Americas, and beyond use local botanicals to create new expressions while keeping juniper at the centre.",
+  },
+
+  // --- Troubleshooting ---
+  {
+    triggers: ['bitter g&t', 'bitter gin and tonic', 'too bitter', 'too sweet', 'too strong', 'watery g&t', 'watery gin and tonic'],
+    response: "A quick G&T diagnosis:\n\n• **Too bitter** — use a less bitter or lighter tonic, add a little soda, and keep the garnish simple.\n• **Too sweet** — switch to a dry tonic and avoid sweet cordials or fruit-heavy garnishes.\n• **Too strong** — add tonic 25 ml at a time and taste after each addition.\n• **Watery** — use fresh, large ice, chill the ingredients first, and stir only once.\n• **Flat** — open a fresh tonic and pour it gently down the side of the glass.\n\nChange one thing at a time so you learn what suits the gin.",
+  },
+
+  // --- Zero-proof ---
+  {
+    triggers: ['zero proof', 'zero-proof', 'non alcoholic gin', 'non-alcoholic gin', 'no alcohol gin', 'alcohol free gin'],
+    response: "A zero-proof serve can still have the structure of a G&T:\n\n• Use a chilled non-alcoholic botanical spirit or a juniper-forward tea.\n• Add 100–150 ml of dry tonic over plenty of ice.\n• Finish with a lemon peel, cucumber ribbon, or a few fresh herbs.\n\nCheck the bottle label: some products called non-alcoholic contain trace alcohol. If you are avoiding alcohol completely, choose a clearly labelled 0.0% product and remember that tonic itself can contain sugar or quinine.",
   },
 
   // --- Thank you ---

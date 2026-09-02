@@ -4,22 +4,28 @@ import { ChevronRight } from 'lucide-react'
 export default function Home({ items }) {
   return (
     <section className="hero-home">
-      <div className="site-width hero-panel">
-        <p className="section-eyebrow">Explore the guide</p>
-        <h2 className="hero-title">Choose a page for you.</h2>
-        <p className="hero-copy">
-          Jump in for regions. lifestyle picks. extras.
-        </p>
-        <div className="hero-actions">
-          {items.map((item) => (
-            <Link key={item.href} href={item.href} className="explore-button">
-              <span className="explore-copy">
-                <span>{item.label}</span>
-                <span className="explore-meta">{item.description}</span>
-              </span>
-              <ChevronRight size={18} aria-hidden="true" />
-            </Link>
-          ))}
+      <div className="home-stage">
+        <div className="hero-panel">
+          <div className="hero-intro">
+            <p className="section-eyebrow">Explore the guide</p>
+            <h2 className="hero-title">Find your next pour.</h2>
+            <p className="hero-copy">
+              Regional bottles, practical know-how, and good reasons to pour another round.
+            </p>
+          </div>
+          <div className="hero-actions" aria-label="Guide sections">
+            {items.map((item, index) => (
+              <Link key={item.href} href={item.href} className="explore-button">
+                <span className="explore-number" aria-hidden="true">0{index + 1}</span>
+                <span className="explore-copy">
+                  <span className="explore-title">{item.label}</span>
+                  <span className="explore-meta">{item.description}</span>
+                </span>
+                <ChevronRight size={18} aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
+          <p className="hero-footnote">Curated across Africa, Europe, and the Americas.</p>
         </div>
       </div>
     </section>
