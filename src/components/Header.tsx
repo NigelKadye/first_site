@@ -1,14 +1,12 @@
-import { Leaf, Martini } from 'lucide-react'
+import BrandLogo from './BrandLogo'
 
 export default function Header() {
   return (
     <header className="site-header">
       <div className="site-width header-inner">
-        <p className="brand-mark">
-          <Martini size={18} aria-hidden="true" />
-          KADYE & GIN
-          <Leaf size={18} aria-hidden="true" />
-        </p>
+        <div className="brand-mark">
+          <BrandLogo />
+        </div>
         <p className="header-kicker">Breathing Gin Since 2023</p>
         <h1 className="site-title">African. Europe. Americas</h1>
         <p className="site-subtitle">
