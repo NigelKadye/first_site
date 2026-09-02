@@ -772,6 +772,7 @@ img {
   right: 1.75rem;
   z-index: 499;
   width: min(380px, calc(100vw - 2rem));
+  max-height: min(560px, calc(100vh - 8rem));
   max-height: min(560px, calc(100dvh - 8rem));
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -780,6 +781,16 @@ img {
   flex-direction: column;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
   overflow: hidden;
+  contain: layout paint;
+}
+
+.ginbot-panel--loading {
+  min-height: 5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
 }
 
 /* Panel header */
@@ -958,6 +969,19 @@ img {
 }
 .ginbot-send:not(:disabled):hover {
   opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ginbot-fab,
+  .ginbot-close,
+  .ginbot-suggestion-chip,
+  .ginbot-send {
+    transition: none;
+  }
+
+  .ginbot-messages {
+    scroll-behavior: auto;
+  }
 }
 
 @media (max-width: 480px) {
