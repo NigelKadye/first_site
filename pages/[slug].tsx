@@ -53,7 +53,7 @@ export default function ContentPage({ slug }) {
           <title key="title">{pageTitle}</title>
           <meta key="description" name="description" content={group.description} />
         </Head>
-        <Layout activeGroupSlug={group.slug}>
+        <Layout activeGroupSlug={group.slug} activePageSlug={group.slug}>
           <div className="content-stage">
             <CategoryOverview group={group} />
           </div>
@@ -80,7 +80,7 @@ export default function ContentPage({ slug }) {
         <title key="title">{pageTitle}</title>
         <meta key="description" name="description" content={section.description} />
       </Head>
-      <Layout activeGroupSlug={section.groupSlug}>
+      <Layout activeGroupSlug={section.groupSlug} activePageSlug={slug}>
         <div className="content-stage">
           {ActiveSection ? (
             <ActiveSection
