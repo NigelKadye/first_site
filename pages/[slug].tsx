@@ -18,6 +18,7 @@ const sectionComponents = {
   'spirit-coolers': dynamic(() => import('../src/components/sections/SpiritCoolers')),
   budget: dynamic(() => import('../src/components/sections/Budget')),
   'first-dates': dynamic(() => import('../src/components/sections/FirstDates')),
+  'craft-gin': dynamic(() => import('../src/components/sections/CraftGin')),
   serving: dynamic(() => import('../src/components/sections/Serving')),
   pairings: dynamic(() => import('../src/components/sections/Pairings')),
   'quick-fixes': dynamic(() => import('../src/components/sections/QuickFixes')),

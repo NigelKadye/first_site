@@ -28,6 +28,7 @@ export const navGroups = [
     items: [
       { id: 'budget', label: 'Budget Picks', description: 'Affordable bottles that still feel elevated.' },
       { id: 'first-dates', label: 'First Dates', description: 'Stylish pours for easy conversation and confidence.' },
+      { id: 'craft-gin', label: 'First Date Gin Tips', description: 'Zero-proof options, gin-making date ideas, and visitor leads.' },
       { id: 'serving', label: 'Serving Tips', description: 'Glassware, garnish, and temperature guidance.' },
     ],
   },

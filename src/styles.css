@@ -954,6 +954,60 @@ img {
   letter-spacing: 0.12em;
 }
 
+.craft-gin-callout {
+  max-width: 58rem;
+  border: 1px solid rgba(231, 189, 101, 0.24);
+  background: linear-gradient(145deg, rgba(32, 41, 68, 0.78), rgba(21, 27, 43, 0.76));
+}
+
+.craft-subheading {
+  max-width: 58rem;
+  margin-top: 3.5rem;
+  margin-bottom: 2rem;
+}
+
+.craft-subheading .section-title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.craft-region {
+  max-width: 58rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(130, 150, 196, 0.22);
+}
+
+.craft-region-heading h3 {
+  margin: 0;
+  color: var(--color-accent);
+  font-size: 1.55rem;
+}
+
+.craft-region-heading .subtle-copy {
+  max-width: 45rem;
+  margin-bottom: 1.3rem;
+}
+
+.craft-location-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.8rem;
+}
+
+.craft-location {
+  min-height: 10rem;
+  padding: 1.1rem;
+  border: 1px solid rgba(130, 150, 196, 0.2);
+  border-radius: var(--radius-sm);
+  background: rgba(21, 27, 43, 0.62);
+}
+
+.craft-location .stack-copy {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;
