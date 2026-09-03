@@ -14,7 +14,7 @@ export default function Layout({ activeGroupSlug = null, children }) {
             <div className="footer-brand">
               <BrandLogo compact />
             </div>
-            <p className="footer-copy">African. Europe. Americas</p>
+            <p className="footer-copy">Africa. Europe. Asia. Americas</p>
           </div>
           <p className="footer-note">Just knowledge, botanicals, and good taste from different continents.</p>
         </div>

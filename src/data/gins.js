@@ -1183,3 +1183,89 @@ export const americasGins = {
     }
   ]
 };
+
+export const asianGins = {
+  id: "asia",
+  title: "Asian Gins",
+  intro: "From Japanese tea and yuzu to Indian spice and Southeast Asian citrus, Asian gins bring bright aromatics, savoury depth, and a strong sense of place to the glass.",
+  regions: [
+    {
+      id: "japan-tea-and-citrus",
+      title: "Japan · Tea and Citrus",
+      gins: [
+        {
+          name: "Roku Gin",
+          badge: "Six Japanese Botanicals",
+          badgeType: "botanical",
+          distiller: "Suntory · Osaka",
+          botanicals: ["Sakura Flower", "Yuzu", "Sencha Tea", "Sansho Pepper"],
+          description: "Silky and precise, moving from floral cherry blossom to bright yuzu and gentle pepper.",
+          serve: "Japanese Tonic + Yuzu Peel",
+          image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=300&h=300&fit=crop"
+        },
+        {
+          name: "KI NO BI Kyoto Dry Gin",
+          badge: "Kyoto Craft",
+          badgeType: "craft",
+          distiller: "The Kyoto Distillery · Kyoto",
+          botanicals: ["Yuzu", "Hinoki", "Sansho Pepper", "Gyokuro Tea"],
+          description: "A layered dry gin built around Kyoto ingredients, balancing delicate tea, citrus, wood, and spice.",
+          serve: "Soda + Yuzu Peel",
+          image: "https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      id: "india-spice-and-citrus",
+      title: "India · Spice and Citrus",
+      gins: [
+        {
+          name: "Hapusa Himalayan Dry Gin",
+          badge: "Himalayan Botanicals",
+          badgeType: "terroir",
+          distiller: "NAO Spirits · Goa",
+          botanicals: ["Himalayan Juniper", "Mango", "Turmeric", "Gondhoraj Lime"],
+          description: "Earthy, warm, and gently fruity, with native Himalayan juniper giving it a distinctive dry backbone.",
+          serve: "Indian Tonic + Grapefruit Peel",
+          image: "https://images.unsplash.com/photo-1614963326505-3d8b1e22b5f6?w=300&h=300&fit=crop"
+        },
+        {
+          name: "Greater Than London Dry Gin",
+          badge: "Indian Craft",
+          badgeType: "classic",
+          distiller: "NAO Spirits · Goa",
+          botanicals: ["Juniper", "Coriander", "Fennel", "Darjeeling Tea"],
+          description: "A clean, citrus-friendly dry gin with a subtle tea lift, versatile in a G&T or classic cocktail.",
+          serve: "Tonic + Orange Peel",
+          image: "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      id: "southeast-asia-tropical-botanicals",
+      title: "Southeast Asia · Tropical Botanicals",
+      gins: [
+        {
+          name: "Paper Lantern Gin",
+          badge: "Tropical Contemporary",
+          badgeType: "unique",
+          distiller: "Southeast Asian craft distillery",
+          botanicals: ["Calamansi", "Pandan", "Coriander", "Juniper"],
+          description: "Fresh calamansi and fragrant pandan give this contemporary style a bright, aromatic profile.",
+          serve: "Soda + Calamansi",
+          image: "https://images.unsplash.com/photo-1574914629385-46448b0ddc1b?w=300&h=300&fit=crop"
+        },
+        {
+          name: "Batavia Arrack Botanical Gin",
+          badge: "Island Spice",
+          badgeType: "complex",
+          distiller: "Java-inspired craft distillery",
+          botanicals: ["Cinnamon", "Clove", "Lemongrass", "Juniper"],
+          description: "Warm spice and citrus create a generous island character that stands up to ginger and lime.",
+          serve: "Ginger Ale + Lime",
+          image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=300&h=300&fit=crop"
+        }
+      ]
+    }
+  ]
+};
