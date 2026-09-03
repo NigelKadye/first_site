@@ -220,10 +220,10 @@ export const southernAfricaGins = {
   ]
 };
 
-export const unitedKingdomGins = {
-  id: "uk",
-  title: "United Kingdom Gins",
-  intro: "The spiritual home of gin. From London dry benchmarks to island and hedgerow bottlings, the UK still defines both tradition and modern craft.",
+export const europeGins = {
+  id: "europe",
+  title: "European Gins",
+  intro: "From London dry benchmarks and Dutch genever roots to Mediterranean citrus and Nordic botanicals, Europe offers a remarkable range of gin traditions and modern craft styles.",
   regions: [
     {
       id: "london-south-east-the-gin-capital",
@@ -472,6 +472,136 @@ export const unitedKingdomGins = {
           description: "A bright small-batch gin with gentle floral notes and a crisp, dry ending. Good with tonic and a lemon coin.",
           serve: "Tonic + Lemon Coin",
           image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      id: "netherlands-genever-roots",
+      title: "Netherlands · Genever Roots",
+      gins: [
+        {
+          name: "Bols Genever",
+          badge: "Historic Style",
+          badgeType: "iconic",
+          distiller: "Lucas Bols · Amsterdam",
+          botanicals: ["Juniper", "Malt Wine", "Coriander"],
+          description: "Malt wine gives this Dutch classic a richer, almost whisky-like body. It is a direct link to gin's genever ancestry.",
+          serve: "Neat Chilled or Dutch Mule",
+          image: "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=300&fit=crop"
+        },
+        {
+          name: "Bobby's Schiedam Dry Gin",
+          badge: "Indonesian Dutch",
+          badgeType: "unique",
+          distiller: "Bobby's Gin · Schiedam",
+          botanicals: ["Lemongrass", "Clove", "Cinnamon", "Juniper"],
+          description: "A bright meeting point between Dutch distilling and Indonesian spice. Lemongrass and citrus keep its warm botanicals lively.",
+          serve: "Tonic + Orange Peel",
+          image: "https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      id: "spain-mediterranean-citrus",
+      title: "Spain · Mediterranean Citrus",
+      gins: [
+        {
+          name: "Gin Mare",
+          badge: "Mediterranean",
+          badgeType: "terroir",
+          distiller: "Gin Mare · Catalonia",
+          botanicals: ["Arbequina Olive", "Rosemary", "Basil", "Thyme"],
+          description: "Savoury Mediterranean botanicals make this a natural partner for food. Olive, rosemary, and citrus give it a distinctly coastal identity.",
+          serve: "Mediterranean Tonic + Rosemary",
+          image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=300&h=300&fit=crop"
+        },
+        {
+          name: "Nordés Atlantic Galician Gin",
+          badge: "Atlantic Floral",
+          badgeType: "floral",
+          distiller: "Nordés · Galicia",
+          botanicals: ["Albariño Grape", "Hibiscus", "Lemon Verbena"],
+          description: "Soft, aromatic, and floral with an Atlantic freshness. It is an approachable choice for drinkers who prefer gentler juniper.",
+          serve: "Neutral Tonic + White Grape",
+          image: "https://images.unsplash.com/photo-1574914629385-46448b0ddc1b?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      id: "germany-black-forest-botanicals",
+      title: "Germany · Black Forest Botanicals",
+      gins: [
+        {
+          name: "Monkey 47 Schwarzwald Dry Gin",
+          badge: "47 Botanicals",
+          badgeType: "complex",
+          distiller: "Black Forest Distillers · Baden-Württemberg",
+          botanicals: ["Lingonberry", "Black Forest Herbs", "Juniper", "Citrus"],
+          description: "Layered, aromatic, and intensely expressive, with forest fruit, spice, and citrus unfolding over a firm juniper frame.",
+          serve: "Light Tonic + Grapefruit Peel",
+          image: "https://images.unsplash.com/photo-1614963326505-3d8b1e22b5f6?w=300&h=300&fit=crop"
+        },
+        {
+          name: "Windspiel Premium Dry Gin",
+          badge: "Potato Spirit",
+          badgeType: "premium",
+          distiller: "Windspiel Manufaktur · Eifel",
+          botanicals: ["Juniper", "Cinnamon", "Lavender", "Cardamom"],
+          description: "A silky potato-based gin with warm spice and soft floral edges. Its rounded texture works beautifully in a Martini.",
+          serve: "Martini + Lemon Twist",
+          image: "https://images.unsplash.com/photo-1559628129-67cf63b72248?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      id: "italy-mediterranean-modern",
+      title: "Italy · Citrus and Alpine Herbs",
+      gins: [
+        {
+          name: "Malfy Con Limone",
+          badge: "Italian Citrus",
+          badgeType: "citrus",
+          distiller: "Malfy · Piedmont",
+          botanicals: ["Italian Lemons", "Juniper", "Coriander"],
+          description: "Bright lemon leads a clean, easy-drinking profile. It is made for sunny aperitivo serves and simple, cold tonic pours.",
+          serve: "Mediterranean Tonic + Lemon Wheel",
+          image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300&h=300&fit=crop"
+        },
+        {
+          name: "VII Hills Italian Dry Gin",
+          badge: "Roman Botanicals",
+          badgeType: "botanical",
+          distiller: "VII Hills · Rome",
+          botanicals: ["Celery", "Artichoke", "Blood Orange", "Juniper"],
+          description: "A savoury Italian gin with citrus lift and unusual vegetable depth. It is especially interesting alongside antipasti and seafood.",
+          serve: "Dry Tonic + Blood Orange",
+          image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      id: "nordics-floral-and-herbal",
+      title: "The Nordics · Clean and Foraged",
+      gins: [
+        {
+          name: "Hernö Gin",
+          badge: "Swedish Craft",
+          badgeType: "craft",
+          distiller: "Hernö Gin · Ångermanland",
+          botanicals: ["Lingonberry", "Meadowsweet", "Vanilla", "Juniper"],
+          description: "Softly floral with bright berry and vanilla notes, balanced by a clean Nordic dryness. It rewards a restrained garnish.",
+          serve: "Tonic + Lingonberry or Lemon",
+          image: "https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=300&h=300&fit=crop"
+        },
+        {
+          name: "Kyrö Gin",
+          badge: "Rye Based",
+          badgeType: "unique",
+          distiller: "Kyrö Distillery · Finland",
+          botanicals: ["Meadowsweet", "Birch Leaves", "Cranberry", "Juniper"],
+          description: "A rye-based gin with gentle spice, tart berry, and a fresh woodland character. A great bridge between classic and contemporary styles.",
+          serve: "Tonic + Rosemary",
+          image: "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=300&fit=crop"
         }
       ]
     }
@@ -1048,6 +1178,92 @@ export const americasGins = {
           description: "Traditional enough for classic cocktails, but fresh enough to suit modern long serves. It is a useful all-rounder.",
           serve: "Indian Tonic + Orange Peel",
           image: "https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=300&h=300&fit=crop"
+        }
+      ]
+    }
+  ]
+};
+
+export const asianGins = {
+  id: "asia",
+  title: "Asian Gins",
+  intro: "From Japanese tea and yuzu to Indian spice and Southeast Asian citrus, Asian gins bring bright aromatics, savoury depth, and a strong sense of place to the glass.",
+  regions: [
+    {
+      id: "japan-tea-and-citrus",
+      title: "Japan · Tea and Citrus",
+      gins: [
+        {
+          name: "Roku Gin",
+          badge: "Six Japanese Botanicals",
+          badgeType: "botanical",
+          distiller: "Suntory · Osaka",
+          botanicals: ["Sakura Flower", "Yuzu", "Sencha Tea", "Sansho Pepper"],
+          description: "Silky and precise, moving from floral cherry blossom to bright yuzu and gentle pepper.",
+          serve: "Japanese Tonic + Yuzu Peel",
+          image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=300&h=300&fit=crop"
+        },
+        {
+          name: "KI NO BI Kyoto Dry Gin",
+          badge: "Kyoto Craft",
+          badgeType: "craft",
+          distiller: "The Kyoto Distillery · Kyoto",
+          botanicals: ["Yuzu", "Hinoki", "Sansho Pepper", "Gyokuro Tea"],
+          description: "A layered dry gin built around Kyoto ingredients, balancing delicate tea, citrus, wood, and spice.",
+          serve: "Soda + Yuzu Peel",
+          image: "https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      id: "india-spice-and-citrus",
+      title: "India · Spice and Citrus",
+      gins: [
+        {
+          name: "Hapusa Himalayan Dry Gin",
+          badge: "Himalayan Botanicals",
+          badgeType: "terroir",
+          distiller: "NAO Spirits · Goa",
+          botanicals: ["Himalayan Juniper", "Mango", "Turmeric", "Gondhoraj Lime"],
+          description: "Earthy, warm, and gently fruity, with native Himalayan juniper giving it a distinctive dry backbone.",
+          serve: "Indian Tonic + Grapefruit Peel",
+          image: "https://images.unsplash.com/photo-1614963326505-3d8b1e22b5f6?w=300&h=300&fit=crop"
+        },
+        {
+          name: "Greater Than London Dry Gin",
+          badge: "Indian Craft",
+          badgeType: "classic",
+          distiller: "NAO Spirits · Goa",
+          botanicals: ["Juniper", "Coriander", "Fennel", "Darjeeling Tea"],
+          description: "A clean, citrus-friendly dry gin with a subtle tea lift, versatile in a G&T or classic cocktail.",
+          serve: "Tonic + Orange Peel",
+          image: "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      id: "southeast-asia-tropical-botanicals",
+      title: "Southeast Asia · Tropical Botanicals",
+      gins: [
+        {
+          name: "Paper Lantern Gin",
+          badge: "Tropical Contemporary",
+          badgeType: "unique",
+          distiller: "Southeast Asian craft distillery",
+          botanicals: ["Calamansi", "Pandan", "Coriander", "Juniper"],
+          description: "Fresh calamansi and fragrant pandan give this contemporary style a bright, aromatic profile.",
+          serve: "Soda + Calamansi",
+          image: "https://images.unsplash.com/photo-1574914629385-46448b0ddc1b?w=300&h=300&fit=crop"
+        },
+        {
+          name: "Batavia Arrack Botanical Gin",
+          badge: "Island Spice",
+          badgeType: "complex",
+          distiller: "Java-inspired craft distillery",
+          botanicals: ["Cinnamon", "Clove", "Lemongrass", "Juniper"],
+          description: "Warm spice and citrus create a generous island character that stands up to ginger and lime.",
+          serve: "Ginger Ale + Lime",
+          image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=300&h=300&fit=crop"
         }
       ]
     }

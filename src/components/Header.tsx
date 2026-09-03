@@ -8,7 +8,7 @@ export default function Header() {
           <BrandLogo />
         </div>
         <p className="header-kicker">Breathing Gin Since 2023</p>
-        <h1 className="site-title">African. Europe. Americas</h1>
+        <h1 className="site-title">Africa. Europe. Asia. Americas</h1>
         <p className="site-subtitle">
           Curated bottles, botanicals, mixers, serving rituals, and practical pairing advice.
         </p>

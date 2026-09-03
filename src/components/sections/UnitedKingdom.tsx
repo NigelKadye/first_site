@@ -1,5 +1,5 @@
-import GinCard from '../GinCard'
-import { unitedKingdomGins } from '../../data/gins'
+import GinList from '../GinList'
+import { europeGins } from '../../data/gins'
 
 import { ArrowLeft } from 'lucide-react'
 
@@ -13,26 +13,17 @@ function BackHomeButton({ onNavigate }) {
 }
 
 
-export default function UnitedKingdom({ onNavigate }) {
+export default function Europe({ onNavigate }) {
   return (
     <section className="content-section">
       <div className="site-width section-shell">
         <BackHomeButton onNavigate={onNavigate} />
         <div className="section-heading">
           <p className="section-eyebrow">Regional collection</p>
-          <h2 className="section-title">{unitedKingdomGins.title}</h2>
-          <p className="section-intro">{unitedKingdomGins.intro}</p>
+          <h2 className="section-title">{europeGins.title}</h2>
+          <p className="section-intro">{europeGins.intro}</p>
         </div>
-        {unitedKingdomGins.regions.map((region) => (
-          <section key={region.id} className="region-block">
-            <h3 className="region-title">{region.title}</h3>
-            <div className="card-grid">
-              {region.gins.map((gin) => (
-                <GinCard key={gin.name} {...gin} />
-              ))}
-            </div>
-          </section>
-        ))}
+        <GinList regions={europeGins.regions} />
       </div>
     </section>
   )

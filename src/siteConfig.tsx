@@ -5,9 +5,10 @@ export const navGroups = [
     description: 'Browse one gin region at a time with dedicated collection pages.',
     items: [
       { id: 'southern-africa', label: 'Southern Africa', description: 'African craft bottles and botanical signatures.' },
-      { id: 'uk', label: 'United Kingdom', description: 'Classic London dry styles and modern British distillers.' },
+      { id: 'europe', label: 'Europe', description: 'London dry classics, Mediterranean bottles, and modern European distillers.' },
       { id: 'usa', label: 'United States', description: 'American craft gin picks with bold flavor profiles.' },
       { id: 'americas', label: 'Southern America & Mexico', description: 'Latin American expressions and bright serving ideas.' },
+      { id: 'asia', label: 'Asia', description: 'Japanese, Indian, and Southeast Asian gins shaped by local botanicals.' },
     ],
   },
   {

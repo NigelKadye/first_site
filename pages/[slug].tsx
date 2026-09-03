@@ -9,9 +9,10 @@ import { allPageSlugs, getGroupBySlug, getSectionBySlug, getSectionSiblings } fr
 
 const sectionComponents = {
   'southern-africa': dynamic(() => import('../src/components/sections/SouthernAfrica')),
-  uk: dynamic(() => import('../src/components/sections/UnitedKingdom')),
+  europe: dynamic(() => import('../src/components/sections/UnitedKingdom')),
   usa: dynamic(() => import('../src/components/sections/UnitedStates')),
   americas: dynamic(() => import('../src/components/sections/Americas')),
+  asia: dynamic(() => import('../src/components/sections/Asia')),
   botanicals: dynamic(() => import('../src/components/sections/Botanicals')),
   mixers: dynamic(() => import('../src/components/sections/Mixers')),
   'spirit-coolers': dynamic(() => import('../src/components/sections/SpiritCoolers')),

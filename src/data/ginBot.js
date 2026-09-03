@@ -79,8 +79,14 @@ export const botRules = [
 
   // --- UK gins ---
   {
-    triggers: ['uk gin', 'british gin', 'english gin', 'scottish gin', 'hendricks', "hendrick's", 'beefeater', 'sipsmith', 'tanqueray', 'gordons', 'bombay sapphire'],
-    response: "The UK is the spiritual home of gin. Key bottles to know:\n\n• **Beefeater** (London) — the classic London Dry benchmark. Bold juniper, orange peel, angelica. Brilliant in a Negroni.\n• **Sipsmith London Dry** — copper pot distilled, beautifully balanced, the craft revival pioneer.\n• **Hendrick's** (Scotland) — cucumber and rose infused. Unusual, approachable, great for newcomers.\n• **Tanqueray No. TEN** — fresh citrus-led premium expression. Exceptional in a Martini.\n• **Bombay Sapphire** — lighter and more floral than most London Drys, 10 botanicals.\n• **Hayman's London Dry** — family-owned, traditional recipe, clean and honest.\n\nUK gin spans classic London Dry to wild Scottish botanicals — there's a style for every palate.",
+    triggers: ['european gin', 'europe gin', 'uk gin', 'british gin', 'english gin', 'scottish gin', 'irish gin', 'spanish gin', 'italian gin', 'german gin', 'dutch gin', 'hendricks', "hendrick's", 'beefeater', 'sipsmith', 'tanqueray', 'gordons', 'bombay sapphire', 'monkey 47', 'gin mare', 'malfy', 'roku'],
+    response: "Europe is one of gin's richest regions, from London Dry benchmarks to Mediterranean, Alpine, and Nordic styles:\n\n• **Beefeater** and **Sipsmith** (England) — juniper-led classics with different levels of polish and citrus.\n• **Hendrick's** (Scotland) — cucumber and rose infused, unusual and approachable.\n• **Monkey 47** (Germany) — intensely layered with Black Forest botanicals.\n• **Gin Mare** (Spain) — savoury Mediterranean botanicals including olive, rosemary, and thyme.\n• **Malfy** (Italy) — bright Italian citrus, ideal for sunny aperitivo serves.\n• **Bols Genever** (Netherlands) — a maltier historic style that shows gin's roots.\n• **Hernö** (Sweden) — soft floral and berry notes with a clean Nordic finish.\n\nEuropean gin is not one style — choose classic juniper, savoury Mediterranean, or floral and foraged depending on your palate.",
+  },
+
+  // --- Asian gins ---
+  {
+    triggers: ['asian gin', 'asia gin', 'japanese gin', 'japan gin', 'indian gin', 'india gin', 'roku', 'ki no bi', 'hapusa', 'southeast asian'],
+    response: "Asian gin makers often build around tea, citrus, spice, and regional botanicals:\n\n• **Roku** (Japan) — yuzu, sencha tea, sakura, and sansho pepper. Silky and precise.\n• **KI NO BI** (Kyoto) — yuzu, hinoki, sansho, and gyokuro tea in a structured dry style.\n• **Hapusa** (India) — Himalayan juniper, mango, turmeric, and gondhoraj lime. Earthy and distinctive.\n• **Greater Than** (India) — a clean, affordable dry gin with tea and spice lift.\n\nTry Asian gins with yuzu, calamansi, ginger, soda, or a light tonic so the regional botanicals stay clear.",
   },
 
   // --- USA gins ---
@@ -103,7 +109,7 @@ export const botRules = [
 
   // --- Food pairing ---
   {
-    triggers: ['food pairing', 'food with gin', 'what to eat', 'snack', 'snacks with gin', 'pairing'],
+    triggers: ['food', 'food pairing', 'food with gin', 'what to eat', 'snack', 'snacks with gin', 'pairing'],
     response: "Gin and food are natural partners:\n\n• **Citrus gins** — ceviche, grilled prawns, feta and olives, salted almonds\n• **Floral and herbal gins** — goat cheese, grilled halloumi, rosemary flatbread, fresh herbs\n• **Spiced and bold gins** — tacos, chilli prawns, guacamole, smoky salsa\n• **Fruit-forward gins** — brie, fresh berries, shortbread, honey, charcuterie\n\n**Golden rule**: the food shouldn't compete with the gin. Keep strong chilli and heavy smoked items in small portions. The gin should remain the star.",
   },
 
