@@ -1,18 +1,16 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { useEffect, useMemo, useState } from 'react'
 import { ChevronDown, Menu, X } from 'lucide-react'
 import { getGroupBySlug, topLevelNav } from '../siteConfig'
 
-export default function Nav({ activeGroupSlug }) {
-  const router = useRouter()
+export default function Nav({ activeGroupSlug, activePageSlug = null }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [sectionMenuOpen, setSectionMenuOpen] = useState(false)
 
   useEffect(() => {
     setMenuOpen(false)
     setSectionMenuOpen(false)
-  }, [router.asPath])
+  }, [activePageSlug])
 
   const activeGroup = useMemo(() => {
     if (!activeGroupSlug) {
@@ -24,17 +22,17 @@ export default function Nav({ activeGroupSlug }) {
 
   const isTopLinkActive = (href, slug) => {
     if (href === '/') {
-      return router.asPath === '/'
+      return activePageSlug === null
     }
 
-    return router.asPath === href || activeGroupSlug === slug
+    return activeGroupSlug === slug
   }
 
   return (
     <nav className="sticky-nav" aria-label="Primary">
       <div className="site-width nav-shell">
         <div className="nav-top-row">
-          {router.asPath !== '/' ? (
+          {activePageSlug !== null ? (
             <Link href="/" className="home-link" onClick={() => setMenuOpen(false)}>
               Home
             </Link>
@@ -88,7 +86,7 @@ export default function Nav({ activeGroupSlug }) {
                       <Link
                         key={item.id}
                         href={item.href}
-                        className={`nav-link ${router.asPath === item.href ? 'is-active' : ''}`}
+                        className={`nav-link ${activePageSlug === item.id ? 'is-active' : ''}`}
                         onClick={() => {
                           setMenuOpen(false)
                           setSectionMenuOpen(false)
