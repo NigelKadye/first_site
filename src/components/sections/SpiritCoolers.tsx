@@ -10,39 +10,34 @@ export default function SpiritCoolers({ onNavigate }) {
           Back to Home
         </button>
         <div className="section-heading">
-          <p className="section-eyebrow">Lifestyle</p>
+          <p className="section-eyebrow">Knowledge</p>
           <h2 className="section-title">{coolersData.title}</h2>
           <p className="section-intro">{coolersData.intro}</p>
         </div>
-        <div className="info-grid">
-          {coolersData.coolers.map((cooler) => (
-            <article key={cooler.title} className="info-card">
-              <h3>{cooler.title}</h3>
-              <p className="stack-copy">{cooler.profile}</p>
-              <div className="stack-list compact-gap">
-                <div className="stack-row">
-                  <p className="stack-title">Recipe</p>
-                  <p className="stack-copy">{cooler.recipe}</p>
-                </div>
-                <div className="stack-row">
-                  <p className="stack-title">Best with</p>
-                  <p className="stack-copy">{cooler.bestWith}</p>
-                </div>
+        <section className="flat-section">
+          <div className="flat-list">
+            {coolersData.coolers.map((cooler) => (
+              <div key={cooler.title} className="flat-list-item">
+                <p className="stack-title">{cooler.title}</p>
+                <p className="stack-copy">{cooler.profile}</p>
+                <p className="stack-copy"><strong>Recipe:</strong> {cooler.recipe}</p>
+                <p className="micro-note"><strong>Best with:</strong> {cooler.bestWith}</p>
               </div>
-            </article>
-          ))}
-        </div>
-        <article className="guide-card">
+            ))}
+          </div>
+        </section>
+        <section className="flat-section">
           <h3>{coolersData.guideTitle}</h3>
-          <div className="guide-grid">
-            {coolersData.guideTips.map((tip) => (
-              <div key={tip.title} className="guide-item">
+          <div className="flat-list">
+            {coolersData.guideTips.map((tip, index) => (
+              <div key={tip.title} className="flat-list-item">
+                <p className="section-eyebrow">Tip {index + 1}</p>
                 <p className="stack-title">{tip.title}</p>
                 <p className="stack-copy">{tip.description}</p>
               </div>
             ))}
           </div>
-        </article>
+        </section>
       </div>
     </section>
   )

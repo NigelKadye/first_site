@@ -15,9 +15,11 @@ export const navGroups = [
   {
     slug: 'knowledge',
     title: 'Knowledge',
-    description: 'Learn the botanicals, mixers, and coolers that shape each serve.',
+    description: 'Learn how gin is built, tasted, and turned into a better serve.',
     items: [
       { id: 'botanicals', label: 'Botanicals', description: 'Juniper, citrus, florals, and how they change a gin.' },
+      { id: 'gin-construction', label: 'Gin Construction', description: 'Base spirit, ABV, infusion, distillation, and finishing choices.' },
+      { id: 'tasting-serve', label: 'Tasting & Serve Building', description: 'A practical method for tasting gin and designing a balanced drink.' },
       { id: 'mixers', label: 'Mixers', description: 'Tonic, soda, and pairing notes for different styles.' },
       { id: 'spirit-coolers', label: 'Spirit Coolers', description: 'Refreshing gin cooler combinations for easy pours.' },
     ],
@@ -41,6 +43,7 @@ export const navGroups = [
       { id: 'pairings', label: 'Food Pairings', description: 'Simple snacks and plates that match each style.' },
       { id: 'quick-fixes', label: 'Quick Gin Fixes', description: 'Fast ways to rebalance a drink and rescue a serve.' },
       { id: 'craft-gin', label: 'How to Start Crafting Your Own Gin', description: 'A practical beginner’s path from botanicals to bottle.' },
+      { id: 'quirky-cocktails', label: 'Quirky Cocktails', description: 'Unexpected gin pairings with names worth remembering.' },
     ],
   },
 ].map((group) => ({
@@ -56,13 +59,21 @@ export const navGroups = [
 export const topLevelNav = [
   { href: '/', label: 'Home', slug: null },
   ...navGroups.map((group) => ({ href: group.href, label: group.title, slug: group.slug })),
+  { href: '/quirky-cocktails', label: 'Quirky Cocktails', slug: 'quirky-cocktails' },
 ]
 
-export const homeItems = navGroups.map((group) => ({
-  href: group.href,
-  label: group.title,
-  description: group.description,
-}))
+export const homeItems = [
+  ...navGroups.map((group) => ({
+    href: group.href,
+    label: group.title,
+    description: group.description,
+  })),
+  {
+    href: '/quirky-cocktails',
+    label: 'Quirky Cocktails',
+    description: 'Unexpected gin pairings with names worth remembering.',
+  },
+]
 
 export const allPageSlugs = navGroups.flatMap((group) => [group.slug, ...group.items.map((item) => item.id)])
 

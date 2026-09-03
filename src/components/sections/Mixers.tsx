@@ -14,21 +14,22 @@ export default function Mixers({ onNavigate }) {
           <h2 className="section-title">{mixersData.title}</h2>
           <p className="section-intro">{mixersData.intro}</p>
         </div>
-        <div className="info-grid">
+        <div className="flat-section-list">
           {mixersData.categories.map((category) => (
-            <article key={category.title} className="info-card">
+            <section key={category.title} className="flat-section">
               <h3>{category.title}</h3>
-              <div className="stack-list">
+              <div className="flat-list">
                 {category.items.map((item) => (
-                  <div key={item.label} className="stack-row">
+                  <div key={item.label} className="flat-list-item">
                     <p className="stack-title">{item.label}</p>
                     <p className="stack-copy">{item.description}</p>
                   </div>
                 ))}
               </div>
-            </article>
+            </section>
           ))}
         </div>
+        <p className="flat-note"><strong>Serve note:</strong> {mixersData.tip}</p>
       </div>
     </section>
   )

@@ -1023,8 +1023,32 @@ img {
   max-width: 48rem;
 }
 
+.quirky-cocktail-list {
+  max-width: 58rem;
+  margin-top: 0;
+}
+
+.quirky-cocktail-item h3 {
+  margin: 0.15rem 0 0.75rem;
+  color: var(--color-text);
+  font-size: 1.45rem;
+}
+
 .flat-section-list {
   max-width: 58rem;
+}
+
+.flat-note {
+  max-width: 58rem;
+  margin: 2rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(231, 189, 101, 0.32);
+  color: var(--color-text-muted);
+}
+
+.flat-note strong,
+.quirky-cocktail-item strong {
+  color: var(--color-accent);
 }
 
 .region-visit-section + .region-visit-section {
@@ -1141,7 +1165,7 @@ img {
   }
 
   .nav-tabs {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 
   .nav-top-row .menu-toggle,

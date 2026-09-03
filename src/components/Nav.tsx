@@ -25,7 +25,7 @@ export default function Nav({ activeGroupSlug, activePageSlug = null }) {
       return activePageSlug === null
     }
 
-    return activeGroupSlug === slug
+    return activeGroupSlug === slug || activePageSlug === slug
   }
 
   return (

@@ -14,6 +14,8 @@ const sectionComponents = {
   americas: dynamic(() => import('../src/components/sections/Americas')),
   asia: dynamic(() => import('../src/components/sections/Asia')),
   botanicals: dynamic(() => import('../src/components/sections/Botanicals')),
+  'gin-construction': dynamic(() => import('../src/components/sections/GinConstruction')),
+  'tasting-serve': dynamic(() => import('../src/components/sections/TastingServe')),
   mixers: dynamic(() => import('../src/components/sections/Mixers')),
   'spirit-coolers': dynamic(() => import('../src/components/sections/SpiritCoolers')),
   budget: dynamic(() => import('../src/components/sections/Budget')),
@@ -24,6 +26,7 @@ const sectionComponents = {
   serving: dynamic(() => import('../src/components/sections/Serving')),
   pairings: dynamic(() => import('../src/components/sections/Pairings')),
   'quick-fixes': dynamic(() => import('../src/components/sections/QuickFixes')),
+  'quirky-cocktails': dynamic(() => import('../src/components/sections/QuirkyCocktails')),
 }
 
 export async function getStaticPaths() {
