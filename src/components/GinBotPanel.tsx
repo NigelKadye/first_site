@@ -2,6 +2,24 @@ import { useEffect, useRef, useState } from 'react'
 import { MessageCircle, Send, X } from 'lucide-react'
 import { botPersonality, botRules, suggestedPrompts } from '../data/ginBot'
 
+function getGinFallback(userMessage) {
+  const lower = userMessage.toLowerCase()
+
+  if (/travel|trip|holiday|country|city|place|where/.test(lower)) {
+    return "I can give that a gin angle: explore a region through its botanicals. Try juniper-led European gin, fynbos gin from Southern Africa, Japanese tea and yuzu gin, or American terroir styles. Ask me for a regional bottle guide."
+  }
+
+  if (/weather|hot|cold|summer|winter|season/.test(lower)) {
+    return "I can give that a gin angle: hot weather calls for a tall, ice-heavy cooler with gin, citrus, soda, and a fresh herb. Cold weather suits a Martini, Negroni, or a spiced gin serve."
+  }
+
+  if (/work|study|focus|busy|tired/.test(lower)) {
+    return "I can give that a gin angle for later: keep a simple 1:3 G&T formula in mind, with a dry tonic and a garnish that matches the gin. Please enjoy alcohol responsibly and never drink before driving or working."
+  }
+
+  return "I’ll keep that gin-related. A useful starting point is a cold 1:3 G&T with plenty of ice, a dry tonic, and a garnish that matches the gin’s strongest botanical. Ask me about a region, bottle, recipe, mixer, or pairing for a more specific answer."
+}
+
 async function getBotResponse(userMessage) {
   const lower = userMessage.toLowerCase().trim()
   let matchedRule = null
@@ -18,20 +36,34 @@ async function getBotResponse(userMessage) {
     }
   }
 
-  const response = matchedRule?.response ?? botPersonality.fallback
-  const wantsLiveCocktails = /cocktail|cocktails|recipe|recipes|drink|drinks|online|live/.test(lower)
+  const response = matchedRule?.response ?? getGinFallback(userMessage)
+  const wantsLiveData = !matchedRule || /cocktail|cocktails|recipe|recipes|drink|drinks|online|live|bottle|brand|recommend|suggest/.test(lower)
 
-  if (!wantsLiveCocktails) return response
+  if (!wantsLiveData) return response
 
   try {
     const apiResponse = await fetch('/api/gin-cocktails')
     const data = await apiResponse.json()
     const drinks = Array.isArray(data.drinks) ? data.drinks : []
+    const gins = Array.isArray(data.gins) ? data.gins : []
+    const liveSections = []
 
-    if (!drinks.length) return response
+    if (gins.length) {
+      const liveGins = gins
+        .slice(0, 4)
+        .map((gin) => `• **${gin.product_name}${gin.brands ? ` · ${gin.brands}` : ''}**`)
+        .join('\n')
+      liveSections.push(`**${data.liveGins ? 'Live gin bottles' : 'More gin bottles'}**\n${liveGins}`)
+    }
 
-    const livePicks = drinks.slice(0, 4).map((drink) => `• **${drink.strDrink}**`).join('\\n')
-    return `${response}\\n\\n**Live cocktail picks**\\n${livePicks}\\n\\nPulled from TheCocktailDB's free public recipe catalogue.`
+    if (drinks.length) {
+      const liveDrinks = drinks.slice(0, 4).map((drink) => `• **${drink.strDrink}**`).join('\n')
+      liveSections.push(`**Live cocktail ideas**\n${liveDrinks}`)
+    }
+
+    return liveSections.length
+      ? `${response}\n\n${liveSections.join('\n\n')}\n\nLive results from free public drink and product catalogues.`
+      : response
   } catch {
     return response
   }

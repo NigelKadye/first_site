@@ -1,5 +1,5 @@
 import { ArrowLeft } from 'lucide-react'
-import GinCard from '../GinCard'
+import GinList from '../GinList'
 import { asianGins } from '../../data/gins'
 
 export default function Asia({ onNavigate }) {
@@ -15,16 +15,7 @@ export default function Asia({ onNavigate }) {
           <h2 className="section-title">{asianGins.title}</h2>
           <p className="section-intro">{asianGins.intro}</p>
         </div>
-        {asianGins.regions.map((region) => (
-          <section key={region.id} className="region-block">
-            <h3 className="region-title">{region.title}</h3>
-            <div className="card-grid">
-              {region.gins.map((gin) => (
-                <GinCard key={gin.name} {...gin} />
-              ))}
-            </div>
-          </section>
-        ))}
+        <GinList regions={asianGins.regions} />
       </div>
     </section>
   )
