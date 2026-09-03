@@ -12,17 +12,17 @@ export default function CategoryOverview({ group }) {
           <h2 className="section-title">{group.title}</h2>
           <p className="section-intro">{group.description}</p>
         </div>
-        <div className="guide-grid wide-grid">
+        <nav className="flat-nav" aria-label={`${group.title} pages`}>
           {group.items.map((item) => (
-            <Link key={item.id} href={item.href} className="guide-item category-link">
-              <span className="stack-title">{item.label}</span>
-              <span className="subtle-copy">{item.description}</span>
-              <span className="category-link-arrow">
-                <ChevronRight size={18} aria-hidden="true" />
+            <Link key={item.id} href={item.href} className="flat-nav-item">
+              <span>
+                <span className="stack-title">{item.label}</span>
+                <span className="subtle-copy">{item.description}</span>
               </span>
+              <ChevronRight size={18} aria-hidden="true" />
             </Link>
           ))}
-        </div>
+        </nav>
       </div>
     </section>
   )

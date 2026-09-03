@@ -9,6 +9,7 @@ export const navGroups = [
       { id: 'usa', label: 'United States', description: 'American craft gin picks with bold flavor profiles.' },
       { id: 'americas', label: 'Southern America & Mexico', description: 'Latin American expressions and bright serving ideas.' },
       { id: 'asia', label: 'Asia', description: 'Japanese, Indian, and Southeast Asian gins shaped by local botanicals.' },
+      { id: 'plan-visit', label: 'Plan a Visit', description: 'Distilleries, gin schools, and workshop leads by region.' },
     ],
   },
   {
@@ -27,8 +28,8 @@ export const navGroups = [
     description: 'Choose serves by budget, occasion, and practical hosting tips.',
     items: [
       { id: 'budget', label: 'Budget Picks', description: 'Affordable bottles that still feel elevated.' },
-      { id: 'first-dates', label: 'First Dates', description: 'Stylish pours for easy conversation and confidence.' },
-      { id: 'craft-gin', label: 'First Date Gin Tips', description: 'Zero-proof options, gin-making date ideas, and visitor leads.' },
+      { id: 'first-dates', label: 'Gins for First Dates', description: 'Stylish pours for easy conversation and confidence.' },
+      { id: 'first-date-tips', label: 'First Date Gin Tips', description: 'Practical date advice and inclusive zero-proof options.' },
       { id: 'serving', label: 'Serving Tips', description: 'Glassware, garnish, and temperature guidance.' },
     ],
   },
@@ -39,6 +40,7 @@ export const navGroups = [
     items: [
       { id: 'pairings', label: 'Food Pairings', description: 'Simple snacks and plates that match each style.' },
       { id: 'quick-fixes', label: 'Quick Gin Fixes', description: 'Fast ways to rebalance a drink and rescue a serve.' },
+      { id: 'craft-gin', label: 'How to Start Crafting Your Own Gin', description: 'A practical beginner’s path from botanicals to bottle.' },
     ],
   },
 ].map((group) => ({

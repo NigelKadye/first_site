@@ -1,6 +1,6 @@
 export const craftGinData = {
-  title: 'First Date Gin Tips',
-  intro: 'Make a date of it: learn how botanicals work, build a recipe, and leave with a bottle that tells your story. Experiences change seasonally, so confirm tour, workshop, age, and booking requirements with each venue before you travel.',
+  title: 'How to start crafting your own gin',
+  intro: 'Learn how botanicals work, build a recipe, and leave with a bottle that tells your story. Guided experiences change seasonally, so confirm tour, workshop, age, and booking requirements with each venue before you travel.',
   nonAlcoholicTitle: 'Dating a gin drinker when you do not drink',
   nonAlcoholicOptions: [
     'Ask for a zero-proof G and T, tonic with the same garnish, or a botanical soda so you can still share the ritual.',

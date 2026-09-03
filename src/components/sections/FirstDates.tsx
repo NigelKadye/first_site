@@ -14,34 +14,23 @@ export default function FirstDates({ onNavigate }) {
           <h2 className="section-title">{firstDatesData.title}</h2>
           <p className="section-intro">{firstDatesData.intro}</p>
         </div>
-        <div className="info-grid wide-grid">
+        <section className="flat-section">
           {firstDatesData.categories.map((category) => (
-            <article key={category.title} className="info-card">
+            <section key={category.title} className="flat-subsection">
               <h3>{category.title}</h3>
               <p className="subtle-copy">{category.subtitle}</p>
-              <div className="stack-list">
+              <div className="flat-list">
                 {category.gins.map((gin) => (
-                  <div key={gin.name} className="stack-row">
+                  <div key={gin.name} className="flat-list-item">
                     <p className="stack-title">{gin.name}</p>
                     <p className="stack-copy">{gin.why}</p>
                     <p className="micro-note">Order: {gin.order}</p>
                   </div>
                 ))}
               </div>
-            </article>
+            </section>
           ))}
-        </div>
-        <article className="guide-card">
-          <h3>{firstDatesData.tipsTitle}</h3>
-          <div className="guide-grid">
-            {firstDatesData.tips.map((tip) => (
-              <div key={tip.title} className="guide-item">
-                <p className="stack-title">{tip.title}</p>
-                <p className="stack-copy">{tip.description}</p>
-              </div>
-            ))}
-          </div>
-        </article>
+        </section>
       </div>
     </section>
   )
