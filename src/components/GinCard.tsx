@@ -15,6 +15,9 @@ export default function GinCard({ name, badge, badgeType, distiller, botanicals,
             className="gin-card-image"
             src={image}
             alt={name}
+            width={320}
+            height={320}
+            sizes="(max-width: 640px) 100vw, 320px"
             loading="lazy"
             decoding="async"
             onError={() => setShowImage(false)}
