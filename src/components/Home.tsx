@@ -15,7 +15,7 @@ export default function Home({ items }) {
           </div>
           <div className="hero-actions" aria-label="Guide sections">
             {items.map((item, index) => (
-              <Link key={item.href} href={item.href} className="explore-button">
+              <Link key={item.href} href={item.href} prefetch={false} className="explore-button">
                 <span className="explore-number" aria-hidden="true">0{index + 1}</span>
                 <span className="explore-copy">
                   <span className="explore-title">{item.label}</span>

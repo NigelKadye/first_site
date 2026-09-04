@@ -33,7 +33,7 @@ export default function Nav({ activeGroupSlug, activePageSlug = null }) {
       <div className="site-width nav-shell">
         <div className="nav-top-row">
           {activePageSlug !== null ? (
-            <Link href="/" className="home-link" onClick={() => setMenuOpen(false)}>
+            <Link href="/" prefetch={false} className="home-link" onClick={() => setMenuOpen(false)}>
               Home
             </Link>
           ) : null}
@@ -55,6 +55,7 @@ export default function Nav({ activeGroupSlug, activePageSlug = null }) {
               <Link
                 key={item.href}
                 href={item.href}
+                prefetch={false}
                 className={`nav-tab ${isTopLinkActive(item.href, item.slug) ? 'is-active' : ''}`}
                 onClick={() => setMenuOpen(false)}
               >
@@ -86,6 +87,7 @@ export default function Nav({ activeGroupSlug, activePageSlug = null }) {
                       <Link
                         key={item.id}
                         href={item.href}
+                        prefetch={false}
                         className={`nav-link ${activePageSlug === item.id ? 'is-active' : ''}`}
                         onClick={() => {
                           setMenuOpen(false)
