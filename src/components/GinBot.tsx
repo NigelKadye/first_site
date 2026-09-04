@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic'
 import { MessageCircle, X } from 'lucide-react'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 function GinBotLoadError() {
   return (
@@ -25,15 +25,22 @@ const GinBotPanel = dynamic(
 export default function GinBot() {
   const [open, setOpen] = useState(false)
   const [panelRequested, setPanelRequested] = useState(false)
+  const fabRef = useRef(null)
 
   const openChat = () => {
     setPanelRequested(true)
     setOpen(true)
   }
 
+  const closeChat = () => {
+    setOpen(false)
+    fabRef.current?.focus()
+  }
+
   return (
     <>
       <button
+        ref={fabRef}
         type="button"
         className="ginbot-fab"
         aria-label={open ? 'Close GinBot' : 'Open GinBot'}
@@ -45,7 +52,7 @@ export default function GinBot() {
         {!open ? <span className="ginbot-fab-label">Gin Chat</span> : null}
       </button>
 
-      {panelRequested ? <GinBotPanel open={open} onClose={() => setOpen(false)} /> : null}
+      {panelRequested ? <GinBotPanel open={open} onClose={closeChat} /> : null}
     </>
   )
 }

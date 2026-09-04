@@ -5,6 +5,7 @@ export const botPersonality = {
 }
 
 export const promptFlow = {
+  startResponse: 'Of course. Choose a new gin topic and I will guide you from there.',
   start: [
     { id: 'start-beginner', label: 'I am new to gin', next: 'beginner' },
     { id: 'start-styles', label: 'Compare gin styles', next: 'styles' },
