@@ -8,7 +8,7 @@ export default function SectionPager({ group, previousItem, nextItem }) {
         <p className="section-eyebrow">Navigation</p>
         <div className="section-gesture-grid">
           {previousItem ? (
-            <Link href={previousItem.href} className="gesture-link">
+            <Link href={previousItem.href} prefetch={false} className="gesture-link">
               <ArrowLeft size={18} aria-hidden="true" />
               <span>
                 <span className="gesture-label">Previous</span>
@@ -25,7 +25,7 @@ export default function SectionPager({ group, previousItem, nextItem }) {
             </div>
           )}
 
-          <Link href={group.href} className="gesture-link gesture-link--center">
+          <Link href={group.href} prefetch={false} className="gesture-link gesture-link--center">
             <Compass size={18} aria-hidden="true" />
             <span>
               <span className="gesture-label">Browse</span>
@@ -34,7 +34,7 @@ export default function SectionPager({ group, previousItem, nextItem }) {
           </Link>
 
           {nextItem ? (
-            <Link href={nextItem.href} className="gesture-link gesture-link--next">
+            <Link href={nextItem.href} prefetch={false} className="gesture-link gesture-link--next">
               <span>
                 <span className="gesture-label">Next</span>
                 <span className="gesture-title">{nextItem.label}</span>

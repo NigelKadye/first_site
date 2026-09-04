@@ -4,8 +4,11 @@ import { useRouter } from 'next/router'
 import CategoryOverview from '../src/components/CategoryOverview'
 import Layout from '../src/components/Layout'
 import SectionPager from '../src/components/SectionPager'
-import GinBot from '../src/components/GinBot'
 import { allPageSlugs, getGroupBySlug, getSectionBySlug, getSectionSiblings } from '../src/siteConfig'
+
+const GinBot = dynamic(() => import('../src/components/GinBot'), {
+  ssr: false,
+})
 
 const sectionComponents = {
   'southern-africa': dynamic(() => import('../src/components/sections/SouthernAfrica')),

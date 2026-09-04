@@ -14,7 +14,7 @@ export default function CategoryOverview({ group }) {
         </div>
         <nav className="flat-nav" aria-label={`${group.title} pages`}>
           {group.items.map((item) => (
-            <Link key={item.id} href={item.href} className="flat-nav-item">
+            <Link key={item.id} href={item.href} prefetch={false} className="flat-nav-item">
               <span>
                 <span className="stack-title">{item.label}</span>
                 <span className="subtle-copy">{item.description}</span>
