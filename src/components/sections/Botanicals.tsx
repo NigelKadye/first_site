@@ -14,19 +14,19 @@ export default function Botanicals({ onNavigate }) {
           <h2 className="section-title">{botanicalsData.title}</h2>
           <p className="section-intro">{botanicalsData.intro}</p>
         </div>
-        <div className="info-grid">
+        <div className="flat-section-list">
           {botanicalsData.categories.map((category) => (
-            <article key={category.title} className="info-card">
+            <section key={category.title} className="flat-section">
               <h3>{category.title}</h3>
-              <div className="stack-list">
+              <div className="flat-list">
                 {category.items.map((item) => (
-                  <div key={item.name} className="stack-row">
+                  <div key={item.name} className="flat-list-item">
                     <p className="stack-title">{item.name}</p>
                     <p className="stack-copy">{item.description}</p>
                   </div>
                 ))}
               </div>
-            </article>
+            </section>
           ))}
         </div>
       </div>

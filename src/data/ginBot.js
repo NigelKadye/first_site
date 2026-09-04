@@ -1,217 +1,346 @@
-// GinBot knowledge base — offline rule-based gin assistant
-
 export const botPersonality = {
   name: 'GinBot',
-  greeting: "Hello! I'm GinBot, your gin guide. Ask me anything about gins, botanicals, serving tips, food pairings, or help choosing the right bottle.",
-  fallback: "I don't have a specific answer for that, but I'm happy to help with gin styles, botanicals, serving tips, food pairings, or recommendations. Try asking something like: 'What gin is good for a first date?' or 'What botanicals are in Hendrick's?'",
+  greeting: 'Welcome to GinBot. Choose a topic and I will guide you one step at a time.',
+  fallback: 'Choose a topic below and I will take you there.',
 }
 
-// Suggested prompts shown in the chat UI
-export const suggestedPrompts = [
-  "What gin should I try first?",
-  "Best gin for a G&T?",
-  "What are fynbos botanicals?",
-  "Gin on a budget?",
-  "What food pairs with gin?",
-  "Difference between London Dry and New Western?",
-  "How do I serve gin properly?",
-  "What mixer should I use?",
-  "Best South African gin?",
-  "What makes a good first-date gin?",
-  "How do I taste gin?",
-  "How is gin made?",
-  "Where did gin come from?",
-  "How do I choose a tonic?",
-  "Why does my G&T taste bitter?",
-  "What is a zero-proof gin serve?",
-]
-
-// Each rule: array of trigger keywords/phrases + a response string
-// The matcher checks if the user message contains ANY trigger (case-insensitive)
-export const botRules = [
-  // --- Greetings ---
-  {
-    triggers: ['hello', 'hi', 'hey', 'howdy', 'greetings', 'good morning', 'good afternoon', 'good evening'],
-    response: "Hello! I'm GinBot — your personal gin expert. Ask me anything: gin recommendations, botanicals, food pairings, how to serve, or the best budget bottle. What can I help you with today?",
+export const promptFlow = {
+  startResponse: 'Of course. Choose a new gin topic and I will guide you from there.',
+  start: [
+    { id: 'start-beginner', label: 'I am new to gin', next: 'beginner' },
+    { id: 'start-styles', label: 'Compare gin styles', next: 'styles' },
+    { id: 'start-made', label: 'How is gin made?', next: 'construction' },
+    { id: 'start-serve', label: 'Build a better G&T', next: 'gt' },
+    { id: 'start-pairing', label: 'Find a food pairing', next: 'pairing' },
+    { id: 'start-cocktail', label: 'Find a cocktail', next: 'cocktails' },
+    { id: 'start-date', label: 'Plan a gin date', next: 'date' },
+  ],
+  nodes: {
+    beginner: {
+      response: 'A gentle first step is a gin with a clear, friendly flavour. Hendrick’s brings cucumber and rose, Aviation is soft and floral, and Emini is a bright, approachable South African choice. Start with 50 ml gin, plenty of ice, and 150 ml of a dry tonic so you can taste what the bottle is doing.',
+      prompts: [
+        { id: 'beginner-smooth', label: 'Show me smooth gins', next: 'smooth' },
+        { id: 'beginner-juniper', label: 'I want bold juniper', next: 'juniper' },
+        { id: 'beginner-local', label: 'Explore South African gin', next: 'south-africa' },
+        { id: 'beginner-styles', label: 'Compare gin styles', next: 'styles' },
+        { id: 'beginner-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    smooth: {
+      response: 'For a softer glass, look for floral, citrus-led, or fruit-supported botanicals. Hendrick’s, Aviation, and Gin Mare are useful comparisons: cucumber and rose feel gentle, lavender gives lift, and Mediterranean herbs add savoury freshness. Use a light tonic and a simple garnish so the delicate notes do not disappear.',
+      prompts: [
+        { id: 'smooth-floral', label: 'Build a floral G&T', next: 'floral-serve' },
+        { id: 'smooth-tonic', label: 'Choose a tonic', next: 'tonic' },
+        { id: 'smooth-taste', label: 'Learn how to taste gin', next: 'tasting' },
+        { id: 'smooth-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    juniper: {
+      response: 'Bold juniper-led gin tastes piney, resinous, dry, and often a little peppery. Beefeater, Sipsmith, and Tanqueray are useful classic references. These gins hold their shape in a Martini or Negroni, and they work best with a dry tonic and a clean lemon peel.',
+      prompts: [
+        { id: 'juniper-martini', label: 'Make a Martini', next: 'martini' },
+        { id: 'juniper-negroni', label: 'Make a Negroni', next: 'negroni' },
+        { id: 'juniper-construction', label: 'What creates juniper flavour?', next: 'botanicals' },
+        { id: 'juniper-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    styles: {
+      response: 'Gin style is a shortcut to the kind of experience you may enjoy. London Dry is dry and juniper-forward, New Western lets local botanicals lead, Old Tom is gently sweet, Genever is malty and historic, and Navy Strength is powerful at 57% ABV or more.',
+      prompts: [
+        { id: 'styles-london', label: 'Explore London Dry', next: 'london-dry' },
+        { id: 'styles-contemporary', label: 'Explore New Western', next: 'new-western' },
+        { id: 'styles-genever', label: 'What is Genever?', next: 'genever' },
+        { id: 'styles-abv', label: 'Understand ABV', next: 'abv' },
+        { id: 'styles-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'london-dry': {
+      response: 'London Dry is a production style, not a promise that the gin was made in London. Botanicals are added during distillation, and the finished spirit is dry with juniper at the centre. Beefeater, Sipsmith, and Tanqueray are classic references. Try one neat, then in a 1:3 G&T or a Martini.',
+      prompts: [
+        { id: 'london-serve', label: 'Build its best G&T', next: 'gt' },
+        { id: 'london-martini', label: 'Use it in a Martini', next: 'martini' },
+        { id: 'london-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'new-western': {
+      response: 'New Western, or contemporary, gin keeps juniper present but lets another idea lead. That might be cucumber and rose, Douglas fir, tea, tropical fruit, or a local herb. It is a good place to start if classic gin feels too piney or if you want a bottle that tastes like its landscape.',
+      prompts: [
+        { id: 'western-floral', label: 'Try a floral serve', next: 'floral-serve' },
+        { id: 'western-regional', label: 'Explore regional botanicals', next: 'south-africa' },
+        { id: 'western-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    genever: {
+      response: 'Genever is the juniper spirit that sits behind modern gin. It can contain a malty spirit, so it feels closer to a light whisky than a crisp London Dry. Serve it chilled or in a simple cocktail where its grainy, earthy texture has room to show.',
+      prompts: [
+        { id: 'genever-history', label: 'Trace gin’s history', next: 'history' },
+        { id: 'genever-taste', label: 'Learn how to taste gin', next: 'tasting' },
+        { id: 'genever-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    construction: {
+      response: 'Gin begins with a neutral agricultural spirit, then becomes gin through juniper and other botanicals. A distiller chooses the base, extraction method, still, distillation cuts, water, bottling strength, and whether to blend, filter, or age the result. Those choices explain why two gins can share juniper but taste completely different.',
+      prompts: [
+        { id: 'made-botanicals', label: 'What do botanicals do?', next: 'botanicals' },
+        { id: 'made-extraction', label: 'Maceration or vapour infusion?', next: 'extraction' },
+        { id: 'made-distillation', label: 'What happens in the still?', next: 'distillation' },
+        { id: 'made-strength', label: 'What does ABV change?', next: 'abv' },
+        { id: 'made-finish', label: 'Blending, filtering, or aging?', next: 'finishing' },
+      ],
+    },
+    botanicals: {
+      response: 'Juniper is the defining botanical: it brings pine, resin, and dry structure. Coriander adds lemony spice, angelica root adds earthy depth, and citrus peel brings lift. Local ingredients create a sense of place—buchu and rooibos in Southern Africa, tea and yuzu in Japan, or fir and sage in the United States.',
+      prompts: [
+        { id: 'botanicals-citrus', label: 'Use citrus botanicals', next: 'citrus-serve' },
+        { id: 'botanicals-herbal', label: 'Use herbs and spice', next: 'herbal-serve' },
+        { id: 'botanicals-taste', label: 'Learn how to taste them', next: 'tasting' },
+        { id: 'botanicals-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    extraction: {
+      response: 'Maceration rests botanicals in spirit so alcohol can draw out their oils and flavour. Vapour infusion passes spirit vapour through a basket of delicate ingredients, which can preserve lifted floral, citrus, and fresh-herb aromas. Many distillers combine both methods to get depth from roots and brightness from fragile aromatics.',
+      prompts: [
+        { id: 'extraction-still', label: 'What happens in distillation?', next: 'distillation' },
+        { id: 'extraction-taste', label: 'Taste the difference', next: 'tasting' },
+        { id: 'extraction-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    distillation: {
+      response: 'The still concentrates volatile aromas and separates the run into heads, heart, and tails. The heart is usually the cleanest, most balanced portion. Copper can help soften certain unwanted compounds, while the still shape, heat, botanical placement, and distiller’s cuts all influence the final character.',
+      prompts: [
+        { id: 'distillation-strength', label: 'Understand proof and ABV', next: 'abv' },
+        { id: 'distillation-blending', label: 'Why blend batches?', next: 'finishing' },
+        { id: 'distillation-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    abv: {
+      response: 'ABV means alcohol by volume. Most gin sits between 37.5% and 47% ABV, while Navy Strength is 57% or higher. A higher strength can carry more aroma and texture, but it also needs thoughtful dilution. Taste the gin with a little water before deciding whether its extra proof is a benefit in your serve.',
+      prompts: [
+        { id: 'abv-serve', label: 'Match ABV to a serve', next: 'serve-building' },
+        { id: 'abv-navy', label: 'Try Navy Strength', next: 'navy-strength' },
+        { id: 'abv-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    finishing: {
+      response: 'Blending can combine batches or separate botanical distillates into a consistent recipe. Filtration removes particles and haze, although aggressive filtering can reduce texture. Aging is optional: oak can add vanilla, spice, tannin, and colour, but a gin does not need a barrel to be complete.',
+      prompts: [
+        { id: 'finishing-taste', label: 'Taste a finished gin', next: 'tasting' },
+        { id: 'finishing-serve', label: 'Build a serve around it', next: 'serve-building' },
+        { id: 'finishing-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    gt: {
+      response: 'Use 50 ml gin, 150 ml chilled tonic, plenty of large ice, and one purposeful garnish as your baseline. Pour the gin over ice, add the tonic gently to protect the bubbles, and stir once. Then adjust one variable at a time: a drier tonic, more soda, less dilution, or a different garnish.',
+      prompts: [
+        { id: 'gt-tonic', label: 'Choose the right tonic', next: 'tonic' },
+        { id: 'gt-floral', label: 'Build a floral G&T', next: 'floral-serve' },
+        { id: 'gt-citrus', label: 'Build a citrus G&T', next: 'citrus-serve' },
+        { id: 'gt-fix', label: 'Fix a bitter or weak G&T', next: 'troubleshooting' },
+        { id: 'gt-zero', label: 'Make it zero-proof', next: 'zero-proof' },
+      ],
+    },
+    tonic: {
+      response: 'Pair the mixer to the gin’s intensity. A dry Indian tonic suits juniper-led gin, a lighter tonic supports floral bottles, and Mediterranean tonic works with citrus and savoury herbs. If a G&T is too sweet, change the tonic before adding more garnish. Start at 1:2 or 1:3 gin to tonic and adjust.',
+      prompts: [
+        { id: 'tonic-bubbles', label: 'Keep a drink fizzy', next: 'serve-building' },
+        { id: 'tonic-bitter', label: 'Fix too much bitterness', next: 'troubleshooting' },
+        { id: 'tonic-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'floral-serve': {
+      response: 'For a floral gin, use a light tonic or soda, lots of cold ice, and cucumber, mint, or a restrained edible flower. Keep the garnish aromatic rather than sweet. The aim is to lift the floral note without turning the drink into perfume.',
+      prompts: [
+        { id: 'floral-pairing', label: 'Pair it with food', next: 'pairing' },
+        { id: 'floral-taste', label: 'Learn how to taste it', next: 'tasting' },
+        { id: 'floral-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'citrus-serve': {
+      response: 'Citrus-led gin loves a dry tonic, grapefruit or orange peel, and a cold highball. Avoid piling on sweet fruit: a strip of peel adds aroma without burying the gin. Fresh lemon or lime can help when the drink needs sharper structure.',
+      prompts: [
+        { id: 'citrus-pairing', label: 'Pair it with food', next: 'pairing' },
+        { id: 'citrus-cocktail', label: 'Make a citrus cocktail', next: 'cocktails' },
+        { id: 'citrus-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'herbal-serve': {
+      response: 'Herbal or savoury gin works with dry tonic, soda, ginger, rosemary, thyme, sage, or a small olive accent. Keep the drink long and cold. One savoury idea is enough—too many herbs can make the finish taste medicinal.',
+      prompts: [
+        { id: 'herbal-pairing', label: 'Find a savoury pairing', next: 'pairing' },
+        { id: 'herbal-quirky', label: 'Try a quirky cocktail', next: 'quirky' },
+        { id: 'herbal-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'serve-building': {
+      response: 'Build a drink by balancing four forces: spirit, sweetness, acidity, and bitterness. Match intensity, control dilution with plenty of cold ice, and let garnish do one job—add aroma, freshness, or a botanical echo. Start simple so you can tell what each change contributes.',
+      prompts: [
+        { id: 'serve-baseline', label: 'Use the G&T baseline', next: 'gt' },
+        { id: 'serve-tasting', label: 'Taste before mixing', next: 'tasting' },
+        { id: 'serve-cocktail', label: 'Explore cocktails', next: 'cocktails' },
+        { id: 'serve-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    tasting: {
+      response: 'Taste in five passes: look at clarity and colour, smell for the first two or three aromas, sip neat, add a few drops of water, then try a little soda or tonic. Notice whether juniper is crisp or soft and whether the texture feels dry, oily, sweet, or light. There is no wrong vocabulary—specific curiosity is enough.',
+      prompts: [
+        { id: 'tasting-botanicals', label: 'Decode botanicals', next: 'botanicals' },
+        { id: 'tasting-serve', label: 'Turn tasting into a serve', next: 'serve-building' },
+        { id: 'tasting-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    pairing: {
+      response: 'Pair by matching or contrasting intensity. Citrus gin likes ceviche, prawns, feta, and salted almonds. Floral or herbal gin suits goat cheese, halloumi, fresh herbs, and light salads. Spiced gin can handle tacos, chilli prawns, and smoky salsa. Keep the portion simple enough for the gin to remain visible.',
+      prompts: [
+        { id: 'pairing-citrus', label: 'Pair a citrus gin', next: 'citrus-pairing' },
+        { id: 'pairing-herbal', label: 'Pair an herbal gin', next: 'herbal-pairing' },
+        { id: 'pairing-quirky', label: 'Try an unexpected pairing', next: 'quirky' },
+        { id: 'pairing-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'citrus-pairing': {
+      response: 'Try a citrus G&T with grilled prawns, ceviche, olives, feta, or salted almonds. The shared brightness keeps the pairing clean, while salt and gentle richness make the citrus taste even more vivid.',
+      prompts: [
+        { id: 'citrus-pairing-cocktail', label: 'Use the pairing in a cocktail', next: 'quirky' },
+        { id: 'citrus-pairing-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'herbal-pairing': {
+      response: 'Herbal gin is excellent with goat cheese, grilled halloumi, rosemary flatbread, fresh herbs, mushrooms, and green vegetables. Echo one botanical in the food, then add a salty or creamy element to give the dry spirit contrast.',
+      prompts: [
+        { id: 'herbal-pairing-cocktail', label: 'Use the pairing in a cocktail', next: 'quirky' },
+        { id: 'herbal-pairing-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    cocktails: {
+      response: 'Start with the mood you want. A Martini is cold, dry, and focused; a Negroni is bitter, rich, and slow; a Tom Collins is bright and fizzy; and a Bee’s Knees is citrusy with honeyed softness. If you want a conversation starter, follow the quirky path for unusual but balanced combinations.',
+      prompts: [
+        { id: 'cocktails-martini', label: 'Make a Martini', next: 'martini' },
+        { id: 'cocktails-negroni', label: 'Make a Negroni', next: 'negroni' },
+        { id: 'cocktails-quirky', label: 'Show quirky cocktails', next: 'quirky' },
+        { id: 'cocktails-zero', label: 'Choose zero-proof', next: 'zero-proof' },
+      ],
+    },
+    martini: {
+      response: 'Try 60 ml London Dry gin with 10 ml dry vermouth. Stir with ice for about 30 seconds, strain into a chilled glass, and choose either a lemon twist or an olive. If you want more vermouth, add it deliberately—the ratio is a preference, not a test.',
+      prompts: [
+        { id: 'martini-dirty', label: 'Make it dirty', next: 'dirty-martini' },
+        { id: 'martini-taste', label: 'Taste gin before cocktails', next: 'tasting' },
+        { id: 'martini-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'dirty-martini': {
+      response: 'For a Dirty Martini, start with 60 ml gin, 10 ml dry vermouth, and 10 ml olive brine. Stir very cold with ice and strain. Add more brine only after tasting—the savoury note should frame the gin rather than erase it.',
+      prompts: [
+        { id: 'dirty-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    negroni: {
+      response: 'Use equal parts gin, Campari, and sweet vermouth—25 ml of each is a friendly starting point. Stir with ice, strain over a large cube, and express an orange peel over the top. A bold London Dry has enough structure to stand up to the bitterness.',
+      prompts: [
+        { id: 'negroni-light', label: 'Make it lighter', next: 'negroni-light' },
+        { id: 'negroni-pairing', label: 'Pair it with food', next: 'pairing' },
+        { id: 'negroni-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'negroni-light': {
+      response: 'For a lighter version, make a Negroni Sbagliato: use equal parts Campari and sweet vermouth, then top with sparkling wine instead of gin. It keeps the bitter-orange shape while lowering the spirit intensity.',
+      prompts: [
+        { id: 'negroni-light-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    quirky: {
+      response: 'Here are three unusual combinations that still have balance: The Garden Goblin pairs gin with green apple, lime, basil, and tonic; Earl Greyhound combines tea, lemon, honey, and gin; and Beet the Juniper uses beetroot, lemon, and a dry gin. Quirky works when one ingredient is surprising and the rest provide structure.',
+      prompts: [
+        { id: 'quirky-garden', label: 'Make The Garden Goblin', next: 'garden-goblin' },
+        { id: 'quirky-earl', label: 'Make Earl Greyhound', next: 'earl-greyhound' },
+        { id: 'quirky-beet', label: 'Make Beet the Juniper', next: 'beet-juniper' },
+        { id: 'quirky-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'garden-goblin': {
+      response: 'The Garden Goblin: shake 50 ml dry gin with 20 ml green-apple juice, 10 ml lime, and two basil leaves. Pour over ice and top with chilled tonic. Pair it with whipped feta, cucumber, or a fresh herb salad.',
+      prompts: [
+        { id: 'garden-next', label: 'Try another quirky drink', next: 'quirky' },
+        { id: 'garden-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'earl-greyhound': {
+      response: 'Earl Greyhound: shake 50 ml gin, 25 ml chilled Earl Grey tea, 15 ml lemon, and 10 ml honey syrup with ice. Strain over fresh ice. It is excellent with shortbread, smoked trout, or sharp cheddar.',
+      prompts: [
+        { id: 'earl-next', label: 'Try another quirky drink', next: 'quirky' },
+        { id: 'earl-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'beet-juniper': {
+      response: 'Beet the Juniper: shake 45 ml gin, 20 ml fresh beet juice, 15 ml lemon, and 10 ml simple syrup with ice. Strain over fresh ice and pair with goat cheese or pickled vegetables. The lemon keeps the earthy beetroot bright.',
+      prompts: [
+        { id: 'beet-next', label: 'Try another quirky drink', next: 'quirky' },
+        { id: 'beet-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    date: {
+      response: 'A good gin date is curious rather than performative. Choose a bottle you genuinely enjoy, ask for a simple first round, and let the garnish or local botanical become a conversation prompt. A distillery tour, tasting, or blending workshop can also make the activity about craft rather than alcohol.',
+      prompts: [
+        { id: 'date-zero', label: 'I do not drink', next: 'zero-proof' },
+        { id: 'date-approachable', label: 'Choose an easy first gin', next: 'smooth' },
+        { id: 'date-quirky', label: 'Share a quirky cocktail', next: 'quirky' },
+        { id: 'date-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'zero-proof': {
+      response: 'A zero-proof serve can keep the ritual without the alcohol. Use a clearly labelled 0.0% botanical spirit or a juniper-forward tea, add 100–150 ml chilled dry tonic over ice, and finish with lemon peel, cucumber, or herbs. You can also choose a shrub, citrus spritz, or botanical soda.',
+      prompts: [
+        { id: 'zero-date', label: 'Plan an inclusive date', next: 'date' },
+        { id: 'zero-serve', label: 'Build a zero-proof serve', next: 'serve-building' },
+        { id: 'zero-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'south-africa': {
+      response: 'Southern African gin is shaped by the Cape Floral Kingdom and other local landscapes. Inverroche brings fynbos, Hope Distillery uses buchu and citrus, Wilderer leans earthy and floral, Pienaar & Son is bright and citrus-led, and Six Dogs Blue adds a colour-changing botanical moment.',
+      prompts: [
+        { id: 'sa-botanicals', label: 'Learn about fynbos', next: 'botanicals' },
+        { id: 'sa-visit', label: 'Plan a distillery visit', next: 'visit' },
+        { id: 'sa-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    visit: {
+      response: 'A distillery visit can include a tour, tasting, botanical lesson, or blending session. Check opening hours, age requirements, transport, and whether hands-on workshops need advance booking. The Plan a Visit guide on this site groups visitor leads by region so you can compare options before travelling.',
+      prompts: [
+        { id: 'visit-craft', label: 'Learn to craft your own gin', next: 'craft' },
+        { id: 'visit-sa', label: 'Explore Southern Africa', next: 'south-africa' },
+        { id: 'visit-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    craft: {
+      response: 'Start with juniper, choose one anchor botanical and two supporting notes, then measure everything. A guided workshop is the best way to learn maceration, vapour infusion, dilution, filtration, and responsible tasting. Record each recipe so a lucky experiment can be repeated.',
+      prompts: [
+        { id: 'craft-botanicals', label: 'Choose botanicals', next: 'botanicals' },
+        { id: 'craft-extraction', label: 'Learn extraction methods', next: 'extraction' },
+        { id: 'craft-visit', label: 'Find a place to visit', next: 'visit' },
+        { id: 'craft-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    history: {
+      response: 'Gin grew from genever, a juniper-flavoured spirit made in the Low Countries. English soldiers encountered it in the late 16th century, and England’s gin boom followed. Modern distillers keep juniper at the centre while using local botanicals to give each region its own accent.',
+      prompts: [
+        { id: 'history-genever', label: 'Taste the genever style', next: 'genever' },
+        { id: 'history-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    'navy-strength': {
+      response: 'Navy Strength gin is bottled at 57% ABV or above. It has enough concentration to stay expressive in a cold, diluted drink, but it can taste hot neat. Use less in a cocktail or add dilution gradually, then taste again before adding more mixer.',
+      prompts: [
+        { id: 'navy-serve', label: 'Build a high-ABV serve', next: 'serve-building' },
+        { id: 'navy-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
+    troubleshooting: {
+      response: 'Fix one variable at a time. Too sweet? Use a dry tonic or add soda. Too bitter? Increase dilution and simplify the garnish. Too strong? Add tonic 25 ml at a time. Watery? Chill the ingredients first and use fresh, large ice. Flat? Open a fresh tonic and pour it gently.',
+      prompts: [
+        { id: 'fix-gt', label: 'Rebuild the G&T baseline', next: 'gt' },
+        { id: 'fix-tonic', label: 'Choose a better tonic', next: 'tonic' },
+        { id: 'fix-home', label: 'Choose another topic', next: 'start' },
+      ],
+    },
   },
-
-  // --- First gin / beginner ---
-  {
-    triggers: ['first gin', 'beginner', 'new to gin', 'start with', 'starting out', 'never had gin', 'never tried gin', 'get into gin'],
-    response: "Starting your gin journey? Great choice. For beginners I recommend:\n\n• **Hendrick's** — cucumber and rose notes, very approachable, light on juniper\n• **Tanqueray No. TEN** — fresh and citrus-led, easy to enjoy\n• **Emini Gin (South Africa)** — zesty and affordable, perfect intro to African botanicals\n\nServe any of these in a balloon glass with premium tonic and a lemon or cucumber garnish. Don't rush it — gin rewards slow sipping.",
-  },
-
-  // --- London Dry ---
-  {
-    triggers: ['london dry', 'what is london dry', 'classic gin', 'traditional gin'],
-    response: "**London Dry Gin** is the benchmark style. Key facts:\n\n• All botanicals are added during distillation — no artificial flavours after\n• Must be at least 37.5% ABV\n• Dominated by juniper — that classic piney, resinous bite\n• Great examples: Beefeater, Tanqueray, Sipsmith, Gordon's\n\nLondon Dry is the style that defines 'gin' for most people. It's dry, bold, and brilliant in a Negroni or Martini.",
-  },
-
-  // --- New Western / Contemporary ---
-  {
-    triggers: ['new western', 'contemporary gin', 'modern gin', 'american style gin', 'non-juniper'],
-    response: "**New Western (Contemporary) Gin** breaks from tradition:\n\n• Juniper is present but not the lead botanical\n• Distillers highlight local, unusual, or seasonal ingredients\n• Styles range from floral and citrus-forward to spiced and vegetal\n• Examples: Hendrick's, Aviation, St. George Terroir, Monkey 47\n\nThese gins are ideal if you find classic London Dry too piney.",
-  },
-
-  // --- G&T ---
-  {
-    triggers: ['g&t', 'gin and tonic', 'gin tonic', 'tonic water', 'best tonic'],
-    response: "The perfect G&T comes down to ratio and quality:\n\n• **Ratio**: 50 ml gin to 150 ml tonic (1:3) is the classic start. Adjust to taste.\n• **Tonic**: Use a premium tonic — Fever-Tree, 1724, Franklin & Sons, or Fentimans. The tonic is half the drink.\n• **Ice**: Loads of it. Large, clear cubes melt slowly and keep dilution low.\n• **Glass**: A balloon (copa de balon) glass concentrates aroma beautifully.\n• **Garnish**: Match the garnish to the gin's lead botanical — cucumber for floral, citrus for dry, rosemary for herbal.\n\nPour the gin first, then ice, then gently pour the tonic down the side of the glass. Stir once.",
-  },
-
-  // --- Martini ---
-  {
-    triggers: ['martini', 'gin martini', 'dirty martini'],
-    response: "A classic Gin Martini is pure elegance:\n\n• **Classic recipe**: 60 ml London Dry gin + 10 ml dry vermouth + ice. Stir for 30 seconds. Strain into chilled coupe or martini glass.\n• **Garnish**: Lemon twist or green olive — pick one, not both.\n• **Dirty**: Add 10–15 ml olive brine for a savoury twist.\n• **Best gins for a Martini**: Beefeater, Sipsmith, Tanqueray, Hayman's — bold juniper-forward gins hold their own against vermouth.\n\nThe ratio of gin to vermouth is personal. Winston Churchill's method was to glance at the vermouth bottle — but 6:1 is a good starting point.",
-  },
-
-  // --- Negroni ---
-  {
-    triggers: ['negroni', 'campari', 'vermouth', 'classic cocktail'],
-    response: "The **Negroni** is one of the greatest cocktails ever made:\n\n• **Recipe**: Equal parts (25 ml each) gin + Campari + sweet vermouth. Stir with ice. Strain over a large ice cube. Orange peel garnish.\n• **Best gins**: Bold London Dry works best — Beefeater, Tanqueray, Whitley Neill. The gin needs to hold up against Campari's bitterness.\n• **Variations**: Try a White Negroni (Lillet Blanc instead of vermouth) or a Negroni Sbagliato (prosecco instead of gin for something lighter).\n\nThe Negroni rewards patience — stir for at least 20 seconds.",
-  },
-
-  // --- South Africa gins ---
-  {
-    triggers: ['south african gin', 'south africa gin', 'african gin', 'sa gin', 'local gin', 'cape gin', 'fynbos gin', 'inverroche', 'hope on hopkins', 'pienaar', 'six dogs', 'wilderer'],
-    response: "South Africa has an extraordinary gin scene:\n\n• **Inverroche** (Still Bay) — three styles (Classic, Verdant, Amber) each showcasing different fynbos botanicals. The benchmark SA gin.\n• **Hope on Hopkins** (Cape Town) — buchu and lemon peel forward, crisp and herbaceous.\n• **Wilderer Fynbos Gin** (Paarl) — earthy, floral, beautifully complex.\n• **Pienaar & Son** (Cape Town) — citrus-forward small batch, great with grapefruit tonic.\n• **Six Dogs Blue** (Karoo) — colour-changing, butterfly pea flower forward, a visual showstopper.\n• **Emini Gin** — fresh, zesty, exceptional value.\n\nThe Cape Floral Kingdom gives SA gins a flavour you simply can't find anywhere else in the world.",
-  },
-
-  // --- UK gins ---
-  {
-    triggers: ['european gin', 'europe gin', 'uk gin', 'british gin', 'english gin', 'scottish gin', 'irish gin', 'spanish gin', 'italian gin', 'german gin', 'dutch gin', 'hendricks', "hendrick's", 'beefeater', 'sipsmith', 'tanqueray', 'gordons', 'bombay sapphire', 'monkey 47', 'gin mare', 'malfy', 'roku'],
-    response: "Europe is one of gin's richest regions, from London Dry benchmarks to Mediterranean, Alpine, and Nordic styles:\n\n• **Beefeater** and **Sipsmith** (England) — juniper-led classics with different levels of polish and citrus.\n• **Hendrick's** (Scotland) — cucumber and rose infused, unusual and approachable.\n• **Monkey 47** (Germany) — intensely layered with Black Forest botanicals.\n• **Gin Mare** (Spain) — savoury Mediterranean botanicals including olive, rosemary, and thyme.\n• **Malfy** (Italy) — bright Italian citrus, ideal for sunny aperitivo serves.\n• **Bols Genever** (Netherlands) — a maltier historic style that shows gin's roots.\n• **Hernö** (Sweden) — soft floral and berry notes with a clean Nordic finish.\n\nEuropean gin is not one style — choose classic juniper, savoury Mediterranean, or floral and foraged depending on your palate.",
-  },
-
-  // --- Asian gins ---
-  {
-    triggers: ['asian gin', 'asia gin', 'japanese gin', 'japan gin', 'indian gin', 'india gin', 'roku', 'ki no bi', 'hapusa', 'southeast asian'],
-    response: "Asian gin makers often build around tea, citrus, spice, and regional botanicals:\n\n• **Roku** (Japan) — yuzu, sencha tea, sakura, and sansho pepper. Silky and precise.\n• **KI NO BI** (Kyoto) — yuzu, hinoki, sansho, and gyokuro tea in a structured dry style.\n• **Hapusa** (India) — Himalayan juniper, mango, turmeric, and gondhoraj lime. Earthy and distinctive.\n• **Greater Than** (India) — a clean, affordable dry gin with tea and spice lift.\n\nTry Asian gins with yuzu, calamansi, ginger, soda, or a light tonic so the regional botanicals stay clear.",
-  },
-
-  // --- USA gins ---
-  {
-    triggers: ['american gin', 'usa gin', 'us gin', 'aviation gin', "st george", 'death', 'bluecoat', "barr hill", 'brooklyn gin', 'few gin'],
-    response: "American gins are some of the most innovative in the world:\n\n• **St. George Terroir Gin** (California) — Douglas fir, California bay laurel, coastal sage. A forest in a glass.\n• **Aviation American Gin** (Oregon) — smooth, lavender-forward, low juniper. Great gateway gin.\n• **Barr Hill Gin** (Vermont) — raw honey infusion, floral and unique. Perfect in a Bee's Knees cocktail.\n• **Death's Door Gin** (Wisconsin) — minimalist: juniper, coriander, fennel. Clean and pure.\n• **Bluecoat American Dry** (Philadelphia) — bold citrus, organic botanicals, accessible price point.\n• **Brooklyn Gin** (New York) — fresh citrus peel, hand-crafted, city sophistication.\n\nAmerican gin embraces terroir — the best bottles taste like the place they came from.",
-  },
-
-  // --- Americas / Mexico / South America gins ---
-  {
-    triggers: ['mexican gin', 'latin gin', 'south american gin', 'agave gin', 'peru gin', 'brazil gin', 'amazonia', 'andean'],
-    response: "Latin American gins are exciting and still under-explored:\n\n• **Agave Garden Gin** (Mexico) — agave-forward with citrus and wild herbs. Mezcal influence is subtle but present.\n• **Desert Citrus Gin** (Mexico) — prickly pear, lime, and desert botanicals. Vivid and warming.\n• **Amazonia Dry Gin** (Brazil) — açaí, cupuaçu, and tropical botanicals. Lush and distinctive.\n• **Andean Herb Gin** (South America) — quinoa-based spirit with high-altitude botanicals. Complex and earthy.\n\nThese gins pair brilliantly with chilli salt rims, lime, and fresh jalapeño garnishes.",
-  },
-
-  // --- Botanicals ---
-  {
-    triggers: ['botanical', 'botanicals', 'ingredients', 'what is in gin', 'juniper', 'fynbos', 'buchu', 'rooibos', 'angelica'],
-    response: "Botanicals are what make gin, gin. Here are the key ones to know:\n\n**Must-Have**\n• **Juniper berries** — mandatory in all gin, gives that distinctive pine and resin character\n• **Coriander seed** — citrusy, spicy, almost the 'bass note' of most gins\n• **Angelica root** — earthy, dry, acts as a fixative that binds other flavours\n\n**South African Specials**\n• **Buchu** — blackcurrant depth, uniquely South African\n• **Rooibos** — earthy sweetness, adds soft warmth\n• **Fynbos** — broad term for Cape flora; each distillery picks different plants\n\n**UK & European**\n• **Elderflower** — light, floral, slightly honeyed\n• **Orris root** — violet-like, powdery, a classic component\n• **Sloe berry** — tart, plummy, used in sloe gin\n\nA gin's botanical bill is its fingerprint — no two are exactly alike.",
-  },
-
-  // --- Food pairing ---
-  {
-    triggers: ['food', 'food pairing', 'food with gin', 'what to eat', 'snack', 'snacks with gin', 'pairing'],
-    response: "Gin and food are natural partners:\n\n• **Citrus gins** — ceviche, grilled prawns, feta and olives, salted almonds\n• **Floral and herbal gins** — goat cheese, grilled halloumi, rosemary flatbread, fresh herbs\n• **Spiced and bold gins** — tacos, chilli prawns, guacamole, smoky salsa\n• **Fruit-forward gins** — brie, fresh berries, shortbread, honey, charcuterie\n\n**Golden rule**: the food shouldn't compete with the gin. Keep strong chilli and heavy smoked items in small portions. The gin should remain the star.",
-  },
-
-  // --- Serving / glassware ---
-  {
-    triggers: ['how to serve', 'serving', 'glassware', 'glass', 'copa', 'balloon glass', 'highball', 'garnish'],
-    response: "Serving gin well makes a real difference:\n\n**Glassware**\n• **Copa de Balon** — best for aromatic, floral gins. Wide rim traps botanicals.\n• **Highball** — for long coolers and tall G&Ts\n• **Coupe or Martini glass** — for stirred cocktails served up\n\n**Ice**\n• More is more. Large, clear cubes melt slowly.\n• Pre-chill your glass with ice water while you prepare the drink.\n\n**Garnish rules**\n• Match the garnish to the gin's lead botanical\n• Citrus gins: citrus peel or wedge\n• Floral gins: cucumber or edible flowers\n• Herbal gins: rosemary, thyme, or sage\n\n**The pour**: gin first, then ice, then tonic poured gently down the side. Stir once, garnish, serve immediately.",
-  },
-
-  // --- Budget gin ---
-  {
-    triggers: ['budget', 'cheap gin', 'affordable gin', 'value gin', 'best value', 'wallet', 'inexpensive'],
-    response: "Great gin doesn't have to break the bank:\n\n**South Africa**\n• Emini Gin — fresh, zesty, exceptional value\n• Nottingham Road Gin — reliable classic dry style\n• Six Dogs Blue — colour-changing, fun, affordable\n\n**UK**\n• Beefeater London Dry — iconic, versatile, widely available\n• Hayman's London Dry — family-owned, clean and honest\n• Gordon's — the most-sold gin in the world for a reason\n\n**USA**\n• Bluecoat American Dry — citrus-forward, good price\n• Death's Door — minimalist, pure, affordable\n\n**Tip**: Budget gin shines brightest in a well-made G&T with quality tonic. The tonic does a lot of work.",
-  },
-
-  // --- First date gin ---
-  {
-    triggers: ['first date', 'date night', 'impress', 'romantic', 'date gin'],
-    response: "Gin for a first date — this is important:\n\n**Safe, sophisticated choice**: Hendrick's — the quirky bottle opens conversation, the cucumber profile is approachable even for non-gin drinkers.\n\n**Confident, knowledgeable choice**: St. George Terroir or any local craft gin — shows adventurous taste and genuine curiosity.\n\n**Budget-smart move**: Emini Gin or Bluecoat — thoughtful and good quality without overspending.\n\n**The real rule**: Choose something *you* genuinely enjoy and can talk about with passion. Confidence in your choice is more impressive than the bottle itself.\n\nOrder it properly — balloon glass, loads of ice, quality tonic, matching garnish. Attention to detail is attractive.",
-  },
-
-  // --- Spirit coolers ---
-  {
-    triggers: ['spirit cooler', 'spirit coolers', 'gin cooler', 'long drink', 'summer drink', 'light drink'],
-    response: "Gin spirit coolers are perfect for relaxed, easy-drinking sessions:\n\n• **Gin & Elderflower Cooler**: 50 ml gin + elderflower cordial + cucumber + soda water + ice\n• **Gin & Hibiscus**: 50 ml gin + hibiscus syrup + lime + soda + dried hibiscus garnish\n• **Jungle Bird Gin Riff**: 45 ml gin + 20 ml Campari + pineapple juice + lime + soda\n• **Mint & Citrus Cooler**: 50 ml gin + fresh mint + lime + soda + cucumber rounds\n\n**Key principle**: Keep it light, cold, and well-garnished. Spirit coolers are social drinks — build them in a large glass with plenty of ice.",
-  },
-
-  // --- Quick fixes ---
-  {
-    triggers: ['quick fix', 'no tonic', 'no ice', 'no citrus', 'no shaker', 'substitute', 'improvise', 'fix'],
-    response: "Quick gin fixes — no specialist kit? No problem:\n\n• **No tonic**: Chilled soda water + squeeze of lemon/lime + small spoon of honey\n• **No fresh citrus**: Clear apple juice or a teaspoon of diluted vinegar for brightness\n• **No simple syrup**: Dissolve sugar or honey in warm water (1:1). Jam works too.\n• **No shaker**: Use a clean jar with a secure lid. Shake briefly, strain through a kitchen sieve.\n• **Not enough ice**: Chill gin, mixer, and glass in advance. Pour slowly.\n• **Too strong**: Add soda water 25 ml at a time, taste between each addition.\n\n**Home bar rule**: Gin + cold + citrus + fizz = a good drink. Everything else is refinement.",
-  },
-
-  // --- Gin styles overview ---
-  {
-    triggers: ['types of gin', 'gin styles', 'styles of gin', 'different gins', 'categories of gin', 'gin categories'],
-    response: "The main gin styles to know:\n\n• **London Dry** — juniper-forward, dry, no post-distillation additives. The classic benchmark.\n• **Plymouth Gin** — slightly earthier and fuller than London Dry. Protected designation (only made in Plymouth).\n• **Old Tom** — slightly sweeter, bridges the gap between London Dry and genever. Great in classic cocktails.\n• **Sloe Gin** — London Dry steeped with sloe berries and sugar. Fruit-forward liqueur style.\n• **Navy Strength** — bottled at 57% ABV or above. Intense, bold, designed for tropical climates.\n• **New Western / Contemporary** — juniper in the background, local botanicals take the lead.\n• **Genever** — Dutch origin, malt wine base, more whisky-like. The ancestor of modern gin.\n\nWhich style interests you most?",
-  },
-
-  // --- ABV / strength ---
-  {
-    triggers: ['abv', 'alcohol', 'strength', 'how strong', 'percentage', 'navy strength', '57%'],
-    response: "Gin strength — what to know:\n\n• **Standard gin**: 37.5%–47% ABV — most everyday bottles fall here\n• **London Dry minimum**: 37.5% ABV by regulation\n• **Navy Strength**: 57%+ ABV — historically bottled at this strength so gunpowder would still ignite if gin was spilled on it (true story)\n• **Cask-aged gin**: often 46–50% ABV\n\n**Higher ABV gins** hold their character better in ice-heavy drinks. A 47% gin will show more botanical complexity in a long G&T than a 37.5% one.\n\nFor cocktails, navy strength is brilliant — you need less volume to get the same flavour impact.",
-  },
-
-  // --- Cocktails ---
-  {
-    triggers: ['cocktail', 'cocktails', 'gin cocktail', 'what can i make', 'recipe', 'drink recipe'],
-    response: "Classic gin cocktails worth mastering:\n\n• **G&T** — 50 ml gin + 150 ml tonic + ice + garnish. The foundation.\n• **Martini** — 60 ml gin + 10 ml dry vermouth + ice. Stir, strain, lemon twist.\n• **Negroni** — equal parts gin + Campari + sweet vermouth. Stir, strain, orange peel.\n• **Tom Collins** — 50 ml gin + 25 ml lemon juice + 15 ml sugar syrup + soda. Built over ice.\n• **Bee's Knees** — 50 ml gin + 25 ml lemon juice + 20 ml honey syrup. Shaken, served up.\n• **Gimlet** — 60 ml gin + 20 ml fresh lime juice + 10 ml sugar syrup. Clean and sharp.\n• **Clover Club** — gin + lemon + raspberry syrup + egg white. Shaken hard.\n\nStart with the G&T, master the Martini, then work your way through the classics.",
-  },
-
-  // --- Storage ---
-  {
-    triggers: ['store gin', 'storing gin', 'keep gin', 'how long', 'shelf life', 'expire', 'fridge'],
-    response: "Gin storage is straightforward:\n\n• **Unopened**: Gin keeps indefinitely in a cool, dark place. Alcohol is its own preservative.\n• **Opened**: Consume within 12–18 months for best flavour. The botanicals will gradually fade after opening.\n• **Fridge**: Not necessary, but a cold gin does make a better G&T — less ice needed, less dilution.\n• **Sunlight**: The biggest enemy. UV light degrades botanicals and colour. Keep bottles out of direct sunlight.\n• **Upright**: Always store upright. Unlike wine, gin doesn't improve with time in the bottle once opened.\n\nA half-empty bottle loses flavour faster due to more air contact. Either finish it or transfer to a smaller bottle.",
-  },
-
-  // --- Gin vs Vodka ---
-  {
-    triggers: ['gin vs vodka', 'vodka', 'difference between gin and vodka', 'what makes gin different'],
-    response: "Gin vs Vodka — the key distinction:\n\n• **Vodka** is a neutral spirit. By definition it should be odourless, colourless, and tasteless.\n• **Gin** is a flavoured spirit. It starts as a neutral spirit but is re-distilled with botanicals — juniper being mandatory.\n\nIn essence: if vodka is a blank canvas, gin is the painting.\n\nBoth start from the same base (grain or potato spirit), but gin's botanical bill gives it enormous flavour complexity. This is why gin cocktails can be so varied — the botanicals interact differently with each mixer.",
-  },
-
-  // --- Tonic pairing ---
-  {
-    triggers: ['choose a tonic', 'tonic pairing', 'which tonic', 'tonic pair', 'mixer pairing'],
-    response: "Choose a tonic that supports the gin rather than hiding it:\n\n• **Dry, juniper-led gin** — Indian or dry tonic with lemon peel\n• **Citrus-led gin** — Mediterranean tonic with grapefruit or orange\n• **Floral gin** — light tonic with cucumber or a small mint sprig\n• **Herbal or savoury gin** — dry tonic, soda, or a gentle ginger mixer\n\nStart at **1 part gin to 2–3 parts tonic**, then adjust. If the drink tastes too sweet, switch to a dry tonic before adding more garnish. Keep tonic cold and pour it gently to preserve the bubbles.",
-  },
-
-  // --- Tasting ---
-  {
-    triggers: ['taste gin', 'tasting gin', 'how to taste', 'taste a gin', 'gin tasting'],
-    response: "Use a simple three-step tasting ritual:\n\n1. **Look** — check the clarity and colour. A clear gin is the usual starting point; colour may come from botanicals or ageing.\n2. **Smell** — swirl gently, then nose the glass from a little distance. Look for juniper, citrus, floral, spice, or earthy notes.\n3. **Sip** — taste a small amount neat, then add a few drops of water or try it with tonic. Notice what changes.\n\nWrite down the first three aromas that come to mind. There is no wrong answer, and comparing two gins side by side is more useful than trying to remember a flavour on its own.",
-  },
-
-  // --- Production ---
-  {
-    triggers: ['how gin is made', 'how is gin made', 'make gin', 'gin production', 'distill gin', 'distilling gin'],
-    response: "Most gin follows this path:\n\n• A neutral spirit is made from a base such as grain, grape, or molasses.\n• Juniper and other botanicals are steeped in the spirit, suspended in the vapour path, or added in a combination of both methods.\n• The spirit is distilled so the botanical aromas become part of the final liquid.\n• The distiller reduces it to bottling strength with water, then lets the gin rest before release.\n\nThe recipe, extraction method, distillation cuts, water, and bottling strength all affect the result. Gin does not need barrel ageing to be complete; its character usually comes from the botanical balance.",
-  },
-
-  // --- History ---
-  {
-    triggers: ['history of gin', 'where gin came from', 'origin of gin', 'gin history', 'who invented gin', 'genever'],
-    response: "Gin grew from **genever**, a juniper-flavoured spirit made in the Low Countries. English soldiers encountered it in the late 16th century and brought the taste home.\n\nEngland's gin boom followed in the 18th century, and later distillers developed the cleaner, drier style now known as London Dry. Today, distillers across Africa, Europe, the Americas, and beyond use local botanicals to create new expressions while keeping juniper at the centre.",
-  },
-
-  // --- Troubleshooting ---
-  {
-    triggers: ['bitter g&t', 'bitter gin and tonic', 'too bitter', 'too sweet', 'too strong', 'watery g&t', 'watery gin and tonic'],
-    response: "A quick G&T diagnosis:\n\n• **Too bitter** — use a less bitter or lighter tonic, add a little soda, and keep the garnish simple.\n• **Too sweet** — switch to a dry tonic and avoid sweet cordials or fruit-heavy garnishes.\n• **Too strong** — add tonic 25 ml at a time and taste after each addition.\n• **Watery** — use fresh, large ice, chill the ingredients first, and stir only once.\n• **Flat** — open a fresh tonic and pour it gently down the side of the glass.\n\nChange one thing at a time so you learn what suits the gin.",
-  },
-
-  // --- Zero-proof ---
-  {
-    triggers: ['zero proof', 'zero-proof', 'non alcoholic gin', 'non-alcoholic gin', 'no alcohol gin', 'alcohol free gin'],
-    response: "A zero-proof serve can still have the structure of a G&T:\n\n• Use a chilled non-alcoholic botanical spirit or a juniper-forward tea.\n• Add 100–150 ml of dry tonic over plenty of ice.\n• Finish with a lemon peel, cucumber ribbon, or a few fresh herbs.\n\nCheck the bottle label: some products called non-alcoholic contain trace alcohol. If you are avoiding alcohol completely, choose a clearly labelled 0.0% product and remember that tonic itself can contain sugar or quinine.",
-  },
-
-  // --- Thank you ---
-  {
-    triggers: ['thank', 'thanks', 'cheers', 'perfect', 'helpful', 'great', 'awesome', 'brilliant'],
-    response: "Cheers! Always happy to talk gin. Is there anything else you'd like to know — a specific bottle, a cocktail recipe, food pairing, or serving tip?",
-  },
-]
+}
