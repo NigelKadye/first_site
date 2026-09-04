@@ -1,6 +1,7 @@
 import { MessageCircle, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { botPersonality, promptFlow } from '../data/ginBot'
+import BrandLogo from './BrandLogo'
 
 function getNode(nextId) {
   if (nextId === 'start') {
@@ -80,7 +81,7 @@ export default function GinBotPanel({ open, onClose }) {
       <div className="ginbot-header">
         <MessageCircle size={18} aria-hidden="true" />
         <span className="ginbot-header-name">GinBot</span>
-        <span className="ginbot-header-sub">Guided gin guide</span>
+        <BrandLogo compact />
         <button type="button" className="ginbot-close" aria-label="Close chat" onClick={onClose}>
           <X size={18} aria-hidden="true" />
         </button>
